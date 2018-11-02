@@ -1,0 +1,14 @@
+Operator:     LYNX::LYNX_velocityControl::0.1
+Label:        LYNX_velocityControl
+Path:         oplib:/LYNX::Sop/LYNX_velocityControl::0.1?LYNX::Sop/LYNX_velocityControl::0.1
+Icon:         opdef:/LYNX::Sop/LYNX_velocityControl::0.1?IconImage
+Table:        Sop
+License:      
+Extra:        
+User:         
+Inputs:       1 to 1
+Subnet:       true
+Python:       false
+Empty:        false
+Modified:     Wed Oct 31 11:24:28 2018
+

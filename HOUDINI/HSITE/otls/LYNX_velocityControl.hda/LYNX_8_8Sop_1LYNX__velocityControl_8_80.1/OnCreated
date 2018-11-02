@@ -1,0 +1,9 @@
+# Verify we are in an interactive session with visualizers active
+if hasattr(hou, 'viewportVisualizers'):
+    node = kwargs['node']
+    nodevis = hou.viewportVisualizers.createVisualizer(hou.viewportVisualizers.type('vis_marker'), hou.viewportVisualizerCategory.Node, node)
+    nodevis.setIsActive(True)
+    nodevis.setName('vis_velocity')
+    nodevis.setLabel('vis_velocity')
+    nodevis.setParm('style', 'vector')
+    nodevis.setParm('attrib', 'v')
