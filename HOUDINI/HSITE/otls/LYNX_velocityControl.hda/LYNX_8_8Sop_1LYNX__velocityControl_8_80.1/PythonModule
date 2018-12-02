@@ -22,7 +22,7 @@ def prestroke():
 def poststroke():
     n = hou.pwd()
     n_groom = n.node("v_groom")
-    #n_groom.parm("poststroke").pressButton()
+    n_groom.parm("poststroke").pressButton()
     
     
 def applyFalloffPreset(presetname):

@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.17647 -0.948768
+position -0.170588 1.22349
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -40,16 +40,16 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	pointvelocity1 1 1 "input1"
+0 	attribute1 1 1 "input1"
 }
 inputs
 {
-0 	pointvelocity1 0 1
+0 	attribute1 0 1
 }
 stat
 {
-  create 1540980012
-  modify 1540982658
+  create 1543581689
+  modify 1543582811
   author LYNX@LucaScheller
   access 0777
 }
@@ -57,570 +57,6 @@ color UT_Color RGB 0.8 0.8 0.8
 delscript ""
 exprlanguage hscript
 end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot.spareparmdef"
-Content-Type: text/plain
-
-    group {
-        name    "v_edge3"
-        label   "Velocity Via Edges"
-
-        parm {
-            name    "v_edge_selection_solo_state"
-            baseparm
-            label   "v_edge_selection_solo_state"
-            invisible
-            export  none
-        }
-        parm {
-            name    "v_edge_collaps_settings_folder"
-            baseparm
-            label   "Collapse All Settings"
-            export  none
-        }
-        multiparm {
-            name    "v_edge_selections"
-            label    "Edge Selections Sets"
-            baseparm
-            parmtag { "multistartoffset" "1" }
-            parmtag { "script_callback" "hou.phm().v_edge_selection_solo_state()" }
-            parmtag { "script_callback_language" "python" }
-
-            parm {
-                name    "v_edge_selection_skip_#"
-                baseparm
-                label   "Skip"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "v_edge_selection_solo_#"
-                baseparm
-                label   "Solo"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "v_edge_selection_boundry_#"
-                baseparm
-                label   "Use Boundry Edges"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "v_edge_selection_#"
-                baseparm
-                label   "Edge Group"
-                export  none
-            }
-            groupcollapsible {
-                name    "v_edge_selection_settings_#"
-                label   "Settings"
-                baseparm
-                hidewhentab "{ v_edge_selection_skip_# == 1 }"
-
-                groupsimple {
-                    name    "v_edge_general_folder_#"
-                    label   "General"
-                    baseparm
-
-                    parm {
-                        name    "v_edge_transfer_mode_#"
-                        baseparm
-                        label   "Transfer Mode"
-                        joinnext
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_reverse_uv_#"
-                        baseparm
-                        label   "Reverse UV"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_pre_label_#"
-                        baseparm
-                        label   "Smooth Pre"
-                        joinnext
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_pre_kernel_size_#"
-                        baseparm
-                        label   "Kernel Size"
-                        joinnext
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_pre_blur_strength_#"
-                        baseparm
-                        label   "Strength"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_post_label_#"
-                        baseparm
-                        label   "Smooth Post"
-                        joinnext
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_post_kernel_size_#"
-                        baseparm
-                        label   "Kernel Size"
-                        joinnext
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_smooth_post_blur_strength_#"
-                        baseparm
-                        label   "Strength"
-                        export  none
-                    }
-                }
-
-                groupsimple {
-                    name    "v_edge_rotate_folder_#"
-                    label   "Rotation"
-                    baseparm
-
-                    parm {
-                        name    "v_edge_rot_strength_#"
-                        baseparm
-                        label   "Angle"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_rot_master_#"
-                        baseparm
-                        label   "Offset/Repeat/Min/Max"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_rot_noise_#"
-                        baseparm
-                        label   "Noise Offset/Scale/Min/Max"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_rot_ramp_#"
-                        baseparm
-                        label   "Rotate Remap"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_rot_se_ramp_#"
-                        baseparm
-                        label   "Rotate Remap Start To End"
-                        export  none
-                    }
-                }
-
-                groupsimple {
-                    name    "v_edge_scale_folder_#"
-                    label   "Strength"
-                    baseparm
-
-                    parm {
-                        name    "v_edge_scale_strength_#"
-                        baseparm
-                        label   "Strength"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_scale_master_#"
-                        baseparm
-                        label   "Offset/Repeat/Min/Max"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_scale_noise_#"
-                        baseparm
-                        label   "Noise Offset/Scale/Min/Max"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_scale_ramp_#"
-                        baseparm
-                        label   "Strength Remap"
-                        export  none
-                    }
-                    parm {
-                        name    "v_edge_scale_se_ramp_#"
-                        baseparm
-                        label   "Strength Remap Start To End"
-                        export  none
-                    }
-                }
-
-            }
-
-        }
-
-    }
-
-    group {
-        name    "v_edge3_1"
-        label   "Velocity Groom"
-
-        parm {
-            name    "v_groom_enable"
-            baseparm
-            label   "Enable Velocity Grooming"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "reset"
-            baseparm
-            label   "Reset Strokes"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "recache"
-            baseparm
-            label   "Recache Strokes"
-            export  none
-        }
-        groupsimple {
-            name    "Groom_Tool_Controls2"
-            label   "Groom Tool Controls"
-            disablewhen "{ v_groom_enable == 0 }"
-
-            parm {
-                name    "stroke_tool"
-                baseparm
-                label   "Tool"
-                export  none
-            }
-            parm {
-                name    "stroke_radius"
-                baseparm
-                label   "Radius"
-                export  none
-            }
-            parm {
-                name    "stroke_opacity"
-                baseparm
-                label   "Strength"
-                export  none
-            }
-            parm {
-                name    "stroke_lift"
-                baseparm
-                label   "Lift"
-                export  none
-            }
-            parm {
-                name    "stroke_smoothingradius"
-                baseparm
-                label   "Smoothing Radius"
-                export  none
-            }
-            parm {
-                name    "stroke_randomstrength"
-                baseparm
-                label   "Randomize"
-                export  none
-            }
-            parm {
-                name    "stroke_constrainlength"
-                baseparm
-                label   "Constrain Length"
-                export  none
-            }
-            parm {
-                name    "stroke_lockroots"
-                baseparm
-                label   "Lock Roots In Place"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_targetlengthrandom"
-                baseparm
-                label   "Random Length"
-                export  none
-            }
-            parm {
-                name    "stroke_targetlengthrange"
-                baseparm
-                label   "Target Length Range"
-                export  none
-            }
-            parm {
-                name    "stroke_targetlength"
-                baseparm
-                label   "Target Length"
-                export  none
-            }
-            parm {
-                name    "stroke_raybias"
-                baseparm
-                label   "Ray Bias"
-                export  none
-            }
-            groupcollapsible {
-                name    "Falloff2"
-                label   "Falloff"
-
-                parm {
-                    name    "falloffpreset_linear"
-                    baseparm
-                    label   "Angled"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "falloffpreset_easein"
-                    baseparm
-                    label   "Round"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "falloffpreset_easeout"
-                    baseparm
-                    label   "Sharp"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "falloffpreset_constant"
-                    baseparm
-                    label   "Flat"
-                    export  none
-                }
-                parm {
-                    name    "stroke_brushfalloff"
-                    baseparm
-                    label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "stroke_brushfalloffdata"
-                    baseparm
-                    label   "Brush Falloff Data"
-                    invisible
-                    export  none
-                }
-            }
-
-            groupcollapsible {
-                name    "Mirroring2"
-                label   "Mirroring"
-
-                parm {
-                    name    "stroke_mirror"
-                    baseparm
-                    label   "Mirroring"
-                    export  none
-                }
-                parm {
-                    name    "stroke_mirrororigin"
-                    baseparm
-                    label   "Origin"
-                    export  none
-                }
-                parm {
-                    name    "stroke_mirrordir"
-                    baseparm
-                    label   "Direction"
-                    export  none
-                }
-            }
-
-            parm {
-                name    "stroke_color"
-                baseparm
-                label   "Color"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_selection"
-                baseparm
-                label   "Stroke Selection"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_projtype"
-                baseparm
-                label   "Projection Type"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_projcenter"
-                baseparm
-                label   "Projection Center"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_prompt"
-                baseparm
-                label   "Prompt"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_changedsel"
-                baseparm
-                label   "Changed Selection"
-                invisible
-                export  none
-            }
-            parm {
-                name    "prestroke"
-                baseparm
-                label   "Pre Stroke"
-                invisible
-                export  none
-            }
-            parm {
-                name    "poststroke"
-                baseparm
-                label   "Post Stroke"
-                invisible
-                export  none
-            }
-            parm {
-                name    "stroke_projgeoinput"
-                baseparm
-                label   "stroke_projgeoinput"
-                invisible
-                export  none
-            }
-            group {
-                name    "Strokes_Invisible2"
-                label   "Strokes_Invisible"
-                invisibletab
-
-                multiswitcher {
-                    name    "stroke_numstrokes"
-                    label    "Strokes"
-                    baseparm
-                    default 0
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "multistartoffset" "1" }
-
-                    parm {
-                        name    "stroke#_enable"
-                        baseparm
-                        label   "Enable Stroke"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_changedsel"
-                        baseparm
-                        label   "Changed Selection"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_radius"
-                        baseparm
-                        label   "Radius"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_tool"
-                        baseparm
-                        label   "Tool"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_color"
-                        baseparm
-                        label   "Color"
-                        invisible
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_opacity"
-                        baseparm
-                        label   "Strength"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_projtype"
-                        baseparm
-                        label   "Projection Type"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_projcenter"
-                        baseparm
-                        label   "Projection Center"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_projdir"
-                        baseparm
-                        label   "Projection Direction"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_data"
-                        baseparm
-                        label   "Raw Data"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_metadata"
-                        baseparm
-                        label   "Meta Data"
-                        export  none
-                    }
-                    parm {
-                        name    "stroke#_selection"
-                        baseparm
-                        label   "Selection"
-                        export  none
-                    }
-                }
-
-            }
-
-        }
-
-    }
-
-    parm {
-        name    "node_vis_enabled"
-        label   "Visualization Enabled"
-        type    toggle
-        invisible
-        default { "1" }
-    }
-    multiparm {
-        name    "num_visualizers"
-        label    "Visualizers"
-        invisible
-        default 0
-        parmtag { "multistartoffset" "0" }
-
-        parm {
-            name    "vis_active#"
-            label   "Active #"
-            type    toggle
-            invisible
-            default { "0" }
-        }
-        parm {
-            name    "vis_data#"
-            label   "Raw Data #"
-            type    string
-            invisible
-            nolabel
-            default { "" }
-            parmtag { "editor" "1" }
-        }
-    }
-
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -926,7 +362,7 @@ inputs
 stat
 {
   create 1540817360
-  modify 1540978436
+  modify 1541356215
   author LYNX@LucaScheller
   access 0777
 }
@@ -978,7 +414,7 @@ vector @LYNX_N;
 vector @LYNX_tanU;
 vector @v;
 
-vector v = normalize(@LYNX_N);
+vector v = @LYNX_N;
 float uv_u = @LYNX_uv[0]; if (reverse_uv==1) {uv_u=1-uv_u;}
 matrix rot_mat;
 /// Rotate
@@ -1203,7 +639,7 @@ inputs
 stat
 {
   create 1540904739
-  modify 1540981138
+  modify 1543581862
   author LYNX@LucaScheller
   access 0777
 }
@@ -1298,7 +734,7 @@ inputs
 stat
 {
   create 1540904880
-  modify 1540982003
+  modify 1543582277
   author LYNX@LucaScheller
   access 0777
 }
@@ -2101,7 +1537,7 @@ stroke_resample_uniformsegs	[ 0	locks=0 ]	(	8	)
 stroke_resample_allaffected	[ 0	locks=0 ]	(	"off"	)
 _	[ 0	locks=0 ]	(	0	)
 stroke_tool	[ 0	locks=0 ]	(	[ stroke_tool	0 ] 	)
-stroke_radius	[ 0	locks=0 ]	(	[ stroke_radius	1.8166948556900024 ] 	)
+stroke_radius	[ 0	locks=0 ]	(	[ stroke_radius	1.1046217679977417 ] 	)
 stroke_opacity	[ 0	locks=0 ]	(	[ stroke_opacity	1 ] 	)
 per_tool_strength	[ 0	locks=0 ]	(	"{\"groomscreen\": 1.0}"	)
 stroke_lift	[ 0	locks=0 ]	(	[ stroke_lift	0.29999999999999999 ] 	)
@@ -2134,10 +1570,10 @@ stroke_color	[ 0	locks=0 ]	(	0	0	0	)
 stroke_selection	[ 0	locks=0 ]	(	[ stroke_selection	"" ] 	)
 stroke_projtype	[ 8	locks=0 ]	(	[ stroke_projtype	3 ] 	)
 stroke_projcenter	[ 0	locks=0 ]	(	[ stroke_projcenterx	0 ] 	[ stroke_projcentery	0 ] 	[ stroke_projcenterz	0 ] 	)
-parm	[ 8	locks=0 ]	(	[ parm	8 ] 	)
+parm	[ 8	locks=0 ]	(	[ parm	0 ] 	)
 stroke_prompt	[ 8	locks=0 ]	(	`chs(\"../stroke_prompt\")`	)
 stroke_changedsel	[ 8	locks=0 ]	(	[ stroke_changedsel	0 ] 	)
-stroking	[ 0	locks=0 ]	(	"on"	)
+stroking	[ 0	locks=0 ]	(	"off"	)
 highlightsel	[ 0	locks=0 ]	(	"on"	)
 bakedstrokes	[ 0	locks=0 ]	(	""	)
 prestroke	[ 0	locks=0 ]	(	0	)
@@ -2456,7 +1892,7 @@ inputs
 stat
 {
   create 1540817161
-  modify 1540978436
+  modify 1543582079
   author LYNX@LucaScheller
   access 0777
 }
@@ -2627,7 +2063,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3070,7 +2506,7 @@ inputs
 stat
 {
   create 1540817541
-  modify 1540978436
+  modify 1543582031
   author LYNX@LucaScheller
   access 0777
 }
@@ -3139,7 +2575,7 @@ inputs
 stat
 {
   create 1540817558
-  modify 1540978436
+  modify 1543582047
   author LYNX@LucaScheller
   access 0777
 }
@@ -3200,7 +2636,7 @@ inputs
 stat
 {
   create 1540817578
-  modify 1540978436
+  modify 1543582067
   author LYNX@LucaScheller
   access 0777
 }
@@ -3470,7 +2906,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3778,7 +3214,7 @@ inputs
 stat
 {
   create 1540817722
-  modify 1540981455
+  modify 1543582072
   author LYNX@LucaScheller
   access 0777
 }
@@ -3840,7 +3276,7 @@ inputs
 stat
 {
   create 1540818505
-  modify 1540978436
+  modify 1543581895
   author LYNX@LucaScheller
   access 0777
 }
@@ -3869,75 +3305,11 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+input	[ 0	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/v_edge_enable.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"17.0.352"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/create_Normal.init"
-Content-Type: text/plain
-
-type = normal
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/create_Normal.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 3.22341 5.43857
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	loop_edge_selections_start 0 1 "input1"
-}
-inputs
-{
-0 	loop_edge_selections_start 0 1
-}
-stat
-{
-  create 1540820417
-  modify 1540978436
-  author LYNX@LucaScheller
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/create_Normal.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-type	[ 0	locks=0 ]	(	"typepoint"	)
-cuspangle	[ 0	locks=0 ]	(	180	)
-method	[ 0	locks=0 ]	(	1	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/create_Normal.userdata"
 Content-Type: text/plain
 
 {
@@ -3961,7 +3333,7 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 2.72302 4.56743
-connectornextid 3
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
@@ -3969,8 +3341,8 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	create_Normal 0 1 "input1"
-2 	loop_edge_selections_start 0 1 "input2"
+3 	create_Normal 1 1 "input1"
+0 	loop_edge_selections_start 0 1 "input2"
 }
 inputs
 {
@@ -3980,7 +3352,7 @@ inputs
 stat
 {
   create 1540820428
-  modify 1540978436
+  modify 1541356192
   author LYNX@LucaScheller
   access 0777
 }
@@ -4146,11 +3518,82 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/v_groom_enable.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.0.352"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.init"
+Content-Type: text/plain
+
+type = polyframe
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.29096 5.45537
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	loop_edge_selections_start 0 1 "input1"
+}
+inputs
+{
+0 	loop_edge_selections_start 0 1
+}
+stat
+{
+  create 1541356140
+  modify 1543581820
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+entity	[ 0	locks=0 ]	(	"point"	)
+style	[ 0	locks=0 ]	(	edge2	)
+attribname	[ 0	locks=0 ]	(	""	)
+Non	[ 0	locks=0 ]	(	"on"	)
+N	[ 0	locks=0 ]	(	N	)
+tangentuon	[ 0	locks=0 ]	(	"off"	)
+tangentu	[ 0	locks=0 ]	(	tangentu	)
+tangentvon	[ 0	locks=0 ]	(	"off"	)
+tangentv	[ 0	locks=0 ]	(	tangentv	)
+ortho	[ 0	locks=0 ]	(	"off"	)
+lefthanded	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.userdata"
 Content-Type: text/plain
 
 {
@@ -4230,7 +3673,6 @@ group_edge_boundry
 promote_N
 output1
 v_edge_enable
-create_Normal
 switch_create_Normal
 IN_GEOMETRY
 attr_LYNX_N1
@@ -4238,6 +3680,7 @@ v_guide_create
 v_groom
 transfer_v_groomed
 v_groom_enable
+create_Normal
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
