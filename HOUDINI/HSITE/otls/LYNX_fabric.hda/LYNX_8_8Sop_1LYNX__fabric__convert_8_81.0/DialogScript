@@ -1,0 +1,60 @@
+# Dialog script for LYNX::LYNX_fabric_convert::1.0 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_convert::1.0
+    script	LYNX::LYNX_fabric_convert::1.0
+    label	"LYNX::LYNX fabric convert::1.0"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Profile
+    inputlabel	2	Fiber
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Converted Geometry"
+
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_convert_rest_frame"
+                label   "Rest Frame"
+                type    float
+                default { "0" }
+                range   { 0 10 }
+            }
+            parm {
+                name    "fabric_convert_attribute_transfer_toggle"
+                label   "Transfer Attributes"
+                type    toggle
+                default { "0" }
+                range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_geo_folder"
+            label   "Geometry"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_convert_geo_reverse_toggle"
+                label   "Reverse Geometry"
+                type    toggle
+                default { "0" }
+                range   { 0 10 }
+            }
+        }
+
+    }
+
+}

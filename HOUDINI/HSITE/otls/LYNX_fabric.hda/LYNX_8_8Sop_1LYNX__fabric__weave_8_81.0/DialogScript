@@ -1,0 +1,304 @@
+# Dialog script for LYNX::LYNX_fabric_weave::1.0 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_weave::1.0
+    script	LYNX::LYNX_fabric_weave::1.0
+    label	"LYNX fabric weave"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Pattern
+    inputlabel	2	"Target Geometry"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Fiber
+
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_weave_rest_frame"
+                label   "Rest Frame"
+                type    float
+                default { "0" }
+                range   { 0 10 }
+            }
+            parm {
+                name    "fabric_weave_attribute_transfer_toggle"
+                label   "Transfer Attributes"
+                type    toggle
+                default { "0" }
+                help    "This can cause expensive computation."
+                range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_fiber_folder"
+            label   "Fiber"
+            grouptag { "group_type" "simple" }
+
+            groupsimple {
+                name    "fabric_fiber_general"
+                label   "General"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_fiber_width_scale"
+                    label   "Width Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_height_scale"
+                    label   "Height Scale"
+                    type    float
+                    default { "1" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_toggle"
+                    label   "Resample"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_length"
+                    label   "Edge Length"
+                    type    float
+                    default { "0.025" }
+                    disablewhen "{ fabric_fiber_resample_toggle == 0 }"
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_detangle_toggle"
+                    label   "Detangle Fiber"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_detangle_iterations"
+                    label   "Iterations"
+                    type    integer
+                    default { "5" }
+                    disablewhen "{ fabric_fiber_detangle_toggle == 0 }"
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_toggle"
+                    label   "Smooth"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_iterations"
+                    label   "Iterations"
+                    type    integer
+                    joinnext
+                    default { "50" }
+                    disablewhen "{ fabric_fiber_smooth_toggle == 0 }"
+                    range   { 0! 200 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_cutofffrequency"
+                    label   "Cutoff Frequency"
+                    type    float
+                    default { "0.2" }
+                    disablewhen "{ fabric_fiber_smooth_toggle == 0 }"
+                    range   { 0! 1 }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "fabric_tiling_folder"
+            label   "Tiling"
+            grouptag { "group_type" "simple" }
+
+            groupsimple {
+                name    "fabric_tiling_general_folder"
+                label   "General"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_tile_unitScale"
+                    label   "fabric_tile_unitScale"
+                    type    float
+                    invisible
+                    default { "length(0.5,.5,0)" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_tile_repeat_x"
+                    label   "Repeat X"
+                    type    float
+                    joinnext
+                    default { "5" }
+                    range   { 1! 100 }
+                }
+                parm {
+                    name    "fabric_tile_repeat_y"
+                    label   "Repeat Y"
+                    type    float
+                    default { "ch(\"fabric_tile_repeat_x\")" }
+                    range   { 1! 100 }
+                }
+                parm {
+                    name    "fabric_tile_shift_x"
+                    label   "Shift X"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    range   { -1! 1! }
+                }
+                parm {
+                    name    "fabric_tile_shift_y"
+                    label   "Shift Y"
+                    type    float
+                    default { "0" }
+                    range   { -1! 1! }
+                }
+            }
+
+            groupsimple {
+                name    "fabric_tiling_rotate_folder"
+                label   "Rotate"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_tile_rotate"
+                    label   "Rotate"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    range   { -360 360 }
+                }
+                parm {
+                    name    "fabric_tile_rotate_normalize_uv"
+                    label   "Normalize UV Range"
+                    type    toggle
+                    default { "0" }
+                    help    "Normalize UV range to counter balance scaling that has to be done due to rotation."
+                    range   { 0 10 }
+                }
+            }
+
+            groupsimple {
+                name    "fabric_tiling_offset_folder"
+                label   "Offset"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_tile_offset_x"
+                    label   "Offset X"
+                    type    float
+                    joinnext
+                    default { "1" }
+                    range   { 0! 1! }
+                }
+                parm {
+                    name    "fabric_tile_offset_y"
+                    label   "Offset Y"
+                    type    float
+                    default { "1" }
+                    range   { 0! 1! }
+                }
+                groupsimple {
+                    name    "fabric_tile_offset_random_folder"
+                    label   "Randomize"
+                    grouptag { "group_type" "simple" }
+
+                    parm {
+                        name    "fabric_tile_offset_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_tile_offset_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { -1! 1! }
+                    }
+                    parm {
+                        name    "fabric_tile_offset_random_max"
+                        label   "Max"
+                        type    float
+                        default { "0" }
+                        range   { -1! 1! }
+                    }
+                }
+
+            }
+
+            groupsimple {
+                name    "fabric_tiling_noise_folder"
+                label   "Noise"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_tile_noise_strength"
+                    label   "Strength"
+                    type    float
+                    default { "0" }
+                    range   { -1 1 }
+                }
+                parm {
+                    name    "fabric_tile_noise_scale_uniform"
+                    label   "Scale"
+                    type    float
+                    joinnext
+                    default { "1" }
+                    range   { 0! 5 }
+                }
+                parm {
+                    name    "fabric_tile_noise_scale_automatic_toggle"
+                    label   "Autoresize Scale To Tiling"
+                    type    toggle
+                    default { "1" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_tile_noise_scale"
+                    label   "Scale"
+                    type    vector
+                    size    3
+                    default { "1" "1" "1" }
+                    range   { 0! 1 }
+                }
+                parm {
+                    name    "fabric_tile_noise_offset"
+                    label   "Offset"
+                    type    vector
+                    size    3
+                    default { "0" "0" "0" }
+                    range   { -10 10 }
+                }
+            }
+
+        }
+
+    }
+
+}

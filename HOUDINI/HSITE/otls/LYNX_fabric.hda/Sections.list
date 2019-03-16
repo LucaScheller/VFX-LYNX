@@ -1,0 +1,11 @@
+""
+INDEX__SECTION	INDEX_SECTION
+houdini.hdalibrary	houdini.hdalibrary
+LYNX_8_8Sop_1LYNX__fabric__width_8_81.0	LYNX::Sop/LYNX_fabric_width::1.0
+LYNX_8_8Sop_1LYNX__fabric__convert_8_81.0	LYNX::Sop/LYNX_fabric_convert::1.0
+LYNX_8_8Sop_1LYNX__fabric__pattern_8_81.0	LYNX::Sop/LYNX_fabric_pattern::1.0
+LYNX_8_8Sop_1LYNX__fabric__resample_8_81.0	LYNX::Sop/LYNX_fabric_resample::1.0
+LYNX_8_8Sop_1LYNX__fabric__detangle_8_81.0	LYNX::Sop/LYNX_fabric_detangle::1.0
+LYNX_8_8Sop_1LYNX__fabric__thread_8_81.0	LYNX::Sop/LYNX_fabric_thread::1.0
+LYNX_8_8Sop_1LYNX__fabric__weave_8_81.0	LYNX::Sop/LYNX_fabric_weave::1.0
+LYNX_8_8Sop_1LYNX__fabric__thread__profile_8_81.0	LYNX::Sop/LYNX_fabric_thread_profile::1.0
