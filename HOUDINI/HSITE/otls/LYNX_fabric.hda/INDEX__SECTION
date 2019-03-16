@@ -24,7 +24,7 @@ Inputs:       2 to 2
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Sat Mar 16 17:27:47 2019
+Modified:     Sat Mar 16 23:04:40 2019
 
 Operator:     LYNX::LYNX_fabric_pattern::1.0
 Label:        LYNX fabric pattern
@@ -80,7 +80,7 @@ Inputs:       2 to 2
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Sat Mar 16 17:52:25 2019
+Modified:     Sat Mar 16 23:04:15 2019
 
 Operator:     LYNX::LYNX_fabric_weave::1.0
 Label:        LYNX fabric weave

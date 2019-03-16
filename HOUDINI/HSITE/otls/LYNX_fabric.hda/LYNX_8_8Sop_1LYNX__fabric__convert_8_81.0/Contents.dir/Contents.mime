@@ -47,7 +47,7 @@ inputs
 stat
 {
   create 1552751544
-  modify 1552753641
+  modify 1552773856
   author LYNX@LucaScheller
   access 0777
 }
@@ -483,7 +483,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.0136504 -7.9422
+position 0.0136504 -9.02
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -492,16 +492,16 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	attr_LYNX_fabric_tan_u 1 1 "input1"
+1 	attr_LYNX_fabric_N_finalize 0 1 "input1"
 }
 inputs
 {
-0 	attr_LYNX_fabric_tan_u 0 1
+0 	attr_LYNX_fabric_N_finalize 0 1
 }
 stat
 {
   create 1552418958
-  modify 1552671046
+  modify 1552773865
   author LYNX@LucaScheller
   access 0777
 }
@@ -551,6 +551,86 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber/attr_LYNX_fabric_N_finalize.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber/attr_LYNX_fabric_N_finalize.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.0136504 -7.9422
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_LYNX_fabric_tan_u 1 1 "input1"
+}
+inputs
+{
+0 	attr_LYNX_fabric_tan_u 0 1
+}
+stat
+{
+  create 1552418958
+  modify 1552773867
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber/attr_LYNX_fabric_N_finalize.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"vector @LYNX_fabric_N;
+vector @LYNX_fabric_tan_u;
+@LYNX_fabric_N = cross(cross(@LYNX_fabric_tan_u,@LYNX_fabric_N),@LYNX_fabric_tan_u);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber/attr_LYNX_fabric_N_finalize.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attr_copytopts.init"
 Content-Type: text/plain
 
@@ -581,7 +661,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552671046
+  modify 1552773873
   author LYNX@LucaScheller
   access 0777
 }
@@ -612,7 +692,7 @@ float @pscale;
 
 @N = normalize(@LYNX_fabric_tan_u);
 @up = normalize(@LYNX_fabric_N);
-@pscale = @width;"	)
+@pscale = @width * .5;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
@@ -1456,7 +1536,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.0166504 -8.9801
+position 0.0166504 -10.0579
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1473,7 +1553,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552753655
+  modify 1552773864
   author LYNX@LucaScheller
   access 0777
 }
@@ -1653,7 +1733,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber.order"
 Content-Type: text/plain
 
-14
+15
 attr_LYNX_fabric_id_fiber
 attr_LYNX_fabric_N
 attr_LYNX_fabric_N_create
@@ -1668,6 +1748,7 @@ attr_width
 attr_promote_uv
 attr_LYNX_fabric_tan_u
 attr_LYNX_fabric_target
+attr_LYNX_fabric_N_finalize
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_fiber.net"
