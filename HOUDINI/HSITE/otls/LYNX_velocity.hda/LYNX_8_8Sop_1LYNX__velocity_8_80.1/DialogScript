@@ -1,8 +1,8 @@
-# Dialog script for LYNX::LYNX_velocityControl::0.1 automatically generated
+# Dialog script for LYNX::LYNX_velocity::0.1 automatically generated
 
 {
-    name	LYNX::LYNX_velocityControl::0.1
-    script	LYNX::LYNX_velocityControl::0.1
+    name	LYNX::LYNX_velocity::0.1
+    script	LYNX::LYNX_velocity::0.1
     label	LYNX_velocityControl
 
     help {

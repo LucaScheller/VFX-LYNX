@@ -1,7 +1,7 @@
 # Automatically generated script
 \set noalias = 1
 #
-#  Creation script for LYNX::LYNX_velocityControl::0.1 operator
+#  Creation script for LYNX::LYNX_velocity::0.1 operator
 #
 
 if ( "$arg1" == "" ) then
