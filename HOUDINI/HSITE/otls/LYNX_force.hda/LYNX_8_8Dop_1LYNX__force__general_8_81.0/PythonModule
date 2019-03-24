@@ -1,0 +1,98 @@
+def force_preset_apply():
+    n = hou.pwd()
+    
+    # Revert Parms
+    for parm in n.parms():
+        if parm.name() in ["force_preset","force_global_strength_falloff_remap"]: continue
+        try:
+            parm.deleteAllKeyframes()
+            parm.revertToDefaults()
+        except:
+            pass    
+    n.parm("force_global_strength_falloff_remap").set(hou.Ramp((hou.rampBasis.CatmullRom, hou.rampBasis.CatmullRom), (0, 1), (1, 0)))
+    
+    n_p_force_preset = n.parm("force_preset").eval()
+    
+    n_p_dict = {} 
+        
+    # Preset Default
+    if (n_p_force_preset == 0):
+        pass
+    # Preset Gravity Geometry
+    elif(n_p_force_preset == 1):
+        n_p_dict["force_wind_toggle"] = 0
+        n_p_dict["force_shape_toggle"] = 0
+        n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_vector_strength"] = 9.81
+        n_p_dict["force_flow_vector_direction_x"] = 0
+        n_p_dict["force_flow_vector_direction_y"] = -1
+        n_p_dict["force_flow_vector_direction_z"] = 0
+    # Preset Gravity Volume
+    elif(n_p_force_preset == 2):
+        n_p_dict["force_binding"] = 1
+        n_p_dict["force_wind_toggle"] = 0
+        n_p_dict["force_shape_toggle"] = 0
+        n_p_dict["force_mass_toggle"] = 1
+        n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_vector_strength"] = 9.81
+        n_p_dict["force_flow_vector_direction_x"] = 0
+        n_p_dict["force_flow_vector_direction_y"] = -1
+        n_p_dict["force_flow_vector_direction_z"] = 0
+    # Preset Drag
+    elif(n_p_force_preset == 3):
+        n_p_dict["force_global_strength"] = 0
+        n_p_dict["force_wind_airresist"] = 25
+    # Preset Tornado
+    elif(n_p_force_preset == 4):
+        n_p_dict["force_transform_t_y"] = .75
+        n_p_dict["force_transform_s_y"] = 2
+        n_p_dict["force_guide_streamers_toggle"] = 1
+        n_p_dict["force_guide_streamers_mode"] = 1
+        n_p_dict["force_guide_streamers_grid_transform_r"] = 0
+        n_p_dict["force_global_strength"] = 2
+        n_p_dict["force_global_strength_rand_toggle"] = 1
+        n_p_dict["force_global_strength_rand_x"] = .75
+        n_p_dict["force_global_strength_rand_y"] = 1.25        
+        n_p_dict["force_global_strength_falloff_remap"] = hou.Ramp((hou.rampBasis.CatmullRom, hou.rampBasis.CatmullRom, hou.rampBasis.CatmullRom), (.25, .75, 1), (0, 1, 0))   
+        n_p_dict["force_noise_toggle"] = 1
+        n_p_dict["force_noise_scale_uniform"] = .2
+        n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_axis_along_strength"] = .75
+        n_p_dict["force_flow_axis_suction_strength"] = -1
+        n_p_dict["force_flow_axis_orbit_strength"] = 1
+        n_p_dict["force_shape"] = 2
+    # Preset Animation
+    elif(n_p_force_preset == 5):
+        n_p_dict["force_global_strength_rand_toggle"] = 1
+        n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_axis_along_strength"] = 1
+        n.parm("force_shape_sweep_angle").revertToDefaults()
+        n.parm("force_shape_sweep_angle").setExpression("$FF*10")
+    # Preset Volume
+    elif(n_p_force_preset == 6):
+        n_p_dict["force_shape"] = 3
+        n_p_dict["force_global_strength_rand_toggle"] = 1
+        n_p_dict["force_global_strength_falloff_remap"] = hou.Ramp((hou.rampBasis.CatmullRom, hou.rampBasis.CatmullRom), (.85, 1), (1, 0))   
+        n_p_dict["force_noise_toggle"] = 1
+        n_p_dict["force_noise_scale_uniform"] = .4
+        n_p_dict["force_shape_vol_toggle"] = 1
+        n_p_dict["force_shape_vol_N_strength"] = -1
+        n_p_dict["force_shape_vol_tan_v_strength"] = -.5
+    # Preset Vex
+    elif(n_p_force_preset == 7):
+        n_p_dict["force_global_strength_rand_toggle"] = 1
+        n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_axis_along_strength"] = 1
+        n_p_dict["force_vex_binding_export"] = "group_LYNX_force"
+        n_p_dict["force_vex_post_toggle"] = 1
+        n_p_dict["force_vex_post_code"] = '//Manipulate LYNX_force. This code is applied after force calculation. \nint @group_LYNX_force = 0;\nif (LYNX_force!=0){\n    @group_LYNX_force = max(@group_LYNX_force,1);\n}'
+  
+    for parm in n_p_dict.keys():
+        n.parm(parm).set(n_p_dict[parm])
+        
+def force_shape_invert_update():
+    n = hou.pwd()
+    n_p_force_global_strength_falloff_reverse_toggle = n.parm("force_global_strength_falloff_reverse_toggle").eval()
+    n.parm("force_global_strength_falloff_reverse_toggle").deleteAllKeyframes()
+    n.parm("force_global_strength_falloff_reverse_toggle").set(1-n_p_force_global_strength_falloff_reverse_toggle)
+    

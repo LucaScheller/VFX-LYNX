@@ -1,0 +1,15 @@
+Operator:     LYNX::LYNX_force_general::1.0
+Label:        LYNX force general
+Path:         oplib:/LYNX::Dop/LYNX_force_general::1.0?LYNX::Dop/LYNX_force_general::1.0
+Icon:         opdef:/LYNX::Dop/LYNX_force_general::1.0?IconImage
+Table:        Dop
+License:      
+Extra:        
+User:         
+Inputs:       0 to 1
+Outputs:      4
+Subnet:       true
+Python:       false
+Empty:        false
+Modified:     Tue Mar 19 09:54:53 2019
+
