@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.61765 -3.47773
+position -2.38367 -1.11585
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -46,8 +46,8 @@ inputs
 }
 stat
 {
-  create 1553362415
-  modify 1553364984
+  create 1553510977
+  modify 1553510981
   author LYNX@LucaScheller
   access 0777
 }
@@ -1041,7 +1041,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1054,6 +1054,31 @@ Content-Type: text/plain
 1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_thread1/__stickynote1.postitinit"
+Content-Type: text/plain
+
+type = postitnote
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_thread1/__stickynote1.postitdef"
+Content-Type: text/plain
+
+text "LYNX_fabric_N uses parallel transport method from MOPS node"
+position 5.27549 2.73369
+size 6.89196 0.512988
+flags = minimize off
+stat
+{
+  create 1553510880
+  modify 1553510934
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 1 0.969 0.522 
+end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_thread1/attr_LYNX_fabric_N.init"
@@ -1275,7 +1300,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1343,7 +1368,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1442,7 +1467,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1605,7 +1630,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1681,7 +1706,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1745,7 +1770,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1809,7 +1834,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1872,7 +1897,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -1947,6 +1972,7 @@ mergenbrs	[ 0	locks=0 ]	(	"off"	)
 detriangulate	[ 0	locks=0 ]	(	"none"	)
 removeinlinepoints	[ 0	locks=0 ]	(	"on"	)
 uniqueseams	[ 0	locks=0 ]	(	"off"	)
+correctnormals	[ 0	locks=0 ]	(	"off"	)
 useaxapolys	[ 0	locks=0 ]	(	"off"	)
 axapolys	[ 0	locks=0 ]	(	axapolys	)
 useaxbpolys	[ 0	locks=0 ]	(	"off"	)
@@ -1978,6 +2004,8 @@ usebonlypieces	[ 0	locks=0 ]	(	"off"	)
 bonlypieces	[ 0	locks=0 ]	(	bpieces	)
 useabpieces	[ 0	locks=0 ]	(	"off"	)
 abpieces	[ 0	locks=0 ]	(	abpieces	)
+usereversedpolys	[ 0	locks=0 ]	(	"off"	)
+reversedpolys	[ 0	locks=0 ]	(	reversed	)
 outputedgegroups	[ 0	locks=0 ]	(	0	)
 useaaseamedges	[ 0	locks=0 ]	(	"off"	)
 aaseamedges	[ 0	locks=0 ]	(	aseams	)
@@ -1994,7 +2022,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2072,7 +2100,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2131,7 +2159,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2258,7 +2286,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2341,7 +2369,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2421,7 +2449,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2460,7 +2488,7 @@ stat
   author LYNX@LucaScheller
   access 0777
 }
-color UT_Color RGB 0.584 0.776 1 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -2482,7 +2510,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2556,7 +2584,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2655,7 +2683,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2694,7 +2722,7 @@ stat
   author LYNX@LucaScheller
   access 0777
 }
-color UT_Color RGB 0.584 0.776 1 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -2716,7 +2744,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2794,7 +2822,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2892,7 +2920,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -2960,7 +2988,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3087,7 +3115,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3126,7 +3154,7 @@ stat
   author LYNX@LucaScheller
   access 0777
 }
-color UT_Color RGB 0.584 0.776 1 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -3148,7 +3176,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3200,6 +3228,7 @@ Content-Type: text/plain
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
 numattr	[ 0	locks=0 ]	(	1	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 name1	[ 0	locks=0 ]	(	segment_length	)
@@ -3226,7 +3255,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3277,6 +3306,7 @@ Content-Type: text/plain
 {
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
+removegrp	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	LYNX_fabric_resample	)
@@ -3289,7 +3319,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3369,7 +3399,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3468,7 +3498,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3531,7 +3561,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3641,7 +3671,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3784,7 +3814,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3865,7 +3895,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -3937,6 +3967,7 @@ rmanconversions	[ 0	locks=0 ]	(	0	)
 ridefault	[ 0	locks=0 ]	(	"off"	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 overwrite	[ 0	locks=0 ]	(	"off"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
 frompt0	[ 0	locks=0 ]	(	N	)
 topt0	[ 0	locks=0 ]	(	LYNX_fabric_N	)
 frompt1	[ 0	locks=0 ]	(	""	)
@@ -3956,7 +3987,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -4015,7 +4046,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
@@ -4095,7 +4126,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.0.416"
+		"value":"17.5.173"
 	}
 }
 
