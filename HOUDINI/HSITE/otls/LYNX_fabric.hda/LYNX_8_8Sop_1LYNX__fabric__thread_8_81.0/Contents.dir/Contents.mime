@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.74226 0.975934
+position -1.69555 -1.44719
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -46,8 +46,8 @@ inputs
 }
 stat
 {
-  create 1553510869
-  modify 1553510879
+  create 1554111825
+  modify 1554111888
   author LYNX@LucaScheller
   access 0777
 }
@@ -88,7 +88,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.76185 -6.8
+position -3.76185 -6.91593
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -108,7 +108,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -188,7 +188,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37603 -8.0425
+position -2.37603 -8.15843
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -208,7 +208,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -407,7 +407,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.05385 -4.7483
+position 0.05385 -4.86423
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -425,7 +425,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552773810
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -564,7 +564,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.19874 -14.0365
+position -0.19874 -14.1524
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -582,7 +582,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -660,7 +660,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.20174 -13.2446
+position -0.20174 -13.3605
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -678,7 +678,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -1426,91 +1426,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 0.1107 -2.70037
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	toggle_resample 0 1 "input1"
-}
-inputs
-{
-0 	toggle_resample 0 1
-}
-stat
-{
-  create 1552418958
-  modify 1552773806
-  author LYNX@LucaScheller
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"primitive"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"int prim_pts[] = primpoints(0,@primnum);
-vector LYNX_fabric_tan_u;
-for(int i=0;i<len(prim_pts)-1;i++){
-    LYNX_fabric_tan_u = normalize(point(0,\"P\",prim_pts[i+1])-point(0,\"P\",prim_pts[i]));
-    setpointattrib(0,\"LYNX_fabric_tan_u\",prim_pts[i],LYNX_fabric_tan_u,\"set\");
-}
-LYNX_fabric_tan_u = normalize(point(0,\"P\",prim_pts[-1])-point(0,\"P\",prim_pts[-2])); 
-setpointattrib(0,\"LYNX_fabric_tan_u\",prim_pts[-1],LYNX_fabric_tan_u,\"set\");"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/LYNX_fabric_detangle.init"
 Content-Type: text/plain
 
@@ -1523,7 +1438,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.12655 -11.218
+position -1.12655 -11.3339
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1541,7 +1456,7 @@ inputs
 stat
 {
   create 1552676397
-  modify 1552773852
+  modify 1554111886
   author LYNX@LucaScheller
   access 0777
 }
@@ -1626,7 +1541,7 @@ inputs
 stat
 {
   create 1552678686
-  modify 1552773851
+  modify 1554111886
   author LYNX@LucaScheller
   access 0777
 }
@@ -1700,7 +1615,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.1107 -3.71374
+position 0.1107 -3.82967
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1709,7 +1624,7 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	attr_LYNX_fabric_tan_u 0 1 "input1"
+1 	attr_LYNX_fabric_tan_u 1 1 "input1"
 }
 inputs
 {
@@ -1718,7 +1633,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552773816
+  modify 1554111857
   author LYNX@LucaScheller
   access 0777
 }
@@ -2489,7 +2404,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.755 -5.842
+position -2.755 -5.95793
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2507,7 +2422,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -2616,7 +2531,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37303 -17.9719
+position -2.37303 -18.0878
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2633,7 +2548,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552773829
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -2675,7 +2590,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37648 -16.9719
+position -2.37648 -17.0878
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2693,7 +2608,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552418963
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -2817,7 +2732,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.20219 -9.0171
+position -0.20219 -9.13303
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2837,7 +2752,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552418965
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -2891,7 +2806,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37303 -10.0001
+position -2.37303 -10.116
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2911,7 +2826,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -3046,7 +2961,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37303 -12.3134
+position -2.37303 -12.4293
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -3066,7 +2981,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552678657
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -3123,7 +3038,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.37303 -15.7192
+position -2.37303 -15.8351
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -3143,7 +3058,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552677773
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -3201,7 +3116,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.20219 -14.9136
+position -0.20219 -15.0295
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -3219,7 +3134,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552418963
+  modify 1554111856
   author LYNX@LucaScheller
   access 0777
 }
@@ -3588,6 +3503,79 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.init"
+Content-Type: text/plain
+
+type = polyframe
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.1137 -2.78977
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	toggle_resample 0 1 "input1"
+}
+inputs
+{
+0 	toggle_resample 0 1
+}
+stat
+{
+  create 1554111103
+  modify 1554111859
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+entity	[ 0	locks=0 ]	(	"point"	)
+style	[ 0	locks=0 ]	(	edge2	)
+attribname	[ 0	locks=0 ]	(	""	)
+Non	[ 0	locks=0 ]	(	"off"	)
+N	[ 0	locks=0 ]	(	N	)
+tangentuon	[ 0	locks=0 ]	(	"on"	)
+tangentu	[ 0	locks=0 ]	(	LYNX_fabric_tan_u	)
+tangentvon	[ 0	locks=0 ]	(	"off"	)
+tangentv	[ 0	locks=0 ]	(	tangentv	)
+signson	[ 0	locks=0 ]	(	"off"	)
+signs	[ 0	locks=0 ]	(	signs	)
+ortho	[ 0	locks=0 ]	(	"off"	)
+lefthanded	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_fabric_tan_u.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.173"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
@@ -3603,7 +3591,6 @@ attr_LYNX_fabric_thread1
 attr_LYNX_fabric_thread_twists3
 group_LYNX_fabric_resample
 attr_segment_length
-attr_LYNX_fabric_tan_u
 pos_rest
 output1
 attribdelete1
@@ -3622,6 +3609,7 @@ attr_del_segment_length
 LYNX_fabric_detangle
 LYNX_fabric_resample1
 attr_LYNX_fabric_N_finalize
+attr_LYNX_fabric_tan_u
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
