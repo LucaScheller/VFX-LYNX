@@ -32,22 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.2212 -2.80247
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -0.156341 0.222701
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	LYNX_fabric_pattern1 0 1 "input1"
+1 	mountain1 1 1 "input2"
 }
 inputs
 {
+0 	LYNX_fabric_pattern1 0 1
+1 	mountain1 0 1
 }
 stat
 {
-  create 1554111909
-  modify 1554111914
+  create 1555309653
+  modify 1555309675
   author LYNX@LucaScheller
   access 0777
 }
@@ -3591,7 +3595,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552680182
+  modify 1555309709
   author LYNX@LucaScheller
   access 0777
 }
@@ -3688,16 +3692,16 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	timeshift2 0 1 "input1"
+0 	timeshift1 1 1 "input1"
 }
 inputs
 {
-0 	timeshift2 0 1
+0 	timeshift1 0 1
 }
 stat
 {
   create 1552418958
-  modify 1552678852
+  modify 1555309703
   author LYNX@LucaScheller
   access 0777
 }
@@ -5183,7 +5187,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552754596
+  modify 1555309666
   author LYNX@LucaScheller
   access 0777
 }
@@ -8311,7 +8315,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9765,7 +9769,7 @@ Content-Type: text/plain
 {
 version 0.8
 sourcegroup	[ 0	locks=0 ]	(	""	)
-ncy	[ 0	locks=0 ]	(	[ ncy	17 ] 	)
+ncy	[ 0	locks=0 ]	(	[ ncy	11 ] 	)
 pack	[ 0	locks=0 ]	(	"on"	)
 pivot	[ 0	locks=0 ]	(	"centroid"	)
 viewportlod	[ 0	locks=0 ]	(	"full"	)
@@ -9784,7 +9788,7 @@ newgroupprefix	[ 0	locks=0 ]	(	copyGroup	)
 docopyattrib	[ 0	locks=0 ]	(	"off"	)
 copyattrib	[ 0	locks=0 ]	(	copynum	)
 parmgroup_pivotxform2	[ 0	locks=0 ]	(	0	)
-tile_copy_count	[ 0	locks=0 ]	(	[ tile_copy_count	15 ] 	)
+tile_copy_count	[ 0	locks=0 ]	(	[ tile_copy_count	8 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -10016,13 +10020,13 @@ Content-Type: text/plain
 {
 version 0.8
 sourcegroup	[ 0	locks=0 ]	(	""	)
-ncy	[ 0	locks=0 ]	(	[ ncy	31 ] 	)
+ncy	[ 0	locks=0 ]	(	[ ncy	11 ] 	)
 pack	[ 0	locks=0 ]	(	"off"	)
 pivot	[ 0	locks=0 ]	(	"centroid"	)
 viewportlod	[ 0	locks=0 ]	(	"full"	)
 xOrd	[ 0	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	0	[ ty	0.5 ] 	0	)
+t	[ 0	locks=0 ]	(	0	[ ty	1 ] 	0	)
 r	[ 0	locks=0 ]	(	0	0	0	)
 s	[ 0	locks=0 ]	(	1	1	1	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
@@ -10035,7 +10039,7 @@ newgroupprefix	[ 0	locks=0 ]	(	copyGroup	)
 docopyattrib	[ 0	locks=0 ]	(	"off"	)
 copyattrib	[ 0	locks=0 ]	(	copynum	)
 parmgroup_pivotxform2	[ 0	locks=0 ]	(	0	)
-tile_copy_count	[ 0	locks=0 ]	(	[ tile_copy_count	29 ] 	)
+tile_copy_count	[ 0	locks=0 ]	(	[ tile_copy_count	8 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -10436,7 +10440,7 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 xOrd	[ 0	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	[ tx	-8.5 ] 	[ ty	-7.75 ] 	0	)
+t	[ 0	locks=0 ]	(	[ tx	-5.5 ] 	[ ty	-5.5 ] 	0	)
 r	[ 0	locks=0 ]	(	0	0	0	)
 s	[ 0	locks=0 ]	(	1	1	1	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
@@ -10563,7 +10567,7 @@ xOrd	[ 0	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
 t	[ 0	locks=0 ]	(	0	0	0	)
 r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 8	locks=0 ]	(	[ sx	0.070710678118654766 ] 	[ sy	0.070710678118654766 ] 	[ sz	0.070710678118654766 ] 	)
+s	[ 8	locks=0 ]	(	[ sx	0.14142135623730953 ] 	[ sy	0.14142135623730953 ] 	[ sz	0.14142135623730953 ] 	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
 scale	[ 0	locks=0 ]	(	1	)
 parmgroup_pivotxform	[ 0	locks=0 ]	(	0	)
@@ -11066,151 +11070,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift2.init"
-Content-Type: text/plain
-
-type = timeshift
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift2.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -1.71715 3.03208
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	connectivity_uv_piece 1 1 "input1"
-}
-inputs
-{
-0 	connectivity_uv_piece 0 1
-}
-stat
-{
-  create 1552418958
-  modify 1552678852
-  author LYNX@LucaScheller
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift2.chn"
-Content-Type: text/plain
-
-{
-    channel frame {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $F }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = ch(\"../../fabric_weave_rest_frame\") }
-    }
-    channel time {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $T }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = $T }
-    }
-    channel frange1 {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $FSTART }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = $FSTART }
-    }
-    channel frange2 {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $FEND }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = $FEND }
-    }
-    channel trange1 {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $TSTART }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = $TSTART }
-    }
-    channel trange2 {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      start = -0.040000000000000001
-      segment { options = {	 untie  ov os oa }
-
-	 length = 0.040000000000000001 expr = $TEND }
-      segment { options = {	 untie  iv is ia }
-
-	 length = 0 expr = $TEND }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift2.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-method	[ 0	locks=0 ]	(	"byframe"	)
-frame	[ 0	locks=0 ]	(	[ frame	0 ] 	)
-integerframe	[ 0	locks=0 ]	(	"on"	)
-time	[ 0	locks=0 ]	(	[ time	0 ] 	)
-rangeclamp	[ 0	locks=0 ]	(	"none"	)
-frange	[ 0	locks=0 ]	(	[ frange1	0 ] 	[ frange2	0 ] 	)
-trange	[ 0	locks=0 ]	(	[ trange1	0 ] 	[ trange2	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift2.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"17.5.173"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/geo_to_uv/measure1.init"
 Content-Type: text/plain
 
@@ -11232,16 +11091,16 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	timeshift2 0 1 "input1"
+0 	timeshift1 1 1 "input1"
 }
 inputs
 {
-0 	timeshift2 0 1
+0 	timeshift1 0 1
 }
 stat
 {
   create 1552418958
-  modify 1552418962
+  modify 1555309705
   author LYNX@LucaScheller
   access 0777
 }
@@ -11479,6 +11338,115 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift1.init"
+Content-Type: text/plain
+
+type = timeshift
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.71715 2.91803
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	connectivity_uv_piece 1 1 "input1"
+}
+inputs
+{
+0 	connectivity_uv_piece 0 1
+}
+stat
+{
+  create 1555309687
+  modify 1555309710
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift1.chn"
+Content-Type: text/plain
+
+{
+    channel frame {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../../fabric_weave_rest_frame\") }
+    }
+    channel time {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $T }
+    }
+    channel frange1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FSTART }
+    }
+    channel frange2 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FEND }
+    }
+    channel trange1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $TSTART }
+    }
+    channel trange2 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $TEND }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"byframe"	)
+frame	[ 8	locks=0 ]	(	[ frame	0 ] 	)
+integerframe	[ 0	locks=0 ]	(	"off"	)
+time	[ 0	locks=0 ]	(	[ time	0.95833333333333337 ] 	)
+rangeclamp	[ 0	locks=0 ]	(	"none"	)
+frange	[ 0	locks=0 ]	(	[ frange1	1 ] 	[ frange2	240 ] 	)
+trange	[ 0	locks=0 ]	(	[ trange1	0 ] 	[ trange2	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/geo_to_uv/timeshift1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.173"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/geo_to_uv.order"
 Content-Type: text/plain
 
@@ -11489,11 +11457,11 @@ connectivity_uv_piece
 OUT_1
 OUT_0
 attr_LYNX_fabric_target_scale
-timeshift2
 measure1
 measure2
 attribpromote1
 attribpromote2
+timeshift1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/geo_to_uv.net"
@@ -12336,7 +12304,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+input	[ 0	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

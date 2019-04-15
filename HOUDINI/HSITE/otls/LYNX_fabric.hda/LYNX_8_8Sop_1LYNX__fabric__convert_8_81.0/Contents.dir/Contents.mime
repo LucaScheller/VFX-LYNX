@@ -32,22 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.87948 0.358228
-connectornextid 0
+position -0.156341 -1.83529
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	circle1 0 1 "input1"
+1 	LYNX_fabric_weave1 2 1 "input2"
 }
 inputs
 {
+0 	circle1 0 1
+1 	LYNX_fabric_weave1 0 1
 }
 stat
 {
-  create 1554113379
-  modify 1554113387
+  create 1555309768
+  modify 1555309779
   author LYNX@LucaScheller
   access 0777
 }
@@ -1103,7 +1107,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1182,7 +1186,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1434,7 +1438,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1641,7 +1645,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3461,7 +3465,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552671046
+  modify 1555309796
   author LYNX@LucaScheller
   access 0777
 }
@@ -3539,8 +3543,8 @@ Content-Type: text/plain
 version 0.8
 method	[ 0	locks=0 ]	(	"byframe"	)
 frame	[ 0	locks=0 ]	(	[ frame	0 ] 	)
-integerframe	[ 0	locks=0 ]	(	"on"	)
-time	[ 0	locks=0 ]	(	[ time	0 ] 	)
+integerframe	[ 0	locks=0 ]	(	"off"	)
+time	[ 0	locks=0 ]	(	[ time	0.79166666666666663 ] 	)
 rangeclamp	[ 0	locks=0 ]	(	"none"	)
 frange	[ 0	locks=0 ]	(	[ frange1	1 ] 	[ frange2	240 ] 	)
 trange	[ 0	locks=0 ]	(	[ trange1	0 ] 	[ trange2	0 ] 	)
