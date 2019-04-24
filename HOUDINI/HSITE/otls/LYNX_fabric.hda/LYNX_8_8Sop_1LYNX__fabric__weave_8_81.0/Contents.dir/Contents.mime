@@ -32,26 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.156341 0.222701
-connectornextid 2
+position -2.66468 -1.54377
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	LYNX_fabric_pattern1 0 1 "input1"
-1 	mountain1 1 1 "input2"
 }
 inputs
 {
-0 	LYNX_fabric_pattern1 0 1
-1 	mountain1 0 1
 }
 stat
 {
-  create 1555309653
-  modify 1555309675
+  create 1556002948
+  modify 1556003265
   author LYNX@LucaScheller
   access 0777
 }
@@ -112,7 +108,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1554111942
+  modify 1556002828
   author LYNX@LucaScheller
   access 0777
 }
@@ -3847,7 +3843,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0 2.34454
+position 0 1.27395
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -3856,18 +3852,18 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	fabric_tile 2 1 "input1"
+0 	fabric_cache 1 1 "input1"
 1 	geo_to_uv 2 1 "input2"
 }
 inputs
 {
-0 	fabric_tile 0 1
+0 	fabric_cache 0 1
 1 	geo_to_uv 1 1
 }
 stat
 {
   create 1552418958
-  modify 1554111928
+  modify 1556002842
   author LYNX@LucaScheller
   access 0777
 }
@@ -4322,7 +4318,7 @@ inputs
 stat
 {
   create 1552676397
-  modify 1552680432
+  modify 1556003237
   author LYNX@LucaScheller
   access 0777
 }
@@ -5260,7 +5256,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.48262 -11.9443
+position 4.48262 -12.1724
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5277,7 +5273,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1552753930
+  modify 1556002828
   author LYNX@LucaScheller
   access 0777
 }
@@ -12073,7 +12069,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0 1.31862
+position 0 0.248032
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -12090,7 +12086,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1554111942
+  modify 1556002833
   author LYNX@LucaScheller
   access 0777
 }
@@ -12544,15 +12540,154 @@ Content-Type: text/plain
 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.init"
+Content-Type: text/plain
+
+type = subnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.76273 2.10245
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	fabric_tile 2 1 "input1"
+}
+inputs
+{
+0 	fabric_tile 0 1
+}
+stat
+{
+  create 1556002761
+  modify 1556002849
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+label1	[ 0	locks=0 ]	(	"Sub-Network Input #1"	)
+label2	[ 0	locks=0 ]	(	"Sub-Network Input #2"	)
+label3	[ 0	locks=0 ]	(	"Sub-Network Input #3"	)
+label4	[ 0	locks=0 ]	(	"Sub-Network Input #4"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.173"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.inp"
+Content-Type: text/plain
+
+4
+0 0 6 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache/output0.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache/output0.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.11759e-08 2.92846
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create 1556002848
+  modify 1556002860
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache/output0.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+outputidx	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache/output0.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.173"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fabric_cache.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-5
+6
 fabric_tile
 geo_to_uv
 fabric_to_geo
 OUT_0
 attr_LYNX_fabric
+fabric_cache
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

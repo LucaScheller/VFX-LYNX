@@ -7,4 +7,6 @@ Tools.shelf	Tools.shelf
 InternalFileOptions	InternalFileOptions
 Contents.gz	Contents.gz
 IconImage	IconImage
+DiveTarget	DiveTarget
+EditableNodes	EditableNodes
 ExtraFileOptions	ExtraFileOptions
