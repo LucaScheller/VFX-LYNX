@@ -166,8 +166,8 @@ def force_shape_geo_path_update():
     n_force_shape_custom = None
     if(n.parm("force_shape_type").eval()==4):
         n_force_shape_custom = n.node(n.parm("force_shape_custom_geo_path").eval())
-    elif(n.parm("force_shape_type").eval()==5):
-        n_force_shape_custom = n.node(n.parm("force_shape_curve_geo_path").eval())
+    #elif(n.parm("force_shape_type").eval()==5):
+    #    n_force_shape_custom = n.node(n.parm("force_shape_curve_geo_path").eval())
     
     if(n_force_shape_custom!=None):
         BoundingBox = n_force_shape_custom.geometry().boundingBox()

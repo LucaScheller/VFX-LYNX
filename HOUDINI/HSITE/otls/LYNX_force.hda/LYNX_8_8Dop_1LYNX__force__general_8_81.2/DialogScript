@@ -444,7 +444,7 @@
             hidewhen "{ force_shape_type != 5 } { force_shape_toggle == 0 } { force_shape_data_isInternal == 0 }"
             parmtag { "opfilter" "!!SOP!!" }
             parmtag { "oprelative" "." }
-            parmtag { "script_callback" "hou.phm().force_shape_geo_path_update()" }
+            parmtag { "script_callback" "" }
             parmtag { "script_callback_language" "python" }
         }
         groupsimple {
