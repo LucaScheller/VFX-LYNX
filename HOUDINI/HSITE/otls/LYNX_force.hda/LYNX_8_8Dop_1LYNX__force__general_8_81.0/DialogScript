@@ -203,7 +203,7 @@
                     "axis_suction"      "Away From Axis"
                     "axis_oribt"        "Oribt Around Axis"
                     "vector"            "Vector"
-                    "center_suction"    "Away From Center "
+                    "center_suction"    "Center"
                 }
             }
             parm {

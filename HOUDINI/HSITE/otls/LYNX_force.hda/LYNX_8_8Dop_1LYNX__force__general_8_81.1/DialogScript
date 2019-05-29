@@ -1,0 +1,1593 @@
+# Dialog script for LYNX::LYNX_force_general::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_force_general::1.1
+    script	LYNX::LYNX_force_general::1.1
+    label	"LYNX force general"
+
+
+    help {
+	""
+    }
+    bindhandle force_transform_pivot_x xform "Transformer" pivot_comp_tx ""
+    bindhandle force_transform_pivot_y xform "Transformer" pivot_comp_ty ""
+    bindhandle force_transform_pivot_z xform "Transformer" pivot_comp_tz ""
+    bindhandle force_transform_r_x xform "Transformer" rx ""
+    bindhandle force_transform_r_y xform "Transformer" ry ""
+    bindhandle force_transform_r_z xform "Transformer" rz ""
+    bindhandle force_transform_s_x xform "Transformer" sx ""
+    bindhandle force_transform_s_y xform "Transformer" sy ""
+    bindhandle force_transform_s_z xform "Transformer" sz ""
+    bindhandle force_transform_t_x xform "Transformer" tx ""
+    bindhandle force_transform_t_y xform "Transformer" ty ""
+    bindhandle force_transform_t_z xform "Transformer" tz ""
+    bindhandle force_transform_s_uniform xform "Transformer" uniform_scale ""
+
+    inputlabel	1	"Objects to be processed"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+    outputlabel	1	Output
+
+    groupsimple {
+        name    "force_general_folder"
+        label   "General"
+
+        parm {
+            name    "force_preset"
+            label   "Preset"
+            type    integer
+            default { "0" }
+            menu {
+                "default"           "Default"
+                "gravity_geometry"  "Gravity Geometry"
+                "gravity_volume"    "Gravity Volume"
+                "drag"              "Drag"
+                "tornado"           "Tornado"
+                "animation"         "Animation"
+                "volume"            "Volume"
+                "vex"               "Vex"
+            }
+            range   { 0 10 }
+            parmtag { "script_callback" "hou.phm().force_preset_apply()" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "force_toggle"
+            label   "Activation"
+            type    integer
+            default { "1" }
+            range   { 0! 1! }
+        }
+        parm {
+            name    "force_binding"
+            label   "Binding"
+            type    integer
+            joinnext
+            default { "0" }
+            menu {
+                "geometry"  "Geometry"
+                "field"     "Volume"
+                "all"       "All"
+                "custom"    "Custom"
+            }
+            range   { 0 10 }
+        }
+        parm {
+            name    "force_binding_geometry_group"
+            label   "Group"
+            type    string
+            default { "" }
+            disablewhen "{ force_binding == 1 } { force_binding_geometry_toggle == 0 force_binding == 3 }"
+            menutoggle {
+                [ "import doppoptoolutils" ]
+                [ "" ]
+                [ "return doppoptoolutils.buildGroupMenu(hou.pwd())" ]
+                language python
+            }
+        }
+        parm {
+            name    "force_binding_geometry_toggle"
+            label   " "
+            type    toggle
+            joinnext
+            default { "off" }
+            hidewhen "{ force_binding != 3 }"
+        }
+        parm {
+            name    "force_binding_geometry"
+            label   "Geometry"
+            type    string
+            joinnext
+            default { "Geometry" }
+            disablewhen "{ force_binding_geometry_toggle == 0 }"
+            hidewhen "{ force_binding != 3 }"
+        }
+        parm {
+            name    "force_binding_geometry_attribute"
+            label   "Velocity Attribute"
+            type    string
+            joinnext
+            default { "v" }
+            disablewhen "{ force_binding_geometry_toggle == 0 }"
+            hidewhen "{ force_binding != 3 }"
+        }
+        parm {
+            name    "force_binding_field_toggle"
+            label   " "
+            type    toggle
+            joinnext
+            default { "off" }
+            hidewhen "{ force_binding != 3 }"
+        }
+        parm {
+            name    "force_binding_field"
+            label   "Fields"
+            type    string
+            default { "vel" }
+            disablewhen "{ force_binding_field_toggle == 0 }"
+            hidewhen "{ force_binding != 3 }"
+        }
+        parm {
+            name    "force_mass_toggle"
+            label   "Enable Mass/Density"
+            type    toggle
+            joinnext
+            default { "off" }
+            help    "Scale force strength by mass/density."
+        }
+        parm {
+            name    "force_seed_attribute"
+            label   "Seed Attribute"
+            type    string
+            default { "id" }
+            help    "If the attribute isn't found ptnum will be taken."
+        }
+        parm {
+            name    "force_wind_toggle"
+            label   "Enable Wind"
+            type    toggle
+            joinnext
+            default { "on" }
+            help    "Make the force a wind force. "
+            hidewhen "{ force_binding == 3 }"
+        }
+        parm {
+            name    "force_wind_airresist"
+            label   "Wind Speed Matching"
+            type    float
+            default { "1" }
+            help    "This controls how fast the desired wind velocity is reached. Increasing this will also decrease any other wind forces, so use with caution."
+            disablewhen "{ force_wind_toggle == 0 }"
+            hidewhen "{ force_binding == 3 }"
+            range   { 0! 50 }
+        }
+    }
+
+    groupsimple {
+        name    "force_guide_folder"
+        label   "Guides"
+
+        parm {
+            name    "force_guide_toggle"
+            label   "Enable"
+            type    toggle
+            joinnext
+            default { "on" }
+        }
+        parm {
+            name    "force_guide_general_toggle"
+            label   "Show General Guides"
+            type    toggle
+            joinnext
+            default { "on" }
+            hidewhen "{ force_guide_toggle == 0 }"
+        }
+        parm {
+            name    "force_guide_streamers_toggle"
+            label   "Show Streamer Guides   "
+            type    toggle
+            default { "off" }
+            hidewhen "{ force_guide_toggle == 0 }"
+        }
+        groupsimple {
+            name    "force_guide_general_settings_folder"
+            label   "General Guides Settings"
+            hidewhen "{ force_guide_toggle == 0 } { force_guide_general_toggle == 0 }"
+
+            parm {
+                name    "force_guide_general_mask"
+                label   "Guide Mask"
+                type    string
+                default { "*" }
+                menutoggle {
+                    "shape"             "Shape"
+                    "axis_along"        "Along Axis"
+                    "axis_suction"      "Away From Axis"
+                    "axis_oribt"        "Oribt Around Axis"
+                    "vector"            "Vector"
+                    "center_suction"    "Center"
+                    "curve_along"       "Along Curve"
+                    "curve_suction"     "Away From Curve"
+                    "curve_orbit"       "Orbit Curve"
+                    "curve_direction"   "Custom Direction From Curve"
+                }
+            }
+            parm {
+                name    "force_guide_general_color_"
+                label   "Color"
+                type    color
+                joinnext
+                size    3
+                default { "1" "0" "0" }
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "force_guide_general_strength_max"
+                label   "Viz Max"
+                type    float
+                default { "0.75" }
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0! 10 }
+            }
+            parm {
+                name    "force_guide_general_vdb_resolution_scale"
+                label   "Vdb Resolution Scale"
+                type    float
+                default { "2" }
+                hidewhen "{ force_guide_toggle == 0 } { force_shape_type != 4 }"
+                range   { 0.01! 5 }
+            }
+            parm {
+                name    "force_guide_general_curve_resample_scale"
+                label   "Curve Resample Scale"
+                type    float
+                joinnext
+                default { "2" }
+                disablewhen "{ force_shape_curve_resample_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 } { force_shape_type != 5 }"
+                range   { 0.01! 5 }
+            }
+            parm {
+                name    "force_guide_general_curve_marker_count"
+                label   "Marker Count"
+                type    integer
+                default { "15" }
+                disablewhen "{ force_shape_curve_resample_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 } { force_shape_type != 5 }"
+                range   { 3! 25 }
+            }
+        }
+
+        groupsimple {
+            name    "force_guide_streamers_settings_folder"
+            label   "Streamer Guides Settings"
+            hidewhen "{ force_guide_toggle == 0 } { force_guide_streamers_toggle == 0 }"
+
+            parm {
+                name    "force_guide_streamers_mode"
+                label   "Mode"
+                type    integer
+                default { "0" }
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                menu {
+                    "vector"    "Vector"
+                    "gradient"  "Gradient"
+                }
+                range   { 0 10 }
+            }
+            parm {
+                name    "force_guide_streamers_color_"
+                label   "Color"
+                type    color
+                joinnext
+                size    3
+                default { "1" "1" "0" }
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "force_guide_streamers_length"
+                label   "Viz Scale"
+                type    float
+                default { "0.1" }
+                help    "Length of streamers in time increments."
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0! 2 }
+            }
+            parm {
+                name    "force_guide_streamers_grid_transform_r"
+                label   "Grid"
+                type    integer
+                joinnext
+                default { "2" }
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                menu {
+                    "xy"    "XY Plane"
+                    "YZ"    "YZ Plane"
+                    "zx"    "ZX Plane"
+                }
+                range   { 0! 2 }
+            }
+            parm {
+                name    "force_guide_streamers_grid_transform_t"
+                label   "Offset"
+                type    float
+                joinnext
+                default { "0.5" }
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_guide_streamers_grid_resolution_scale"
+                label   "Resolution Scale"
+                type    float
+                default { "1" }
+                disablewhen "{ force_guide_streamers_toggle == 0 }"
+                hidewhen "{ force_guide_toggle == 0 }"
+                range   { 0.01! 5 }
+            }
+        }
+
+    }
+
+    group {
+        name    "force_transform_folder"
+        label   "Transform"
+
+        parm {
+            name    "force_transform_t_"
+            label   "Translate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { -1 1 }
+        }
+        parm {
+            name    "force_transform_r_"
+            label   "Rotate"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { -1 1 }
+        }
+        parm {
+            name    "force_transform_s_"
+            label   "Scale"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            range   { 0! 1 }
+        }
+        parm {
+            name    "force_transform_s_uniform"
+            label   "Uniform Scale"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+        }
+        parm {
+            name    "force_transform_pivot_"
+            label   "Pivot"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { -1 1 }
+        }
+    }
+
+    group {
+        name    "force_transform_folder_1"
+        label   "Shape"
+
+        parm {
+            name    "force_shape_toggle"
+            label   "Enable"
+            type    toggle
+            default { "on" }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "force_shape_type"
+            label   "Shape"
+            type    integer
+            joinnext
+            default { "1" }
+            hidewhen "{ force_shape_toggle == 0 } { force_shape_data_isInternal == 0 }"
+            menu {
+                "box"       "Box"
+                "sphere"    "Sphere"
+                "tube"      "Tube"
+                "torus"     "Torus"
+                "custom"    "Custom"
+                "curve"     "Curve"
+            }
+            range   { 0 10 }
+        }
+        parm {
+            name    "force_shape_custom_geo_path"
+            label   "force_shape_custom_geo_path"
+            type    oppath
+            nolabel
+            joinnext
+            default { "" }
+            hidewhen "{ force_shape_type != 4 } { force_shape_toggle == 0 } { force_shape_data_isInternal == 0 }"
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "force_shape_curve_geo_path"
+            label   "force_shape_custom_geo_path"
+            type    oppath
+            nolabel
+            default { "" }
+            hidewhen "{ force_shape_type != 5 } { force_shape_toggle == 0 } { force_shape_data_isInternal == 0 }"
+            parmtag { "oprelative" "." }
+        }
+        groupsimple {
+            name    "force_shape_settings_folder"
+            label   "Shape Settings"
+            hidewhen "{ force_shape_toggle == 0 }"
+
+            parm {
+                name    "force_shape_vdb_size"
+                label   "Vdb Size"
+                type    float
+                default { "0.01" }
+                help    "Lower this value if stepping occurs."
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 } { force_shape_data_isInternal == 0 }"
+                range   { 0! 0.1 }
+            }
+            parm {
+                name    "force_shape_invert_toggle"
+                label   "Invert Shape"
+                type    toggle
+                joinnext
+                default { "off" }
+                help    "Inverts the force shape. This allows the force to effect outside of its shape. Automatically toggles the \"Reverse\" checkbox for the falloff."
+                hidewhen "{ force_shape_toggle == 0 }"
+                parmtag { "script_callback" "hou.phm().force_shape_invert_update()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "force_shape_distance_remap_toggle"
+                label   "Remap Distance"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 }"
+            }
+            parm {
+                name    "force_shape_distance_sdf_remap_"
+                label   "Min/Max"
+                type    vector2
+                size    2
+                default { "0" "0.15" }
+                disablewhen "{ force_shape_distance_remap_toggle == 0 }"
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 }"
+                range   { -0.5! 0.5 }
+            }
+            parm {
+                name    "force_shape_custom_attribute_tan_u"
+                label   "Tan U Attribute"
+                type    string
+                default { "LYNX_force_tan_u" }
+                hidewhen "{ force_shape_type != 4 } { force_shape_data_isInternal == 0 }"
+            }
+            parm {
+                name    "force_shape_torus_width"
+                label   "Width"
+                type    float
+                default { "0.2" }
+                hidewhen "{ force_shape_type != 3 } { force_shape_data_isInternal == 0 }"
+                range   { 0! 0.5! }
+            }
+            parm {
+                name    "force_shape_tube_width_"
+                label   "Width Bottom/Top"
+                type    float
+                size    2
+                default { "1" "1" }
+                hidewhen "{ force_shape_type != 2 } { force_shape_data_isInternal == 0 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_tube_width_remap_reverse_toggle"
+                label   "Reverse"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_type != 2 } { force_shape_data_isInternal == 0 }"
+            }
+            parm {
+                name    "force_shape_tube_width_remap"
+                label   "Width Remap"
+                type    ramp_flt
+                default { "2" }
+                hidewhen "{ force_shape_type != 2 } { force_shape_data_isInternal == 0 }"
+                range   { 1! 10 }
+                parmtag { "rampbasisdefault" "bspline" }
+                parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+            }
+            parm {
+                name    "force_shape_curve_reverse_toggle"
+                label   "Reverse Curve"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_curve_interpolate_toggle"
+                label   "Interpolate Neighbours"
+                type    toggle
+                joinnext
+                default { "off" }
+                help    "Interpolate neighbours when looking up point attributes. Enabling this is slower, but can resolve interpolation problems."
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_curve_resample_toggle"
+                label   "Resample"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_curve_resample_length"
+                label   "Length"
+                type    float
+                default { "0.1" }
+                disablewhen "{ force_shape_curve_resample_toggle == 0 }"
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1 }
+            }
+            parm {
+                name    "force_shape_curve_carve_toggle"
+                label   "Carve"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_curve_carve_"
+                label   "Length"
+                type    float
+                size    2
+                default { "0" "1" }
+                disablewhen "{ force_shape_curve_carve_toggle == 0 }"
+                hidewhen "{ force_shape_type != 5 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_shape_curve_attribute_direction"
+                label   "Custom Direction"
+                type    string
+                joinnext
+                default { "v" }
+                hidewhen "{ force_shape_type != 5 }"
+            }
+            parm {
+                name    "force_shape_curve_attribute_uv"
+                label   "UV Attribute"
+                type    string
+                default { "uv" }
+                help    "Ramps that are mapped along the curve take this uv attribute as there u position. Will be created automatically if doesn't exist."
+                hidewhen "{ force_shape_type != 5 }"
+            }
+            groupsimple {
+                name    "force_shape_curve_global_radius_folder"
+                label   "Global"
+                hidewhen "{ force_shape_type != 5 }"
+
+                parm {
+                    name    "force_shape_curve_global_radius"
+                    label   "Radius"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "force_shape_curve_global_radius_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_curve_global_radius_remap"
+                    label   "Radius Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            groupsimple {
+                name    "force_shape_curve_along_radius_folder"
+                label   "Along"
+                hidewhen "{ force_shape_type != 5 } { force_shape_curve_toggle == 0 } { force_shape_curve_along_toggle == 0 }"
+
+                parm {
+                    name    "force_shape_curve_along_radius"
+                    label   "Radius"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "force_shape_curve_along_radius_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_curve_along_radius_remap"
+                    label   "Radius Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            groupsimple {
+                name    "force_shape_curve_suction_radius_folder"
+                label   "Away From"
+                hidewhen "{ force_shape_type != 5 } { force_shape_curve_toggle == 0 } { force_shape_curve_suction_toggle == 0 }"
+
+                parm {
+                    name    "force_shape_curve_suction_radius"
+                    label   "Radius"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "force_shape_curve_suction_radius_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_curve_suction_radius_remap"
+                    label   "Radius Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            groupsimple {
+                name    "force_shape_curve_orbit_radius_folder"
+                label   "Orbit"
+                hidewhen "{ force_shape_type != 5 } { force_shape_curve_toggle == 0 } { force_shape_curve_orbit_toggle == 0 }"
+
+                parm {
+                    name    "force_shape_curve_orbit_radius"
+                    label   "Radius"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "force_shape_curve_orbit_radius_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_curve_orbit_radius_remap"
+                    label   "Radius Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            groupsimple {
+                name    "force_shape_curve_direction_radius_folder"
+                label   "Custom Direction"
+                hidewhen "{ force_shape_type != 5 } { force_shape_curve_toggle == 0 } { force_shape_curve_direction_toggle == 0 }"
+
+                parm {
+                    name    "force_shape_curve_direction_radius"
+                    label   "Radius"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "force_shape_curve_direction_radius_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_curve_direction_radius_remap"
+                    label   "Radius Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            groupsimple {
+                name    "force_shape_sweep_folder"
+                label   "Sweep Settings"
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 } { force_shape_data_isInternal == 0 }"
+
+                parm {
+                    name    "force_shape_sweep_angle"
+                    label   "Angle"
+                    type    float
+                    default { "360" }
+                    range   { 0! 360! }
+                }
+                parm {
+                    name    "force_shape_sweep_transform_r_"
+                    label   "Rotate"
+                    type    vector
+                    size    3
+                    default { "0" "0" "0" }
+                    range   { -360 360 }
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "force_shape_advanced_settings_folder"
+            label   "Advanced Settings"
+            hidewhen "{ force_shape_toggle == 0 }"
+
+            parm {
+                name    "force_shape_data_isInternal"
+                label   "force_shape_data_isExternal"
+                type    integer
+                invisible
+                nolabel
+                default { [ "strcmp(chs(\"force_shape_data_path_relative\"),\".\")==0" hscript-expr ] }
+                range   { 0 10 }
+            }
+            parm {
+                name    "force_shape_data_time_interpolate_toggle"
+                label   "Time Interpolate Data"
+                type    toggle
+                default { "off" }
+                hidewhen "{ force_shape_data_isInternal == 0 }"
+            }
+            parm {
+                name    "force_shape_data_path_relative"
+                label   "Data Path"
+                type    oppath
+                default { "." }
+                help    "When using many forces with the same shape settings, one can use reuse the shape data for the different fields."
+                hidewhen "{ force_shape_type == 5 }"
+                parmtag { "oprelative" "." }
+                parmtag { "script_callback" "hou.phm().force_shape_data_path_absolute_update()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "force_shape_data_path_absolute"
+                label   "force_shape_data_path_absolute"
+                type    string
+                invisible
+                default { "`opfullpath(chs(\"force_shape_data_path_relative\"))`" }
+                parmtag { "script_callback" "" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "force_shape_data_path_calculation"
+                label   "force_shape_data_path_calculation"
+                type    string
+                invisible
+                default { [ "n = hou.pwd()\nif (n.parm(\"force_shape_toggle\").eval()==0): return \"False\"\n\nn_p_force_shape_data_path_abosolute = n.parm(\"force_shape_data_path_absolute\").eval()\nn_dop = n.dopNetNode().simulation()\nn_dop_path = n.dopNetNode().path()\nn_dop_objects = n_dop.objects()\n\nn_p_force_shape_data_path_name = \"LYNX_Force_General_Data_\"+n_p_force_shape_data_path_abosolute.replace(n_dop_path+\"/\",\"\").replace(\"/\",\"_\");\n\nfor object in n_dop_objects:\n    data = object.findSubData(\"Solver\")\n    if data==None: continue\n    subdata = data.findAllSubData(\"*\"+n_p_force_shape_data_path_name,recurse=True)\n    if(len(subdata)>0):\n        return str(object.options().field(\"objid\")) +\"|\"+ object.name() +\"|\"+ \"Solver/\" + subdata.keys()[0]+\"|\"+n_p_force_shape_data_path_name\n\nreturn \"False\"" python ] }
+            }
+            parm {
+                name    "force_shape_data_path_objid"
+                label   "force_shape_data_path_objid"
+                type    string
+                invisible
+                default { [ "n = hou.pwd()\nn_p_force_shape_data_path_calculation = n.parm(\"force_shape_data_path_calculation\").eval()\nif (n_p_force_shape_data_path_calculation == \"False\"): return \"False\"\nreturn n_p_force_shape_data_path_calculation.split(\"|\")[0]" python ] }
+            }
+            parm {
+                name    "force_shape_data_path_objname"
+                label   "force_shape_data_path_objname"
+                type    string
+                invisible
+                default { [ "n = hou.pwd()\nn_p_force_shape_data_path_calculation = n.parm(\"force_shape_data_path_calculation\").eval()\nif (n_p_force_shape_data_path_calculation == \"False\"): return \"False\"\nreturn n_p_force_shape_data_path_calculation.split(\"|\")[1]" python ] }
+            }
+            parm {
+                name    "force_shape_data_path_subpath"
+                label   "force_shape_data_path_subpath"
+                type    string
+                invisible
+                default { [ "n = hou.pwd()\nn_p_force_shape_data_path_calculation = n.parm(\"force_shape_data_path_calculation\").eval()\nif (n_p_force_shape_data_path_calculation == \"False\"): return \"False\"\nreturn n_p_force_shape_data_path_calculation.split(\"|\")[2]" python ] }
+            }
+            parm {
+                name    "force_shape_data_path_name"
+                label   "force_shape_data_path_name"
+                type    string
+                invisible
+                default { [ "n = hou.pwd()\nn_p_force_shape_data_path_calculation = n.parm(\"force_shape_data_path_calculation\").eval()\nif (n_p_force_shape_data_path_calculation == \"False\"): return \"False\"\nreturn n_p_force_shape_data_path_calculation.split(\"|\")[3]" python ] }
+            }
+        }
+
+    }
+
+    group {
+        name    "force_transform_folder_2"
+        label   "Strength"
+
+        groupsimple {
+            name    "force_global_strength_folder"
+            label   "Global"
+
+            parm {
+                name    "force_global_strength"
+                label   "Strength Global"
+                type    float
+                default { "1" }
+                range   { -10 10 }
+            }
+            parm {
+                name    "force_global_strength_geometry"
+                label   "Strength Geometry"
+                type    float
+                joinnext
+                default { "1" }
+                disablewhen "{ force_binding == 1 } { force_binding == 3 force_binding_geometry_toggle == 0 }"
+                range   { -10 10 }
+            }
+            parm {
+                name    "force_global_strength_volume"
+                label   "Strength Volume"
+                type    float
+                default { "1" }
+                disablewhen "{ force_binding == 0 } { force_binding == 3 force_binding_field_toggle == 0 }"
+                range   { -10 10 }
+            }
+            parm {
+                name    "force_global_strength_rand_toggle"
+                label   "Randomize"
+                type    toggle
+                joinnext
+                default { "off" }
+                help    "Randomize strength. This works on Geometry only."
+                parmtag { "script_callback" "" }
+            }
+            parm {
+                name    "force_global_strength_rand_"
+                label   "force_global_strength_rand"
+                type    vector2
+                nolabel
+                size    2
+                default { "0.9" "1.1" }
+                disablewhen "{ force_global_strength_rand_toggle == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "force_global_strength_shape_general_falloff_reverse_toggle"
+                label   "Reverse"
+                type    toggle
+                joinnext
+                default { "off" }
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 }"
+            }
+            parm {
+                name    "force_global_strength_shape_general_falloff_remap"
+                label   "Falloff"
+                type    ramp_flt
+                default { "2" }
+                hidewhen "{ force_shape_toggle == 0 } { force_shape_type == 5 }"
+                range   { 1! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "rampbasisdefault" "bspline" }
+                parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( catmull-rom ) 2pos ( 1 ) 2value ( 0 ) 2interp ( catmull-rom )" }
+                parmtag { "rampshowcontrolsdefault" "0" }
+            }
+            group {
+                name    "force_global_strength_shape_curve_falloff_folder"
+                label   "Strength Falloff"
+                hidewhen "{ force_shape_type != 5 }"
+
+                parm {
+                    name    "force_global_strength_shape_curve_falloff_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_global_strength_shape_curve_falloff_remap"
+                    label   "Strength Falloff"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0.89999997615814209 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 0 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+            group {
+                name    "force_global_strength_shape_curve_falloff_folder_1"
+                label   "Strength Along Curve"
+                tabbreak
+
+                parm {
+                    name    "force_global_strength_shape_curve_along_remap_reverse_toggle"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                }
+                parm {
+                    name    "force_global_strength_shape_curve_along_remap"
+                    label   "Strength Along Curve"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "force_noise_strength_folder"
+            label   "Noise"
+
+            parm {
+                name    "force_noise_toggle"
+                label   "Enable"
+                type    toggle
+                default { "off" }
+            }
+            parm {
+                name    "force_noise_strength"
+                label   "Strength"
+                type    float
+                joinnext
+                default { "0.25" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { -10 10 }
+            }
+            parm {
+                name    "force_noise_time"
+                label   "Time"
+                type    float
+                joinnext
+                default { [ "$ST" hscript-expr ] }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { 0 10 }
+            }
+            parm {
+                name    "force_noise_time_scale"
+                label   "Time Scale"
+                type    float
+                default { "0.25" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { 0 2 }
+            }
+            parm {
+                name    "force_noise_type"
+                label   "Type"
+                type    string
+                invisible
+                default { "0" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                menu {
+                    "pnoise"        "Perlin Noise"
+                    "onoise"        "Original Perlin Noise"
+                    "snoise"        "Sparse Convolution Noise"
+                    "anoise "       "Alligator Noise"
+                    "xnoise"        "Simplex Noise"
+                    "exact_pnoise"  "Analytic Perlin Noise"
+                    "exact_xnoise"  "Analytic Simplex Noise"
+                }
+            }
+            parm {
+                name    "force_noise_attenuation"
+                label   "Attenuation"
+                type    float
+                joinnext
+                default { "1" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_noise_roughness"
+                label   "Roughness"
+                type    float
+                joinnext
+                default { "1" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { 0! 1! }
+            }
+            parm {
+                name    "force_noise_turbulence"
+                label   "Turbulence"
+                type    integer
+                default { "3" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { 0! 10 }
+            }
+            parm {
+                name    "force_noise_scale_uniform"
+                label   "Scale"
+                type    float
+                joinnext
+                default { "0.5" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { -10 10 }
+            }
+            parm {
+                name    "force_noise_local_toggle"
+                label   "Transform Noise By Force Transform"
+                type    toggle
+                default { "off" }
+                hidewhen "{ force_noise_toggle == 0 }"
+            }
+            parm {
+                name    "force_noise_scale_"
+                label   "Size"
+                type    vector
+                size    3
+                default { "1" "1" "1" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { -1 1 }
+            }
+            parm {
+                name    "force_noise_offset_"
+                label   "Offset"
+                type    vector
+                size    3
+                default { "0" "0" "0" }
+                hidewhen "{ force_noise_toggle == 0 }"
+                range   { -1 1 }
+            }
+        }
+
+        groupsimple {
+            name    "force_flow_strength_folder"
+            label   "Flow"
+
+            parm {
+                name    "force_flow_toggle"
+                label   "Enable"
+                type    toggle
+                default { "on" }
+            }
+            groupsimple {
+                name    "force_flow_axis_strength_folder"
+                label   "Axis"
+                hidewhen "{ force_flow_toggle == 0 }"
+
+                parm {
+                    name    "force_flow_axis_along_strength"
+                    label   "Along Axis"
+                    type    float
+                    default { "1" }
+                    range   { -10 10 }
+                }
+                parm {
+                    name    "force_flow_axis_suction_strength"
+                    label   "Away From Axis"
+                    type    float
+                    default { "0" }
+                    range   { -10 10 }
+                }
+                parm {
+                    name    "force_flow_axis_orbit_strength"
+                    label   "Orbit Around Axis"
+                    type    float
+                    default { "0" }
+                    range   { -10 10 }
+                }
+            }
+
+            groupsimple {
+                name    "force_flow_vector_strength_folder"
+                label   "Vector"
+                hidewhen "{ force_flow_toggle == 0 }"
+
+                parm {
+                    name    "force_flow_vector_strength"
+                    label   "Strength"
+                    type    float
+                    default { "0" }
+                    range   { -10 10 }
+                }
+                parm {
+                    name    "force_flow_vector_direction_"
+                    label   "Direction"
+                    type    vector
+                    size    3
+                    default { "0" "-1" "0" }
+                    range   { -10 10 }
+                }
+            }
+
+            groupsimple {
+                name    "force_flow_center_strength_folder"
+                label   "Center"
+                hidewhen "{ force_flow_toggle == 0 }"
+
+                parm {
+                    name    "force_flow_center_suction_strength"
+                    label   "Away From Center"
+                    type    float
+                    default { "0" }
+                    range   { -10 10 }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "force_shape_folder"
+            label   "Shape"
+            hidewhen "{ force_shape_toggle == 0 }"
+
+            groupsimple {
+                name    "force_shape_curve_strength_folder"
+                label   "Curve"
+                hidewhen "{ force_shape_type != 5 }"
+
+                parm {
+                    name    "force_shape_curve_toggle"
+                    label   "Enable"
+                    type    toggle
+                    default { "off" }
+                }
+                groupsimple {
+                    name    "force_shape_curve_along_strength_folder"
+                    label   "Along"
+                    hidewhen "{ force_shape_curve_toggle == 0 } { force_shape_type != 5 }"
+
+                    parm {
+                        name    "force_shape_curve_along_toggle"
+                        label   "Enable"
+                        type    toggle
+                        default { "off" }
+                    }
+                    parm {
+                        name    "force_shape_curve_along_strength"
+                        label   "Strength"
+                        type    float
+                        default { "1" }
+                        hidewhen "{ force_shape_curve_along_toggle == 0 }"
+                        range   { -10 10 }
+                    }
+                    group {
+                        name    "force_shape_curve_along_strength_falloff_folder"
+                        label   "Strength Falloff"
+                        hidewhen "{ force_shape_curve_along_toggle == 0 }"
+
+                        parm {
+                            name    "force_shape_curve_along_strength_falloff_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_along_strength_falloff_remap"
+                            label   "Strength Falloff"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 0 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                    group {
+                        name    "force_shape_curve_along_strength_falloff_folder_1"
+                        label   "Strength Along Curve"
+                        tabbreak
+
+                        parm {
+                            name    "force_shape_curve_along_strength_along_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_along_strength_along_remap"
+                            label   "Strength Along Curve"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+                groupsimple {
+                    name    "force_shape_curve_suction_strength_folder"
+                    label   "Away From"
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_curve_toggle == 0 } { force_shape_type != 5 }"
+
+                    parm {
+                        name    "force_shape_curve_suction_toggle"
+                        label   "Enable"
+                        type    toggle
+                        default { "off" }
+                    }
+                    parm {
+                        name    "force_shape_curve_suction_strength"
+                        label   "Strength"
+                        type    float
+                        default { "-1" }
+                        hidewhen "{ force_shape_curve_suction_toggle == 0 }"
+                        range   { -10 10 }
+                    }
+                    group {
+                        name    "force_shape_curve_suction_strength_falloff_folder"
+                        label   "Strength Falloff"
+                        hidewhen "{ force_shape_curve_suction_toggle == 0 }"
+
+                        parm {
+                            name    "force_shape_curve_suction_strength_falloff_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_suction_strength_falloff_remap"
+                            label   "Strength Falloff"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                    group {
+                        name    "force_shape_curve_suction_strength_falloff_folder_1"
+                        label   "Strength Along Curve"
+                        tabbreak
+
+                        parm {
+                            name    "force_shape_curve_suction_strength_along_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_suction_strength_along_remap"
+                            label   "Strength Along Curve"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+                groupsimple {
+                    name    "force_shape_curve_orbit_strength_folder"
+                    label   "Orbit"
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_curve_toggle == 0 } { force_shape_type != 5 }"
+
+                    parm {
+                        name    "force_shape_curve_orbit_toggle"
+                        label   "Enable"
+                        type    toggle
+                        default { "off" }
+                    }
+                    parm {
+                        name    "force_shape_curve_orbit_strength"
+                        label   "Strength"
+                        type    float
+                        default { "1" }
+                        hidewhen "{ force_shape_curve_orbit_toggle == 0 }"
+                        range   { -10 10 }
+                    }
+                    group {
+                        name    "force_shape_curve_orbit_strength_falloff_folder"
+                        label   "Strength Falloff"
+                        hidewhen "{ force_shape_curve_orbit_toggle == 0 }"
+
+                        parm {
+                            name    "force_shape_curve_orbit_strength_falloff_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_orbit_strength_falloff_remap"
+                            label   "Strength Falloff"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 0 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                    group {
+                        name    "force_shape_curve_orbit_strength_falloff_folder_1"
+                        label   "Strength Along Curve"
+                        tabbreak
+
+                        parm {
+                            name    "force_shape_curve_orbit_strength_along_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_orbit_strength_along_remap"
+                            label   "Strength Along Curve"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+                groupsimple {
+                    name    "force_shape_curve_direction_strength_folder"
+                    label   "Custom Direction"
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_curve_toggle == 0 } { force_shape_type != 5 }"
+
+                    parm {
+                        name    "force_shape_curve_direction_toggle"
+                        label   "Enable"
+                        type    toggle
+                        default { "off" }
+                    }
+                    parm {
+                        name    "force_shape_curve_direction_strength"
+                        label   "Strength"
+                        type    float
+                        default { "1" }
+                        hidewhen "{ force_shape_curve_direction_toggle == 0 }"
+                        range   { -10 10 }
+                    }
+                    group {
+                        name    "force_shape_curve_direction_strength_falloff_folder2"
+                        label   "Strength Falloff"
+                        hidewhen "{ force_shape_curve_direction_toggle == 0 }"
+
+                        parm {
+                            name    "force_shape_curve_direction_strength_falloff_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_direction_strength_falloff_remap"
+                            label   "Strength Falloff"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 0 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                    group {
+                        name    "force_shape_curve_direction_strength_falloff_folder2_1"
+                        label   "Strength Along Curve"
+                        tabbreak
+
+                        parm {
+                            name    "force_shape_curve_direction_strength_along_remap_reverse_toggle"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "off" }
+                        }
+                        parm {
+                            name    "force_shape_curve_direction_strength_along_remap"
+                            label   "Strength Along Curve"
+                            type    ramp_flt
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampbasisdefault" "bspline" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+            }
+
+            groupsimple {
+                name    "force_shape_volume_folder"
+                label   "Volume"
+                hidewhen "{ force_shape_type == 5 }"
+
+                parm {
+                    name    "force_shape_label_disabled_notify"
+                    label   "force_shape_label_disabled_notify"
+                    type    label
+                    nolabel
+                    default { "Enable in 'Shape' tab to view settings." }
+                    hidewhen "{ force_shape_toggle == 1 }"
+                }
+                parm {
+                    name    "force_shape_vol_toggle"
+                    label   "Enable"
+                    type    toggle
+                    default { "off" }
+                }
+                parm {
+                    name    "force_shape_vol_N_strength"
+                    label   "Along Normal"
+                    type    float
+                    default { "0" }
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_vol_toggle == 0 } { force_shape_type == 5 }"
+                    range   { -10 10 }
+                }
+                parm {
+                    name    "force_shape_vol_tan_u_strength"
+                    label   "Along Tangent"
+                    type    float
+                    default { "0" }
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_vol_toggle == 0 } { force_shape_type == 5 }"
+                    range   { -10 10 }
+                }
+                parm {
+                    name    "force_shape_vol_tan_v_strength"
+                    label   "Along BiTangent"
+                    type    float
+                    default { "0" }
+                    hidewhen "{ force_shape_toggle == 0 } { force_shape_vol_toggle == 0 } { force_shape_type == 5 }"
+                    range   { -10 10 }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "force_vex_strength_folder"
+            label   "Vex"
+
+            parm {
+                name    "force_vex_pre_toggle"
+                label   "Pre Force Calculation"
+                type    toggle
+                joinnext
+                default { "off" }
+            }
+            parm {
+                name    "force_vex_post_toggle"
+                label   "Post Force Calculation"
+                type    toggle
+                joinnext
+                default { "off" }
+            }
+            parm {
+                name    "force_vex_binding_export"
+                label   "Additional Bindings"
+                type    string
+                default { "" }
+                help    "If one binds attributes via the \"@\" syntax make sure to write the name of the attribute here. If not the attribute is not bound to be exported."
+            }
+            groupcollapsible {
+                name    "force_vex_advanced_settings"
+                label   "Advanced Settings"
+
+                parm {
+                    name    "force_vex_input_2_type"
+                    label   "   Additional Input (Idx 2)"
+                    type    integer
+                    joinnext
+                    default { "0" }
+                    help    "Access custom data via input index 2."
+                    menu {
+                        "NONE"      "None"
+                        "SOP"       "SOP"
+                        "DOPDATA"   "DOP Data"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "force_vex_input_2_path_sop"
+                    label   "force_vex_input_2_path"
+                    type    oppath
+                    nolabel
+                    joinnext
+                    default { "" }
+                    hidewhen "{ force_vex_input_2_type == 2 } { force_vex_input_2_type == 0 }"
+                    parmtag { "editor" "0" }
+                    parmtag { "oprelative" "." }
+                }
+                parm {
+                    name    "force_vex_input_2_path_dop"
+                    label   "force_vex_input_2_path"
+                    type    string
+                    nolabel
+                    default { "" }
+                    hidewhen "{ force_vex_input_2_type == 1 } { force_vex_input_2_type == 0 }"
+                }
+            }
+
+            parm {
+                name    "force_vex_pre_code"
+                label   "Pre Force Calculation Vex Code"
+                type    string
+                default { "//Manipulate Parameters. Mass and Seed are available as \"mass\"/\"seed\".\n//Parameters are bound to vex variables e.g. \n//force_global_strength = force_global_strength * rand(@id);" }
+                hidewhen "{ force_vex_pre_toggle == 0 }"
+                parmtag { "editor" "1" }
+                parmtag { "editorlang" "vex" }
+                parmtag { "editorlines" "10-25" }
+            }
+            parm {
+                name    "force_vex_post_code"
+                label   "Post Force Calculation Vex Code"
+                type    string
+                default { "//Manipulate LYNX_force. This code is applied after force calculation.\n//If using it for custom attributes (not v/force/targetv/airresist), multiply it with @TimeInc.\n" }
+                hidewhen "{ force_vex_post_toggle == 0 }"
+                parmtag { "editor" "1" }
+                parmtag { "editorlang" "vex" }
+                parmtag { "editorlines" "10-25" }
+            }
+        }
+
+    }
+
+}
