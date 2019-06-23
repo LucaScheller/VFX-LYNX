@@ -1,0 +1,4149 @@
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="node_type"
+Content-Type: text/plain
+
+Sop
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.init"
+Content-Type: text/plain
+
+type = LYNX::LYNX_velocity::0.2
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -5.55112e-17 -1.10441
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	grid1 0 1 "input1"
+}
+inputs
+{
+0 	grid1 0 1
+}
+stat
+{
+  create 1560333982
+  modify 1560334053
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"0.1"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.inp"
+Content-Type: text/plain
+
+1
+0 -1.3213934467429609 10.876527163223507 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_modified.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_modified.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.67137 -9.98985
+connectornextid 4
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	loop_edge_selections_start 0 1 "input1"
+2 	smooth_post 0 1 "input2"
+3 	(__dot2) "" 1 "input3"
+}
+inputs
+{
+0 	loop_edge_selections_start 0 1
+1 	smooth_post 0 1
+2 	(__dot2) 0 1
+}
+stat
+{
+  create 1540817252
+  modify 1560330780
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_modified.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"string i = itoa(detail(2,\"ivalue\"));
+vector @LYNX_velocity_v;
+vector LYNX_velocity_v = point(1,\"LYNX_velocity_v\",@ptnum);
+string transfer_mode = chs(\"../velocity_edge_transfer_mode_\"+i);
+
+if (transfer_mode == \"ADD\"){@LYNX_velocity_v += LYNX_velocity_v;}
+if (transfer_mode == \"MULTIPLY\"){@LYNX_velocity_v *= LYNX_velocity_v;}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_modified.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/restoreLength.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/restoreLength.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.45891 -8.06114
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	smooth_pre 0 1 "input1"
+}
+inputs
+{
+0 	smooth_pre 0 1
+}
+stat
+{
+  create 1540817314
+  modify 1560330581
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/restoreLength.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"float @LYNX_velocity_v_length;
+vector @LYNX_velocity_v;
+
+@LYNX_velocity_v = normalize(@LYNX_velocity_v) * @LYNX_velocity_v_length;"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/restoreLength.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.45891 -6.42685
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	loop_edge_selections_start 0 1 "input1"
+2 	attr_LYNX_velocity_v 0 1 "input2"
+}
+inputs
+{
+0 	loop_edge_selections_start 0 1
+1 	attr_LYNX_velocity_v 0 1
+}
+stat
+{
+  create 1540817360
+  modify 1560332926
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"vector @P;
+vector @LYNX_velocity_v;
+float @LYNX_velocity_v_length = 0;
+int pt_id = nearpoint(1,@P,.001);
+if (pt_id==-1){@LYNX_velocity_v = 0;} else {vector LYNX_velocity_v = point(1,\"LYNX_velocity_v\",pt_id); @LYNX_velocity_v = LYNX_velocity_v; @LYNX_velocity_v_length = length(LYNX_velocity_v);}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_v.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_v.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.91778 -5.52033
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_LYNX_velocity_uv 0 1 "input1"
+2 	(__dot3) "" 1 "input2"
+}
+inputs
+{
+0 	attr_LYNX_velocity_uv 0 1
+1 	(__dot3) 0 1
+}
+stat
+{
+  create 1540817360
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_v.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"string i = itoa(detail(1,\"ivalue\"));
+
+// Ctrl Attr
+float reverse_uv         = ch(\"../velocity_edge_reverse_uv_\"+i);
+
+float rot_strength       = ch(\"../velocity_edge_rot_strength_\"+i);
+float rot_offset         = ch(\"../velocity_edge_rot_master_\"+i+\"1\");
+float rot_repeat         = ch(\"../velocity_edge_rot_master_\"+i+\"2\");
+float rot_min            = ch(\"../velocity_edge_rot_master_\"+i+\"3\");
+float rot_max            = ch(\"../velocity_edge_rot_master_\"+i+\"4\");
+float rot_noise_offset   = ch(\"../velocity_edge_rot_noise_\"+i+\"1\");
+float rot_noise_scale    = ch(\"../velocity_edge_rot_noise_\"+i+\"2\");
+float rot_noise_min      = ch(\"../velocity_edge_rot_noise_\"+i+\"3\");
+float rot_noise_max      = ch(\"../velocity_edge_rot_noise_\"+i+\"4\");
+
+float scale_strength     = ch(\"../velocity_edge_scale_strength_\"+i);
+float scale_offset       = ch(\"../velocity_edge_scale_master_\"+i+\"1\");
+float scale_repeat       = ch(\"../velocity_edge_scale_master_\"+i+\"2\");
+float scale_min          = ch(\"../velocity_edge_scale_master_\"+i+\"3\");
+float scale_max          = ch(\"../velocity_edge_scale_master_\"+i+\"4\");
+float scale_noise_offset = ch(\"../velocity_edge_scale_noise_\"+i+\"1\");
+float scale_noise_scale  = ch(\"../velocity_edge_scale_noise_\"+i+\"2\");
+float scale_noise_min    = ch(\"../velocity_edge_scale_noise_\"+i+\"3\");
+float scale_noise_max    = ch(\"../velocity_edge_scale_noise_\"+i+\"4\");
+
+// Attr
+vector @LYNX_velocity_uv;
+vector @LYNX_velocity_N;
+vector @LYNX_velocity_tan_u;
+vector @LYNX_velocity_v;
+
+vector LYNX_velocity_v = @LYNX_velocity_N;
+float uv_u = @LYNX_velocity_uv[0]; if (reverse_uv==1) {uv_u=1-uv_u;}
+matrix rot_mat;
+/// Rotate
+float rot_uv_u = (rot_offset+(uv_u * rot_repeat*.999999))%1;
+float rot_remap_se = chramp(\"../velocity_edge_rot_se_ramp_\"+i,uv_u);
+float rot_remap = chramp(\"../velocity_edge_rot_ramp_\"+i,rot_uv_u);
+float rot_noise = fit01(noise((uv_u+rot_noise_offset)*rot_noise_scale),rot_noise_min,rot_noise_max);
+float rot_angle = rot_remap_se * (rot_strength + (rot_noise + (fit01(rot_remap,rot_min,rot_max))));
+rot_mat = qconvert(quaternion(radians(rot_angle),@LYNX_velocity_tan_u));
+
+/// Scale
+float scale_uv_u = (scale_offset+(uv_u * scale_repeat*.999999))%1;
+float scale_remap_se = chramp(\"../velocity_edge_scale_se_ramp_\"+i,uv_u);
+float scale_remap = chramp(\"../velocity_edge_scale_ramp_\"+i,scale_uv_u);
+float scale_noise = fit01(noise((uv_u+scale_noise_offset)*scale_noise_scale),scale_noise_min,scale_noise_max);
+float scale_value = scale_remap_se * (scale_strength * (scale_noise * (fit01(scale_remap,scale_min,scale_max))));
+
+LYNX_velocity_v = (LYNX_velocity_v * rot_mat) * scale_value;
+@LYNX_velocity_v = LYNX_velocity_v;
+
+
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_v.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_paths.init"
+Content-Type: text/plain
+
+type = polypath
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_paths.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -2.46078
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	blast_edge_selection 0 1 "input1"
+}
+inputs
+{
+0 	blast_edge_selection 0 1
+}
+stat
+{
+  create 1540817517
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_paths.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+connectends	[ 0	locks=0 ]	(	"on"	)
+maxendptdist	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+connectonlytoends	[ 0	locks=0 ]	(	"on"	)
+closeloops	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_paths.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_N1.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_N1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.96281 3.4842
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	promote_N 1 1 "input1"
+}
+inputs
+{
+0 	promote_N 0 1
+}
+stat
+{
+  create 1540820652
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_N1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"vector @LYNX_velocity_N;
+vector @N;
+@LYNX_velocity_N = @N;
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_N1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_guide_create.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_guide_create.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.82076 -15.5631
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	"" "" 1 "input1"
+1 	velocity_edge_enable 1 1 "input2"
+}
+inputs
+{
+0 	"" 0 1
+1 	velocity_edge_enable 0 1
+}
+stat
+{
+  create 1540904739
+  modify 1560333280
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_guide_create.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int npts = npoints(1);
+
+for(int pt_id=0;pt_id<npts;pt_id+=1)
+{
+    vector pt_P = point(1,\"P\",pt_id);
+    vector pt_v = point(1,\"LYNX_velocity_v\",pt_id);
+    int prim_id = addprim(0,\"polyline\");
+    int pt_id_root = addpoint(0,pt_P); 
+    int pt_id_tip = addpoint(0,pt_P+pt_v); 
+    addvertex(0,prim_id,pt_id_root);
+    addvertex(0,prim_id,pt_id_tip);
+    setprimattrib(0,\"LYNX_velocity_id\",prim_id,pt_id,\"set\");
+}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_guide_create.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.init"
+Content-Type: text/plain
+
+type = guidegroom
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.82376 -16.5959
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	LYNX_velocity_v_guide_create 2 1 "input1"
+1 	velocity_edge_enable 1 1 "input2"
+}
+inputs
+{
+0 	LYNX_velocity_v_guide_create 0 1
+1 	velocity_edge_enable 0 1
+}
+stat
+{
+  create 1540904880
+  modify 1560335561
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.multiparm"
+Content-Type: text/plain
+
+21
+stroke#_enable ../stroke#_enable
+stroke#_changedsel ../stroke#_changedsel
+stroke#_radius ../stroke#_radius
+stroke#_tool ../stroke#_tool
+stroke#_colorr ../stroke#_colorr
+stroke#_colorg ../stroke#_colorg
+stroke#_colorb ../stroke#_colorb
+stroke#_opacity ../stroke#_opacity
+stroke#_projtype ../stroke#_projtype
+stroke#_projcenterx ../stroke#_projcenterx
+stroke#_projcentery ../stroke#_projcentery
+stroke#_projcenterz ../stroke#_projcenterz
+stroke#_projdirx ../stroke#_projdirx
+stroke#_projdiry ../stroke#_projdiry
+stroke#_projdirz ../stroke#_projdirz
+stroke#_data ../stroke#_data
+stroke#_metadata ../stroke#_metadata
+stroke#_selection ../stroke#_selection
+stroke_brushfalloff#pos ../stroke_brushfalloff#pos
+stroke_brushfalloff#value ../stroke_brushfalloff#value
+stroke_brushfalloff#interp ../stroke_brushfalloff#interp
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "reset"
+        baseparm
+        label   "Reset Strokes"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "recache"
+        baseparm
+        label   "Recache Strokes"
+        export  none
+    }
+    groupsimple {
+        name    "folder5"
+        label   "Initial Setup"
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Primitive Group"
+            export  none
+            bindselector prims "Curves to Groom"
+                "Select the curves to groom press Enter to complete"
+                0 1 0xfff0ff77 0 "" 0
+        }
+        parm {
+            name    "collisionradius"
+            baseparm
+            label   "Collision Radius"
+            export  none
+        }
+        parm {
+            name    "resampleinput"
+            baseparm
+            label   "Resample Input"
+            export  none
+        }
+        parm {
+            name    "segments"
+            baseparm
+            label   "Curve Segments"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "folder6"
+        label   "Resampling"
+
+        parm {
+            name    "stroke_resample_poststroke"
+            baseparm
+            label   "Resample After Stroke"
+            export  none
+        }
+        parm {
+            name    "stroke_resample_segmode"
+            baseparm
+            label   "Segment Mode"
+            export  none
+        }
+        parm {
+            name    "stroke_resample_uniformsegs"
+            baseparm
+            label   "Segments Count"
+            export  none
+        }
+        parm {
+            name    "stroke_resample_allaffected"
+            baseparm
+            label   "Resample All Affected Curves"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "_2"
+        label   "Brush"
+
+        parm {
+            name    "stroke_tool"
+            baseparm
+            label   "Tool"
+            export  all
+        }
+        parm {
+            name    "stroke_radius"
+            baseparm
+            label   "Radius"
+            export  none
+        }
+        parm {
+            name    "stroke_opacity"
+            baseparm
+            label   "Strength"
+            export  all
+        }
+        parm {
+            name    "per_tool_strength"
+            baseparm
+            label   "per_tool_strength"
+            export  none
+        }
+        parm {
+            name    "stroke_lift"
+            baseparm
+            label   "Lift"
+            export  all
+        }
+        parm {
+            name    "per_tool_lift"
+            baseparm
+            label   "per_tool_lift"
+            export  none
+        }
+        parm {
+            name    "stroke_smoothingradius"
+            baseparm
+            label   "Smoothing Radius"
+            export  none
+        }
+        parm {
+            name    "stroke_randomstrength"
+            baseparm
+            label   "Randomize"
+            export  all
+        }
+        parm {
+            name    "stroke_constrainlength"
+            baseparm
+            label   "Constrain Length"
+            export  all
+        }
+        parm {
+            name    "stroke_lockroots"
+            baseparm
+            label   "Lock Roots In Place"
+            export  all
+        }
+        parm {
+            name    "stroke_targetlengthrandom"
+            baseparm
+            label   "Random Length"
+            export  none
+        }
+        parm {
+            name    "stroke_targetlength"
+            baseparm
+            label   "Target Length"
+            export  all
+        }
+        parm {
+            name    "stroke_useclosestlength"
+            baseparm
+            label   "Interpolate Neighbors"
+            export  all
+        }
+        parm {
+            name    "stroke_newguidelength"
+            baseparm
+            label   "Default Length"
+            export  all
+        }
+        parm {
+            name    "stroke_newguidesegs"
+            baseparm
+            label   "Default Segments"
+            export  none
+        }
+        parm {
+            name    "stroke_targetlengthrange"
+            baseparm
+            label   "Target Length Range"
+            export  none
+        }
+        parm {
+            name    "stroke_raybias"
+            baseparm
+            label   "Ray Bias"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder7"
+            label   "Falloff"
+
+            parm {
+                name    "savefalloffpreset"
+                baseparm
+                label   "Save Preset"
+                export  none
+            }
+            parm {
+                name    "falloffpreset_linear"
+                baseparm
+                label   "Angled"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "falloffpreset_easein"
+                baseparm
+                label   "Round"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "falloffpreset_easeout"
+                baseparm
+                label   "Sharp"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "falloffpreset_constant"
+                baseparm
+                label   "Flat"
+                export  none
+            }
+            parm {
+                name    "stroke_brushfalloff"
+                baseparm
+                label   "Ramp"
+                export  none
+            }
+            parm {
+                name    "stroke_brushfalloffdata"
+                baseparm
+                label   "Brush Falloff Data"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "folder8"
+            label   "Mirroring"
+
+            parm {
+                name    "stroke_mirror"
+                baseparm
+                label   "Mirroring"
+                export  all
+            }
+            parm {
+                name    "stroke_mirrororigin"
+                baseparm
+                label   "Origin"
+                export  none
+            }
+            parm {
+                name    "stroke_mirrordir"
+                baseparm
+                label   "Direction"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "stroke_projgeoinput"
+        baseparm
+        label   "stroke_projgeoinput"
+        export  none
+    }
+    parm {
+        name    "stroke_color"
+        baseparm
+        label   "Color"
+        export  none
+    }
+    parm {
+        name    "stroke_selection"
+        baseparm
+        label   "Stroke Selection"
+        export  none
+    }
+    parm {
+        name    "stroke_projtype"
+        baseparm
+        label   "Projection Type"
+        export  none
+    }
+    parm {
+        name    "stroke_projcenter"
+        baseparm
+        label   "Projection Center"
+        export  none
+    }
+    parm {
+        name    "parm"
+        baseparm
+        label   "Strokes"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "stroke_prompt"
+        baseparm
+        label   "Prompt"
+        export  none
+    }
+    parm {
+        name    "stroke_changedsel"
+        baseparm
+        label   "Changed Selection"
+        export  none
+    }
+    parm {
+        name    "stroking"
+        baseparm
+        label   "Stroking"
+        export  none
+    }
+    parm {
+        name    "highlightsel"
+        baseparm
+        label   "highlightsel"
+        export  none
+    }
+    parm {
+        name    "bakedstrokes"
+        baseparm
+        label   "Baked Strokes"
+        export  none
+    }
+    parm {
+        name    "prestroke"
+        baseparm
+        label   "Pre Stroke"
+        export  none
+    }
+    parm {
+        name    "poststroke"
+        baseparm
+        label   "Post Stroke"
+        export  none
+    }
+    parm {
+        name    "selectionnode"
+        baseparm
+        label   "Selection Node"
+        export  none
+    }
+    parm {
+        name    "livemode"
+        baseparm
+        label   "Live Mode"
+        export  none
+    }
+    parm {
+        name    "strokes"
+        baseparm
+        label   "Strokes"
+        export  none
+    }
+    group {
+        name    "folder9"
+        label   "invisible strokes"
+
+        multiswitcher {
+            name    "stroke_numstrokes"
+            label    "Strokes"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "stroke#_enable"
+                baseparm
+                label   "Enable Stroke"
+                export  none
+            }
+            parm {
+                name    "stroke#_changedsel"
+                baseparm
+                label   "Changed Selection"
+                export  none
+            }
+            parm {
+                name    "stroke#_radius"
+                baseparm
+                label   "Radius"
+                export  none
+            }
+            parm {
+                name    "stroke#_tool"
+                baseparm
+                label   "Tool"
+                export  none
+            }
+            parm {
+                name    "stroke#_color"
+                baseparm
+                label   "Color"
+                invisible
+                export  none
+            }
+            parm {
+                name    "stroke#_opacity"
+                baseparm
+                label   "Strength"
+                export  none
+            }
+            parm {
+                name    "stroke#_projtype"
+                baseparm
+                label   "Projection Type"
+                export  none
+            }
+            parm {
+                name    "stroke#_projcenter"
+                baseparm
+                label   "Projection Center"
+                export  none
+            }
+            parm {
+                name    "stroke#_projdir"
+                baseparm
+                label   "Projection Direction"
+                export  none
+            }
+            parm {
+                name    "stroke#_data"
+                baseparm
+                label   "Raw Data"
+                export  none
+            }
+            parm {
+                name    "stroke#_metadata"
+                baseparm
+                label   "Meta Data"
+                export  none
+            }
+            parm {
+                name    "stroke#_selection"
+                baseparm
+                label   "Selection"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "stroke_sculpt"
+        baseparm
+        label   "Sculpt Points"
+        export  all
+    }
+    parm {
+        name    "stroke_bend"
+        baseparm
+        label   "Bend"
+        export  all
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.chn"
+Content-Type: text/plain
+
+{
+    channel stroke_projgeoinput {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = lock(1) }
+    }
+    channel stroke_selection {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = chs(\"group\") }
+    }
+    channel stroke_projtype {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 3 3 expr = ch(\"../stroke_projtype\") }
+    }
+    channel stroke_projcenterx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../stroke_projcenterx\") }
+    }
+    channel stroke_projcentery {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../stroke_projcentery\") }
+    }
+    channel stroke_projcenterz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../stroke_projcenterz\") }
+    }
+    channel parm {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = lock(ch(\"stroke_numstrokes\")) }
+    }
+    channel stroke_brushfalloff1pos {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_brushfalloff1pos\") }
+    }
+    channel stroke_brushfalloff1value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_brushfalloff1value\") }
+    }
+    channel stroke_brushfalloff1interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_brushfalloff1interp\") }
+    }
+    channel stroke_brushfalloff2pos {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_brushfalloff2pos\") }
+    }
+    channel stroke_brushfalloff2value {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_brushfalloff2value\") }
+    }
+    channel stroke_brushfalloff2interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_brushfalloff2interp\") }
+    }
+    channel stroke_numstrokes {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { options = {	 autoslope  ao }
+
+	 length = 0.040000000000000001 value = 2 0 accel = 0 0.013333333333333332 expr = ch(\"../stroke_numstrokes\") }
+      segment { options = {	 autoslope  ai }
+
+	 length = 0 value = 0 2 accel = 0.33333333333333331 0 expr = ch(\"../stroke_numstrokes\") }
+    }
+    channel stroke_changedsel {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_changedsel\") }
+    }
+    channel stroke_tool {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_tool\") }
+    }
+    channel stroke_radius {
+      lefttype = extend
+      righttype = extend
+      default = 0.59755879640579224
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.24340525269508362 0.24340525269508362 expr = ch(\"../stroke_radius\") }
+    }
+    channel stroke_opacity {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_opacity\") }
+    }
+    channel stroke_lift {
+      lefttype = extend
+      righttype = extend
+      default = 0.29999999999999999
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.29999999999999999 0.29999999999999999 expr = ch(\"../stroke_lift\") }
+    }
+    channel stroke_randomstrength {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_randomstrength\") }
+    }
+    channel stroke_lockroots {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_lockroots\") }
+    }
+    channel stroke_raybias {
+      lefttype = extend
+      righttype = extend
+      default = 0.01
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.01 0.01 expr = ch(\"../stroke_raybias\") }
+    }
+    channel stroke_brushfalloff {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 2 2 expr = ch(\"../stroke_brushfalloff\") }
+    }
+    channel stroke_constrainlength {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_constrainlength\") }
+    }
+    channel stroke_smoothingradius {
+      lefttype = extend
+      righttype = extend
+      default = 0.20000000000000001
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.20000000000000001 0.20000000000000001 expr = ch(\"../stroke_smoothingradius\") }
+    }
+    channel stroke_targetlengthrandom {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_targetlengthrandom\") }
+    }
+    channel stroke_targetlengthrangex {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../stroke_targetlengthrangex\") }
+    }
+    channel stroke_targetlengthrangey {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../stroke_targetlengthrangey\") }
+    }
+    channel stroke_targetlength {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../stroke_targetlength\") }
+    }
+    channel reset {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../reset\") }
+    }
+    channel recache {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../recache\") }
+    }
+    channel stroke_mirror {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirror\") }
+    }
+    channel stroke_mirrororiginx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirrororiginx\") }
+    }
+    channel stroke_mirrororiginy {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirrororiginy\") }
+    }
+    channel stroke_mirrororiginz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirrororiginz\") }
+    }
+    channel stroke_mirrordirx {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../stroke_mirrordirx\") }
+    }
+    channel stroke_mirrordiry {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirrordiry\") }
+    }
+    channel stroke_mirrordirz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../stroke_mirrordirz\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+reset	[ 0	locks=0 ]	(	[ reset	0 ] 	)
+recache	[ 0	locks=0 ]	(	[ recache	0 ] 	)
+folder3	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+collisionradius	[ 0	locks=0 ]	(	0	)
+resampleinput	[ 0	locks=0 ]	(	"off"	)
+segments	[ 0	locks=0 ]	(	0	)
+folder4	[ 0	locks=0 ]	(	0	)
+stroke_resample_poststroke	[ 0	locks=0 ]	(	"off"	)
+stroke_resample_segmode	[ 0	locks=0 ]	(	"uniforminputavg"	)
+stroke_resample_uniformsegs	[ 0	locks=0 ]	(	8	)
+stroke_resample_allaffected	[ 0	locks=0 ]	(	"off"	)
+_	[ 0	locks=0 ]	(	0	)
+stroke_tool	[ 0	locks=0 ]	(	[ stroke_tool	3 ] 	)
+stroke_radius	[ 8	locks=0 ]	(	[ stroke_radius	2.7048099040985107 ] 	)
+stroke_opacity	[ 0	locks=0 ]	(	[ stroke_opacity	1 ] 	)
+per_tool_strength	[ 0	locks=0 ]	(	"{\"groomscreen\": 1.0}"	)
+stroke_lift	[ 0	locks=0 ]	(	[ stroke_lift	0.29999999999999999 ] 	)
+per_tool_lift	[ 0	locks=0 ]	(	"{\"groomscreen\": 0.3}"	)
+stroke_sculpt	[ 0	locks=0 ]	(	"on"	)
+stroke_bend	[ 0	locks=0 ]	(	0	)
+stroke_smoothingradius	[ 0	locks=0 ]	(	[ stroke_smoothingradius	0.20000000000000001 ] 	)
+stroke_randomstrength	[ 0	locks=0 ]	(	[ stroke_randomstrength	0 ] 	)
+stroke_constrainlength	[ 0	locks=0 ]	(	[ stroke_constrainlength	1 ] 	)
+stroke_lockroots	[ 0	locks=0 ]	(	[ stroke_lockroots	1 ] 	)
+stroke_targetlengthrandom	[ 0	locks=0 ]	(	[ stroke_targetlengthrandom	0 ] 	)
+stroke_targetlength	[ 0	locks=0 ]	(	[ stroke_targetlength	0.10000000000000001 ] 	)
+stroke_useclosestlength	[ 0	locks=0 ]	(	"on"	)
+stroke_newguidelength	[ 0	locks=0 ]	(	0.10000000000000001	)
+stroke_newguidesegs	[ 0	locks=0 ]	(	8	)
+stroke_targetlengthrange	[ 0	locks=0 ]	(	[ stroke_targetlengthrangex	0.10000000000000001 ] 	[ stroke_targetlengthrangey	0.10000000000000001 ] 	)
+stroke_raybias	[ 8	locks=0 ]	(	[ stroke_raybias	0.01 ] 	)
+folder0	[ 0	locks=0 ]	(	0	)
+savefalloffpreset	[ 0	locks=0 ]	(	0	)
+falloffpreset_linear	[ 0	locks=0 ]	(	0	)
+falloffpreset_easein	[ 0	locks=0 ]	(	0	)
+falloffpreset_easeout	[ 0	locks=0 ]	(	0	)
+falloffpreset_constant	[ 0	locks=0 ]	(	0	)
+stroke_brushfalloff	[ 0	locks=0 ]	(	[ stroke_brushfalloff	2 ] 	)
+stroke_brushfalloffdata	[ 0	locks=0 ]	(	`chs(\"../stroke_brushfalloffdata\")`	)
+folder1	[ 0	locks=0 ]	(	0	)
+stroke_mirror	[ 8	locks=0 ]	(	[ stroke_mirror	0 ] 	)
+stroke_mirrororigin	[ 8	locks=0 ]	(	[ stroke_mirrororiginx	0 ] 	[ stroke_mirrororiginy	0 ] 	[ stroke_mirrororiginz	0 ] 	)
+stroke_mirrordir	[ 8	locks=0 ]	(	[ stroke_mirrordirx	1 ] 	[ stroke_mirrordiry	0 ] 	[ stroke_mirrordirz	0 ] 	)
+stroke_projgeoinput	[ 0	locks=0 ]	(	[ stroke_projgeoinput	1 ] 	)
+stroke_color	[ 0	locks=0 ]	(	0	0	0	)
+stroke_selection	[ 8	locks=0 ]	(	[ stroke_selection	"" ] 	)
+stroke_projtype	[ 8	locks=0 ]	(	[ stroke_projtype	3 ] 	)
+stroke_projcenter	[ 0	locks=0 ]	(	[ stroke_projcenterx	0 ] 	[ stroke_projcentery	0 ] 	[ stroke_projcenterz	0 ] 	)
+parm	[ 8	locks=0 ]	(	[ parm	0 ] 	)
+stroke_prompt	[ 8	locks=0 ]	(	`chs(\"../stroke_prompt\")`	)
+stroke_changedsel	[ 8	locks=0 ]	(	[ stroke_changedsel	0 ] 	)
+stroking	[ 0	locks=0 ]	(	"off"	)
+highlightsel	[ 0	locks=0 ]	(	"on"	)
+bakedstrokes	[ 0	locks=0 ]	(	""	)
+prestroke	[ 0	locks=0 ]	(	0	)
+poststroke	[ 0	locks=0 ]	(	0	)
+selectionnode	[ 0	locks=0 ]	(	.	)
+livemode	[ 0	locks=0 ]	(	"off"	)
+strokes	[ 0	locks=0 ]	(	""	)
+folder2	[ 0	locks=0 ]	(	0	)
+stroke_numstrokes	[ 0	locks=0 ]	(	[ stroke_numstrokes	0 ] 	)
+stroke_brushfalloff1pos	[ 0	locks=0 ]	(	[ stroke_brushfalloff1pos	0 ] 	)
+stroke_brushfalloff1value	[ 0	locks=0 ]	(	[ stroke_brushfalloff1value	1 ] 	)
+stroke_brushfalloff1interp	[ 0	locks=0 ]	(	[ stroke_brushfalloff1interp	1 ] 	)
+stroke_brushfalloff2pos	[ 0	locks=0 ]	(	[ stroke_brushfalloff2pos	1 ] 	)
+stroke_brushfalloff2value	[ 0	locks=0 ]	(	[ stroke_brushfalloff2value	0 ] 	)
+stroke_brushfalloff2interp	[ 0	locks=0 ]	(	[ stroke_brushfalloff2interp	1 ] 	)
+folder5	[ 0	locks=0 ]	(	0	)
+folder6	[ 0	locks=0 ]	(	0	)
+_2	[ 0	locks=0 ]	(	0	)
+folder7	[ 0	locks=0 ]	(	1	)
+folder8	[ 0	locks=0 ]	(	1	)
+folder9	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_groom.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"3"
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"44"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"object_drawguides"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_groom.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_groom.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.564733 -17.4905
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	velocity_edge_enable 1 1 "input1"
+1 	LYNX_velocity_v_groom 2 1 "input2"
+}
+inputs
+{
+0 	velocity_edge_enable 0 1
+1 	LYNX_velocity_v_groom 0 1
+}
+stat
+{
+  create 1540904922
+  modify 1560331290
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_groom.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"vector @LYNX_velocity_v;
+vector LYNX_velocity_v = 0;
+
+int v_prim_id = findattribval(1,\"prim\",\"LYNX_velocity_id\",@ptnum,0);
+if (v_prim_id != -1){
+    int v_prim_pts[] = primpoints(1,v_prim_id);
+    vector v_pt_A_P = point(1,\"P\",v_prim_pts[0]);
+    vector v_pt_B_P = point(1,\"P\",v_prim_pts[1]);
+    LYNX_velocity_v = v_pt_B_P-v_pt_A_P;
+}
+
+@LYNX_velocity_v = LYNX_velocity_v; 
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/transfer_LYNX_velocity_v_groom.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_visualizer_create.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_visualizer_create.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -5.61075 -19.3724
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	"" "" 1 "input1"
+1 	velocity_groom_enable 1 1 "input2"
+}
+inputs
+{
+0 	"" 0 1
+1 	velocity_groom_enable 0 1
+}
+stat
+{
+  create 1540904739
+  modify 1560333499
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_visualizer_create.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int npts = npoints(1);
+
+for(int pt_id=0;pt_id<npts;pt_id+=1)
+{
+    vector pt_P = point(1,\"P\",pt_id);
+    vector pt_v = point(1,\"LYNX_velocity_v\",pt_id);
+    int prim_id = addprim(0,\"polyline\");
+    int pt_id_root = addpoint(0,pt_P); 
+    int pt_id_tip = addpoint(0,pt_P+pt_v); 
+    addvertex(0,prim_id,pt_id_root);
+    addvertex(0,prim_id,pt_id_tip);
+    setpointattrib(0,\"Cd\",pt_id_root,set(1,1,0),\"set\");
+    setpointattrib(0,\"Alpha\",pt_id_tip,1,\"set\");
+    setpointattrib(0,\"Cd\",pt_id_tip,set(1,1,0),\"set\");
+    setpointattrib(0,\"Alpha\",pt_id_tip,0,\"set\");
+}
+int @gl_wireframe = -1;
+int @gl_lit = 0;
+
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/LYNX_velocity_v_visualizer_create.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_end.init"
+Content-Type: text/plain
+
+type = block_end
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_end.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.413222 -13.285
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch_solo 1 1 "input1"
+}
+inputs
+{
+0 	switch_solo 0 1
+}
+stat
+{
+  create 1540817151
+  modify 1560330787
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.75 0.4 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_end.chn"
+Content-Type: text/plain
+
+{
+    channel iterations {
+      lefttype = extend
+      righttype = extend
+      default = 10
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 10 10 expr = ch(\"../velocity_edge_selections\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_end.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+itermethod	[ 0	locks=0 ]	(	"count"	)
+method	[ 0	locks=0 ]	(	"feedback"	)
+iterations	[ 8	locks=0 ]	(	[ iterations	2 ] 	)
+startvalue	[ 0	locks=0 ]	(	1	)
+increment	[ 0	locks=0 ]	(	1	)
+class	[ 0	locks=0 ]	(	"point"	)
+useattrib	[ 0	locks=0 ]	(	"off"	)
+attrib	[ 0	locks=0 ]	(	""	)
+usemaxiter	[ 0	locks=0 ]	(	"off"	)
+maxiter	[ 0	locks=0 ]	(	10	)
+blockpath	[ 0	locks=0 ]	(	../loop_edge_selections_start	)
+templatepath	[ 0	locks=0 ]	(	""	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+dosinglepass	[ 0	locks=0 ]	(	"off"	)
+singlepass	[ 0	locks=0 ]	(	0	)
+stopcondition	[ 0	locks=0 ]	(	0	)
+multithread	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_end.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_start.init"
+Content-Type: text/plain
+
+type = block_begin
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_start.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.482858 7.12027
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_rename_v_to_LYNX_velocity_v 1 1 "input1"
+}
+inputs
+{
+0 	attr_rename_v_to_LYNX_velocity_v 0 1
+}
+stat
+{
+  create 1540817151
+  modify 1560331391
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.75 0.4 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_start.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"feedback"	)
+blockpath	[ 0	locks=0 ]	(	../loop_edge_selections_end	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+createmetablock	[ 0	locks=0 ]	(	0	)
+label1	[ 0	locks=0 ]	(	"iteration, numiterations, value, ivalue"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_start.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_meta.init"
+Content-Type: text/plain
+
+type = block_begin
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_meta.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 5.92306 7.12027
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create 1540817161
+  modify 1560331391
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.75 0.4 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_meta.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"metadata"	)
+blockpath	[ 0	locks=0 ]	(	../loop_edge_selections_end	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+createmetablock	[ 0	locks=0 ]	(	0	)
+label1	[ 0	locks=0 ]	(	"iteration, numiterations, value, ivalue"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/loop_edge_selections_meta.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_solo.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_solo.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.411622 -12.0584
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+2 	(__dot1) "" 1 "input1"
+3 	switch_skip 1 1 "input2"
+}
+inputs
+{
+0 	(__dot1) 0 1
+1 	switch_skip 0 1
+}
+stat
+{
+  create 1540817218
+  modify 1560330786
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_solo.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = "if(ch(\"../velocity_edge_selection_solo_state\"), ch(\"../velocity_edge_selection_solo_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)),1)" }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_solo.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_solo.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_skip.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_skip.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.67437 -10.9506
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(__dot1) "" 1 "input1"
+2 	transfer_LYNX_velocity_v_modified 0 1 "input2"
+}
+inputs
+{
+0 	(__dot1) 0 1
+1 	transfer_LYNX_velocity_v_modified 0 1
+}
+stat
+{
+  create 1540817218
+  modify 1560330784
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_skip.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = "if(ch(\"../velocity_edge_selection_skip_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) ,0, if(npointsgroup(\"../IN_EDGE_GROUP/\",\"LYNX_velocity_edge\")>0,1,0))" }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_skip.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_skip.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_post.init"
+Content-Type: text/plain
+
+type = smooth::2.0
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_post.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.46191 -8.82606
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	restoreLength 0 1 "input1"
+}
+inputs
+{
+0 	restoreLength 0 1
+}
+stat
+{
+  create 1540817295
+  modify 1560330761
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_post.chn"
+Content-Type: text/plain
+
+{
+    channel strength {
+      lefttype = extend
+      righttype = extend
+      default = 10
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 10 10 expr = ch(\"../velocity_edge_smooth_post_blur_strength_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) }
+    }
+    channel filterquality {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../velocity_edge_smooth_post_kernel_size_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_post.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+contrainedboundary	[ 0	locks=0 ]	(	"none"	)
+constrainedpoints	[ 0	locks=0 ]	(	@LYNX_velocity_v!=0	)
+attributes	[ 0	locks=0 ]	(	LYNX_velocity_v	)
+method	[ 0	locks=0 ]	(	"uniform"	)
+strength	[ 8	locks=0 ]	(	[ strength	5 ] 	)
+filterquality	[ 8	locks=0 ]	(	[ filterquality	1 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_post.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_pre.init"
+Content-Type: text/plain
+
+type = smooth::2.0
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_pre.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.46191 -7.21611
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	transfer_LYNX_velocity_v 0 1 "input1"
+}
+inputs
+{
+0 	transfer_LYNX_velocity_v 0 1
+}
+stat
+{
+  create 1540817295
+  modify 1560330579
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_pre.chn"
+Content-Type: text/plain
+
+{
+    channel strength {
+      lefttype = extend
+      righttype = extend
+      default = 10
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 10 10 expr = ch(\"../velocity_edge_smooth_pre_blur_strength_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) }
+    }
+    channel filterquality {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 value = 1 1 expr = ch(\"../velocity_edge_smooth_pre_kernel_size_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_pre.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+contrainedboundary	[ 0	locks=0 ]	(	"none"	)
+constrainedpoints	[ 0	locks=0 ]	(	""	)
+attributes	[ 0	locks=0 ]	(	LYNX_velocity_v	)
+method	[ 0	locks=0 ]	(	"uniform"	)
+strength	[ 8	locks=0 ]	(	[ strength	15 ] 	)
+filterquality	[ 8	locks=0 ]	(	[ filterquality	1 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/smooth_pre.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_uv.init"
+Content-Type: text/plain
+
+type = texture
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_uv.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -4.29901
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_LYNX_velocity_tan_u 0 1 "input1"
+}
+inputs
+{
+0 	attr_LYNX_velocity_tan_u 0 1
+}
+stat
+{
+  create 1540817454
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_uv.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+uvattrib	[ 0	locks=0 ]	(	LYNX_velocity_uv	)
+group	[ 0	locks=0 ]	(	""	)
+type	[ 0	locks=0 ]	(	"sarclen"	)
+axis	[ 0	locks=0 ]	(	"y"	)
+campath	[ 0	locks=0 ]	(	""	)
+coord	[ 0	locks=0 ]	(	"point"	)
+s	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	0	0	)
+angle	[ 0	locks=0 ]	(	0	)
+fixseams	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_uv.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_tan_u.init"
+Content-Type: text/plain
+
+type = polyframe
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_tan_u.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -3.68627
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	fuse_paths 0 1 "input1"
+}
+inputs
+{
+0 	fuse_paths 0 1
+}
+stat
+{
+  create 1540817481
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_tan_u.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+entity	[ 0	locks=0 ]	(	"point"	)
+style	[ 0	locks=0 ]	(	edge1	)
+attribname	[ 0	locks=0 ]	(	""	)
+Non	[ 0	locks=0 ]	(	"off"	)
+N	[ 0	locks=0 ]	(	N	)
+tangentuon	[ 0	locks=0 ]	(	"on"	)
+tangentu	[ 0	locks=0 ]	(	LYNX_velocity_tan_u	)
+tangentvon	[ 0	locks=0 ]	(	"off"	)
+tangentv	[ 0	locks=0 ]	(	tangentv	)
+signson	[ 0	locks=0 ]	(	"off"	)
+signs	[ 0	locks=0 ]	(	signs	)
+ortho	[ 0	locks=0 ]	(	"off"	)
+lefthanded	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_LYNX_velocity_tan_u.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sort_ids.init"
+Content-Type: text/plain
+
+type = sort
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sort_ids.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -3.05718
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	fuse_paths 0 1 "input1"
+}
+inputs
+{
+0 	fuse_paths 0 1
+}
+stat
+{
+  create 1540817495
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sort_ids.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+ptsort	[ 0	locks=0 ]	(	"vtxord"	)
+pointseed	[ 0	locks=0 ]	(	0	)
+pointoffset	[ 0	locks=0 ]	(	0	)
+pointprox	[ 0	locks=0 ]	(	0	0	0	)
+pointobjpath	[ 0	locks=0 ]	(	""	)
+pointdir	[ 0	locks=0 ]	(	0	1	0	)
+pointexpr	[ 0	locks=0 ]	(	0	)
+pointattrib	[ 0	locks=0 ]	(	""	)
+pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointreverse	[ 0	locks=0 ]	(	"off"	)
+primsort	[ 0	locks=0 ]	(	"none"	)
+primseed	[ 0	locks=0 ]	(	0	)
+primoffset	[ 0	locks=0 ]	(	0	)
+primprox	[ 0	locks=0 ]	(	0	0	0	)
+primobjpath	[ 0	locks=0 ]	(	""	)
+primdir	[ 0	locks=0 ]	(	0	1	0	)
+primexpr	[ 0	locks=0 ]	(	0	)
+primattrib	[ 0	locks=0 ]	(	""	)
+primattribcomp	[ 0	locks=0 ]	(	0	)
+primreverse	[ 0	locks=0 ]	(	"off"	)
+vertexprimorder	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sort_ids.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/blast_edge_selection.init"
+Content-Type: text/plain
+
+type = polycut
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/blast_edge_selection.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -1.88888
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	IN_EDGE_GROUP 0 1 "input1"
+}
+inputs
+{
+0 	IN_EDGE_GROUP 0 1
+}
+stat
+{
+  create 1540817541
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/blast_edge_selection.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+polygons	[ 0	locks=0 ]	(	""	)
+type	[ 0	locks=0 ]	(	"edges"	)
+cutpoints	[ 0	locks=0 ]	(	LYNX_edge_invert	)
+cutedges	[ 0	locks=0 ]	(	LYNX_velocity_edge_invert	)
+strategy	[ 0	locks=0 ]	(	"remove"	)
+detectedgechanges	[ 0	locks=0 ]	(	"attribcrossing"	)
+cutattrib	[ 0	locks=0 ]	(	""	)
+cutvalue	[ 0	locks=0 ]	(	0	)
+cutthreshold	[ 0	locks=0 ]	(	1	)
+keepclosed	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/blast_edge_selection.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_EDGE_GROUP.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_EDGE_GROUP.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -1.11274
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	group_edge_promote_for_skip 0 1 "input1"
+}
+inputs
+{
+0 	group_edge_promote_for_skip 0 1
+}
+stat
+{
+  create 1540817558
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.6 0.7 0.77 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_EDGE_GROUP.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_EDGE_GROUP.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_promote_for_skip.init"
+Content-Type: text/plain
+
+type = grouppromote
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_promote_for_skip.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 -0.310454
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	group_edge_cutout 0 1 "input1"
+}
+inputs
+{
+0 	group_edge_cutout 0 1
+}
+stat
+{
+  create 1540817578
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_promote_for_skip.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+promotions	[ 0	locks=0 ]	(	1	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+fromtype1	[ 0	locks=0 ]	(	"edges"	)
+totype1	[ 0	locks=0 ]	(	"points"	)
+group1	[ 0	locks=0 ]	(	LYNX_velocity_edge	)
+newname1	[ 0	locks=0 ]	(	""	)
+preserve1	[ 0	locks=0 ]	(	"on"	)
+onlyfull1	[ 0	locks=0 ]	(	"off"	)
+toattrib1	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_promote_for_skip.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_cutout.init"
+Content-Type: text/plain
+
+type = groupcombine
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_cutout.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 0.281594
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	group_edge_invert 0 1 "input1"
+}
+inputs
+{
+0 	group_edge_invert 0 1
+}
+stat
+{
+  create 1540817593
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_cutout.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+numcombine	[ 0	locks=0 ]	(	1	)
+grouptype1	[ 0	locks=0 ]	(	"guess"	)
+group1	[ 0	locks=0 ]	(	LYNX_velocity_edge_invert	)
+negate_a1	[ 0	locks=0 ]	(	"on"	)
+group_a1	[ 0	locks=0 ]	(	LYNX_velocity_edge	)
+op_ab1	[ 0	locks=0 ]	(	"none"	)
+negate_b1	[ 0	locks=0 ]	(	"off"	)
+group_b1	[ 0	locks=0 ]	(	""	)
+op_bc1	[ 0	locks=0 ]	(	"none"	)
+negate_c1	[ 0	locks=0 ]	(	"off"	)
+group_c1	[ 0	locks=0 ]	(	""	)
+op_cd1	[ 0	locks=0 ]	(	"none"	)
+negate_d1	[ 0	locks=0 ]	(	"off"	)
+group_d1	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_cutout.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_invert.init"
+Content-Type: text/plain
+
+type = groupcreate
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_invert.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 0.873915
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	switch_edge_boundry 0 1 "input1"
+}
+inputs
+{
+0 	switch_edge_boundry 0 1
+}
+stat
+{
+  create 1540817622
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_invert.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+groupname	[ 0	locks=0 ]	(	LYNX_velocity_edge_invert	)
+grouptype	[ 0	locks=0 ]	(	"edge"	)
+mergeop	[ 0	locks=0 ]	(	"replace"	)
+folder0	[ 0	locks=0 ]	(	0	)
+groupbase	[ 0	locks=0 ]	(	"on"	)
+basegroup	[ 0	locks=0 ]	(	""	)
+ordered	[ 0	locks=0 ]	(	"off"	)
+geotype	[ 0	locks=0 ]	(	"all"	)
+switcher3	[ 0	locks=0 ]	(	0	)
+groupbounding	[ 0	locks=0 ]	(	"off"	)
+boundtype	[ 0	locks=0 ]	(	"usebbox"	)
+size	[ 0	locks=0 ]	(	1	1	1	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
+iso	[ 0	locks=0 ]	(	0	)
+invertvolume	[ 0	locks=0 ]	(	"off"	)
+switcher4	[ 0	locks=0 ]	(	0	)
+groupnormal	[ 0	locks=0 ]	(	"off"	)
+camerapath	[ 0	locks=0 ]	(	""	)
+nonplanar	[ 0	locks=0 ]	(	"off"	)
+nonplanartol	[ 0	locks=0 ]	(	0.001	)
+dir	[ 0	locks=0 ]	(	0	0	1	)
+angle	[ 0	locks=0 ]	(	180	)
+switcher5	[ 0	locks=0 ]	(	0	)
+groupedges	[ 0	locks=0 ]	(	"off"	)
+dominedgeangle	[ 0	locks=0 ]	(	"off"	)
+minedgeangle	[ 0	locks=0 ]	(	20	)
+domaxedgeangle	[ 0	locks=0 ]	(	"off"	)
+maxedgeangle	[ 0	locks=0 ]	(	20	)
+edgeanglebetweenedges	[ 0	locks=0 ]	(	"off"	)
+dominedgelen	[ 0	locks=0 ]	(	"off"	)
+minedgelen	[ 0	locks=0 ]	(	0	)
+domaxedgelen	[ 0	locks=0 ]	(	"off"	)
+maxedgelen	[ 0	locks=0 ]	(	0	)
+dodepth	[ 0	locks=0 ]	(	"off"	)
+edgestep	[ 0	locks=0 ]	(	0	)
+edgeptgrp	[ 0	locks=0 ]	(	0	)
+unshared	[ 0	locks=0 ]	(	"off"	)
+boundarygroups	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_invert.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_edge_boundry.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_edge_boundry.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92078 1.62283
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	group_edge 0 1 "input1"
+2 	group_edge_boundry 0 1 "input2"
+}
+inputs
+{
+0 	group_edge 0 1
+1 	group_edge_boundry 0 1
+}
+stat
+{
+  create 1540817637
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_edge_boundry.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../velocity_edge_selection_boundry_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)) }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_edge_boundry.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_edge_boundry.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge.init"
+Content-Type: text/plain
+
+type = groupcreate
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.41039 2.69173
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_LYNX_velocity_N1 1 1 "input1"
+}
+inputs
+{
+0 	attr_LYNX_velocity_N1 0 1
+}
+stat
+{
+  create 1540817645
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+groupname	[ 0	locks=0 ]	(	LYNX_velocity_edge	)
+grouptype	[ 0	locks=0 ]	(	"edge"	)
+mergeop	[ 0	locks=0 ]	(	"replace"	)
+folder0	[ 0	locks=0 ]	(	0	)
+groupbase	[ 0	locks=0 ]	(	"on"	)
+basegroup	[ 0	locks=0 ]	(	`ifs(strcmp(\"\",chs(\"../velocity_edge_selection_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)))==0,\"-\",chs(\"../velocity_edge_selection_\"+detail(\"../loop_edge_selections_meta\",\"ivalue\",0)))`	)
+ordered	[ 0	locks=0 ]	(	"off"	)
+geotype	[ 0	locks=0 ]	(	"all"	)
+switcher3	[ 0	locks=0 ]	(	0	)
+groupbounding	[ 0	locks=0 ]	(	"off"	)
+boundtype	[ 0	locks=0 ]	(	"usebbox"	)
+size	[ 0	locks=0 ]	(	1	1	1	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
+iso	[ 0	locks=0 ]	(	0	)
+invertvolume	[ 0	locks=0 ]	(	"off"	)
+switcher4	[ 0	locks=0 ]	(	0	)
+groupnormal	[ 0	locks=0 ]	(	"off"	)
+camerapath	[ 0	locks=0 ]	(	""	)
+nonplanar	[ 0	locks=0 ]	(	"off"	)
+nonplanartol	[ 0	locks=0 ]	(	0.001	)
+dir	[ 0	locks=0 ]	(	0	0	1	)
+angle	[ 0	locks=0 ]	(	180	)
+switcher5	[ 0	locks=0 ]	(	0	)
+groupedges	[ 0	locks=0 ]	(	"off"	)
+dominedgeangle	[ 0	locks=0 ]	(	"off"	)
+minedgeangle	[ 0	locks=0 ]	(	20	)
+domaxedgeangle	[ 0	locks=0 ]	(	"off"	)
+maxedgeangle	[ 0	locks=0 ]	(	20	)
+edgeanglebetweenedges	[ 0	locks=0 ]	(	"off"	)
+dominedgelen	[ 0	locks=0 ]	(	"off"	)
+minedgelen	[ 0	locks=0 ]	(	0	)
+domaxedgelen	[ 0	locks=0 ]	(	"off"	)
+maxedgelen	[ 0	locks=0 ]	(	0	)
+dodepth	[ 0	locks=0 ]	(	"off"	)
+edgestep	[ 0	locks=0 ]	(	0	)
+edgeptgrp	[ 0	locks=0 ]	(	0	)
+unshared	[ 0	locks=0 ]	(	"off"	)
+boundarygroups	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_boundry.init"
+Content-Type: text/plain
+
+type = groupcreate
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_boundry.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.53375 2.22877
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	attr_LYNX_velocity_N1 1 1 "input1"
+}
+inputs
+{
+0 	attr_LYNX_velocity_N1 0 1
+}
+stat
+{
+  create 1540817645
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_boundry.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+groupname	[ 0	locks=0 ]	(	LYNX_velocity_edge	)
+grouptype	[ 0	locks=0 ]	(	"edge"	)
+mergeop	[ 0	locks=0 ]	(	"replace"	)
+folder0	[ 0	locks=0 ]	(	0	)
+groupbase	[ 0	locks=0 ]	(	"off"	)
+basegroup	[ 0	locks=0 ]	(	""	)
+ordered	[ 0	locks=0 ]	(	"off"	)
+geotype	[ 0	locks=0 ]	(	"all"	)
+switcher3	[ 0	locks=0 ]	(	0	)
+groupbounding	[ 0	locks=0 ]	(	"off"	)
+boundtype	[ 0	locks=0 ]	(	"usebbox"	)
+size	[ 0	locks=0 ]	(	1	1	1	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
+iso	[ 0	locks=0 ]	(	0	)
+invertvolume	[ 0	locks=0 ]	(	"off"	)
+switcher4	[ 0	locks=0 ]	(	0	)
+groupnormal	[ 0	locks=0 ]	(	"off"	)
+camerapath	[ 0	locks=0 ]	(	""	)
+nonplanar	[ 0	locks=0 ]	(	"off"	)
+nonplanartol	[ 0	locks=0 ]	(	0.001	)
+dir	[ 0	locks=0 ]	(	0	0	1	)
+angle	[ 0	locks=0 ]	(	180	)
+switcher5	[ 0	locks=0 ]	(	0	)
+groupedges	[ 0	locks=0 ]	(	"on"	)
+dominedgeangle	[ 0	locks=0 ]	(	"off"	)
+minedgeangle	[ 0	locks=0 ]	(	20	)
+domaxedgeangle	[ 0	locks=0 ]	(	"off"	)
+maxedgeangle	[ 0	locks=0 ]	(	20	)
+edgeanglebetweenedges	[ 0	locks=0 ]	(	"off"	)
+dominedgelen	[ 0	locks=0 ]	(	"off"	)
+minedgelen	[ 0	locks=0 ]	(	0	)
+domaxedgelen	[ 0	locks=0 ]	(	"off"	)
+maxedgelen	[ 0	locks=0 ]	(	0	)
+dodepth	[ 0	locks=0 ]	(	"off"	)
+edgestep	[ 0	locks=0 ]	(	0	)
+edgeptgrp	[ 0	locks=0 ]	(	0	)
+unshared	[ 0	locks=0 ]	(	"on"	)
+boundarygroups	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_edge_boundry.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/promote_N.init"
+Content-Type: text/plain
+
+type = attribpromote
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/promote_N.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.96236 4.3365
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch_create_Normal 1 1 "input1"
+}
+inputs
+{
+0 	switch_create_Normal 0 1
+}
+stat
+{
+  create 1540817694
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/promote_N.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+inname	[ 0	locks=0 ]	(	N	)
+inclass	[ 0	locks=0 ]	(	"vertex"	)
+outclass	[ 0	locks=0 ]	(	"point"	)
+usepieceattrib	[ 0	locks=0 ]	(	"off"	)
+pieceattrib	[ 0	locks=0 ]	(	name	)
+method	[ 0	locks=0 ]	(	"mean"	)
+useoutname	[ 0	locks=0 ]	(	"off"	)
+outname	[ 0	locks=0 ]	(	LYNX_N	)
+deletein	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/promote_N.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.08737 -20.4719
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	attr_rename_LYNX_velocity_v_to_v 1 1 "input1"
+}
+inputs
+{
+0 	attr_rename_LYNX_velocity_v_to_v 0 1
+}
+stat
+{
+  create 1540817722
+  modify 1560333499
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+outputidx	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_edge_enable.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_edge_enable.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.08737 -14.6512
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	attr_rename_v_to_LYNX_velocity_v 1 1 "input1"
+2 	loop_edge_selections_end 1 1 "input2"
+}
+inputs
+{
+0 	attr_rename_v_to_LYNX_velocity_v 0 1
+1 	loop_edge_selections_end 0 1
+}
+stat
+{
+  create 1540818505
+  modify 1560330791
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_edge_enable.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = "ch(\"../velocity_edge_selections\")>0 && ch(\"../velocity_edge_enable\")==1" }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_edge_enable.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_edge_enable.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_create_Normal.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_create_Normal.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.96581 5.02524
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+3 	create_Normal 1 1 "input1"
+0 	loop_edge_selections_start 0 1 "input2"
+}
+inputs
+{
+0 	create_Normal 0 1
+1 	loop_edge_selections_start 0 1
+}
+stat
+{
+  create 1540820428
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_create_Normal.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = haspointattrib(\"../IN_Data\",\"N\")==1||hasvertexattrib(\"../IN_Data\",\"N\")==1 }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_create_Normal.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_create_Normal.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_Data.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_Data.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.32139 9.94068
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create 1540820476
+  modify 1560330710
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.6 0.7 0.77 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_Data.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/IN_Data.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_groom_enable.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_groom_enable.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.08737 -18.3657
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	velocity_edge_enable 1 1 "input1"
+2 	transfer_LYNX_velocity_v_groom 2 1 "input2"
+}
+inputs
+{
+0 	velocity_edge_enable 0 1
+1 	transfer_LYNX_velocity_v_groom 0 1
+}
+stat
+{
+  create 1540904944
+  modify 1560329723
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_groom_enable.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../velocity_groom_enable\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_groom_enable.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/velocity_groom_enable.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.init"
+Content-Type: text/plain
+
+type = polyframe
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.53375 5.91318
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	loop_edge_selections_start 0 1 "input1"
+}
+inputs
+{
+0 	loop_edge_selections_start 0 1
+}
+stat
+{
+  create 1541356140
+  modify 1560330369
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+entity	[ 0	locks=0 ]	(	"point"	)
+style	[ 0	locks=0 ]	(	edge2	)
+attribname	[ 0	locks=0 ]	(	""	)
+Non	[ 0	locks=0 ]	(	"on"	)
+N	[ 0	locks=0 ]	(	N	)
+tangentuon	[ 0	locks=0 ]	(	"off"	)
+tangentu	[ 0	locks=0 ]	(	tangentu	)
+tangentvon	[ 0	locks=0 ]	(	"off"	)
+tangentv	[ 0	locks=0 ]	(	tangentv	)
+signson	[ 0	locks=0 ]	(	"off"	)
+signs	[ 0	locks=0 ]	(	signs	)
+ortho	[ 0	locks=0 ]	(	"off"	)
+lefthanded	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/create_Normal.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_v_to_LYNX_velocity_v.init"
+Content-Type: text/plain
+
+type = attribute
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_v_to_LYNX_velocity_v.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.32484 8.9385
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	IN_Data 1 1 "input1"
+}
+inputs
+{
+0 	IN_Data 0 1
+}
+stat
+{
+  create 1560329200
+  modify 1560330710
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_v_to_LYNX_velocity_v.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+_label1_	[ 0	locks=0 ]	(	From	To	)
+ptrenames	[ 0	locks=0 ]	(	5	)
+ptdel	[ 0	locks=0 ]	(	""	)
+ptkeep	[ 0	locks=0 ]	(	*	)
+_label2_	[ 0	locks=0 ]	(	From	To	)
+vtxrenames	[ 0	locks=0 ]	(	5	)
+vtxdel	[ 0	locks=0 ]	(	""	)
+vtxkeep	[ 0	locks=0 ]	(	*	)
+_label3_	[ 0	locks=0 ]	(	From	To	)
+primrenames	[ 0	locks=0 ]	(	5	)
+primdel	[ 0	locks=0 ]	(	""	)
+primkeep	[ 0	locks=0 ]	(	*	)
+_label4_	[ 0	locks=0 ]	(	From	To	)
+detailrenames	[ 0	locks=0 ]	(	5	)
+dtldel	[ 0	locks=0 ]	(	""	)
+dtlkeep	[ 0	locks=0 ]	(	*	)
+_label5_	[ 0	locks=0 ]	(	RiName	RiType	Offset	""	)
+rmanconversions	[ 0	locks=0 ]	(	5	)
+ridefault	[ 0	locks=0 ]	(	"off"	)
+updatevar	[ 0	locks=0 ]	(	"on"	)
+overwrite	[ 0	locks=0 ]	(	"off"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
+frompt0	[ 0	locks=0 ]	(	`chs(\"../velocity_attribute_velocity\")`	)
+topt0	[ 0	locks=0 ]	(	LYNX_velocity_v	)
+frompt1	[ 0	locks=0 ]	(	""	)
+topt1	[ 0	locks=0 ]	(	""	)
+frompt2	[ 0	locks=0 ]	(	""	)
+topt2	[ 0	locks=0 ]	(	""	)
+frompt3	[ 0	locks=0 ]	(	""	)
+topt3	[ 0	locks=0 ]	(	""	)
+frompt4	[ 0	locks=0 ]	(	""	)
+topt4	[ 0	locks=0 ]	(	""	)
+fromvtx0	[ 0	locks=0 ]	(	""	)
+tovtx0	[ 0	locks=0 ]	(	""	)
+fromvtx1	[ 0	locks=0 ]	(	""	)
+tovtx1	[ 0	locks=0 ]	(	""	)
+fromvtx2	[ 0	locks=0 ]	(	""	)
+tovtx2	[ 0	locks=0 ]	(	""	)
+fromvtx3	[ 0	locks=0 ]	(	""	)
+tovtx3	[ 0	locks=0 ]	(	""	)
+fromvtx4	[ 0	locks=0 ]	(	""	)
+tovtx4	[ 0	locks=0 ]	(	""	)
+frompr0	[ 0	locks=0 ]	(	""	)
+topr0	[ 0	locks=0 ]	(	""	)
+frompr1	[ 0	locks=0 ]	(	""	)
+topr1	[ 0	locks=0 ]	(	""	)
+frompr2	[ 0	locks=0 ]	(	""	)
+topr2	[ 0	locks=0 ]	(	""	)
+frompr3	[ 0	locks=0 ]	(	""	)
+topr3	[ 0	locks=0 ]	(	""	)
+frompr4	[ 0	locks=0 ]	(	""	)
+topr4	[ 0	locks=0 ]	(	""	)
+fromdtl0	[ 0	locks=0 ]	(	""	)
+todtl0	[ 0	locks=0 ]	(	""	)
+fromdtl1	[ 0	locks=0 ]	(	""	)
+todtl1	[ 0	locks=0 ]	(	""	)
+fromdtl2	[ 0	locks=0 ]	(	""	)
+todtl2	[ 0	locks=0 ]	(	""	)
+fromdtl3	[ 0	locks=0 ]	(	""	)
+todtl3	[ 0	locks=0 ]	(	""	)
+fromdtl4	[ 0	locks=0 ]	(	""	)
+todtl4	[ 0	locks=0 ]	(	""	)
+hname0	[ 0	locks=0 ]	(	""	)
+riname0	[ 0	locks=0 ]	(	""	)
+ritype0	[ 0	locks=0 ]	(	vtx_float	)
+rioff0	[ 0	locks=0 ]	(	0	)
+hname1	[ 0	locks=0 ]	(	""	)
+riname1	[ 0	locks=0 ]	(	""	)
+ritype1	[ 0	locks=0 ]	(	vtx_float	)
+rioff1	[ 0	locks=0 ]	(	0	)
+hname2	[ 0	locks=0 ]	(	""	)
+riname2	[ 0	locks=0 ]	(	""	)
+ritype2	[ 0	locks=0 ]	(	vtx_float	)
+rioff2	[ 0	locks=0 ]	(	0	)
+hname3	[ 0	locks=0 ]	(	""	)
+riname3	[ 0	locks=0 ]	(	""	)
+ritype3	[ 0	locks=0 ]	(	vtx_float	)
+rioff3	[ 0	locks=0 ]	(	0	)
+hname4	[ 0	locks=0 ]	(	""	)
+riname4	[ 0	locks=0 ]	(	""	)
+ritype4	[ 0	locks=0 ]	(	vtx_float	)
+rioff4	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_v_to_LYNX_velocity_v.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_LYNX_velocity_v_to_v.init"
+Content-Type: text/plain
+
+type = attribute
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_LYNX_velocity_v_to_v.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.09082 -19.7447
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	velocity_groom_enable 1 1 "input1"
+}
+inputs
+{
+0 	velocity_groom_enable 0 1
+}
+stat
+{
+  create 1560329200
+  modify 1560333494
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_LYNX_velocity_v_to_v.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+_label1_	[ 0	locks=0 ]	(	From	To	)
+ptrenames	[ 0	locks=0 ]	(	5	)
+ptdel	[ 0	locks=0 ]	(	""	)
+ptkeep	[ 0	locks=0 ]	(	*	)
+_label2_	[ 0	locks=0 ]	(	From	To	)
+vtxrenames	[ 0	locks=0 ]	(	5	)
+vtxdel	[ 0	locks=0 ]	(	""	)
+vtxkeep	[ 0	locks=0 ]	(	*	)
+_label3_	[ 0	locks=0 ]	(	From	To	)
+primrenames	[ 0	locks=0 ]	(	5	)
+primdel	[ 0	locks=0 ]	(	""	)
+primkeep	[ 0	locks=0 ]	(	*	)
+_label4_	[ 0	locks=0 ]	(	From	To	)
+detailrenames	[ 0	locks=0 ]	(	5	)
+dtldel	[ 0	locks=0 ]	(	""	)
+dtlkeep	[ 0	locks=0 ]	(	*	)
+_label5_	[ 0	locks=0 ]	(	RiName	RiType	Offset	""	)
+rmanconversions	[ 0	locks=0 ]	(	5	)
+ridefault	[ 0	locks=0 ]	(	"off"	)
+updatevar	[ 0	locks=0 ]	(	"on"	)
+overwrite	[ 0	locks=0 ]	(	"off"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
+frompt0	[ 0	locks=0 ]	(	LYNX_velocity_v	)
+topt0	[ 0	locks=0 ]	(	`chs(\"../velocity_attribute_velocity\")`	)
+frompt1	[ 0	locks=0 ]	(	""	)
+topt1	[ 0	locks=0 ]	(	""	)
+frompt2	[ 0	locks=0 ]	(	""	)
+topt2	[ 0	locks=0 ]	(	""	)
+frompt3	[ 0	locks=0 ]	(	""	)
+topt3	[ 0	locks=0 ]	(	""	)
+frompt4	[ 0	locks=0 ]	(	""	)
+topt4	[ 0	locks=0 ]	(	""	)
+fromvtx0	[ 0	locks=0 ]	(	""	)
+tovtx0	[ 0	locks=0 ]	(	""	)
+fromvtx1	[ 0	locks=0 ]	(	""	)
+tovtx1	[ 0	locks=0 ]	(	""	)
+fromvtx2	[ 0	locks=0 ]	(	""	)
+tovtx2	[ 0	locks=0 ]	(	""	)
+fromvtx3	[ 0	locks=0 ]	(	""	)
+tovtx3	[ 0	locks=0 ]	(	""	)
+fromvtx4	[ 0	locks=0 ]	(	""	)
+tovtx4	[ 0	locks=0 ]	(	""	)
+frompr0	[ 0	locks=0 ]	(	""	)
+topr0	[ 0	locks=0 ]	(	""	)
+frompr1	[ 0	locks=0 ]	(	""	)
+topr1	[ 0	locks=0 ]	(	""	)
+frompr2	[ 0	locks=0 ]	(	""	)
+topr2	[ 0	locks=0 ]	(	""	)
+frompr3	[ 0	locks=0 ]	(	""	)
+topr3	[ 0	locks=0 ]	(	""	)
+frompr4	[ 0	locks=0 ]	(	""	)
+topr4	[ 0	locks=0 ]	(	""	)
+fromdtl0	[ 0	locks=0 ]	(	""	)
+todtl0	[ 0	locks=0 ]	(	""	)
+fromdtl1	[ 0	locks=0 ]	(	""	)
+todtl1	[ 0	locks=0 ]	(	""	)
+fromdtl2	[ 0	locks=0 ]	(	""	)
+todtl2	[ 0	locks=0 ]	(	""	)
+fromdtl3	[ 0	locks=0 ]	(	""	)
+todtl3	[ 0	locks=0 ]	(	""	)
+fromdtl4	[ 0	locks=0 ]	(	""	)
+todtl4	[ 0	locks=0 ]	(	""	)
+hname0	[ 0	locks=0 ]	(	""	)
+riname0	[ 0	locks=0 ]	(	""	)
+ritype0	[ 0	locks=0 ]	(	vtx_float	)
+rioff0	[ 0	locks=0 ]	(	0	)
+hname1	[ 0	locks=0 ]	(	""	)
+riname1	[ 0	locks=0 ]	(	""	)
+ritype1	[ 0	locks=0 ]	(	vtx_float	)
+rioff1	[ 0	locks=0 ]	(	0	)
+hname2	[ 0	locks=0 ]	(	""	)
+riname2	[ 0	locks=0 ]	(	""	)
+ritype2	[ 0	locks=0 ]	(	vtx_float	)
+rioff2	[ 0	locks=0 ]	(	0	)
+hname3	[ 0	locks=0 ]	(	""	)
+riname3	[ 0	locks=0 ]	(	""	)
+ritype3	[ 0	locks=0 ]	(	vtx_float	)
+rioff3	[ 0	locks=0 ]	(	0	)
+hname4	[ 0	locks=0 ]	(	""	)
+riname4	[ 0	locks=0 ]	(	""	)
+ritype4	[ 0	locks=0 ]	(	vtx_float	)
+rioff4	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attr_rename_LYNX_velocity_v_to_v.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/OUT_Visualizer.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/OUT_Visualizer.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -5.60775 -20.4682
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	LYNX_velocity_v_visualizer_create 2 1 "input1"
+}
+inputs
+{
+0 	LYNX_velocity_v_visualizer_create 0 1
+}
+stat
+{
+  create 1560333274
+  modify 1560333492
+  author LYNX@LucaScheller
+  access 0777
+}
+color UT_Color RGB 0.6 0.7 0.77 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/OUT_Visualizer.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/OUT_Visualizer.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"17.5.229"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":0.911621986478034385,
+	"posy":-10.3936051086127037,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"loop_edge_selections_start 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":6.40460642327413776,
+	"posy":-9.47252691920832213,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"(__dot3) 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot3.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":6.40460642327413776,
+	"posy":-4.97360070647308472,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"loop_edge_selections_meta 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.order"
+Content-Type: text/plain
+
+38
+loop_edge_selections_end
+loop_edge_selections_start
+loop_edge_selections_meta
+switch_solo
+switch_skip
+transfer_LYNX_velocity_v_modified
+smooth_post
+restoreLength
+smooth_pre
+transfer_LYNX_velocity_v
+attr_LYNX_velocity_v
+attr_LYNX_velocity_uv
+attr_LYNX_velocity_tan_u
+sort_ids
+fuse_paths
+blast_edge_selection
+IN_EDGE_GROUP
+group_edge_promote_for_skip
+group_edge_cutout
+group_edge_invert
+switch_edge_boundry
+group_edge
+group_edge_boundry
+promote_N
+output1
+velocity_edge_enable
+switch_create_Normal
+IN_Data
+attr_LYNX_velocity_N1
+LYNX_velocity_v_guide_create
+LYNX_velocity_v_groom
+transfer_LYNX_velocity_v_groom
+velocity_groom_enable
+create_Normal
+attr_rename_v_to_LYNX_velocity_v
+attr_rename_LYNX_velocity_v_to_v
+LYNX_velocity_v_visualizer_create
+OUT_Visualizer
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY--

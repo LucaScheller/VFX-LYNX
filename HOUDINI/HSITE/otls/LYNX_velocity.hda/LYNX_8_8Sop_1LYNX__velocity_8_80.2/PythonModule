@@ -1,0 +1,43 @@
+def velocity_edge_selection_settings_collapse():
+    n = hou.pwd()
+    for edge_selection_idx in range(n.parm("velocity_edge_selections").eval()):
+        n.parm("velocity_edge_selection_settings_"+str(edge_selection_idx+1)).set(0)
+        
+def velocity_edge_selection_solo_state():
+    n = hou.pwd()
+    edge_selection_solo_state = 0
+    for edge_selection_idx in range(n.parm("velocity_edge_selections").eval()):
+        if n.parm("velocity_edge_selection_skip_"+str(edge_selection_idx+1)).eval()==0:
+            edge_selection_solo_state += n.parm("velocity_edge_selection_solo_"+str(edge_selection_idx+1)).eval()
+    n.parm("velocity_edge_selection_solo_state").set( max(0,min(edge_selection_solo_state,1)))
+    
+########## Velocity Groom ##########
+
+def prestroke():
+    n = hou.pwd()
+    n_groom = n.node("LYNX_velocity_v_groom")
+    n_groom.parm("prestroke").pressButton()
+
+def poststroke():
+    n = hou.pwd()
+    n_groom = n.node("LYNX_velocity_v_groom")
+    n_groom.parm("poststroke").pressButton()
+    
+    
+def applyFalloffPreset(presetname):
+    presets = {
+        'linear': {"keys": [0.0, 1.0], "values": [1.0, 0.0], "basis": ["Linear", "Linear"]},
+        'constant': {"keys": [0.0, 1.0], "values": [1.0, 1.0], "basis": ["Linear", "Linear"]},
+        'easein': {"keys": [0.0, 0.30022573471069336, 0.6185101866722107, 0.8510158061981201, 1.0], "values": [1.0, 0.9281250238418579, 0.703125, 0.39375001192092896, 0.0], "basis": ["Linear", "Linear", "Linear", "Linear", "Linear"]},
+        'easeout': {"keys": [0.0, 0.15349887311458588, 0.3837471902370453, 0.715575635433197, 1.0], "values": [1.0, 0.559374988079071, 0.25, 0.08749999850988388, 0.0 ], "basis": ["Linear", "Linear", "Linear", "Linear", "Linear"]},
+    }
+
+    if not presetname in presets:
+        raise hou.Error('invalid preset name')
+
+    preset = presets[presetname]
+
+    basis = [getattr(hou.rampBasis, b) for b in preset['basis']]
+
+    ramp = hou.Ramp(basis, preset['keys'], preset['values'])
+    hou.pwd().parm('stroke_brushfalloff').set(ramp)

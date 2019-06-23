@@ -1,0 +1,718 @@
+# Dialog script for LYNX::LYNX_velocity::0.2 automatically generated
+
+{
+    name	LYNX::LYNX_velocity::0.2
+    script	LYNX::LYNX_velocity::0.2
+    label	"LYNX velocity"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "velocity_edge_selection_solo_state"
+        label   "velocity_edge_selection_solo_state"
+        type    integer
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "velocity_attribute_velocity"
+        label   "Velocity Attribute Name"
+        type    string
+        default { "v" }
+        menureplace {
+            [ "menuitem = []" ]
+            [ "n_path = hou.pwd().path()" ]
+            [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+            [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+            [ "n_IN_DATA_geometry_pointAttribs = n_IN_DATA_geometry.pointAttribs()" ]
+            [ "if n_IN_DATA_geometry_pointAttribs!=():" ]
+            [ "    for attrib in n_IN_DATA_geometry_pointAttribs:" ]
+            [ "        menuitem.append(attrib.name())" ]
+            [ "        menuitem.append(attrib.name())" ]
+            [ "            " ]
+            [ "return menuitem" ]
+            language python
+        }
+    }
+    group {
+        name    "velocity_edge_folder"
+        label   "Velocity Via Edges"
+
+        parm {
+            name    "velocity_edge_enable"
+            label   "Enable Velocity Via Edges"
+            type    toggle
+            joinnext
+            default { "1" }
+        }
+        parm {
+            name    "velocity_edge_collaps_settings_folder"
+            label   "Collapse All Settings"
+            type    button
+            default { "0" }
+            parmtag { "script_callback" "hou.phm().velocity_edge_selection_settings_collapse()" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "velocity_edge_selections"
+            label    "Edge Selections Sets"
+            disablewhen "{ velocity_edge_enable == 0 }"
+            parmtag { "multistartoffset" "1" }
+            parmtag { "script_callback" "hou.phm().velocity_edge_selection_solo_state()" }
+            parmtag { "script_callback_language" "python" }
+
+            parm {
+                name    "velocity_edge_selection_skip_#"
+                label   "Skip"
+                type    toggle
+                joinnext
+                default { "0" }
+                parmtag { "script_callback" "" }
+            }
+            parm {
+                name    "velocity_edge_selection_solo_#"
+                label   "Solo"
+                type    toggle
+                joinnext
+                default { "0" }
+                disablewhen "{ velocity_edge_selection_skip_# == 1 }"
+                parmtag { "script_callback" "hou.phm().velocity_edge_selection_solo_state()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "velocity_edge_selection_boundry_#"
+                label   "Use Boundry Edges"
+                type    toggle
+                joinnext
+                default { "0" }
+                disablewhen "{ velocity_edge_selection_skip_# == 1 }"
+                parmtag { "script_callback" "" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "velocity_edge_selection_#"
+                label   "Edge Group"
+                type    string
+                default { "" }
+                disablewhen "{ velocity_edge_selection_skip_# == 1 } { velocity_edge_selection_boundry_# == 1 }"
+                menutoggle {
+                    [ "opmenu -l group1 basegroup" ]
+                }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Edges,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+            groupcollapsible {
+                name    "velocity_edge_selection_settings_#"
+                label   "Settings"
+                hidewhentab "{ velocity_edge_selection_skip_# == 1 }"
+
+                groupsimple {
+                    name    "velocity_edge_general_folder_#"
+                    label   "General"
+
+                    parm {
+                        name    "velocity_edge_transfer_mode_#"
+                        label   "Transfer Mode"
+                        type    string
+                        joinnext
+                        default { "ADD" }
+                        menu {
+                            "ADD"       "Add"
+                            "MULTIPLY"  "Multiply"
+                        }
+                    }
+                    parm {
+                        name    "velocity_edge_reverse_uv_#"
+                        label   "Reverse UV"
+                        type    toggle
+                        default { "0" }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_pre_label_#"
+                        label   "Smooth Pre"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_pre_kernel_size_#"
+                        label   "Kernel Size"
+                        type    integer
+                        joinnext
+                        default { "1" }
+                        range   { 1! 5! }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_pre_blur_strength_#"
+                        label   "Strength"
+                        type    float
+                        default { "15" }
+                        range   { 0! 50 }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_post_label_#"
+                        label   "Smooth Post"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_post_kernel_size_#"
+                        label   "Kernel Size"
+                        type    integer
+                        joinnext
+                        default { "1" }
+                        range   { 1! 5! }
+                    }
+                    parm {
+                        name    "velocity_edge_smooth_post_blur_strength_#"
+                        label   "Strength"
+                        type    float
+                        default { "5" }
+                        range   { 0! 50 }
+                    }
+                }
+
+                groupsimple {
+                    name    "velocity_edge_rotate_folder_#"
+                    label   "Rotation"
+
+                    parm {
+                        name    "velocity_edge_rot_strength_#"
+                        label   "Angle"
+                        type    float
+                        default { "0" }
+                        range   { -360 360 }
+                    }
+                    parm {
+                        name    "velocity_edge_rot_master_#"
+                        label   "Offset/Repeat/Min/Max"
+                        type    float
+                        size    4
+                        default { "0" "1" "0" "90" }
+                        range   { -360 360 }
+                    }
+                    parm {
+                        name    "velocity_edge_rot_noise_#"
+                        label   "Noise Offset/Scale/Min/Max"
+                        type    float
+                        size    4
+                        default { "0" "55" "25" "-ch(\"velocity_edge_rot_noise_#3\")" }
+                        range   { -360 360 }
+                    }
+                    parm {
+                        name    "velocity_edge_rot_ramp_#"
+                        label   "Rotate Remap"
+                        type    ramp_flt
+                        default { "2" }
+                        range   { 1! 10 }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "velocity_edge_rot_se_ramp_#"
+                        label   "Rotate Remap Start To End"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                }
+
+                groupsimple {
+                    name    "velocity_edge_scale_folder_#"
+                    label   "Strength"
+
+                    parm {
+                        name    "velocity_edge_scale_strength_#"
+                        label   "Strength"
+                        type    float
+                        default { "1" }
+                        range   { 0 5 }
+                    }
+                    parm {
+                        name    "velocity_edge_scale_master_#"
+                        label   "Offset/Repeat/Min/Max"
+                        type    float
+                        size    4
+                        default { "0" "1" "0" "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "velocity_edge_scale_noise_#"
+                        label   "Noise Offset/Scale/Min/Max"
+                        type    float
+                        size    4
+                        default { "0" "15" ".5*ch(\"velocity_edge_scale_noise_#4\")" "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "velocity_edge_scale_ramp_#"
+                        label   "Strength Remap"
+                        type    ramp_flt
+                        default { "2" }
+                        range   { 1! 10 }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "velocity_edge_scale_se_ramp_#"
+                        label   "Strength Remap Start To End"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    group {
+        name    "velocity_edge_folder_1"
+        label   "Velocity Groom"
+
+        parm {
+            name    "velocity_groom_enable"
+            label   "Enable Velocity Grooming"
+            type    toggle
+            joinnext
+            default { "0" }
+        }
+        parm {
+            name    "reset"
+            label   "Reset Strokes"
+            type    button
+            joinnext
+            default { "0" }
+            disablewhen "{ velocity_groom_enable == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "recache"
+            label   "Recache Strokes"
+            type    button
+            default { "0" }
+            disablewhen "{ velocity_groom_enable == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "Groom_Tool_Controls"
+            label   "Groom Tool Controls"
+            disablewhen "{ velocity_groom_enable == 0 }"
+
+            parm {
+                name    "stroke_tool"
+                label   "Tool"
+                type    ordinal
+                default { "groomscreen" }
+                menu {
+                    "groomscreen"   "Screen Brush"
+                    "groomsurface"  "Surface Brush"
+                    "cut"           "Cut"
+                    "extend"        "Extend"
+                    "lift"          "Lift"
+                    "clump"         "Clump"
+                    "part"          "Part"
+                    "adjustlength"  "Adjust Length"
+                    "smooth"        "Smooth"
+                }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "stroke_radius"
+                label   "Radius"
+                type    float
+                default { "1" }
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_opacity"
+                label   "Strength"
+                type    float
+                default { "1" }
+                hidewhen "{ stroke_tool == plantguides } { stroke_tool == cut } { stroke_tool == extend }"
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "stroke_lift"
+                label   "Lift"
+                type    float
+                default { "0.3" }
+                hidewhen "{ stroke_tool != groomscreen stroke_tool != groomsurface stroke_tool != lift }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "stroke_smoothingradius"
+                label   "Smoothing Radius"
+                type    float
+                default { "0.2" }
+                hidewhen "{ stroke_tool != smooth }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_randomstrength"
+                label   "Randomize"
+                type    float
+                default { "0" }
+                hidewhen "{ stroke_tool == adjustlength } { stroke_tool == clump } { stroke_tool == extend } { stroke_tool == cut } { stroke_tool == smooth } { stroke_tool == plantguides }"
+                range   { 0! 1! }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_constrainlength"
+                label   "Constrain Length"
+                type    toggle
+                default { "on" }
+                hidewhen "{ stroke_tool != groomscreen stroke_tool != groomsurface }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_lockroots"
+                label   "Lock Roots In Place"
+                type    toggle
+                invisible
+                default { "on" }
+                hidewhen "{ stroke_tool != groomscreen stroke_tool != groomsurface }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_targetlengthrandom"
+                label   "Random Length"
+                type    toggle
+                default { "off" }
+                hidewhen "{ stroke_tool != adjustlength }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_targetlengthrange"
+                label   "Target Length Range"
+                type    vector2
+                size    2
+                default { "0.1" "0.1" }
+                hidewhen "{ stroke_tool != adjustlength } { stroke_targetlengthrandom == 0 }"
+                range   { -1 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_targetlength"
+                label   "Target Length"
+                type    float
+                default { "0.1" }
+                hidewhen "{ stroke_tool != adjustlength } { stroke_targetlengthrandom == 1 }"
+                range   { 0.001! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "stroke_raybias"
+                label   "Ray Bias"
+                type    float
+                default { "0.01" }
+                range   { 0 10 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            groupcollapsible {
+                name    "Falloff"
+                label   "Falloff"
+
+                parm {
+                    name    "falloffpreset_linear"
+                    label   "Angled"
+                    type    button
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback" "hou.phm().applyFalloffPreset(\"linear\")" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "falloffpreset_easein"
+                    label   "Round"
+                    type    button
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback" "hou.phm().applyFalloffPreset(\"easein\")" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "falloffpreset_easeout"
+                    label   "Sharp"
+                    type    button
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback" "hou.phm().applyFalloffPreset(\"easeout\")" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "falloffpreset_constant"
+                    label   "Flat"
+                    type    button
+                    default { "0" }
+                    parmtag { "script_callback" "hou.phm().applyFalloffPreset(\"constant\")" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "stroke_brushfalloff"
+                    label   "Ramp"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "rampbasisdefault" "catmull-rom" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 0 ) 2interp ( linear )" }
+                }
+                parm {
+                    name    "stroke_brushfalloffdata"
+                    label   "Brush Falloff Data"
+                    type    string
+                    invisible
+                    default { [ "import json\n\nramp = parm(\"stroke_brushfalloff\").eval()\n\nreturn json.dumps([ramp.lookup(u/20.0) for u in range(0,21)])" python ] }
+                }
+            }
+
+            groupcollapsible {
+                name    "Mirroring"
+                label   "Mirroring"
+
+                parm {
+                    name    "stroke_mirror"
+                    label   "Mirroring"
+                    type    toggle
+                    default { "0" }
+                }
+                parm {
+                    name    "stroke_mirrororigin"
+                    label   "Origin"
+                    type    vector
+                    size    3
+                    default { "0" "0" "0" }
+                    disablewhen "{ stroke_mirror == 0 }"
+                    range   { -1 1 }
+                }
+                parm {
+                    name    "stroke_mirrordir"
+                    label   "Direction"
+                    type    vector
+                    size    3
+                    default { "1" "0" "0" }
+                    disablewhen "{ stroke_mirror == 0 }"
+                    range   { -1 1 }
+                }
+            }
+
+            parm {
+                name    "stroke_color"
+                label   "Color"
+                type    color
+                invisible
+                size    3
+                default { "1" "1" "1" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "stroke_selection"
+                label   "Stroke Selection"
+                type    string
+                invisible
+                default { "" }
+            }
+            parm {
+                name    "stroke_projtype"
+                label   "Projection Type"
+                type    ordinal
+                invisible
+                default { [ "if(ch(\"stroke_tool\") == 1 || ch(\"stroke_tool\") == 5, 4, 3)" hscript-expr ] }
+                menu {
+                    "xy"        "XY Plane"
+                    "yz"        "YZ Plane"
+                    "zx"        "ZX Plane"
+                    "screen"    "Screen Plane"
+                    "geometry"  "Geometry"
+                }
+            }
+            parm {
+                name    "stroke_projcenter"
+                label   "Projection Center"
+                type    vector
+                invisible
+                size    3
+                default { [ "centroid(\"./IN_Data\",D_X)" hscript-expr ] [ "centroid(\"./IN_Data\",D_Y)" hscript-expr ] [ "centroid(\"./IN_Data\",D_Z)" hscript-expr ] }
+                range   { -1 1 }
+            }
+            parm {
+                name    "stroke_prompt"
+                label   "Prompt"
+                type    string
+                invisible
+                default { [ "tool = hou.parm('stroke_tool').evalAsString()\n\ndef_msg = 'NO MESSAGE DEFINED.'\n\nmsgs = {\n    'groomscreen': 'Left-Drag to groom velocities.',\n    'groomsurface': 'Left-Drag on the surface to groom velocities.',\n    'plantguides': 'Left-Click on the Skin Geometry to Plant a Guide.',\n    'lift': 'Left-Drag over velocities to lift them off the skin.',\n    'clump': 'Left-Drag from the clump center.',\n    'part': 'Left-Drag to part velocities.',\n    'adjustlength': 'Left-Drag over velocities to adjust their length.',\n    'smooth': 'Left-Drag over velocities to smooth them.',\n    'cut': 'Left-Drag to cut any velocities within the brush radius.',\n    'extend': 'Left-Drag from the tip to extend velocities.',\n}\n\naddon = ' Scroll mouse wheel or shift-left-drag to resize brush.'\n\nif tool in msgs:\n    msg = \"LYNX | \" + msgs[tool]\n\n    if tool != 'plantguides':\n        msg += addon\nelse:\n    msg = def_msg + addon\n\nreturn msg" python ] }
+            }
+            parm {
+                name    "stroke_changedsel"
+                label   "Changed Selection"
+                type    toggle
+                invisible
+                default { "0" }
+            }
+            parm {
+                name    "prestroke"
+                label   "Pre Stroke"
+                type    button
+                invisible
+                default { "0" }
+                parmtag { "script_callback" "hou.phm().prestroke()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "poststroke"
+                label   "Post Stroke"
+                type    button
+                invisible
+                default { "0" }
+                parmtag { "script_callback" "hou.phm().poststroke()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "stroke_projgeoinput"
+                label   "stroke_projgeoinput"
+                type    integer
+                invisible
+                default { "0" }
+                range   { 0 10 }
+            }
+            group {
+                name    "Strokes_Invisible"
+                label   "Strokes_Invisible"
+                invisibletab
+
+                multiswitcher {
+                    name    "stroke_numstrokes"
+                    label    "Strokes"
+                    default 0
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "multistartoffset" "1" }
+
+                    parm {
+                        name    "stroke#_enable"
+                        label   "Enable Stroke"
+                        type    toggle
+                        default { "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "stroke#_changedsel"
+                        label   "Changed Selection"
+                        type    toggle
+                        default { "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "stroke#_radius"
+                        label   "Radius"
+                        type    float
+                        default { "0.1" }
+                        range   { 0! 1 }
+                    }
+                    parm {
+                        name    "stroke#_tool"
+                        label   "Tool"
+                        type    ordinal
+                        default { "0" }
+                        menu {
+                            [ "opmenu -l . stroke_tool" ]
+                        }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "stroke#_color"
+                        label   "Color"
+                        type    color
+                        invisible
+                        size    3
+                        default { "1" "1" "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "stroke#_opacity"
+                        label   "Strength"
+                        type    float
+                        default { "1" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "stroke#_projtype"
+                        label   "Projection Type"
+                        type    integer
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "stroke#_projcenter"
+                        label   "Projection Center"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        range   { -1 1 }
+                    }
+                    parm {
+                        name    "stroke#_projdir"
+                        label   "Projection Direction"
+                        type    vector
+                        size    3
+                        default { "0" "0" "0" }
+                        range   { -1 1 }
+                    }
+                    parm {
+                        name    "stroke#_data"
+                        label   "Raw Data"
+                        type    string
+                        default { "0" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "stroke#_metadata"
+                        label   "Meta Data"
+                        type    string
+                        default { "" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "stroke#_selection"
+                        label   "Selection"
+                        type    string
+                        default { "" }
+                        range   { 0 1 }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}
