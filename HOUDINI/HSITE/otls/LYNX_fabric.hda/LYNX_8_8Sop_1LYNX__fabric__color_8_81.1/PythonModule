@@ -1,0 +1,9 @@
+def fabric_fiber_color_solo_state():
+    n = hou.pwd()
+    fabric_fiber_color_solo_state = 0
+    for edit_idx in range(n.parm("fabric_fiber_color_edits").eval()):
+        if n.parm("fabric_fiber_color_skip_"+str(edit_idx+1)).eval()==0:
+            fabric_fiber_color_solo_state += n.parm("fabric_fiber_color_solo_"+str(edit_idx+1)).eval()
+    n.parm("fabric_fiber_color_solo_state").set( max(0,min(fabric_fiber_color_solo_state,1)))
+    
+    

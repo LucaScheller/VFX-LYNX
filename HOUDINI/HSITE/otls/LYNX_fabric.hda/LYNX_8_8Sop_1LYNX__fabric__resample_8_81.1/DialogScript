@@ -1,0 +1,131 @@
+# Dialog script for LYNX::LYNX_fabric_resample::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_resample::1.1
+    script	LYNX::LYNX_fabric_resample::1.1
+    label	"LYNX fabric resample"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Fiber
+    inputlabel	2	"Bounding Geometry"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Fiber
+
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_rest_frame"
+                label   "Rest Frame"
+                type    float
+                default { "0" }
+                range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_fiber_folder"
+            label   "Fiber"
+            grouptag { "group_type" "simple" }
+
+            groupsimple {
+                name    "fabric_fiber_general_folder"
+                label   "General"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_fiber_resample_mode"
+                    label   "Mode"
+                    type    integer
+                    joinnext
+                    default { "1" }
+                    menu {
+                        "group" "Group"
+                        "geo"   "Geometry"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_bounds_combine_toggle"
+                    label   "Combine Geometry"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    hidewhen "{ fabric_fiber_resample_mode == 0 }"
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_group_point"
+                    label   "fabric_fiber_resample_group_point"
+                    type    string
+                    nolabel
+                    default { "*" }
+                    hidewhen "{ fabric_fiber_resample_mode == 1 }"
+                    menutoggle {
+                        [ "menuitem = []" ]
+                        [ "n_path = hou.pwd().path()" ]
+                        [ "n_IN_0 = hou.node(n_path+\"/IN_0\")" ]
+                        [ "n_IN_0_geometry = n_IN_0.geometry()" ]
+                        [ "n_IN_0_geometry_groups = set()" ]
+                        [ "n_IN_0_geometry_groups = n_IN_0_geometry_groups.union(n_IN_0_geometry.pointGroups())" ]
+                        [ "n_IN_0_geometry_groups = set(map(lambda x: x.name() ,n_IN_0_geometry_groups))" ]
+                        [ "" ]
+                        [ "if n_IN_0_geometry_groups!=():" ]
+                        [ "    for attrib in n_IN_0_geometry_groups:" ]
+                        [ "        menuitem.append(attrib)" ]
+                        [ "        menuitem.append(attrib)" ]
+                        [ "            " ]
+                        [ "return menuitem" ]
+                        language python
+                    }
+                    range   { 0 10 }
+                    parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Points\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                    parmtag { "script_action_help" "Select geometry from an available viewport." }
+                    parmtag { "script_action_icon" "BUTTONS_reselect" }
+                }
+                parm {
+                    name    "fabric_fiber_resample_length"
+                    label   "Resample Length"
+                    type    float
+                    joinnext
+                    default { "0.1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_bounds_invert_toggle"
+                    label   "Invert"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_condition"
+                    label   "Keep If Resolution Is"
+                    type    integer
+                    default { "0" }
+                    menu {
+                        "changed"   "Changed"
+                        "higher"    "Higher"
+                        "lower"     "Lower"
+                    }
+                    range   { 0 10 }
+                }
+            }
+
+        }
+
+    }
+
+}

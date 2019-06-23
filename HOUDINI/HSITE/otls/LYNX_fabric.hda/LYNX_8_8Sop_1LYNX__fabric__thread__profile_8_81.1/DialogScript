@@ -1,0 +1,99 @@
+# Dialog script for LYNX::LYNX_fabric_thread_profile::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_thread_profile::1.1
+    script	LYNX::LYNX_fabric_thread_profile::1.1
+    label	"LYNX fabric thread profile"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Custom Points"
+    inputlabel	2	"Bounding Geo"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Profile Points"
+
+    parm {
+        name    "fabric_thread_profile_custom_toggle"
+        label   "fabric_thread_profile_custom_toggle"
+        type    integer
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_thread_profile_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_thread_profile_width"
+                label   "Width Post Scale"
+                type    float
+                default { "1" }
+                range   { 0! 2 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_thread_profile_custom_folder"
+            label   "Custom Points"
+            hidewhen "{ fabric_thread_profile_custom_toggle == 0 }"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_thread_profile_custom_width"
+                label   "Width"
+                type    float
+                default { "0.1" }
+                range   { 0! 2 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_thread_profile_scatter_folder"
+            label   "Scatter Points"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_thread_profile_scatter_seed"
+                label   "Scatter Seed"
+                type    float
+                joinnext
+                default { "0" }
+                range   { 0! 100 }
+            }
+            parm {
+                name    "fabric_thread_profile_scatter_count"
+                label   "Count"
+                type    integer
+                default { "15" }
+                range   { 0! 25 }
+            }
+            parm {
+                name    "fabric_thread_profile_scatter_width_min"
+                label   "Width Minimum"
+                type    float
+                default { "0.1" }
+                range   { 0 10 }
+            }
+            parm {
+                name    "fabric_thread_profile_scatter_width_remap"
+                label   "Width Remap"
+                type    ramp_flt
+                default { "2" }
+                range   { 1! 10 }
+                parmtag { "rampshowcontrolsdefault" "0" }
+            }
+        }
+
+    }
+
+}

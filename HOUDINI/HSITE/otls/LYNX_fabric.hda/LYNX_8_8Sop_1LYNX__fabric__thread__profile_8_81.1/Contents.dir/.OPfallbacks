@@ -1,0 +1,8 @@
+Sop/attribdelete /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/attribdelete otls/OPlibSop.hda
+Sop/attribwrangle /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/attribwrangle otls/OPlibSop.hda
+Sop/color /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/color otls/OPlibSop.hda
+Sop/convertline /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/convertline otls/OPlibSop.hda

@@ -1,0 +1,362 @@
+# Dialog script for LYNX::LYNX_fabric_thread::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_thread::1.1
+    script	LYNX::LYNX_fabric_thread::1.1
+    label	"LYNX fabric thread"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Fiber
+    inputlabel	2	Profile
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Fiber
+
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_thread_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_rest_frame"
+                label   "Rest Frame"
+                type    float
+                default { "0" }
+                help    "Since point generation is quite heavy, the geometry is generated on this frame and then only geomerty attributes are manipluated further down the node tree. If the input curves change per frame, set this paramter to $FF."
+                range   { 0 10 }
+            }
+            parm {
+                name    "fabric_attribute_transfer_toggle"
+                label   "Transfer Attributes"
+                type    toggle
+                default { "off" }
+                help    "This can cause expensive computation."
+                range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_fiber_folder"
+            label   "Fiber"
+            grouptag { "group_type" "simple" }
+
+            groupsimple {
+                name    "fabric_fiber_general_folder"
+                label   "General"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_fiber_resample_toggle"
+                    label   "Automatically Resample Fiber"
+                    type    toggle
+                    joinnext
+                    default { "1" }
+                    help    "This can cause expensive computation."
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_segments"
+                    label   "Segments Per 360"
+                    type    integer
+                    joinnext
+                    default { "6" }
+                    disablewhen "{ fabric_fiber_resample_toggle == 0 }"
+                    range   { 6! 24 }
+                }
+                parm {
+                    name    "fabric_fiber_resample_condition"
+                    label   "Keep If Resolution Is"
+                    type    integer
+                    default { "1" }
+                    disablewhen "{ fabric_fiber_resample_toggle == 0 }"
+                    menu {
+                        "changed"   "Changed"
+                        "higher"    "Higher"
+                        "lower"     "Lower"
+                    }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_detangle_toggle"
+                    label   "Detangle Fiber"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    help    "This can cause expensive computation."
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_detangle_iterations"
+                    label   "Iterations"
+                    type    integer
+                    default { "5" }
+                    disablewhen "{ fabric_fiber_detangle_toggle == 0 }"
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_toggle"
+                    label   "Smooth"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    help    "This can cause expensive computation."
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_iterations"
+                    label   "Iterations"
+                    type    integer
+                    joinnext
+                    default { "50" }
+                    disablewhen "{ fabric_fiber_smooth_toggle == 0 }"
+                    range   { 0! 200 }
+                }
+                parm {
+                    name    "fabric_fiber_smooth_cutofffrequency"
+                    label   "Cutoff Frequency"
+                    type    float
+                    default { "0.2" }
+                    disablewhen "{ fabric_fiber_smooth_toggle == 0 }"
+                    range   { 0! 10 }
+                }
+            }
+
+            groupcollapsible {
+                name    "fabric_fiber_twist_folder"
+                label   "Twist"
+                grouptag { "group_type" "collapsible" }
+
+                groupsimple {
+                    name    "fabric_fiber_twist_random_folder"
+                    label   "Randomize"
+                    grouptag { "group_type" "simple" }
+
+                    parm {
+                        name    "fabric_fiber_twist_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_twist_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { -1 1 }
+                    }
+                    parm {
+                        name    "fabric_fiber_twist_random_max"
+                        label   "Max"
+                        type    float
+                        default { "0" }
+                        range   { -1 1 }
+                    }
+                }
+
+            }
+
+            groupcollapsible {
+                name    "fabric_thread_offset_folder"
+                label   "Offset"
+                grouptag { "group_type" "collapsible" }
+
+                parm {
+                    name    "fabric_fiber_offset"
+                    label   "Offset"
+                    type    float
+                    default { "1" }
+                    range   { 0! 10 }
+                }
+                parm {
+                    name    "fabric_fiber_offset_remap_reverse"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_fiber_offset_remap"
+                    label   "Remap Along Fiber"
+                    type    ramp_flt
+                    default { "1" }
+                    range   { 1! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+                groupsimple {
+                    name    "fabric_fiber_offset_randomize_folder"
+                    label   "Randomize"
+                    grouptag { "group_type" "simple" }
+
+                    parm {
+                        name    "fabric_fiber_offset_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_random_max"
+                        label   "Max"
+                        type    float
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                }
+
+                groupsimple {
+                    name    "fabric_fiber_offset_noise_folder"
+                    label   "Noise"
+                    grouptag { "group_type" "simple" }
+
+                    parm {
+                        name    "fabric_fiber_offset_noise_scale"
+                        label   "Scale"
+                        type    float
+                        joinnext
+                        default { "10" }
+                        range   { 0 50 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_noise_offset"
+                        label   "Offset"
+                        type    float
+                        default { "0" }
+                        range   { -10 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_noise_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "1" }
+                        range   { 0 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_noise_max"
+                        label   "Max"
+                        type    float
+                        default { "1" }
+                        range   { 0 2 }
+                    }
+                }
+
+            }
+
+        }
+
+        groupsimple {
+            name    "fabric_thread_folder"
+            label   "Thread"
+            grouptag { "group_type" "simple" }
+
+            groupsimple {
+                name    "fabric_thread_twist_folder"
+                label   "Twist"
+                grouptag { "group_type" "simple" }
+
+                parm {
+                    name    "fabric_thread_twist"
+                    label   "Cycles"
+                    type    float
+                    default { "15" }
+                    range   { -25 25 }
+                }
+                parm {
+                    name    "fabric_thread_twist_offset"
+                    label   "Offset"
+                    type    float
+                    default { "0" }
+                    range   { -360 360 }
+                }
+                parm {
+                    name    "fabric_thread_twist_remap_reverse"
+                    label   "Reverse"
+                    type    toggle
+                    joinnext
+                    default { "off" }
+                    range   { 0 10 }
+                }
+                parm {
+                    name    "fabric_thread_twist_remap"
+                    label   "Remap Along Fiber"
+                    type    ramp_flt
+                    default { "2" }
+                    range   { 1! 10 }
+                    parmtag { "rampbasisdefault" "bspline" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( bspline ) 2pos ( 1 ) 2value ( 1 ) 2interp ( bspline )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+                groupsimple {
+                    name    "fabric_thread_twist_randomize_folder"
+                    label   "Randomize"
+                    grouptag { "group_type" "simple" }
+
+                    parm {
+                        name    "fabric_thread_twist_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_thread_twist_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { -10 10 }
+                    }
+                    parm {
+                        name    "fabric_thread_twist_random_max"
+                        label   "Max"
+                        type    float
+                        default { "0" }
+                        range   { -10 10 }
+                    }
+                }
+
+                groupsimple {
+                    name    "fabric_thread_twist_scale_folder"
+                    label   "Scale"
+
+                    parm {
+                        name    "fabric_thread_twist_scale_post_toggle"
+                        label   "Apply Scale After Twist"
+                        type    toggle
+                        default { "0" }
+                        help    "Applies the scale attribute (if present) after applying the twist. By default it is applied before. This can be useful when adding a scale attribute in combination with adding custom normals to your pattern before feeding it into your LYNX_fabric_weave node. The custom normals then control the twist around the fiber, while the twist parameters on this node control the squashed twist allowing for \"flat\" looking twists.   "
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}

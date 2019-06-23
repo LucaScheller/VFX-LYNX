@@ -1,0 +1,517 @@
+# Dialog script for LYNX::LYNX_fabric_pattern::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_pattern::1.1
+    script	LYNX::LYNX_fabric_pattern::1.1
+    label	"LYNX fabric pattern"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Custom Pattern"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Pattern
+
+    parm {
+        name    "fabric_fiber_custom_toggle"
+        label   "fabric_fiber_custom_toggle"
+        type    integer
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "fabric_fiber_count_custom_update"
+        label   "fabric_fiber_count_custom_update"
+        type    integer
+        invisible
+        default { [ "hou.pwd().parm(\"fabric_fiber_count_custom\").set(len(hou.pwd().node(\"IN_fiber_custom\").geometry().prims()))\nhou.pwd().node(\"fiber_custom_foreach_end\").parm(\"resetcookpass\").pressButton()" python ] }
+        range   { 0 10 }
+    }
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_fiber_folder"
+            label   "Fiber"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_pattern_preset"
+                label   "Preset"
+                type    integer
+                default { "0" }
+                menu {
+                    "default"                   "Default"
+                    "weave_basket_single"       "Single Basket Weave"
+                    "weave_basket_double"       "Double Basket Weave"
+                    "weave_basket_triple"       "Triple Basket Weave"
+                    "weave_basket_quadruple"    "Quadruple Basket weave"
+                    "weave_twill"               "Twill Weave"
+                    "weave_satin"               "Satin Weave"
+                    "weave_herringbone"         "Herringbone Weave"
+                    "weave_leno"                "Leno Weave"
+                    "weave_gauze"               "Gauze Weave"
+                    "knitting_stitch"           "Knitting Stich"
+                }
+                range   { 0 10 }
+                parmtag { "script_callback" "hou.phm().fabric_pattern_preset_apply()" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "fabric_fiber_resample_segments"
+                label   "Fiber Segments"
+                type    integer
+                default { "32" }
+                range   { 2! 64 }
+            }
+            parm {
+                name    "fabric_fiber_width"
+                label   "Fiber Width"
+                type    float
+                default { "0.1" }
+                range   { 0! 1! }
+            }
+            parm {
+                name    "fabric_fiber_height"
+                label   "Fiber Height"
+                type    float
+                default { "1" }
+                range   { 0 1 }
+            }
+            multiparm {
+                name    "fabric_fiber_count_h"
+                label    "Fibers Horizontal"
+                default 1
+                hidewhen "{ fabric_fiber_custom_toggle > 0 }"
+
+                groupcollapsible {
+                    name    "fabric_fiber_collapse_h_#"
+                    label   "Fiber Horizontal #"
+                    grouptag { "group_type" "collapsible" }
+
+                    parm {
+                        name    "fabric_fiber_width_h_#"
+                        label   "Width"
+                        type    float
+                        joinnext
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_h_#"
+                        label   "Height"
+                        type    float
+                        joinnext
+                        default { "0.2" }
+                        range   { 0 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_h_#"
+                        label   "Offset"
+                        type    float
+                        default { "0" }
+                        range   { -1! 1! }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_reverse_toggle_h_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_h_#"
+                        label   "Width Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( bspline )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_reverse_toggle_h_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_h_#"
+                        label   "Height Along Fiber"
+                        type    ramp_flt
+                        default { "5" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.5 ) 1interp ( bspline ) 2pos ( 0.25 ) 2value ( 0 ) 2interp ( bspline ) 3pos ( 0.5 ) 3value ( 0.5 ) 3interp ( bspline ) 4pos ( 0.75 ) 4value ( 1 ) 4interp ( bspline ) 5pos ( 1 ) 5value ( 0.5 ) 5interp ( bspline )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_remap_reverse_toggle_h_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_remap_h_#"
+                        label   "Offset Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.5 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    groupcollapsible {
+                        name    "fabric_fiber_collapse_advanced_h_#"
+                        label   "Advanced Settings"
+
+                        parm {
+                            name    "fabric_fiber_scale_toggle_h_#"
+                            label   "Scale"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_toggle_h_#"
+                            label   "Twist"
+                            type    toggle
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_reverse_toggle_h_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_scale_toggle_h_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_h_#"
+                            label   "Scale Along Fiber"
+                            type    ramp_rgb
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_scale_toggle_h_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 1 1 1 ) 1interp ( linear )" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.5 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_reverse_toggle_h_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_normal_toggle_h_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_h_#"
+                            label   "Twist Along Fiber"
+                            type    ramp_flt
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_normal_toggle_h_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+            }
+
+            multiparm {
+                name    "fabric_fiber_count_v"
+                label    "Fibers Vertical"
+                default 1
+                hidewhen "{ fabric_fiber_custom_toggle > 0 }"
+
+                groupcollapsible {
+                    name    "folder4_#"
+                    label   "Fiber Vertical #"
+                    grouptag { "group_type" "collapsible" }
+
+                    parm {
+                        name    "fabric_fiber_width_v_#"
+                        label   "Width"
+                        type    float
+                        joinnext
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_v_#"
+                        label   "Height"
+                        type    float
+                        joinnext
+                        default { "0.2" }
+                        range   { 0 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_v_#"
+                        label   "Offset"
+                        type    float
+                        default { "0" }
+                        range   { -1! 1! }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_reverse_toggle_v_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_v_#"
+                        label   "Width Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( bspline )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_reverse_toggle_v_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_v_#"
+                        label   "Height Along Fiber"
+                        type    ramp_flt
+                        default { "5" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.5 ) 1interp ( bspline ) 2pos ( 0.25 ) 2value ( 0 ) 2interp ( bspline ) 3pos ( 0.5 ) 3value ( 0.5 ) 3interp ( bspline ) 4pos ( 0.75 ) 4value ( 1 ) 4interp ( bspline ) 5pos ( 1 ) 5value ( 0.5 ) 5interp ( bspline )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_remap_reverse_toggle_v_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_offset_remap_v_#"
+                        label   "Offset Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0.5 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    groupcollapsible {
+                        name    "fabric_fiber_collapse_advanced_h_#_2"
+                        label   "Advanced Settings"
+
+                        parm {
+                            name    "fabric_fiber_scale_toggle_v_#"
+                            label   "Scale"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_toggle_v_#"
+                            label   "Twist"
+                            type    toggle
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_reverse_toggle_v_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_scale_toggle_v_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_v_#"
+                            label   "Scale Along Fiber"
+                            type    ramp_rgb
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_scale_toggle_v_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 1 1 1 ) 1interp ( linear )" }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_reverse_toggle_v_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_normal_toggle_v_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_v_#"
+                            label   "Twist Along Fiber"
+                            type    ramp_flt
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_normal_toggle_v_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+            }
+
+            multiparm {
+                name    "fabric_fiber_count_custom"
+                label    "Fibers Custom"
+                default 1
+                hidewhen "{ fabric_fiber_custom_toggle == 0 }"
+
+                groupcollapsible {
+                    name    "folder5_#"
+                    label   "Fiber Custom #"
+                    grouptag { "group_type" "collapsible" }
+
+                    parm {
+                        name    "fabric_fiber_width_custom_#"
+                        label   "Width"
+                        type    float
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_custom_#"
+                        label   "Height"
+                        type    float
+                        default { "1" }
+                        range   { 0! 2 }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_reverse_toggle_custom_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_width_remap_custom_#"
+                        label   "Width Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_reverse_toggle_custom_#"
+                        label   "Reverse"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_height_remap_custom_#"
+                        label   "Height Along Fiber"
+                        type    ramp_flt
+                        default { "1" }
+                        range   { 1! 10 }
+                        parmtag { "rampbasisdefault" "bspline" }
+                        parmtag { "rampfloatdefault" "1pos ( 1 ) 1value ( 1 ) 1interp ( linear )" }
+                        parmtag { "rampshowcontrolsdefault" "0" }
+                    }
+                    groupcollapsible {
+                        name    "fabric_fiber_collapse_advanced_custom_#"
+                        label   "Advanced Settings"
+
+                        parm {
+                            name    "fabric_fiber_scale_toggle_custom_#"
+                            label   "Scale"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_toggle_custom_#"
+                            label   "Twist"
+                            type    toggle
+                            default { "0" }
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_reverse_toggle_custom_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_scale_toggle_custom_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_scale_remap_custom_#"
+                            label   "Scale Along Fiber"
+                            type    ramp_rgb
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_scale_toggle_custom_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 1 1 1 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_reverse_toggle_custom_#"
+                            label   "Reverse"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            hidewhen "{ fabric_fiber_normal_toggle_custom_# == 0 }"
+                            range   { 0 10 }
+                        }
+                        parm {
+                            name    "fabric_fiber_normal_remap_custom_#"
+                            label   "Twist Along Fiber"
+                            type    ramp_flt
+                            default { "1" }
+                            hidewhen "{ fabric_fiber_normal_toggle_custom_# == 0 }"
+                            range   { 1! 10 }
+                            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

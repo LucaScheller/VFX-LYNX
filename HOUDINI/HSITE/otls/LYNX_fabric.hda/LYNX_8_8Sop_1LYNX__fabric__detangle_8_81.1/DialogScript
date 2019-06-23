@@ -1,0 +1,46 @@
+# Dialog script for LYNX::LYNX_fabric_detangle::1.1 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_detangle::1.1
+    script	LYNX::LYNX_fabric_detangle::1.1
+    label	"LYNX fabric detangle"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Fiber
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Fiber
+
+    groupsimple {
+        name    "fabric_folder"
+        label   "Fabric"
+        grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_general_folder"
+            label   "General"
+            grouptag { "group_type" "simple" }
+
+            parm {
+                name    "fabric_rest_frame"
+                label   "Rest Frame"
+                type    float
+                default { "0" }
+                range   { 0 10 }
+            }
+            parm {
+                name    "fabric_detangle_iterations"
+                label   "Iterations"
+                type    integer
+                default { "5" }
+                range   { 0! 10 }
+            }
+        }
+
+    }
+
+}

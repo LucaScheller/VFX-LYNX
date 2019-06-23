@@ -1,0 +1,409 @@
+# Dialog script for LYNX::LYNX_fabric_color::1.0 automatically generated
+
+{
+    name	LYNX::LYNX_fabric_color::1.0
+    script	LYNX::LYNX_fabric_color::1.0
+    label	"LYNX fabric color"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Fiber
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Fiber
+
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    string
+        invisible
+        default { "points" }
+        menu {
+            "points"    "Points"
+        }
+    }
+    parm {
+        name    "OCIO_enabled"
+        label   "OCIO_enabled"
+        type    integer
+        invisible
+        default { "strcmp(\"\",$OCIO)!=0" }
+        range   { 0 10 }
+    }
+    groupsimple {
+        name    "fabric_settings_folder"
+        label   "Fabric"
+
+        groupsimple {
+            name    "fabric_fiber_folder"
+            label   "Fiber"
+
+            groupsimple {
+                name    "fabric_fiber_color_folder"
+                label   "Color"
+
+                parm {
+                    name    "fabric_fiber_attribute_color"
+                    label   "Color Attribute Name"
+                    type    string
+                    default { "Cd" }
+                    menureplace {
+                        [ "menuitem = []" ]
+                        [ "n_path = hou.pwd().path()" ]
+                        [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                        [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                        [ "n_IN_DATA_geometry_pointAttribs = n_IN_DATA_geometry.pointAttribs()" ]
+                        [ "if n_IN_DATA_geometry_pointAttribs!=():" ]
+                        [ "    for attrib in n_IN_DATA_geometry_pointAttribs:" ]
+                        [ "        menuitem.append(attrib.name())" ]
+                        [ "        menuitem.append(attrib.name())" ]
+                        [ "            " ]
+                        [ "return menuitem" ]
+                        language python
+                    }
+                }
+                parm {
+                    name    "fabric_fiber_color_clamp_toggle"
+                    label   "Clamp Final Output Values"
+                    type    toggle
+                    joinnext
+                    default { "0" }
+                }
+                parm {
+                    name    "fabric_fiber_color_clamp_"
+                    label   "fabric_fiber_color_clamp_"
+                    type    vector2
+                    nolabel
+                    size    2
+                    default { "0" "1" }
+                    disablewhen "{ fabric_fiber_color_clamp_toggle==0 == \"\" }"
+                    range   { -1 1 }
+                }
+                multiparm {
+                    name    "fabric_fiber_color_edits"
+                    label    "Edits"
+                    default 1
+
+                    parm {
+                        name    "fabric_fiber_color_mask_#"
+                        label   "Mask"
+                        type    string
+                        default { "" }
+                        help    "Mask the edit to a point group. Vex conditionals also work."
+                        menureplace {
+                            [ "menuitem = []" ]
+                            [ "n_path = hou.pwd().path()" ]
+                            [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                            [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                            [ "n_IN_DATA_geometry_pointGroups = n_IN_DATA_geometry.pointGroups()" ]
+                            [ "if n_IN_DATA_geometry_pointGroups!=():" ]
+                            [ "    for attrib in n_IN_DATA_geometry_pointGroups:" ]
+                            [ "        menuitem.append(attrib.name())" ]
+                            [ "        menuitem.append(attrib.name())" ]
+                            [ "            " ]
+                            [ "return menuitem" ]
+                            language python
+                        }
+                        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                        parmtag { "script_action_help" "Select point group from an available viewport." }
+                        parmtag { "script_action_icon" "BUTTONS_reselect" }
+                    }
+                    parm {
+                        name    "fabric_fiber_color_default_#_"
+                        label   "Default Color"
+                        type    color
+                        size    3
+                        default { "1" "1" "1" }
+                        range   { 0 1 }
+                    }
+                    parm {
+                        name    "fabric_fiber_color_mode_#"
+                        label   "Mode"
+                        type    integer
+                        joinnext
+                        default { "3" }
+                        menu {
+                            "set"       "Set"
+                            "add"       "Add"
+                            "subtract"  "Subtract"
+                            "multiply"  "Multiply"
+                            "divide"    "Divide"
+                        }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_color_image_toggle_#"
+                        label   "Use Image"
+                        type    toggle
+                        joinnext
+                        default { "0" }
+                    }
+                    parm {
+                        name    "fabric_fiber_color_cc_toggle_#"
+                        label   "Use Color Correction"
+                        type    toggle
+                        default { "0" }
+                    }
+                    group {
+                        name    "fabric_fiber_color_image_folder#"
+                        label   "Image"
+                        hidewhentab "{ fabric_fiber_color_image_toggle_# == 0 }"
+
+                        parm {
+                            name    "fabric_fiber_color_image_file_#"
+                            label   "Image"
+                            type    image
+                            joinnext
+                            default { "" }
+                            parmtag { "filechooser_mode" "read" }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_attribute_uv_#"
+                            label   "UV Attribute"
+                            type    string
+                            default { "LYNX_fabric_uv_geo" }
+                            menureplace {
+                                [ "menuitem = []" ]
+                                [ "n_path = hou.pwd().path()" ]
+                                [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                                [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                                [ "n_IN_DATA_geometry_pointAttribs = n_IN_DATA_geometry.pointAttribs()" ]
+                                [ "if n_IN_DATA_geometry_pointAttribs!=():" ]
+                                [ "    for attrib in n_IN_DATA_geometry_pointAttribs:" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "            " ]
+                                [ "return menuitem" ]
+                                language python
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_wrap_#"
+                            label   "Wrap"
+                            type    string
+                            joinnext
+                            default { "repeat" }
+                            menu {
+                                "repeat"    "Repeat"
+                                "streak"    "Streak"
+                                "decal"     "Decal"
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_blur_filter_#"
+                            label   "Filter"
+                            type    string
+                            joinnext
+                            default { "box" }
+                            menu {
+                                "box"       "Box"
+                                "gauss"     "VEX: Gaussian"
+                                "bartlett"  "VEX: Bartlett/Triangular"
+                                "sinc"      "VEX: Sinc Sharpening"
+                                "hanning"   "VEX: Hanning"
+                                "blackman"  "VEX: Blackman"
+                                "catrom"    "VEX: Catmull-Rom"
+                                "mitchell"  "VEX: Mitchell"
+                                "point"     "VEX: Point (No Filter)"
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_blur_#"
+                            label   "Blur"
+                            type    float
+                            default { "0" }
+                            range   { 0! 1! }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_colormanagement_toggle_#"
+                            label   "Color Management"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_colormanagement_ocio_input_#"
+                            label   "From/To"
+                            type    string
+                            joinnext
+                            default { "Utility - sRGB - Texture" }
+                            disablewhen "{ fabric_fiber_color_image_colormanagement_toggle_# == 0 }"
+                            hidewhen "{ OCIO_enabled == 0 }"
+                            menu {
+                                [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_colormanagement_ocio_output_#"
+                            label   "fabric_fiber_color_image_colorspace_output"
+                            type    string
+                            nolabel
+                            joinnext
+                            default { "ACES - ACEScg" }
+                            disablewhen "{ fabric_fiber_color_image_colormanagement_toggle_# == 0 }"
+                            hidewhen "{ OCIO_enabled == 0 }"
+                            menu {
+                                [ "echo `pythonexprs(\"__import__('toolutils').ocioColorSpaceMenu()\")`" ]
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_image_colormanagement_legacy_gamma_#"
+                            label   "Gamma"
+                            type    float
+                            default { "1/2.2" }
+                            disablewhen "{ fabric_fiber_color_image_colormanagement_toggle_# == 0 }"
+                            hidewhen "{ OCIO_enabled == 1 }"
+                            range   { 0! 5 }
+                        }
+                    }
+
+                    group {
+                        name    "fabric_fiber_color_image_folder#_1"
+                        label   "Color Correction"
+                        hidewhentab "{ fabric_fiber_color_cc_toggle_# == 0 }"
+
+                        parm {
+                            name    "fabric_fiber_color_cc_attribute_rand_#"
+                            label   "Randomize Seed"
+                            type    string
+                            default { "LYNX_fabric_id_fiber" }
+                            menureplace {
+                                [ "menuitem = []" ]
+                                [ "n_path = hou.pwd().path()" ]
+                                [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                                [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                                [ "n_IN_DATA_geometry_pointAttribs = n_IN_DATA_geometry.pointAttribs()" ]
+                                [ "if n_IN_DATA_geometry_pointAttribs!=():" ]
+                                [ "    for attrib in n_IN_DATA_geometry_pointAttribs:" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "            " ]
+                                [ "return menuitem" ]
+                                language python
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_hue_#"
+                            label   "Hue"
+                            type    float
+                            joinnext
+                            default { "0" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_hue_rand_toggle_#"
+                            label   "Randomize"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_hue_rand_#_"
+                            label   "Randomize"
+                            type    vector2
+                            nolabel
+                            size    2
+                            default { "-0.05" "0.05" }
+                            disablewhen "{ fabric_fiber_color_cc_hue_rand_toggle_# == 0 }"
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_saturation_#"
+                            label   "Saturation"
+                            type    float
+                            joinnext
+                            default { "1" }
+                            range   { 0! 1! }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_saturation_rand_toggle_#"
+                            label   "Randomize"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_saturation_rand_#_"
+                            label   "Randomize"
+                            type    vector2
+                            nolabel
+                            size    2
+                            default { "0.9" "1" }
+                            disablewhen "{ fabric_fiber_color_cc_saturation_rand_toggle_# == 0 }"
+                            range   { 0! 1! }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_value_#"
+                            label   "Value"
+                            type    float
+                            joinnext
+                            default { "1" }
+                            range   { 0 2 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_value_rand_toggle_#"
+                            label   "Randomize"
+                            type    toggle
+                            joinnext
+                            default { "0" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_value_rand_#_"
+                            label   "Randomize"
+                            type    vector2
+                            nolabel
+                            size    2
+                            default { "0.75" "1" }
+                            disablewhen "{ fabric_fiber_color_cc_value_rand_toggle_# == 0 }"
+                            range   { 0 2 }
+                        }
+                        groupcollapsible {
+                            name    "fabric_fiber_color_cc_ramp_remaps_folder#"
+                            label   "HSV Remap"
+
+                            parm {
+                                name    "fabric_fiber_color_cc_hue_remap_#"
+                                label   "Hue Remap"
+                                type    ramp_flt
+                                default { "2" }
+                                range   { 1! 10 }
+                                parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+                                parmtag { "rampshowcontrolsdefault" "0" }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_cc_saturation_remap_#"
+                                label   "Saturation Remap Based on Hue"
+                                type    ramp_flt
+                                default { "2" }
+                                range   { 1! 10 }
+                                parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+                                parmtag { "rampshowcontrolsdefault" "0" }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_cc_value_remap_#"
+                                label   "Value Remap"
+                                type    ramp_flt
+                                default { "2" }
+                                range   { 1! 10 }
+                                parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+                                parmtag { "rampshowcontrolsdefault" "0" }
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}

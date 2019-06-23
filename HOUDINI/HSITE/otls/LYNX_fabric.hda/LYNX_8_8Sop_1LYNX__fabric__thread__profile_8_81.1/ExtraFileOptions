@@ -1,0 +1,22 @@
+{
+	"OnInputChanged/Cursor":{
+		"type":"intarray",
+		"value":[1,1]
+	},
+	"OnInputChanged/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"OnInputChanged/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"OnInputChanged/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"OnInputChanged/Source":{
+		"type":"string",
+		"value":""
+	}
+}
