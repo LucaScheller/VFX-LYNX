@@ -11,7 +11,7 @@ Outputs:      4
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Sun Mar 17 10:47:44 2019
+Modified:     Sun Mar 17 09:47:44 2019
 
 Operator:     LYNX::LYNX_force_general::1.1
 Label:        LYNX force general
@@ -31,7 +31,7 @@ Modified:     Tue Apr 23 22:45:56 2019
 Operator:     LYNX::LYNX_force_general::1.2
 Label:        LYNX force general
 Path:         oplib:/LYNX::Dop/LYNX_force_general::1.2?LYNX::Dop/LYNX_force_general::1.2
-Icon:         opdef:/LYNX::Dop/LYNX_force_general::1.2?IconImage
+Icon:         opdef:/LYNX::Dop/LYNX_force_general::1.2?IconSVG
 Table:        Dop
 License:      
 Extra:        
@@ -41,5 +41,5 @@ Outputs:      4
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Wed May 29 21:34:14 2019
+Modified:     Wed Jun 19 10:55:26 2019
 
