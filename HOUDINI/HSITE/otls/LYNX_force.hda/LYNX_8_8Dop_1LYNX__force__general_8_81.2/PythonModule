@@ -45,6 +45,7 @@ def force_preset_apply():
         n_p_dict["force_wind_toggle"] = 0
         n_p_dict["force_shape_toggle"] = 0
         n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_axis_along_strength"] = 0
         n_p_dict["force_flow_vector_strength"] = 9.81
         n_p_dict["force_flow_vector_direction_x"] = 0
         n_p_dict["force_flow_vector_direction_y"] = -1
@@ -56,6 +57,7 @@ def force_preset_apply():
         n_p_dict["force_shape_toggle"] = 0
         n_p_dict["force_mass_toggle"] = 1
         n_p_dict["force_flow_toggle"] = 1
+        n_p_dict["force_flow_axis_along_strength"] = 0
         n_p_dict["force_flow_vector_strength"] = 9.81
         n_p_dict["force_flow_vector_direction_x"] = 0
         n_p_dict["force_flow_vector_direction_y"] = -1
