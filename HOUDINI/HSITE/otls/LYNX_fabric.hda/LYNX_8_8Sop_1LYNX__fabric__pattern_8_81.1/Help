@@ -1,0 +1,65 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Fabric Pattern =
+
+"""This with node you can create patterns with which you can feed the LYNX_fabric_weave node. Optionally you can feed in custom curves and tweak important attributes per curve. There are also presets included to demonstrate common patterns."""
+:vimeo: Tutorial
+    #id: 321386151
+
+
+== Overview ==
+#id: LYNX_fabric_pattern_overview
+
+Features:
+* Use [presets|#LYNX_fabric_pattern_preset] to quickly try out different patterns.
+* Create fabric patterns easily that can then be pinned to your geometry via the [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1] node.
+
+:tip:
+    If the adding [Scale|#LYNX_fabric_pattern_fiber_advanced_settings] or [Twist|#LYNX_fabric_pattern_fiber_advanced_settings], the `scale` or `N` attributes will be created. You can use this in your [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1] and [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1] nodes to achieve custom scaling along the curves. 
+
+@inputs
+
+Input 0:
+    Feed in your custom curves here.
+
+@outputs
+
+Output:
+    The fabric pattern with the necessary attributes.
+
+
+@parameters
+
+== Fiber ==
+#id: LYNX_fabric_pattern_fiber
+
+Presets:
+    #id: LYNX_fabric_pattern_preset
+    Here are a couple of presets to "hit the ground running". Enjoy!
+Fiber Segments:
+    The point count of each individual curve.
+Fiber Width/Height:
+    Here you can set the width and height of your curves. When feeding in custom curves, these parameters are multipliers on the original values.
+Fibers Horizontal/Vertical/Custom:
+    #id: LYNX_fabric_pattern_fiber_advanced_settings
+    Add curves either horizontally or vertically. When feeding in custom curves you can manipulate important attributes like `width` here too.
+    You can control the `width`/`height`/`offset` attributes along each individual curve. 
+    Via the `Advanced Settings` dropdown you can also control the scale (`scale` attribute) along the curve as well as the `twist` (`N` attribute).
+
+
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+
+

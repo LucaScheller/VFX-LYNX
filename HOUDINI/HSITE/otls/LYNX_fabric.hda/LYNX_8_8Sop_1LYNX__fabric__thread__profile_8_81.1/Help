@@ -1,0 +1,60 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+= LYNX Fabric Thread Profile =
+
+"""Use this to setup the profile of you thread. This is then extruded along the curve via the LYNX_fabric_thread node."""
+:vimeo: Tutorial
+    #id: 321386151
+
+== Overview ==
+#id: LYNX_fabric_thread_profile_overview
+
+Features:
+* Setup the profile of you thread.
+* Feed in custom points via the first input or create a custom boundry where the points scattered in via the second input. 
+
+@inputs
+
+Input 0:
+    Feed in custom points here.
+    
+Input 1:
+    Feed in a custom boundry where the points are scattered on. If there is no input, a circle is used.
+
+@outputs
+
+Output:
+   The curve profile with corresponding point widths.
+
+
+@parameters
+
+== General ==
+#id: LYNX_fabric_thread_profile_general
+
+Width Post Scale:
+    Scale the `width` of the points after packing them into the bounding geometry.
+
+== Scatter Points ==
+The points are scattered and packed into the bouding geometry.
+
+Scatter Seed:
+    The seed of the scatter.
+Scatter Count:
+    The amount of points to scatter.
+Width:
+    The point widths are generated via a random value between 0-1 based on the point number and seed. They are then remapped via the ramp. The `Width Minimum` parameter clamps the resulting value. This prevents widths that are too small, which could cause the node to crash when calculating the scatter distribution.
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

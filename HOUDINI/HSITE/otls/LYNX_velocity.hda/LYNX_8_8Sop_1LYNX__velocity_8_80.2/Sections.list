@@ -7,9 +7,9 @@ Tools.shelf	Tools.shelf
 InternalFileOptions	InternalFileOptions
 Contents.gz	Contents.gz
 EditableNodes	EditableNodes
-Version	Version
 DefaultState	DefaultState
 IconSVG	IconSVG
 PythonModule	PythonModule
 OnCreated	OnCreated
 ExtraFileOptions	ExtraFileOptions
+LYNX__logo.svg	LYNX_logo.svg

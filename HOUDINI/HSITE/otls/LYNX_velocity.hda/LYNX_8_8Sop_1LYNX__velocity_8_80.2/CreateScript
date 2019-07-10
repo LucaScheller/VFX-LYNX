@@ -11,4 +11,4 @@ endif
 
 # Node $arg1 (LYNX::Sop/LYNX_velocity::0.2)
 opexprlanguage -s hscript $arg1
-opuserdata -n '___Version___' -v '0.1' $arg1
+opuserdata -n '___Version___' -v '' $arg1

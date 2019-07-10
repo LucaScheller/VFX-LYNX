@@ -10,7 +10,7 @@ Inputs:       1 to 1
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Wed Mar 20 23:00:52 2019
+Modified:     Wed Mar 20 22:00:52 2019
 
 Operator:     LYNX::LYNX_velocity::0.2
 Label:        LYNX velocity
@@ -24,5 +24,5 @@ Inputs:       1 to 1
 Subnet:       true
 Python:       false
 Empty:        false
-Modified:     Wed Jun 12 12:06:47 2019
+Modified:     Wed Jul  3 12:55:31 2019
 

@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.74881 15.0934
+position -6.0486 -16.5441
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -46,8 +46,8 @@ inputs
 }
 stat
 {
-  create 1559846868
-  modify 1559908932
+  create 1562000946
+  modify 1562780306
   author LYNX@LucaScheller
   access 0777
 }

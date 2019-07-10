@@ -1,0 +1,129 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+= LYNX Fabric Thread =
+
+"""Use this node to extrude a curve profile along curves."""
+:vimeo: Tutorial
+    #id: 321386151
+
+== Overview ==
+#id: LYNX_fabric_thread_overview
+
+Features:
+* Extrude points around any arbitrary curve. All attributes that are needed for geometry creation will be created automatically if they don't exist.
+* Introduce randomness to break up the look.
+
+@inputs
+
+Input 0:
+    Feed in your curves, along which to extrude, here. All attributes that are needed for creating the geometry will be created automatically if they don't exist.
+    
+Input 1:
+    Feed in your points, which create the curve profile, here. While you can feed in arbitrary points, it is recommended to use the [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1] node to generate them for more user control.
+
+@outputs
+
+Output:
+   The threaded curve.
+
+
+@parameters
+
+== General ==
+#id: LYNX_fabric_thread_general
+
+Rest Frame:
+    #id: LYNX_fabric_rest_frame
+    Here you set the rest frame where the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
+    :warning:
+        If the input geometry point count changes write `$FF` as the parameters value. This way the geometry creation is done at every frame at the cost of performance. 
+
+Transfer Attributes:
+    #id: LYNX_fabric_attribute_transfer_toggle
+    With this you can toggle the transfer of the attributes from incoming geomeotry onto the curve geometry.
+        
+== Fiber ==
+Fiber settings refer to settings per actual output curve. The term `fiber` is synonymous with the term `output curve`.
+
+=== General ===
+Automatically Resample Fiber: 
+    This auto resamples the input curves to account for the [Twist Cycles|#LYNX_fabric_thread_thread_twist_twist]. The `Segments Per 360` parameter controls how many segments are created for every 360 twists.
+Detangle Fiber:
+    #id: LYNX_fabric_thread_fiber_general_detangle
+    Detangle the curves after they have been extruded around the input curves. Higher iterations yield better results. The detangling is only done on the [Rest Frame|#LYNX_fabric_rest_frame]. 
+Smooth:
+    Smooth out the curves. This can be handy when using the [Detangle Fiber|#LYNX_fabric_thread_fiber_general_detangle] toggle to smooth out areas where there was a lot of penetration.
+
+=== Twist ===
+These settings control how each output curve is twisted around the orginal curve.
+
+==== > Randomize ====
+Randomize the rotation offset per fiber. This is useful to break up the look and to introduce irregularities.
+
+Seed:
+    Sets the seed per fiber used for generating a random value between 0 and 1.
+Min/Max:
+    Remaps the random value to this range and adds it to the twist offset.
+
+=== Offset ===
+These settings control how each output curve is offset to the orginal curve.
+
+Offset:
+    The offset multiplier for the offset along the input curves.
+Offset Along Fiber:
+    The offset remapped along the uv of the input curves.
+    
+==== > Randomize ====
+Randomize the offset distance per fiber. This is useful to break up the look and to introduce irregularities.
+
+Seed:
+    Sets the seed per fiber used for generating a random value between 0 and 1.
+Min/Max:
+    Remaps the random value to this range and multiplies it with the offset.
+    
+==== > Noise ====
+Introduce noise to the offset distance along the uv of each individual fiber. This is useful to make the look more organic.
+
+Scale/Offset:
+    Scales/Offsets the noise along the uvs.
+Min/Max:
+    Remaps the random value to this range and multiplies it with the distance offset.
+    
+== Thread ==
+Thread settings can be thought of the settings per input curve. A single thread is the curve profile extruded around one of the input curves.
+
+=== Twist ===
+These settings control how the whole curve profile is twisted around the orginal curve.
+
+Cycles:
+    #id: LYNX_fabric_thread_thread_twist_twist
+    Number of 360° twists around the input curves.
+Offset:
+    This offsets the twist of the whole thread around the input curves.    
+
+==== > Randomize ====
+Randomize the rotation offset per thread. This is useful to break up the look and to introduce irregularities.
+
+Seed:
+    Sets the seed per thread used for generating a random value between 0 and 1.
+Min/Max:
+    Remaps the random value to this range and adds it to the cycle offset.
+
+==== > Scale ====
+Apply Scale After Twist:
+    If a scale attribute is present on the input curves, this will influence if the scale attribute is applied before or after the twist. This can be useful for "flat" threads.
+
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

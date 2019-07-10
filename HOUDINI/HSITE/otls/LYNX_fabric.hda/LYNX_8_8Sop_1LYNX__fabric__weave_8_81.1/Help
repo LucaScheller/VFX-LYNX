@@ -1,0 +1,116 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+= LYNX Fabric Weave =
+
+"""Use this node to wrap you fabric pattern to a geometry."""
+:vimeo: Tutorial
+    #id: 321386151
+
+== Overview ==
+#id: LYNX_fabric_weave_overview
+
+Features:
+* Tile your pattern and wrap it to a geometry based on uvs. Multiple UDIM tiles are supported. 
+* Introduce randomness to break up the look.
+:tip:
+    You can dive into this asset to cache out the pattern before it is transformed to the geometry. This allows you to prevent re-cooks every time the scene is reloaded. 
+    All parameters except [Transfer Attributes|#LYNX_fabric_attribute_transfer_toggle], [Detangle Fiber|#LYNX_fabric_weave_fiber_general_detangle] and [Smooth |#LYNX_fabric_weave_fiber_general_smooth] have no effect after caching out the pattern.
+
+@inputs
+
+Input 0:
+    Feed in your pattern here.
+    
+Input 1:
+    Feed in your geometry, on which to wrap the pattern to, here. This node needs the `uv` attribute. If it is not present, the uvs will be automatically projected on the [Rest Frame|#LYNX_fabric_rest_frame].
+
+@outputs
+
+Output:
+   The pattern tiled and transformed to your input geometry.
+
+
+@parameters
+
+== General ==
+#id: LYNX_fabric_weave_general
+
+Rest Frame:
+    #id: LYNX_fabric_rest_frame
+    Here you set the rest frame where the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
+    :warning:
+        If the input geometry point count changes write `$FF` as the parameters value. This way the geometry creation is done at every frame at the cost of performance. 
+
+Transfer Attributes:
+    #id: LYNX_fabric_attribute_transfer_toggle
+    With this you can toggle the transfer of the attributes from incoming geomeotry onto the curve geometry.
+        
+== Fiber ==
+
+=== General ===
+Width: 
+    Change the with of the curves.
+Height: 
+    Change the height of the curves from the surface of the geometry.
+Resample: 
+    #id: LYNX_fabric_weave_fiber_general_resample
+    Resample the pattern. The length of each curve edge is determined by the `Èdge Length` parameter. Use this change the resolution of your curves.
+    :tip:
+        It is recommended to sufficiently subdivide the pattern to the right resolution before feeding it into this node. Being as low resolution as possible is usually the best option.
+Detangle Fiber:
+    #id: LYNX_fabric_weave_fiber_general_detangle
+    Detangle the curves after they have been wrapped to the geometry. Higher iterations yield better results. The detangling is only done on the [Rest Frame|#LYNX_fabric_rest_frame]. 
+Smooth:
+    Smooth out the curves. This can be handy when using the [Detangle Fiber|#LYNX_fabric_weave_fiber_general_detangle] toggle to smooth out areas where there was a lot of penetration.
+
+== Tiling ==
+
+=== General ===
+Repeat X/Y: 
+    #id: LYNX_fabric_weave_tiling_repeat
+    Here you set the tiling of the pattern.
+Shift X/Y: 
+    Here you can shift the pattern one tiling unit. Uses this if you need to specifically align the pattern to a geometry border.
+    
+=== Rotate ===
+Rotate:     
+    Rotate the pattern.
+Normalize UV Range:
+    In order to rotate the pattern, each input UDIM tile is scaled down so that it is possible to rotate it 45 degrees without crossing the UDIM tile border. Because of this the uvs don't start at 0 or end at 1. 
+    When normalizing the uvs, they are scaled back so that the min and max values are 0 and 1. It is recommended to not enable this, since when rotating the uvs nodes down stream, who are dependent on uvs, will behave inconsistently.  
+    
+=== Offset ===
+Offset X/Y:
+    Use this when creating tilings where the pattern "hooks" into itself. A good example for this is the default knitting pattern which you can create with the [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1] node.
+
+==== > Randomize ====
+Randomize the offset. This is usefull to break up the look and to introduce irregularities per curve.
+
+Seed:
+    Sets the seed per curve used for generating a random value between 0 and 1.
+Min/Max:
+    Remaps the random value to this range and shifts the whole curve by this value.
+
+=== Noise ===
+Distort the pattern with a noise wich is dependent on the uv of the input geometry. 
+
+Strength:
+    Controls the strength of the noise
+Scale/Offset:
+    Controls the scale and offset of the noise.
+Autoresize Scale To Tiling:
+    This toggle let's the [Repeats|#LYNX_fabric_weave_tiling_repeat] influence the noise scale so that the noise frequency stays "locked in place".
+    
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

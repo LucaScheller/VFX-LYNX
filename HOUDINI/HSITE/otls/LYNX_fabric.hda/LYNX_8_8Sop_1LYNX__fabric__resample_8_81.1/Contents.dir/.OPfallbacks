@@ -1,6 +1,6 @@
-Sop/attribdelete /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/attribdelete /opt/hfs17.5.229/houdini/otls/OPlibSop.hda
 Sop/attribdelete otls/OPlibSop.hda
-Sop/attribwrangle /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/attribwrangle /opt/hfs17.5.229/houdini/otls/OPlibSop.hda
 Sop/attribwrangle otls/OPlibSop.hda
-Sop/polypath /LYNX/LYNX_SOFTWARE/SideFX/Houdini_17.5.229/LINUX/houdini/otls/OPlibSop.hda
+Sop/polypath /opt/hfs17.5.229/houdini/otls/OPlibSop.hda
 Sop/polypath otls/OPlibSop.hda

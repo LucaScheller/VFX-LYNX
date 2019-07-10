@@ -1,2 +1,22 @@
 {
+	"LYNX_logo.svg/Cursor":{
+		"type":"intarray",
+		"value":[1,1]
+	},
+	"LYNX_logo.svg/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"LYNX_logo.svg/IsPython":{
+		"type":"bool",
+		"value":false
+	},
+	"LYNX_logo.svg/IsScript":{
+		"type":"bool",
+		"value":false
+	},
+	"LYNX_logo.svg/Source":{
+		"type":"string",
+		"value":"S:/LYNX_logo.svg"
+	}
 }

@@ -1,0 +1,72 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+= LYNX Fabric Resample =
+
+"""Use this to resample your curve to reduce the memory footprint. Useful before generating threads via the LYNX_fabric_thread node."""
+:vimeo: Tutorial
+    #id: 321386151
+
+== Overview ==
+#id: LYNX_fabric_resample_overview
+
+Features:
+* Intelligently resample you curves either via bounding geometry or group selections. 
+* Supports the `segment_length` attribute to allow for gradient like density resampling. See [Resample Length|#LYNX_fabric_resample_fiber_resample_length] for more info.
+
+@inputs
+
+Input 0:
+    Feed in curves here. All attributes that are needed for creating the geometry will be created automatically if they don't exist.
+    
+Input 1:
+    Feed in bounding box geometry when using the [Geometry|#LYNX_fabric_resample_fiber_resample_mode] mode.
+
+@outputs
+
+Output:
+   The resampled curve.
+
+
+@parameters
+
+== General ==
+#id: LYNX_fabric_resample_general
+
+Rest Frame:
+    #id: LYNX_fabric_rest_frame
+    Here you set the rest frame where the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
+    :warning:
+        If the input curve point count changes write `$FF` as the parameters value. This way the geometry creation is done at every frame at the cost of performance. 
+
+== Fiber ==
+
+=== General ===
+Mode:
+    #id: LYNX_fabric_resample_fiber_resample_mode
+    Select which primitives should be resampled.
+    There are two modes:
+    * `Geometry`: Everything inside the bounding geometry from the second input is resampled. You can use the `Combine Geometry` toggle to boolean combine the geometry before calculating the bouding geometry point group.
+    * `Group`: This allows you to feed in point groups or point selections.  
+Resample Length:
+    #id: LYNX_fabric_resample_fiber_resample_length
+    The length of each curve edge. If the `resample_length` attribute is present it will override the resample length parameter to allow for custom resamples.
+    :warning:
+        Since only existing edges are resampled make sure your curves are sufficiently subdivided beforehand to create resamples with a gradient like point density. 
+Invert:
+    Inverts the selection.
+Keep If Resolution is:
+    Only keeps the curve if the resampled point count is either `Higher`/`Changed`/`Lower` than the original curve. This is evaluated per curve.
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

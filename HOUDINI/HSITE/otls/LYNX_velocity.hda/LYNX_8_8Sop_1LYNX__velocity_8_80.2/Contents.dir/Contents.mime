@@ -32,24 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -5.55112e-17 -1.10441
-connectornextid 1
+position -9.40613 -19.1255
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	grid1 0 1 "input1"
 }
 inputs
 {
-0 	grid1 0 1
 }
 stat
 {
-  create 1560333982
-  modify 1560334053
+  create 1562151190
+  modify 1562151360
   author LYNX@LucaScheller
   access 0777
 }
@@ -65,7 +63,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"0.1"
+		"value":""
 	}
 }
 
@@ -1877,7 +1875,7 @@ Content-Type: text/plain
 version 0.8
 itermethod	[ 0	locks=0 ]	(	"count"	)
 method	[ 0	locks=0 ]	(	"feedback"	)
-iterations	[ 8	locks=0 ]	(	[ iterations	2 ] 	)
+iterations	[ 8	locks=0 ]	(	[ iterations	1 ] 	)
 startvalue	[ 0	locks=0 ]	(	1	)
 increment	[ 0	locks=0 ]	(	1	)
 class	[ 0	locks=0 ]	(	"point"	)
@@ -1936,7 +1934,7 @@ inputs
 stat
 {
   create 1540817151
-  modify 1560331391
+  modify 1561551873
   author LYNX@LucaScheller
   access 0777
 }
@@ -1998,7 +1996,7 @@ inputs
 stat
 {
   create 1540817161
-  modify 1560331391
+  modify 1561551873
   author LYNX@LucaScheller
   access 0777
 }
@@ -2169,7 +2167,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2257,7 +2255,7 @@ contrainedboundary	[ 0	locks=0 ]	(	"none"	)
 constrainedpoints	[ 0	locks=0 ]	(	@LYNX_velocity_v!=0	)
 attributes	[ 0	locks=0 ]	(	LYNX_velocity_v	)
 method	[ 0	locks=0 ]	(	"uniform"	)
-strength	[ 8	locks=0 ]	(	[ strength	5 ] 	)
+strength	[ 8	locks=0 ]	(	[ strength	0 ] 	)
 filterquality	[ 8	locks=0 ]	(	[ filterquality	1 ] 	)
 }
 
@@ -3014,7 +3012,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

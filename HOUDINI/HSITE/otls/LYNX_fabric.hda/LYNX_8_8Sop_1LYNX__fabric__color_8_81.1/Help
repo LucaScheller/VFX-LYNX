@@ -1,0 +1,95 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Fabric Color =
+
+"""This with node you can set the color of your curves. Optionally you can also set any vector or float attribute including `width` and `Alpha`. Use this to add textures or attribute driven colors and widths to your curves."""
+:vimeo: Tutorial
+    #id: 321386151
+
+
+== Overview ==
+#id: LYNX_fabric_color_overview
+
+Features:
+* Set and randomize any float or vector attribute including `Cd`/`Alpha`/`width` of your input geometry.
+* Manipulate the attribute in a layer based fashion. Each layer can be one of the three types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image] or [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection] and is merged via the [Mix|#LYNX_fabric_color_fiber_color_mix] operation.
+
+@outputs
+
+Output:
+    Geometry with the manipulated attribute.
+
+
+@parameters
+
+== Fiber ==
+
+=== Color ===
+Color Attribute Name:
+    #id: LYNX_fabric_color_fiber_color_attribute_name
+    Define what attribute to manipulate. It can by either a vector or float attribute. If the attribute doesn't exist, it will be created. Internally everything is calculated with vectors, but if the attribute is a float then it is converted via taking the luminance using the rgbtohsv(attribute) function.
+Clamp Final Output Values:
+    Before writing the attribute, clamp it to the specified values.
+
+Edit Sets | General Settings:
+    * Skip: Skip this attribute edit.
+    * Solo: Display only this attribute edit (or all that have `Solo` toggled on).
+    * Mask: This allows you to mask the edit to a certain point group or selection. This parameter also supports expressions.
+        :tip: 
+            You can also mask it by any attribute, for example:
+            {{{
+            #!vex
+            @LYNX_fabric_fiber_direction==0
+            }}}
+            This expression only influences curves along the horizontal axis when using this node in combination with [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1].
+    * Mode: Edits can be one of three types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image] and [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection].
+    * Mix Via: Here you set the mix method how the edit is combined with previous edits or the input attribute.
+        #id: LYNX_fabric_color_fiber_color_mix
+
+Edit Sets | Modes:
+    #id: LYNX_fabric_color_fiber_color_id
+    * Solid/Ramp:
+        #id: LYNX_fabric_color_fiber_color_mode_solidramp
+        Color the curves along a uv attribute. Ideal for creating a base color on which to layer on with later edits.
+        * Base Color: Base color the color ramp is multiplied with.
+        * Color Remap: Control the color along the uv attribute. This is then multiplied with the base color.
+        * UV Attribute: The uv attribute that drives the ramp. 
+            :tip:
+                When using [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1], try using `LYNX_fabric_uv_geo` / `LYNX_fabric_uv_tile` / `uv` for different effects.
+    * Image:
+        #id: LYNX_fabric_color_fiber_color_mode_image
+        Color the curves with an image of your choice.
+        :tip:
+            Images with alphas are supported. The alpha is used to cut out where the image is applied. If you want to actually influence the `Alpha` attribute, set the [Color Attribute Name|#LYNX_fabric_color_fiber_color_attribute_name] to `Alpha`.
+        * Image: Input the image of your choice here ;)
+        * UV Attribute: The uv attribute that drives the uv coordinates for the image. 
+            :tip:
+                When using [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1], try using `LYNX_fabric_uv_geo` / `LYNX_fabric_uv_tile` / `uv` for different effects.
+        * Wrap: Controls how the image wraps across tiling bounds. You can let it `repeat` / `streak`(continues the edge pixel) or `decal` (only show it in the 0-1 range).
+        * Filter/Blur: How to filter the image. Use this to blur the image. `Blur` controls the blur strength.
+            :tip: 
+                Try out different filters for different looks!
+        * Color Management/Gamma: If an `OCIO` variable is set you can color transform the image via the color transforms defined by the OCIO configuration. If no variable is set you can shift the `gamma`.
+        * UV Transform: Transform the uv (without actually changing the uv attribute). Use this to adjust the placement of your image.
+    * Color Correction:
+        #id: LYNX_fabric_color_fiber_color_mode_colorcorrection
+        Color grade your color.
+        * Hue/Saturation/Value: Shift the hue, change the saturation or multiply the values of your color. By enabling `Randomize` you can randomize the actual slider value.
+            #id: LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue
+        * Randomize Seed: The name of the attribute that drives the seed when using the `Randomize` feature for [Hue/Saturation/Value|#LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue].
+        * HSV Remap: Remap the [Hue/Saturation/Value|#LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue] with a ramp. This is similar to color corrections found in other DCC software packages.
+        
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

@@ -82,7 +82,7 @@
                 label   "Width Minimum"
                 type    float
                 default { "0.1" }
-                range   { 0 10 }
+                range   { 0! 1! }
             }
             parm {
                 name    "fabric_thread_profile_scatter_width_remap"

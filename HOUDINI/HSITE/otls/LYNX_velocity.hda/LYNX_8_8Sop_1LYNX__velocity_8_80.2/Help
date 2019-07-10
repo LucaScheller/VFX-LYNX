@@ -1,0 +1,81 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Velocity =
+
+"""Get control of your velocities via an intuitive UI or groom them for absolute fine tuned control."""
+:vimeo: Tutorial
+    #id: 298850328
+
+
+== Overview ==
+#id: velocity_overview
+
+Features:
+* Set and randomize velocities via custom edge selections.
+* Groom the velocities for absolute control.
+    
+
+@outputs
+
+Output:
+    Geometry with the modified velocity attribute specified by the [Velocity Attribute Name|#velocity_attribute_velocity].
+
+
+@parameters
+
+== General ==
+#id: velocity_general
+
+Velocity Attribute Name:
+    #id: velocity_attribute_velocity
+    The name of the attribute to modify. You can put any vector attribute here. If the attribute doesn't exist, it will be created.
+
+== Velocity Via Edges ==
+"""Here you can control the velocities via edge selections."""
+    
+Enable Velocity Via Edges: 
+    Enable/Disable all effects in this tab.
+Collapse All Settings: 
+    Collapse all edge selection sets below to have a cleaner UI. 
+    
+Edge Selection Sets | Set Settings:
+    * Skip: Skip this selection set.
+    * Solo: Display only this selection (or all that have `Solo` toggled on).
+    * Use Boundry Edges: Instead of selecting an edge selection manually you can enable this to use open boundries in your geometry as the selection.
+    * Edge Group: If `Use Boundry Edges` is disabled, this allows you to pick edges on your geometry for modifiying the velocity attribute.
+
+Edge Selection Sets | Control Settings:
+    * General: 
+        * Transfer Mode: Here you define how you velocities are transferred. You can choose between adding them or multipling them with existing velocities. When using `Multiply` make sure that you already have incoming velocities or else it will just return a vector of zero.
+        * Reverse UV: This let's you reverse the uv range for the ramp below, meaning that the ramps are applied in reverse.
+        * Smooth Pre: This smooths out the velocities before applying them to the geometry. This can be useful to smooth out noise.
+        * Smooth Post: This controls how feathered/smoothed the velocities are applied to the rest of the geometry that is not in the edge selection.
+    * Rotation/Strength:
+        The `Rotation`/`Strength` tabs generally work the same way. The angle and strength are remapped by the `Rotate`/`Strength` ramps. The input uv for these ramps is modified by the `Offset`/`Repeat`/`Reverse UV` values and the output is scaled to the `Min/Max` values. The `Angle`/`Strength` parameters offset the rotation of the velocity/scale the velocity respectively. The noise `Offset`/`Scale`/`Min`/`Max` values do the same thing, the only difference being that they add a noise offset to you vectors.
+        * Angle/Strength: Here you can offset the angle / multiply the strength of you velocity.
+        * Offset/Repeat/Min/Max: Controll the offset/repeat/min/max values as described above.
+        * Noise Offset/Scale/Min/Max: Same as the parameter above only for adding noise to break up the velocities.
+        * Rotate/Strength Remap: Remaps the angle along the uv range modified by the parameters above.
+        * Rotate/Strength Remap Start To End: Remaps the angle along the original unmodified uv range.
+        
+== Velocity Groom ==
+"""Here you can groom your velocities via the houdini groom brushes."""
+
+Enable Velocity Grooming: 
+    Enable/Disable all effects in this tab.
+Reset Strokes: 
+    With this button you can reset the groom.
+Recache Strokes:
+    With this button you can reapply the groom if the geometry or incoming velocities have changed.
+Groom Tool Controls:
+    See the [guidegroom|Node:sop/guidegroom] node for more information.
+
+:warning: When the input geometry or the incoming velocities change you have to press `Recache Strokes` or `Reset Strokes` in order for the new velocities to be updated.
+         
+
+@related
+
+* [Node:sop/guidegroom]

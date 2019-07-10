@@ -1,0 +1,61 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Fabric Width =
+
+"""This with node you can set the width of curves."""
+:vimeo: Tutorial
+    #id: 321386151
+
+
+== Overview ==
+#id: LYNX_fabric_width_overview
+
+Features:
+* Set and randomize the width attribute of your input geometry.
+
+@outputs
+
+Output:
+    Geometry with the manipulated width attribute.
+
+
+@parameters
+
+== Fiber ==
+
+=== Width ===
+Width:
+    Here you multiply the width of the curves. If a width attribute doesn't exist, it will be initialized with a value of 1.
+Width Along Fiber:
+    Here you can remap the width along the `uv` of the curve. If the `uv` attribute doesn't exist, it will be automatically created.
+
+==== > Randomize ====
+Randomize the width per curve. The seed of the random function is the `LYNX_fabric_id_fiber` attribute. If the `LYNX_fabric_id_fiber` attribute doesn't exist, it will be created with the default set to the primitive number of the primitive the point belongs to .
+
+Seed: 
+    Offset the seed by this value.
+Min/Max:
+    The resulting random value is remapped to this range and then multiplied with the width.
+
+==== > Noise ====
+Here you can randomize the width along each curve by multiplying it with a noise driven by the uv coordinates and `LYNX_fabric_id_fiber`. 
+
+Scale/Offset: 
+    Here you set the scale and offset of the noise along the uv.
+Min/Max:
+    The resulting noise value is remapped to this range before being multiplied with the width.
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+

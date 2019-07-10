@@ -32,24 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.81612 -2.80649
-connectornextid 1
+position -2.87089 0.34687
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	LYNX_fabric_weave1 2 1 "input1"
 }
 inputs
 {
-0 	LYNX_fabric_weave1 0 1
 }
 stat
 {
-  create 1559768694
-  modify 1559770114
+  create 1562785086
+  modify 1562788591
   author USER@lynx.localdomain
   access 0777
 }
@@ -679,7 +677,7 @@ Content-Type: text/plain
 version 0.8
 itermethod	[ 0	locks=0 ]	(	"count"	)
 method	[ 0	locks=0 ]	(	"feedback"	)
-iterations	[ 0	locks=0 ]	(	[ iterations	3 ] 	)
+iterations	[ 0	locks=0 ]	(	[ iterations	1 ] 	)
 startvalue	[ 0	locks=0 ]	(	1	)
 increment	[ 0	locks=0 ]	(	1	)
 class	[ 0	locks=0 ]	(	"point"	)
@@ -738,7 +736,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1559770159
+  modify 1562692995
   author LYNX@LucaScheller
   access 0777
 }
@@ -800,7 +798,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1559770159
+  modify 1562692995
   author LYNX@LucaScheller
   access 0777
 }

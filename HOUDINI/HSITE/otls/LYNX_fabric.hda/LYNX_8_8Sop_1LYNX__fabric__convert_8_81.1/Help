@@ -1,0 +1,70 @@
+#type: node
+#context: sop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Fabric Convert =
+
+"""This with node you can convert you curves to polygons."""
+:vimeo: Tutorial
+    #id: 321386151
+
+
+== Overview ==
+#id: LYNX_fabric_convert_overview
+
+Features:
+* Convert your curves to polygons using the custom curve profile in the right input.
+* Geometry is only created on the specified [rest frame|#LYNX_fabric_rest_frame], which allows for maximum performance.
+
+:tip:
+    If the `width`, `scale` or `N` attributes are present, they will influence the geometry creation. 
+
+
+@inputs
+
+Input 0:
+    Feed in your curves here. All attributes that are needed for creating the geometry will be created automatically if they don't exist.
+
+Input 1:
+    Feed in your curve profile here.
+
+@outputs
+
+Output:
+    Geometry extruded along the curve with the corresponding curve profile.
+
+
+@parameters
+
+== General ==
+#id: LYNX_fabric_convert_general
+
+Rest Frame:
+    #id: LYNX_fabric_rest_frame
+    Here you set the rest frame where the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
+    :warning:
+        If the input curve point count changes write `$FF` as the parameters value. This way the geometry creation is done at every frame at the cost of performance. 
+Transfer Attributes:
+    #id: LYNX_fabric_attribute_transfer_toggle
+    With this you can toggle the transfer of the attributes from incoming curve onto the polygon geometry.
+
+
+== Geometry ==
+#id: LYNX_fabric_convert_geometry
+
+Reverse Geometry:
+    With this toggle you can invert the face winding order of the polygons.
+
+@related
+
+* [LYNX_fabric_pattern|Node:sop/LYNX--LYNX_fabric_pattern-1.1]
+* [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1]
+* [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1]
+* [LYNX_fabric_thread_profile|Node:sop/LYNX--LYNX_fabric_thread_profile-1.1]
+* [LYNX_fabric_resample|Node:sop/LYNX--LYNX_fabric_resample-1.1]
+* [LYNX_fabric_width|Node:sop/LYNX--LYNX_fabric_width-1.1]
+* [LYNX_fabric_color|Node:sop/LYNX--LYNX_fabric_color-1.1]
+* [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1]
+
+

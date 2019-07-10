@@ -87,7 +87,7 @@
                     nolabel
                     size    2
                     default { "0" "1" }
-                    disablewhen "{ fabric_fiber_color_clamp_toggle==0 == \"\" }"
+                    disablewhen "{ fabric_fiber_color_clamp_toggle == 0 }"
                     range   { -1 1 }
                 }
                 multiparm {
