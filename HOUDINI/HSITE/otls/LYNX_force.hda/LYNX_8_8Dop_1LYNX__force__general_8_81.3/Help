@@ -1,0 +1,273 @@
+#type: node
+#context: dop
+#icon: opdef:.?LYNX_logo.svg
+
+
+= LYNX Force General =
+
+"""Manipulate your simulation with intuitive controls. The main goal of this node is to replace the default dop force nodes and unify all the settings in one place. Additional features include masking the influence by shape and support for both geometry and volumes."""
+:vimeo: Tutorial
+    #id: 325545103
+
+
+== Overview ==
+#id: force_overview
+
+Features:
+* Simple to use interface with handles in the 3d viewport
+* Presets to “hit the ground running”
+* Easily slide the shape along any curve or pin it to a deforming polygon
+* Masking the force by shapes with fine tunable falloff settings
+* Guides to visualize force strength/direction/masks
+* Vex overrides with support for an additional input/custom bindings(attributes & groups)
+
+By default [Enable Wind|#force_wind_toggle] is toggled on, which means `targetv`/`airresist` are updated. Disabling this updates the `force` attribute. By changing the [Binding|#force_binding] to [Custom|#force_binding_custom] you can manipulate any simulation data you desire. 
+See [Binding|#force_binding] for more information.
+:tip:
+    It can also be used as a drag force by having [Enable Wind|#force_wind_toggle] on and having the [Force Global Strength|#force_global_strength] set to zero. You can use [Wind Speed Matching|#force_wind_airresist] parameter to control how fast the simulation conforms to the wind (or in this case drag). Use the [drag preset|#force_preset_drag] to jump to this feature.
+
+@outputs
+
+Output:
+    Plug this into your solver of your choice, usually the pre/post solve input.
+    :warning: This node always goes into the *top* of your solvers.
+
+
+@parameters
+
+== Presets ==
+#id: force_preset
+
+Gravity Geometry:
+    Set the force to act the same way as the [Node:dop/gravity] for geometry.
+Gravity Volume:
+    Set the force to act the same way as the [Node:dop/gravity] for volumes. The only difference to the `Gravity Geometry` preset is that this multiplies the force by the mass (in case of fields density).
+Drag:
+    #id: force_preset_drag
+    Set the force to act the same way as the [Node:dop/popdrag]. 
+Tornado:
+    This preset demonstrates the forces visualizers ;) 
+Sweep Animation:
+    This preset demonstrates animating the shape sweep. If the shape is only transformed then no data has to be recalculated per frame. This preset shows that animating the sweep causes a recalculation of the internal vdbs, that used to calculate the force, per frame. Try to keep your vdb size as low resolution as possible to keep the performance as fast as possible without introducing stepping.
+Volume:
+    This preset demonstrates the volume forces. You can control the individual volume directions (along Volume Normal/Tangent/BiTangent) in the [Volume|#force_shape_vol] strength settings.  
+Vex:
+    #id: force_preset_vex
+    This preset demonstrates the vex capabilities of this force. You can override almost all of the parameters in the [Pre Force Calculation Vex Code|#force_vex] by binding it with its parameter name. 
+    For example to randomize the strength of the [flow along axis force|#force_flow] you can type:
+    {{{
+    #!vex
+    force_flow_axis_along = force_flow_axis_along * rand(@id);
+    }}}
+Noise Sdf Flow:
+    #id: force_preset_noise_sdf
+    This preset demonstrates the advanced feature of pushing geometry around the sdf curl noise field of the geometry. This can be used to make abstract effects like in this video Entagma | Curl Noise Flow https://vimeo.com/169438746 very easily. 
+    :tip: 
+        Using this preset with [Gradient Force|#force_shape_gradient] can create some cool effects too!
+
+
+== General ==
+#id: force_general
+
+Preset:
+    Switch through different presets to get a feel for what the force can do. See [Presets|#force_preset].
+
+Activation:
+    #id: force_toggle
+    Enable/Disable the force
+
+Binding:
+    #id: force_binding
+    Here you can change what data should be manipulated by the force. By default it only updates geometry data. It can influence:
+    * `Geometry` data. By default the force acts a wind force and updates the `targetv`/`airresist` values. Toggling [Enable Wind|#force_wind_toggle] off, makes the force update the `force` attribute. 
+    * `Volume` data a.k.a. fields in the dop context. Since volume related solvers don't have `targetv`/`airresist` fields, it does an approximation when [Enable Wind|#force_wind_toggle] is toggled on. If it's off then it adds the force to the `vel` field in the same way the `force` attribute is added to the v attribute.
+    * `All` data, both geometry and volumes are manipulated as described above.
+    * `Custom` data. This binding option allows for custom data binds. This is for experienced users:) Here you can choose the geometry data container and the corresponding geometry attribute or the field to be manipulated.
+        #id: force_binding_custom
+        :tip: The force is added to the data binding. See the `solver_force_geo`/`solver_force_vol` nodes inside this asset for more information on how the force is calculated.
+
+Enable Mass/Density:
+    #id: force_mass_toggle
+    Enable/Disable the influence of mass on the force. When the binding influences the volumes a.k.a. dop fields it uses the density field to determine the mass.       
+
+Seed Attribute:
+    #id: force_seed_attribute
+    Here you can set the seed attribute used in vex calls to the `rand` function when calculating the force. If the attribute isn't found, the point number is used.
+    :note: This is ignored for volumes. Volumes don't get influenced by any randomization parameters.
+
+Enable Wind:
+    #id: force_wind_toggle
+    Enable/Disable the force to act as a wind force. See [Overview|#force_overview]/[Binding|#force_binding] for more details. 
+
+Wind Speed Matching:
+    #id: force_wind_airresist    
+    This let's you control how fast the velocity conforms to the wind force.
+    :tip: When setting the [Force Global Strength|#force_global_strength] to zero, this value controls the drag strength. See [Overview|#force_overview] for more details.     
+    
+
+== Guides ==
+"""Controls the visualization of the force in the viewport."""
+
+Guide types:
+    * General Guides: Visualize all `flow` forces.
+    * Streamer Guides: Displays a slice plane. The plane can be visualized through vectors or colored gradients. This let's you preview the force very thoroughly, so you can save time on simulating :)
+Enable / Show General Guides / Show Streamer Guides:
+    Toggles the respective guide type
+    
+General Guides Settings:
+    * Guide Mask: Here you can hide individual guides. Since there are quite a few, masking some can clean up the viewport quite a bit. To find out the name of the guides you can mask, toggle the drop down menu.
+        #id: force_guide_general_mask
+    * Color: The color of the guide.
+    * Viz Max: This is a clamp on the strength values on the respective flow force, so that the force visualization doesn't get enormous in the viewport.
+    * Vdb Resolution Scale: Only visible if a custom shape is being used. See the [tip|#force_guide_resolution_scale] below for more information.
+    * Curve Resample Scale/Marker Count: Only visible when using curve related features. `Curve Resample Scale` is a scale on the curve resampling when resampling the curve. `Marker Count` controls how many preview markers per curve are drawn to visualize the force.
+Streamer Guides Settings:
+    #id: force_guide_streamers
+    * Mode: Here you can choose between `vector` and `gradient`. The `vector` option shows you preview lines similar to what you get with visualizers set to marker>vector. This is great to get a detailed preview of the force effect. The `gradient` option shows you the absolute value of the force strength in a color preview. This can be thought of as a heatmap of you force, great to visualize falloffs without overcrowding the viewport. 
+    * Color: The color of the guide.
+    * Viz Scale: This is a scale on the strength values of the force, so that the force visualization doesn't get enormous in the viewport. 
+      :tip: When the mode is set to `gradient` this can be used to scale down the gradient preview colors so that falloffs don't "burn out" if the force strength is really high.
+    * Grid Options: This sets the orientation/position of the slice plane as well as the preview resolution.    
+#id: force_guide_resolution_scale
+:tip: If you set the `Resolution Scale`/`Vdb Resolution Scale` to 1 then the grid/vdb geometry has the same resolution as the vdbs the force uses internally to mask your force. You can use this to preview how dense you vdb grid is. This is a great way to see if stepping could occur or not.
+    
+    
+== Transform ==
+#id: force_transform
+"""Control the transform of the force. You can also tweak these paramters by switching on the handles in the viewport."""
+
+Transform Settings:
+    * Control the transform of the force field via the translate, rotate, scale, uniform scale and pivot parameters.
+
+Transform Pin Settings:
+    This let's you pretransform the transform by pinning it either to a polygon geometry or to a curve.
+    :tip:
+        To hide the pin geometry visualization, enter `^transform_pin` in the [Guide Mask|#force_guide_general_mask] parameter. This can increase playback speed quite a bit!
+    * Pin Transform To Polygon:
+        #id: force_transform_pin_polygon
+        The force is pinned to the nearest point on the input geometry on the `Snap Frame` and transformed with the transform of the point on all other frames.
+    * Pin Transform To Curve:
+        The force is pinned to an input curve.
+        * Position Along Curve: Position of the pinning along the curve.
+        * Reverse Curve: Reverse the curve point order, thus reversing the `Position Along Curve` coordinate.
+        * Resample Curve: You can resample the curve to a higher resolution so that no visual stepping occurs when moving along it.
+        * Normal Attribute: The normal attribute sets the up direction of the curve. When using the twist attributes below, this controls the initial twist. If the normal attribute doesn't exist on the curve it will be created.
+        * UV Attribute: The uv attribute controls the uv range for the twist ramp below. If the uv attribute doesn't exist on the curve it will be created.
+        * Twist Min/Max/Offset/Remap: Use this to twist the orientation of the pinning. The ramp is sampled along the uv and is then scaled to the range set by the min and max values. The normal is then rotated by this amount of degrees plus the offset parameter at every curve point. 
+
+Transform Advanced Settings:
+    * Time Interpolate Data: Evaluate the transform data on subframes. This can be a bit more expensive to calculate when using pinning. 
+    * Transform Order: This sets in which order the transform is calculated. 
+
+== Shape ==
+"""Here you can set the shape of the force field."""
+
+Enable:
+    #id: force_shape_toggle
+    Enable/Disable the force shape. Toggling this on allows the force to be only applied inside the shape. If it is off then the force is applied everywhere. Disabling it essentially gives you the pop forces all in one node.
+Shape:
+    #id: force_shape_type
+    Choose between different shapes or plug in your own. Curves are also supported.
+
+ Shape Shared Settings:
+    #id: force_shape_shared_settings
+    * Vdb Size: Lower this value if stepping occurs, but be carefull! Settings this too low can cause excessive computation. Internally the force influence is masked by a set of vdbs. This controlls the resolution of these fields. See this [tip|#force_guide_resolution_scale], for more information on how to visualize the resolution.
+    * Invert Shape: Here you can invert the mask. Toggling this automatically inverts the [falloff|#force_global_strength_shape_falloff] ramp.
+        #id: force_shape_invert_toggle
+        :warning: Only inverting the [falloff|#force_global_strength_shape_falloff] ramp still masks everything outside of the force shape. Enabling `Invert Shape` allows the force to manipulate the simulation outside of the shape too.
+    * Remap Distance: Here you can remap the input range of the mask. This range is then remaped by the [falloff|#force_global_strength_shape_falloff] ramp. This allows you to create a padding around the shape instead of only masking the inside. Turn on [Streamer Guides|#force_guide_streamers] to visualize this in the viewport.
+    * Sweep Settings: You can cut the shape like a cake. Imagine cutting it from a top view. The angle controls the slice size, the rotate parameter rotates the cake before cutting it.
+      :warning: Animating this causes the internal vdbs to be recalculated every frame. Make sure your vdb size is not too low to still have a good performance.
+
+Shape Respective Settings:
+    #id: force_shape_respective_settings
+    * Tube Shape Settings: You can control the shape of the tube by changing the top/bottom radius or even completely remap the width along its height.
+    * Torus Shape Settings: Change the band width of the torus.
+    * Custom Shape Settings:
+        :warning:
+            When using a custom shape it is not recommended to have any transform animation or geometry deformation on the incoming shape as this can cause excessive computation. When having transform animation, see the tip below for the work-around.
+        :tip:
+            Internally the custom shape is transformed to be the size of 1 unit since this is needed to calculate the internal data. For convenience the transform of the force is reverse manipulated when using custom shapes so that the shape ends up at the same position as the selected input. This is only done once at the time of selecting the custom shape.
+        :tip:
+            If you have a non-deforming geometry that is transformed you can feed in a rest frame that has no animation into the custom shape and then use [Pin Transform To Polygon|#force_transform_pin_polygon] to keep the animated transform. This keeps the force from recalculating internal vdb data and ensures fast calculation times while still using the animation.
+        * Tan U Attribute: The Tan U attribute let's you specify the attribute to be used to set the direction of the [Along Volume Tangent|#force_shape_vol] force. The BiTangent is evaluated by calculating the cross product of the Normal and the BiTangent.
+    * Curve Shape Settings: 
+        :tip: You can also use the curve as a mask only to control the flow or noise force values. 
+        :tip: You can override any curve value by creating the following point attributes before feeding the curve into the force node.
+              Attribute names are respectively: 
+              * Radius Attributes:
+                  `LYNX_force_shape_curve_global_radius`,
+                  `LYNX_force_shape_curve_along_radius`,`LYNX_force_shape_curve_suction_radius`,
+                  `LYNX_force_shape_curve_orbit_radius`,`LYNX_force_shape_curve_direction_radius`,
+              * Strength Attributes:
+                  `LYNX_force_shape_curve_global_strength`,
+                  `LYNX_force_shape_curve_along_strength`,`LYNX_force_shape_curve_suction_strength`,
+                  `LYNX_force_shape_curve_orbit_strength`,`LYNX_force_shape_curve_direction_strength`
+        * Reverse/Carve Curve: Here you can reverse the direction of the input curve or also carve it (cut it at the ends). 
+        * Resample/Interpolate Neighbours: Alternatively you can also resample the curve to a higher resolution. The `Interpolate Neighbours` option interpolates the curve attributes needed to calculate the force over multiple points instead of just the closest point. This is a bit more expensive to calculate but it can solve stepping issues. It can be a good alternative to increasing the curve resolution in some cases though as interpolation always produces smooth results independent of resolution.
+            :warning: The resolution of the curve heavily influences how well the force is calculated. Make sure it is always sufficiently subdivided. If you see stepping around steep angles in the curve, lower the resample length or turn on `Interpolate Neighbours`.
+        * Custom Direction: Here you can set the vector attribute that controls the force direction for the `Custom Direction` curve force.
+        * Normal Attribute: Here you can define the normal attribute that controls the normal of the curve. If the attribute is not found, it will be automatically created.
+        * UV Attribute: Here you can define a custom uv attribute. If the attribute is not found, uvs are automatically created.
+            :tip: Creating uvs beforehand allows the carve to be "static". This means that the ramp values are not set to the current length, but always to the whole input range.
+        * Curve Widths: With these ramps you control the radius of the respective [curve force|#force_shape_curve] set in the `strength` tab.
+            :note: The radius controls are only shown for the [curve forces|#force_shape_curve] enabled in the `strength` tab.
+
+Shape Advanced Settings:
+    * Time Interpolate Data: Evaluate the shape data even on subframes. You should only uses this if nothing else has worked to get rid of stepping artifacts. This causes excessive calculation on subframes if the force shape has to be recalculated (For example when animating the sweep). 
+    * Data Path: The data path to the force. 
+        :tip: If you have a lot of instances of LYNX_force_general in your scene, a lot of vdbs have to be created for calculating the force. This parameter allows you to select other instances of the LYNX_force_general. This way the vdb data is linked between the forces, which creates a lower memory foot print. If the data is linked a `External Data` visualizer is shown in the viewport. The disadvantage of this is that you are limited to the same shape. Make sure that the linked node is upstream of this node or else this node can't find the data.
+        :note: This option is not available with the [Shape|#force_shape_type] type set to `Curve`.
+
+        
+== Strength ==
+"""Here you set the individual force strengths."""
+
+Global Strength Settings:
+    #id: force_global_strength
+    * Strength Global: You can use this to multiply the final strength of the force.
+    * Strength Geometry / Volume: Here you have another strength multiplier for geometry and volume. Use this when the [Binding|#force_binding] is set to `all` or `custom` to adjust the strength individually to the respective binding types. 
+    * Randomize: Randomly multiply the force strength by a random value with the seed being set by the [Seed Attribute|#force_seed_attribute].
+      :tip: You can use this to get rid of substepping related problems or to break up your simulation. A bit of randomness never hurts;)
+      :note: This is ignored for volumes. Volumes don't get influenced by any randomization parameters.
+    * Falloff: 
+        #id: force_global_strength_shape_falloff
+      This lets you remap the falloff. Turning on [Streamer Guides|#force_guide_streamers] is highly recommended to get an interactive preview of the falloff. The input range can be remapped in the shape tab, see [Force Shape Shared Settings|#force_shape_shared_settings].
+      :warning: When using the force field as a wind force, this can be thought of as the opacity of the force. When using `Curve` as the shape, the global falloff is the opacity and the individual along/orbit/suction/custom falloffs are only multipliers to the strength. The result is that if this falloff is one and the individual falloffs are zero then the force acts as a drag field.
+      :note: The falloff controls are only visible when the [shape|#force_shape_toggle] is enabled.
+
+Noise Strength Settings:
+    Here you can introduce noise to the force. Since most settings are similar to other noise related nodes only the differences are covered here:
+    * Transform Noise By Force Transform: Use this to "lock" the noise to local space. This means that the noise transform is modified the force transform. Turn on [Streamer Guides|#force_guide_streamers] to visualize this.
+    * Influence Strength Only: You can use this to multiply the strength of the force only instead of adding directional noise. Toggling this on makes the force take the length of the noise vector and mulitply it with the existing force direction. Optionally you can check on `Allow Negativ Values` to multiply the length with the signed value of the vector. This means that if the vector is negativ the value is negativ and vice versa. Alternatively you can also clamp the signed value.
+        :tip: Using `Allow Negativ Values` with clamping can create some harsh cutout masks. You can use this to break up your simulation and to create some not so "soft" noise looks.
+    * Curl Noise Around Sdf: Curls the noise around the sdf. You can use this to create some interesting surface based effects. Preferably use this with custom shape geometry. See the [Noise Sdf|#force_preset_noise_sdf] preset for more information.
+
+Flow Strength Settings:
+    #id: force_flow
+    Here you can set forces in regards to the transform of the force.
+    * Axis: Controls the force along/away/around the y-axis of the transform.
+    * Vector: Controls the force along a vector regardless of the transform.
+    * Center: Controls the force away from the transform center.
+
+Shape Strength Settings:
+    * Gradient: Controls the force along the gradient of the surface of the geometry. The gradient is determined using the new measure sop introduced in Houdini 17.5. You can set along which axis the gradient is calculated and also rotate it around the normals of the surface via the respective parameters. 
+        :tip: You can choose the [Noise SDF Flow|#force_preset] preset and then disable the noise and instead enable this to get some cool trailing effects.
+        #id: force_shape_gradient
+    * Volume: Controls the force along the volume Normal/Tangent/BiTangent of the shape. See [Shape Respective Settings|#force_shape_respective_settings] for more information on how to set custom tangents.
+        #id: force_shape_vol
+    * Curve: Controls the force along the curve. See [Shape Respective Settings|#force_shape_respective_settings] for more information.
+        #id: force_shape_curve
+
+Vex Settings:
+    #id: force_vex
+    Here you can script vex overrides, in a similar fashion to what many pop forces provide. In the `Pre Force Calculation` vex code you can override any parameter, see the [vex|#force_preset_vex] preset for more information. In the `Post force Calculation` vex code you can manipulate the final force before it's applied to data. The force is bound to the LYNX_force variable. Most of the time you'll want to use `Pre Force Calucaltion` to manipulate parameters per point before the final force is calculated. `Post Force Calculation` is useful when binding custom data. 
+    If you want to write an attribute then you have to add it to the `Àdditional Bindings` field. So let's say you want to write to a custom group, then write "group_CustomName" into the `Additional Bindings` field in order to export that attribute. If you need access to additional data, you can bind the 4rd Input via expanding `Advanced Settings` and selecting the data to be fed to the fourth input via the `Additional Input(Idx 3)` parameter. The acces index in the vex code is 3 since we start counting the inputs from zero.
+    :warning: 
+        If masking by a shape is used the vex code is only executed for points/voxels inside the mask.
+    :warning: 
+        When binding custom parameters you have to add them to the root of the vex wrangle node. This means everything has to be bound like this:
+        {{{
+        #!vex
+        parm_custom = ch("../parm_custom");
+        }}}
