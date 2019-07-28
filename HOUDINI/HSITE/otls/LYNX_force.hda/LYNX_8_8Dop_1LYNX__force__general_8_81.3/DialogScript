@@ -196,6 +196,7 @@
             joinnext
             default { "0" }
             help    "Hide the guides in the viewport on playback for a faster performance."
+            hidewhen "{ force_guide_toggle == 0 }"
         }
         parm {
             name    "force_guide_general_toggle"
