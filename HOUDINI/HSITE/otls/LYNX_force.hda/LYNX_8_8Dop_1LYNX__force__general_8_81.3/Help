@@ -111,8 +111,8 @@ Wind Speed Matching:
 Guide types:
     * General Guides: Visualize all `flow` forces.
     * Streamer Guides: Displays a slice plane. The plane can be visualized through vectors or colored gradients. This let's you preview the force very thoroughly, so you can save time on simulating :)
-Enable / Show General Guides / Show Streamer Guides:
-    Toggles the respective guide type
+Enable / Show General Guides / Show Streamer Guides / Hide On Playback:
+    Toggles the respective guide type. `Hide On Playback` hides the guides in the viewport on playback for a faster performance.
     
 General Guides Settings:
     * Guide Mask: Here you can hide individual guides. Since there are quite a few, masking some can clean up the viewport quite a bit. To find out the name of the guides you can mask, toggle the drop down menu.

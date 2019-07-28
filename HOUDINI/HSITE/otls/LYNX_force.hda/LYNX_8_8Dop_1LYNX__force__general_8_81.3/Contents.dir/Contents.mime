@@ -31,24 +31,26 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -21.2911 10.5307
-connectornextid 1
+position 1.1296 1.2808
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
+1 "output1"
 }
 inputsNamed3
 {
+0 	source_first_input 0 1 "input1"
 }
 inputs
 {
+0 	source_first_input 0 1
 }
 stat
 {
-  create 1563529449
-  modify 1563565807
-  author LYNX@LucaScheller
+  create 1564328113
+  modify 1564328993
+  author USER@lynx.localdomain
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -159,7 +161,7 @@ inputs
 stat
 {
   create 1543255746
-  modify 1563529766
+  modify 1564328368
   author LYNX@LucaScheller
   access 0777
 }
@@ -187,7 +189,7 @@ Content-Type: text/plain
       default = 1
       flags = 0
       start = -0.041666666666666664
-      segment { length = 0 value = 1 1 expr = ch(\"activation\") }
+      segment { length = 0 value = 1 1 expr = "1-hou.playbar.isPlaying() if ch(\"../force_guide_playback_hide_toggle\") else 1" language = python }
     }
   }
 
@@ -5221,11 +5223,11 @@ soppath	[ 0	locks=0 ]	(	""	)
 parmop_primgroup	[ 0	locks=0 ]	(	"never"	)
 primgroup	[ 0	locks=0 ]	(	""	)
 parmop_time	[ 0	locks=0 ]	(	"always"	)
-time	[ 0	locks=0 ]	(	[ time	0.83333333333333337 ] 	)
+time	[ 0	locks=0 ]	(	[ time	8.1666666666666661 ] 	)
 parmop_usetransform	[ 0	locks=0 ]	(	"never"	)
 usetransform	[ 0	locks=0 ]	(	"off"	)
 parmop_transformtime	[ 0	locks=0 ]	(	"default"	)
-transformtime	[ 0	locks=0 ]	(	[ transformtime	-0.041666666666666664 ] 	)
+transformtime	[ 0	locks=0 ]	(	[ transformtime	0 ] 	)
 parmop_letsopsinterpolate	[ 0	locks=0 ]	(	"initial"	)
 letsopsinterpolate	[ 8	locks=0 ]	(	[ letsopsinterpolate	0 ] 	)
 parmop_positionpath	[ 0	locks=0 ]	(	"never"	)
@@ -7890,11 +7892,11 @@ soppath	[ 0	locks=0 ]	(	""	)
 parmop_primgroup	[ 0	locks=0 ]	(	"never"	)
 primgroup	[ 0	locks=0 ]	(	""	)
 parmop_time	[ 0	locks=0 ]	(	"always"	)
-time	[ 0	locks=0 ]	(	[ time	0.83333333333333337 ] 	)
+time	[ 0	locks=0 ]	(	[ time	8.1666666666666661 ] 	)
 parmop_usetransform	[ 0	locks=0 ]	(	"never"	)
 usetransform	[ 0	locks=0 ]	(	"off"	)
 parmop_transformtime	[ 0	locks=0 ]	(	"default"	)
-transformtime	[ 0	locks=0 ]	(	[ transformtime	-0.041666666666666664 ] 	)
+transformtime	[ 0	locks=0 ]	(	[ transformtime	0 ] 	)
 parmop_letsopsinterpolate	[ 0	locks=0 ]	(	"initial"	)
 letsopsinterpolate	[ 8	locks=0 ]	(	[ letsopsinterpolate	1 ] 	)
 parmop_positionpath	[ 0	locks=0 ]	(	"never"	)
@@ -18739,7 +18741,7 @@ Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
 f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDE3LjUuMjI5JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJaCSsEC3ZlcnRleGNvdW50JgQSZAkrBQ5wcmltaXRpdmVjb3VudCYFEQwrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
-KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDctMTkgMjE6MzY6NTcmDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
+KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDctMjggMTc6NDA6NTcmDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
 rKbvPhzair07X4c9AAAAAAAAAAArEBFwcmltY291bnRfc3VtbWFyeSYQJxUgICAgICAgICAxMiBQb2x5Z29ucworERFhdHRyaWJ1dGVfc3VtbWFyeSYRJxsgICAgIDEgcG9pbnQgYXR0cmlidXRlczoJUAp9KxIIdG9wb2xvZ3k=
 JhJbKxMIcG9pbnRyZWYmE1srFAdpbmRpY2VzJhRAEvJkCQAAAQACAAMABAAFAAYABwAIAAkACgALAAwADQAOAA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AHwAgACEAIgAjACQAJQAmACcAKAApACoAKwAsAC0ALgA=
 LwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAFsAXABdAF4AXwBgAGEAYgBjAGQAZQBmAGcAaABpAGoAawBsAG0AbgA=
@@ -27124,7 +27126,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 wildcard_filter	[ 0	locks=0 ]	(	`strmatch(details(\"../OUT_General_Guide_Wildcard\",\"pt_groups\"),\"transform_pin\")`	)
 }
 
@@ -34462,11 +34464,11 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 xOrd	[ 8	locks=0 ]	(	[ xOrd	0 ] 	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 8	locks=0 ]	(	[ tx	0 ] 	[ ty	0 ] 	[ tz	0 ] 	)
-r	[ 8	locks=0 ]	(	[ rx	0 ] 	[ ry	0 ] 	[ rz	0 ] 	)
+t	[ 8	locks=0 ]	(	[ tx	0 ] 	[ ty	0 ] 	[ tz	0.37852925062179565 ] 	)
+r	[ 8	locks=0 ]	(	[ rx	20.885133314628956 ] 	[ ry	0 ] 	[ rz	0 ] 	)
 s	[ 8	locks=0 ]	(	[ sx	1 ] 	[ sy	1 ] 	[ sz	1 ] 	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
-scale	[ 8	locks=0 ]	(	[ scale	0.44 ] 	)
+scale	[ 8	locks=0 ]	(	[ scale	1 ] 	)
 parmgroup_pivotxform	[ 0	locks=0 ]	(	1	)
 p	[ 8	locks=0 ]	(	[ px	0 ] 	[ py	0 ] 	[ pz	0 ] 	)
 pr	[ 8	locks=0 ]	(	0	0	0	)
@@ -34634,7 +34636,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 xOrd	[ 8	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
 t	[ 8	locks=0 ]	(	0	0	0	)
-r	[ 8	locks=0 ]	(	[ rx	0 ] 	[ ry	0 ] 	[ rz	0 ] 	)
+r	[ 8	locks=0 ]	(	[ rx	20.885133314628956 ] 	[ ry	0 ] 	[ rz	0 ] 	)
 s	[ 8	locks=0 ]	(	1	1	1	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
 scale	[ 0	locks=0 ]	(	1	)
@@ -34871,7 +34873,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35660,7 +35662,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -36005,7 +36007,7 @@ Content-Type: text/plain
 {
 version 0.8
 method	[ 0	locks=0 ]	(	"byframe"	)
-frame	[ 0	locks=0 ]	(	[ frame	0 ] 	)
+frame	[ 0	locks=0 ]	(	[ frame	1 ] 	)
 integerframe	[ 0	locks=0 ]	(	"off"	)
 time	[ 0	locks=0 ]	(	[ time	3.5416666666666665 ] 	)
 rangeclamp	[ 0	locks=0 ]	(	"none"	)
@@ -36318,8 +36320,8 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 xOrd	[ 8	locks=0 ]	(	[ xOrd	0 ] 	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 8	locks=0 ]	(	[ tx	0 ] 	[ ty	0 ] 	[ tz	0 ] 	)
-r	[ 8	locks=0 ]	(	[ rx	0 ] 	[ ry	0 ] 	[ rz	0 ] 	)
+t	[ 8	locks=0 ]	(	[ tx	0 ] 	[ ty	0 ] 	[ tz	0.37852925062179565 ] 	)
+r	[ 8	locks=0 ]	(	[ rx	20.885133314628956 ] 	[ ry	0 ] 	[ rz	0 ] 	)
 s	[ 8	locks=0 ]	(	[ sx	1 ] 	[ sy	1 ] 	[ sz	1 ] 	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
 scale	[ 8	locks=0 ]	(	[ scale	1 ] 	)
@@ -36445,7 +36447,7 @@ Content-Type: text/plain
 {
 version 0.8
 method	[ 0	locks=0 ]	(	"byframe"	)
-frame	[ 0	locks=0 ]	(	[ frame	0 ] 	)
+frame	[ 0	locks=0 ]	(	[ frame	1 ] 	)
 integerframe	[ 0	locks=0 ]	(	"off"	)
 time	[ 0	locks=0 ]	(	[ time	2.6666666666666665 ] 	)
 rangeclamp	[ 0	locks=0 ]	(	"none"	)

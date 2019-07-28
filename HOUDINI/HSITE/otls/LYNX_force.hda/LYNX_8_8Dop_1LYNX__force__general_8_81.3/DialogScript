@@ -190,6 +190,14 @@
             default { "on" }
         }
         parm {
+            name    "force_guide_playback_hide_toggle"
+            label   "Hide On Playback"
+            type    toggle
+            joinnext
+            default { "0" }
+            help    "Hide the guides in the viewport on playback for a faster performance."
+        }
+        parm {
             name    "force_guide_general_toggle"
             label   "Show General Guides"
             type    toggle
