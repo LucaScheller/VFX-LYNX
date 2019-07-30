@@ -1,0 +1,25 @@
+LYNX_force_general_guide_playback_hide_variable = "LYNX_force_general_guide_playback_hide"
+
+def force_guide_playback_hide_callback(event_type,event_frame):
+    if (event_type == hou.playbarEvent.Started):
+        hou.hscript("setenv "+LYNX_force_general_guide_playback_hide_variable+" = 0")
+        hou.hscript("varchange")
+    if (event_type == hou.playbarEvent.Stopped):
+        hou.hscript("setenv "+LYNX_force_general_guide_playback_hide_variable+" = 1")
+        hou.hscript("varchange")
+
+def force_guide_playback_hide_callback_add():
+    # Check for existing callbacks as safety
+    callbacks = hou.playbar.eventCallbacks()
+    callbacks = filter(lambda x: x.__name__ == LYNX_force_general_guide_playback_hide_variable,callbacks)
+    if(len(callbacks)>0): return
+
+    hou.hscript("setenv "+LYNX_force_general_guide_playback_hide_variable+" = 1")
+    hou.hscript("varchange")
+    
+    callback_function = force_guide_playback_hide_callback
+    callback_function.__name__ = LYNX_force_general_guide_playback_hide_variable
+    hou.playbar.addEventCallback(callback_function)
+
+force_guide_playback_hide_callback_add()
+

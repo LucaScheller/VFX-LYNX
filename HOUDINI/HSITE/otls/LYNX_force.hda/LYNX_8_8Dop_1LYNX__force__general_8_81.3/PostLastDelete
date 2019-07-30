@@ -1,0 +1,11 @@
+LYNX_force_general_guide_playback_hide_variable = "LYNX_force_general_guide_playback_hide"
+
+def force_guide_playback_hide_callback_remove():
+    callbacks = hou.playbar.eventCallbacks()
+    callbacks = filter(lambda x: x.__name__ == LYNX_force_general_guide_playback_hide_variable,callbacks)
+    callback_function = callbacks[0]
+    hou.playbar.removeEventCallback(callback_function)
+    
+    hou.hscript("setenv -u "+LYNX_force_general_guide_playback_hide_variable)
+    
+force_guide_playback_hide_callback_remove()

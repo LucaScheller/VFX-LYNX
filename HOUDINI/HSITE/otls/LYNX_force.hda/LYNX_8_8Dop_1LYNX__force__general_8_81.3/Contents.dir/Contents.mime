@@ -31,25 +31,22 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position 0.846324 1.68271
-connectornextid 2
+position -2.33529 -0.159774
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	source_first_input 0 1 "input1"
 }
 inputs
 {
-0 	source_first_input 0 1
 }
 stat
 {
-  create 1564329311
-  modify 1564330335
+  create 1564513451
+  modify 1564513893
   author USER@lynx.localdomain
   access 0777
 }
@@ -161,7 +158,7 @@ inputs
 stat
 {
   create 1543255746
-  modify 1564329965
+  modify 1564487779
   author LYNX@LucaScheller
   access 0777
 }
@@ -178,10 +175,10 @@ Content-Type: text/plain
     channel showguide {
       lefttype = extend
       righttype = extend
-      default = 1
       flags = 0
-      start = -0.041666666666666664
-      segment { length = 0 value = 1 1 expr = "(1-hou.playbar.isPlaying() if ch(\"../force_guide_playback_hide_toggle\") else 1) and hou.pwd().node(\"../\").isGenericFlagSet(hou.nodeFlag.Bypass)==0 and (ch(\"../force_toggle\") and ch(\"../force_guide_toggle\") and (ch(\"../force_guide_general_toggle\") or ch(\"../force_guide_streamers_toggle\")))" language = python }
+      segment { length = 0 expr = "
+
+if(ch(\"../force_guide_playback_hide_toggle\"),$LYNX_force_general_guide_playback_hide,1) && pythonexprf('hou.pwd().node(\"../\").isGenericFlagSet(hou.nodeFlag.Bypass)==0') && (ch(\"../force_toggle\") && ch(\"../force_guide_toggle\") && (ch(\"../force_guide_general_toggle\") || ch(\"../force_guide_streamers_toggle\")))" }
     }
   }
 
@@ -191,8 +188,8 @@ Content-Type: text/plain
 
 {
 version 0.8
-showguide	[ 8	locks=0 ]	(	[ showguide	0 ] 	)
-color	[ 8	locks=0 ]	(	1	1	1	)
+showguide	[ 8	locks=0 ]	(	[ showguide	1 ] 	)
+color	[ 0	locks=0 ]	(	1	1	1	)
 wireframe	[ 0	locks=0 ]	(	"off"	)
 usesoppath	[ 0	locks=0 ]	(	"off"	)
 soppath	[ 0	locks=0 ]	(	""	)
@@ -5215,7 +5212,7 @@ soppath	[ 0	locks=0 ]	(	""	)
 parmop_primgroup	[ 0	locks=0 ]	(	"never"	)
 primgroup	[ 0	locks=0 ]	(	""	)
 parmop_time	[ 0	locks=0 ]	(	"always"	)
-time	[ 0	locks=0 ]	(	[ time	7.75 ] 	)
+time	[ 0	locks=0 ]	(	[ time	7.708333333333333 ] 	)
 parmop_usetransform	[ 0	locks=0 ]	(	"never"	)
 usetransform	[ 0	locks=0 ]	(	"off"	)
 parmop_transformtime	[ 0	locks=0 ]	(	"default"	)
@@ -7884,7 +7881,7 @@ soppath	[ 0	locks=0 ]	(	""	)
 parmop_primgroup	[ 0	locks=0 ]	(	"never"	)
 primgroup	[ 0	locks=0 ]	(	""	)
 parmop_time	[ 0	locks=0 ]	(	"always"	)
-time	[ 0	locks=0 ]	(	[ time	7.75 ] 	)
+time	[ 0	locks=0 ]	(	[ time	7.708333333333333 ] 	)
 parmop_usetransform	[ 0	locks=0 ]	(	"never"	)
 usetransform	[ 0	locks=0 ]	(	"off"	)
 parmop_transformtime	[ 0	locks=0 ]	(	"default"	)
@@ -12282,7 +12279,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -18733,7 +18730,7 @@ Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
 f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDE3LjUuMjI5JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJaCSsEC3ZlcnRleGNvdW50JgQSZAkrBQ5wcmltaXRpdmVjb3VudCYFEQwrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
-KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDctMjggMTg6MDk6MDUmDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
+KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDctMzAgMjE6MDc6MTImDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
 rKbvPhzair07X4c9AAAAAAAAAAArEBFwcmltY291bnRfc3VtbWFyeSYQJxUgICAgICAgICAxMiBQb2x5Z29ucworERFhdHRyaWJ1dGVfc3VtbWFyeSYRJxsgICAgIDEgcG9pbnQgYXR0cmlidXRlczoJUAp9KxIIdG9wb2xvZ3k=
 JhJbKxMIcG9pbnRyZWYmE1srFAdpbmRpY2VzJhRAEvJkCQAAAQACAAMABAAFAAYABwAIAAkACgALAAwADQAOAA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AHwAgACEAIgAjACQAJQAmACcAKAApACoAKwAsAC0ALgA=
 LwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAFsAXABdAF4AXwBgAGEAYgBjAGQAZQBmAGcAaABpAGoAawBsAG0AbgA=
@@ -24240,7 +24237,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -31763,7 +31760,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

@@ -9,5 +9,7 @@ Contents.gz	Contents.gz
 Version	Version
 IconSVG	IconSVG
 PythonModule	PythonModule
+PreFirstCreate	PreFirstCreate
+PostLastDelete	PostLastDelete
 ExtraFileOptions	ExtraFileOptions
 LYNX__logo.svg	LYNX_logo.svg

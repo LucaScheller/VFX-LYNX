@@ -19,6 +19,46 @@
 		"type":"string",
 		"value":"S:/LYNX_logo.svg"
 	},
+	"PostLastDelete/Cursor":{
+		"type":"intarray",
+		"value":[9,77]
+	},
+	"PostLastDelete/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"PostLastDelete/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"PostLastDelete/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"PostLastDelete/Source":{
+		"type":"string",
+		"value":""
+	},
+	"PreFirstCreate/Cursor":{
+		"type":"intarray",
+		"value":[17,5]
+	},
+	"PreFirstCreate/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"PreFirstCreate/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"PreFirstCreate/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"PreFirstCreate/Source":{
+		"type":"string",
+		"value":""
+	},
 	"PythonModule/Cursor":{
 		"type":"intarray",
 		"value":[1,1]
