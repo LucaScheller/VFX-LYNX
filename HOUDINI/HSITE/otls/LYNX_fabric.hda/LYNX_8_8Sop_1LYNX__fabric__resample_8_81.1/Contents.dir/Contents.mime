@@ -32,22 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.21195 0.408283
-connectornextid 0
+position 1.02691 0.956126
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
+1 	compile_end1 1 1 "input1"
 }
 inputs
 {
+0 	compile_end1 0 1
 }
 stat
 {
-  create 1562789588
-  modify 1562790442
+  create 1559996359
+  modify 1562790908
   author USER@lynx.localdomain
   access 0777
 }
@@ -1811,7 +1814,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1560028497
+  modify 1564829492
   author LYNX@LucaScheller
   access 0777
 }
@@ -1826,7 +1829,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-ptdel	[ 0	locks=0 ]	(	"LYNX_fabric_hit_prim_* LYNX_fabric_tan_u LYNX_fabric_sort_id"	)
+ptdel	[ 0	locks=0 ]	(	"LYNX_fabric_hit_pt_* LYNX_fabric_hit_prim_* LYNX_fabric_tan_u LYNX_fabric_sort_id"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
 primdel	[ 0	locks=0 ]	(	"LYNX_fabric_resample segment_length"	)
 dtldel	[ 0	locks=0 ]	(	LYNX_fabric_resample	)
@@ -1912,7 +1915,7 @@ edge	[ 0	locks=0 ]	(	"off"	)
 method	[ 0	locks=0 ]	(	"dist"	)
 measure	[ 0	locks=0 ]	(	"arc"	)
 dolength	[ 0	locks=0 ]	(	"on"	)
-length	[ 0	locks=0 ]	(	[ length	0.0070000000000000001 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0.10000000000000001 ] 	)
 dosegs	[ 0	locks=0 ]	(	"off"	)
 segs	[ 0	locks=0 ]	(	10	)
 useattribs	[ 0	locks=0 ]	(	"on"	)
@@ -2898,7 +2901,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+input	[ 0	locks=0 ]	(	[ input	1 ] 	)
 spare_input0	[ 0	locks=0 ]	(	../IN_fabric_fiber_resample	)
 }
 
@@ -3038,7 +3041,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3885,7 +3888,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 spare_input0	[ 0	locks=0 ]	(	../IN_fabric_fiber_resample	)
 spare_input1	[ 0	locks=0 ]	(	../toggle_double_sort	)
 }
@@ -4030,7 +4033,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
