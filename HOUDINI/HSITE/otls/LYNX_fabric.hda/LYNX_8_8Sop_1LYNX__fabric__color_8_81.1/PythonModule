@@ -6,4 +6,9 @@ def fabric_fiber_color_solo_state():
             fabric_fiber_color_solo_state += n.parm("fabric_fiber_color_solo_"+str(edit_idx+1)).eval()
     n.parm("fabric_fiber_color_solo_state").set( max(0,min(fabric_fiber_color_solo_state,1)))
     
-    
+
+def fabric_fiber_color_mode_callback(kwargs):
+    if (kwargs["parm"].eval()==3):
+            kwargs["node"].parm("fabric_fiber_color_mix_"+str(kwargs["script_multiparm_index"])).set(0) 
+    else: 
+            kwargs["node"].parm("fabric_fiber_color_mix_"+str(kwargs["script_multiparm_index"])).revertToDefaults()

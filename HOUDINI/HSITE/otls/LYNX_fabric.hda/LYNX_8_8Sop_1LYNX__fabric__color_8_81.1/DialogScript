@@ -108,6 +108,7 @@
                         type    toggle
                         joinnext
                         default { "0" }
+                        disablewhen "{ fabric_fiber_color_mode_# == 3 fabric_fiber_color_mix_# == 1 }"
                         parmtag { "script_callback" "hou.phm().fabric_fiber_color_solo_state()" }
                         parmtag { "script_callback_language" "python" }
                     }
@@ -145,32 +146,43 @@
                         menu {
                             "solid" "Solid \\ Ramp"
                             "image" "Image"
+                            "noise" "Noise"
                             "cc"    "Color Correction"
                         }
                         range   { 0 10 }
+                        parmtag { "script_callback" "hou.phm().fabric_fiber_color_mode_callback(kwargs)" }
+                        parmtag { "script_callback_language" "python" }
                     }
                     parm {
                         name    "fabric_fiber_color_mix_#"
                         label   "   Mix Via"
                         type    integer
                         default { "3" }
-                        disablewhen "{ fabric_fiber_color_mode_# == 2 }"
                         menu {
-                            "set"       "Set"
-                            "add"       "Add"
-                            "subtract"  "Subtract"
-                            "multiply"  "Multiply"
-                            "divide"    "Divide"
+                            [ "n = kwargs[\"node\"]" ]
+                            [ "n_p_fabric_fiber_color_mode = n.parm(\"fabric_fiber_color_mode_\"+str(kwargs[\"script_multiparm_index\"])).eval()" ]
+                            [ "" ]
+                            [ "mix_default = [\"set\",\"add\",\"subtract\",\"multiply\",\"divide\"]" ]
+                            [ "mix_cc = [\"apply_global\",\"apply_previous\"]" ]
+                            [ "" ]
+                            [ "mix = mix_cc if (n_p_fabric_fiber_color_mode==3) else mix_default" ]
+                            [ "" ]
+                            [ "menu_items = []" ]
+                            [ "for item in mix:" ]
+                            [ "    menu_items.extend([item,item.title().replace(\"_\",\" \")])" ]
+                            [ "    " ]
+                            [ "return menu_items" ]
+                            language python
                         }
                         range   { 0 10 }
                     }
                     groupsimple {
-                        name    "folder0__#"
+                        name    "fabric_fiber_color_solid_folder_#"
                         label   "Solid \\ Ramp"
                         hidewhen "{ fabric_fiber_color_mode_# != 0 }"
 
                         parm {
-                            name    "fabric_fiber_color_solid_color_#_"
+                            name    "fabric_fiber_color_solid_color_#"
                             label   "Base Color"
                             type    color
                             joinnext
@@ -207,6 +219,50 @@
                             parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 1 1 1 ) 1interp ( linear ) 2pos ( 1 ) 2c ( 1 1 1 ) 2interp ( linear )" }
                             parmtag { "rampshowcontrolsdefault" "0" }
                         }
+                        groupcollapsible {
+                            name    "fabric_fiber_color_solid_uv_transform_folder_#_"
+                            label   "UV Transform"
+
+                            parm {
+                                name    "fabric_fiber_color_solid_uv_transform_t_#_"
+                                label   "Translate"
+                                type    vector2
+                                size    2
+                                default { "0" "0" }
+                                range   { -1 1 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_solid_uv_transform_r_#"
+                                label   "Rotate"
+                                type    float
+                                default { "0" }
+                                range   { -360 360 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_solid_uv_transform_s_#_"
+                                label   "Scale"
+                                type    vector2
+                                size    2
+                                default { "1" "1" }
+                                range   { -1 1 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_solid_uv_transform_s_uniform_#"
+                                label   "Scale Uniform"
+                                type    float
+                                default { "1" }
+                                range   { 0 2 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_solid_uv_transform_pivot_#_"
+                                label   "Pivot"
+                                type    vector2
+                                size    2
+                                default { "0.5" "0.5" }
+                                range   { -1 1 }
+                            }
+                        }
+
                     }
 
                     groupsimple {
@@ -348,7 +404,154 @@
                                 range   { -1 1 }
                             }
                             parm {
+                                name    "fabric_fiber_color_image_uv_transform_s_uniform_#"
+                                label   "Scale Uniform"
+                                type    float
+                                default { "1" }
+                                range   { 0 2 }
+                            }
+                            parm {
                                 name    "fabric_fiber_color_image_uv_transform_pivot_#_"
+                                label   "Pivot"
+                                type    vector2
+                                size    2
+                                default { "0.5" "0.5" }
+                                range   { -1 1 }
+                            }
+                        }
+
+                    }
+
+                    groupsimple {
+                        name    "fabric_fiber_color_noise_folder_#"
+                        label   "Noise"
+                        hidewhen "{ fabric_fiber_color_mode_# != 2 }"
+
+                        parm {
+                            name    "fabric_fiber_color_noise_type_#"
+                            label   "Type"
+                            type    string
+                            joinnext
+                            default { "simplex" }
+                            menu {
+                                "value_fast"    "Value Noise | Fast"
+                                "sparse"        "Value Noise | Sparse Convolution"
+                                "alligator"     "Value Noise | Alligator"
+                                "perlin"        "Perlin"
+                                "flow"          "Perlin | Flow"
+                                "simplex"       "Simplex"
+                                "worleyFA"      "Worley/Cellular | F1"
+                                "worleyFB"      "Worley/Cellular | F2-F1"
+                                "mworleyFA"     "Worley/Cellular | Manhattan F1"
+                                "mworleyFB"     "Worley/Cellular | Manhattan F2-F1"
+                                "cworleyFA"     "Worley/Cellular | Chebyshev F1"
+                                "cworleyFB"     "Worley/Cellular | Chebyshev F2-F1"
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_attribute_uv_#"
+                            label   "UV Attribute"
+                            type    string
+                            default { "LYNX_fabric_uv_geo" }
+                            menureplace {
+                                [ "menuitem = []" ]
+                                [ "n_path = hou.pwd().path()" ]
+                                [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                                [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                                [ "n_IN_DATA_geometry_pointAttribs = n_IN_DATA_geometry.pointAttribs()" ]
+                                [ "if n_IN_DATA_geometry_pointAttribs!=():" ]
+                                [ "    for attrib in n_IN_DATA_geometry_pointAttribs:" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "        menuitem.append(attrib.name())" ]
+                                [ "            " ]
+                                [ "return menuitem" ]
+                                language python
+                            }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_frequency_#"
+                            label   "Frequency"
+                            type    vector
+                            size    3
+                            default { "5" "5" "5" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_offset_#"
+                            label   "Offset"
+                            type    vector
+                            size    3
+                            default { "0" "0" "0" }
+                            range   { -1 1 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_octaves_#"
+                            label   "Octaves"
+                            type    float
+                            joinnext
+                            default { "8" }
+                            range   { 0! 16 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_lacunarity_#"
+                            label   "Lacunarity"
+                            type    float
+                            joinnext
+                            default { "2" }
+                            range   { 0! 4 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_roughness_#"
+                            label   "Roughness"
+                            type    float
+                            default { "0.5" }
+                            range   { 0! 1! }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_noise_remap_#"
+                            label   "Noise Remap"
+                            type    ramp_rgb
+                            default { "2" }
+                            range   { 1! 10 }
+                            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0 0 0 ) 1interp ( linear ) 2pos ( 1 ) 2c ( 1 1 1 ) 2interp ( linear )" }
+                            parmtag { "rampshowcontrolsdefault" "0" }
+                        }
+                        groupcollapsible {
+                            name    "fabric_fiber_color_noise_uv_transform_folder_#"
+                            label   "UV Transform"
+
+                            parm {
+                                name    "fabric_fiber_color_noise_uv_transform_t_#_"
+                                label   "Translate"
+                                type    vector2
+                                size    2
+                                default { "0" "0" }
+                                range   { -1 1 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_noise_uv_transform_r_#"
+                                label   "Rotate"
+                                type    float
+                                default { "0" }
+                                range   { -360 360 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_noise_uv_transform_s_#_"
+                                label   "Scale"
+                                type    vector2
+                                size    2
+                                default { "1" "1" }
+                                range   { -1 1 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_noise_uv_transform_s_uniform_#"
+                                label   "Scale Uniform"
+                                type    float
+                                default { "1" }
+                                range   { 0 2 }
+                            }
+                            parm {
+                                name    "fabric_fiber_color_noise_uv_transform_pivot_#_"
                                 label   "Pivot"
                                 type    vector2
                                 size    2
@@ -362,7 +565,7 @@
                     groupsimple {
                         name    "fabric_fiber_color_image_folder__1_#"
                         label   "Color Correction"
-                        hidewhen "{ fabric_fiber_color_mode_# != 2 }"
+                        hidewhen "{ fabric_fiber_color_mode_# != 3 }"
 
                         parm {
                             name    "fabric_fiber_color_cc_attribute_rand_#"
@@ -461,6 +664,15 @@
                             default { "0.75" "1" }
                             disablewhen "{ fabric_fiber_color_cc_value_rand_toggle_# == 0 }"
                             range   { 0 2 }
+                        }
+                        parm {
+                            name    "fabric_fiber_color_cc_value_fit_#_"
+                            label   "Fit Range Final Value"
+                            type    vector4
+                            size    4
+                            default { "0" "1" "0" "1" }
+                            help    "Fit range the final output value after all color corrections have been calculated. This fit range operates unclamped."
+                            range   { -1 1 }
                         }
                         groupcollapsible {
                             name    "fabric_fiber_color_cc_ramp_remaps_folder_#"

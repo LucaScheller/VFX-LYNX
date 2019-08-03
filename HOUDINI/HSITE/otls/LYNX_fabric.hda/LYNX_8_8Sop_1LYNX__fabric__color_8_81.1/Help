@@ -15,7 +15,7 @@
 
 Features:
 * Set and randomize any float or vector attribute including `Cd`/`Alpha`/`width` of your input geometry.
-* Manipulate the attribute in a layer based fashion. Each layer can be one of the three types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image] or [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection] and is merged via the [Mix|#LYNX_fabric_color_fiber_color_mix] operation.
+* Manipulate the attribute in a layer based fashion. Each layer can be one of the four types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image], [Noise|#LYNX_fabric_color_fiber_color_mode_noise] or [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection] and is merged via the [Mix|#LYNX_fabric_color_fiber_color_mix] operation.
 
 @outputs
 
@@ -45,9 +45,11 @@ Edit Sets | General Settings:
             @LYNX_fabric_fiber_direction==0
             }}}
             This expression only influences curves along the horizontal axis when using this node in combination with [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1].
-    * Mode: Edits can be one of three types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image] and [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection].
+    * Mode: Edits can be one of four types: [Solid/Ramp|#LYNX_fabric_color_fiber_color_mode_solidramp], [Image|#LYNX_fabric_color_fiber_color_mode_image], [Noise|#LYNX_fabric_color_fiber_color_mode_noise] and [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection].
     * Mix Via: Here you set the mix method how the edit is combined with previous edits or the input attribute.
         #id: LYNX_fabric_color_fiber_color_mix
+        :tip: 
+            When using the [Color Correction|#LYNX_fabric_color_fiber_color_mode_colorcorrection] mode you can choose to apply the color correction to all previous edits or only to the previous edit before it is applied to the rest of the stack. This allows you for example to remap images to a certain range before applying the image.
 
 Edit Sets | Modes:
     #id: LYNX_fabric_color_fiber_color_id
@@ -59,6 +61,7 @@ Edit Sets | Modes:
         * UV Attribute: The uv attribute that drives the ramp. 
             :tip:
                 When using [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1], try using `LYNX_fabric_uv_geo` / `LYNX_fabric_uv_tile` / `uv` for different effects.
+        * UV Transform: Transform the uv (without actually changing the uv attribute). Use this to adjust the placement of your image.
     * Image:
         #id: LYNX_fabric_color_fiber_color_mode_image
         Color the curves with an image of your choice.
@@ -74,12 +77,23 @@ Edit Sets | Modes:
                 Try out different filters for different looks!
         * Color Management/Gamma: If an `OCIO` variable is set you can color transform the image via the color transforms defined by the OCIO configuration. If no variable is set you can shift the `gamma`.
         * UV Transform: Transform the uv (without actually changing the uv attribute). Use this to adjust the placement of your image.
+    * Noise:
+        #id: LYNX_fabric_color_fiber_color_mode_noise
+        Color the curves with noise along a uv attribute. Ideal for creating subtle color variations.
+        * Type Color: Different noise types with values from 0 to 1.
+        * UV Attribute: The uv attribute that drives the ramp. 
+            :tip:
+                When using [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1], try using `LYNX_fabric_uv_geo` / `LYNX_fabric_uv_tile` / `uv` for different effects.
+        * Frequency/Offset/Octaves/Lacunarity/Roughness: Control your noise settings here.
+        * Color Remap: Remap the resulting noise with this ramp.
+        * UV Transform: Transform the uv (without actually changing the uv attribute). Use this to adjust the placement of your image.
     * Color Correction:
         #id: LYNX_fabric_color_fiber_color_mode_colorcorrection
         Color grade your color.
+        * Randomize Seed: The name of the attribute that drives the seed when using the `Randomize` feature for [Hue/Saturation/Value|#LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue].
         * Hue/Saturation/Value: Shift the hue, change the saturation or multiply the values of your color. By enabling `Randomize` you can randomize the actual slider value.
             #id: LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue
-        * Randomize Seed: The name of the attribute that drives the seed when using the `Randomize` feature for [Hue/Saturation/Value|#LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue].
+        * Fit Range Final Value: Fit range the final output value after all color corrections have been calculated. This fit range operates unclamped.
         * HSV Remap: Remap the [Hue/Saturation/Value|#LYNX_fabric_color_fiber_color_mode_colorcorrection_huesaturationvalue] with a ramp. This is similar to color corrections found in other DCC software packages.
         
 @related

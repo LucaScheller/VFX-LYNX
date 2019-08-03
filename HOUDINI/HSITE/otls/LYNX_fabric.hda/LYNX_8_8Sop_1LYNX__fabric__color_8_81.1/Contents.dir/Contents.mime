@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.87089 0.34687
+position -4.31064 0.663772
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -46,8 +46,8 @@ inputs
 }
 stat
 {
-  create 1562785086
-  modify 1562788591
+  create 1564824324
+  modify 1564825055
   author USER@lynx.localdomain
   access 0777
 }
@@ -87,7 +87,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 2.69308 2.27479
+position 2.74172 1.93954
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -107,7 +107,7 @@ inputs
 stat
 {
   create 1559557906
-  modify 1559769597
+  modify 1564757515
   author LYNX@LucaScheller
   access 0777
 }
@@ -128,27 +128,31 @@ grouptype	[ 0	locks=0 ]	(	"points"	)
 class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"vector @LYNX_fabric_color = 1;
+snippet	[ 0	locks=0 ]	(	"#include <pyro_noise.h>
+
+vector @LYNX_fabric_color = 1;
 vector LYNX_fabric_color = 1;
 float  LYNX_fabric_color_alpha = 1;
 
+int    edits = chi(\"../fabric_fiber_color_edits\");
 int    edit = detail(1,\"ivalue\",0);
 string edit_str = sprintf(\"%s\",edit);
 int    LYNX_fabric_fiber_color_mode = chi(\"../fabric_fiber_color_mode_\"+edit_str);
+int    LYNX_fabric_fiber_color_mix = chi(\"../fabric_fiber_color_mix_\"+edit_str);
 
 // Solid \\ Ramp
 if (LYNX_fabric_fiber_color_mode==0){
     string LYNX_fabric_fiber_color_solid_attribute_uv = chs(\"../fabric_fiber_color_solid_attribute_uv_\"+edit_str);
-    vector LYNX_fabric_fiber_color_solid_uv = point(0,LYNX_fabric_fiber_color_solid_attribute_uv,@ptnum);
-    LYNX_fabric_color = chv(\"../fabric_fiber_color_solid_color_\"+edit_str+\"_\") * chramp(\"../fabric_fiber_color_solid_remap_\"+edit_str,LYNX_fabric_fiber_color_solid_uv[0]);
+    matrix LYNX_fabric_fiber_color_solid_uv_transform = maketransform(3,0,set(-ch(\"../fabric_fiber_color_solid_uv_transform_t_\"+edit_str+\"_x\"),-ch(\"../fabric_fiber_color_solid_uv_transform_t_\"+edit_str+\"_y\"),0),set(0,0,ch(\"../fabric_fiber_color_solid_uv_transform_r_\"+edit_str)),set(1/ch(\"../fabric_fiber_color_solid_uv_transform_s_\"+edit_str+\"_x\"),1/ch(\"../fabric_fiber_color_solid_uv_transform_s_\"+edit_str+\"_y\"),0)*1/ch(\"../fabric_fiber_color_solid_uv_transform_s_uniform_\"+edit_str),set(ch(\"../fabric_fiber_color_solid_uv_transform_pivot_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_solid_uv_transform_pivot_\"+edit_str+\"_y\"),0));
+    vector LYNX_fabric_color_solid_uv = point(0,LYNX_fabric_fiber_color_solid_attribute_uv,@ptnum) * LYNX_fabric_fiber_color_solid_uv_transform;
+    LYNX_fabric_color = chv(\"../fabric_fiber_color_solid_color_\"+edit_str) * chramp(\"../fabric_fiber_color_solid_remap_\"+edit_str,LYNX_fabric_color_solid_uv[0]);
 }
 
 // Image
 if (LYNX_fabric_fiber_color_mode==1){
     float  LYNX_fabric_fiber_color_image_blur = ch(\"../fabric_fiber_color_image_blur_\"+edit_str);
     string LYNX_fabric_fiber_color_image_wrap = chs(\"../fabric_fiber_color_image_wrap_\"+edit_str);
-    // Image
-    matrix LYNX_fabric_color_image_uv_transform = maketransform(3,0,set(ch(\"../fabric_fiber_color_image_uv_transform_t_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_image_uv_transform_t_\"+edit_str+\"_y\"),0),set(0,0,ch(\"../fabric_fiber_color_image_uv_transform_r_\"+edit_str)),set(ch(\"../fabric_fiber_color_image_uv_transform_s_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_image_uv_transform_s_\"+edit_str+\"_y\"),0),set(ch(\"../fabric_fiber_color_image_uv_transform_pivot_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_image_uv_transform_pivot_\"+edit_str+\"_y\"),0));
+    matrix LYNX_fabric_color_image_uv_transform = maketransform(3,0,set(-ch(\"../fabric_fiber_color_image_uv_transform_t_\"+edit_str+\"_x\"),-ch(\"../fabric_fiber_color_image_uv_transform_t_\"+edit_str+\"_y\"),0),set(0,0,ch(\"../fabric_fiber_color_image_uv_transform_r_\"+edit_str)),set(1/ch(\"../fabric_fiber_color_image_uv_transform_s_\"+edit_str+\"_x\"),1/ch(\"../fabric_fiber_color_image_uv_transform_s_\"+edit_str+\"_y\"),0)*1/ch(\"../fabric_fiber_color_image_uv_transform_s_uniform_\"+edit_str),set(ch(\"../fabric_fiber_color_image_uv_transform_pivot_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_image_uv_transform_pivot_\"+edit_str+\"_y\"),0));
     vector LYNX_fabric_color_image_uv = point(0,ch(\"../fabric_fiber_color_image_attribute_uv_\"+edit_str),@ptnum) * LYNX_fabric_color_image_uv_transform;
     if(LYNX_fabric_fiber_color_image_wrap==\"decal\"){
         if (LYNX_fabric_color_image_uv[0]<0 || LYNX_fabric_color_image_uv[0]>1 || LYNX_fabric_color_image_uv[1]<0 || LYNX_fabric_color_image_uv[1]>1)
@@ -169,29 +173,57 @@ if (LYNX_fabric_fiber_color_mode==1){
     }
 }
 
-// Color Correction
+// Noise
 if (LYNX_fabric_fiber_color_mode==2){
-    LYNX_fabric_color = @LYNX_fabric_color;
-    string LYNX_fabric_fiber_color_cc_attribute_rand = chs(\"../fabric_fiber_color_cc_attribute_rand_\"+edit_str);
-    float LYNX_fabric_fiber_color_cc_value_remap_x = ch(\"../fabric_fiber_color_cc_value_remap_fit_\"+edit_str+\"_x\");
-    float LYNX_fabric_fiber_color_cc_value_remap_y = ch(\"../fabric_fiber_color_cc_value_remap_fit_\"+edit_str+\"_y\");
+    string LYNX_fabric_fiber_color_noise_attribute_uv = chs(\"../fabric_fiber_color_noise_attribute_uv_\"+edit_str);
+    matrix LYNX_fabric_fiber_color_noise_uv_transform = maketransform(3,0,set(-ch(\"../fabric_fiber_color_noise_uv_transform_t_\"+edit_str+\"_x\"),-ch(\"../fabric_fiber_color_noise_uv_transform_t_\"+edit_str+\"_y\"),0),set(0,0,ch(\"../fabric_fiber_color_noise_uv_transform_r_\"+edit_str)),set(1/ch(\"../fabric_fiber_color_noise_uv_transform_s_\"+edit_str+\"_x\"),1/ch(\"../fabric_fiber_color_noise_uv_transform_s_\"+edit_str+\"_y\"),0)*1/ch(\"../fabric_fiber_color_noise_uv_transform_s_uniform_\"+edit_str),set(ch(\"../fabric_fiber_color_noise_uv_transform_pivot_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_noise_uv_transform_pivot_\"+edit_str+\"_y\"),0));
+    vector LYNX_fabric_color_noise_uv = point(0,LYNX_fabric_fiber_color_noise_attribute_uv,@ptnum) * LYNX_fabric_fiber_color_noise_uv_transform;
+    LYNX_fabric_color_noise_uv = (LYNX_fabric_color_noise_uv * chv(\"../fabric_fiber_color_noise_frequency_\"+edit_str)) - chv(\"../fabric_fiber_color_noise_offset_\"+edit_str);  
+    float LYNX_fabric_color_noise_average; float LYNX_fabric_color_noise_octaves; vector LYNX_fabric_color_noise_offset;
+    float LYNX_fabric_color_noise = unified_fractal_noise(\"fBm\", chs(\"../fabric_fiber_color_noise_type_\"+edit_str), LYNX_fabric_color_noise_uv,0,0,0,0, VOPFW(LYNX_fabric_color_noise_uv),1,{ 1, 1, 1},0,0, 0,1,0,0,LYNX_fabric_color_noise_average,LYNX_fabric_color_noise_offset, chf(\"../fabric_fiber_color_noise_octaves_\"+edit_str),chf(\"../fabric_fiber_color_noise_lacunarity_\"+edit_str),chf(\"../fabric_fiber_color_noise_roughness_\"+edit_str), LYNX_fabric_color_noise_octaves); 
+    LYNX_fabric_color = chramp(\"../fabric_fiber_color_noise_remap_\"+edit_str,LYNX_fabric_color_noise);
+}
+
+// Color Correction
+int LYNX_fabric_fiber_color_mode_next_applyPrevious = 0;
+string edit_str_cc = edit_str;
+if(edit<edits){
+    string edit_str_next = sprintf(\"%s\",edit+1);
+    int LYNX_fabric_fiber_color_mode_next = chi(\"../fabric_fiber_color_mode_\"+edit_str_next);
+    int LYNX_fabric_fiber_color_mix_next = chi(\"../fabric_fiber_color_mix_\"+edit_str_next);
+    int LYNX_fabric_fiber_color_skip_next = chi(\"../fabric_fiber_color_skip_\"+edit_str_next);
+    int LYNX_fabric_fiber_color_solo_next = chi(\"../fabric_fiber_color_solo_\"+edit_str_next);
+    if(LYNX_fabric_fiber_color_mode_next==3 && LYNX_fabric_fiber_color_mix_next==1 && LYNX_fabric_fiber_color_skip_next==0){
+        LYNX_fabric_fiber_color_mode_next_applyPrevious = 1;
+        edit_str_cc = edit_str_next; 
+    }
+}
+        
+if (LYNX_fabric_fiber_color_mode==3 || LYNX_fabric_fiber_color_mode_next_applyPrevious==1){
+    
+    if (LYNX_fabric_fiber_color_mode==3 && LYNX_fabric_fiber_color_mix==1){ return; }
+    if (LYNX_fabric_fiber_color_mode_next_applyPrevious==0){ LYNX_fabric_color = @LYNX_fabric_color;}
+
+    string LYNX_fabric_fiber_color_cc_attribute_rand = chs(\"../fabric_fiber_color_cc_attribute_rand_\"+edit_str_cc);
+    float LYNX_fabric_fiber_color_cc_value_remap_x = ch(\"../fabric_fiber_color_cc_value_remap_fit_\"+edit_str_cc+\"_x\");
+    float LYNX_fabric_fiber_color_cc_value_remap_y = ch(\"../fabric_fiber_color_cc_value_remap_fit_\"+edit_str_cc+\"_y\");
     vector LYNX_fabric_color_hsv = rgbtohsv(LYNX_fabric_color);
     vector LYNX_fabric_color_cc_attribute_rand_seed = haspointattrib(0,LYNX_fabric_fiber_color_cc_attribute_rand)?point(0,LYNX_fabric_fiber_color_cc_attribute_rand,@ptnum):@ptnum;
-    float LYNX_fabric_color_cc_hue_rand = chi(\"../fabric_fiber_color_cc_hue_rand_toggle_\"+edit_str)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_hue_rand_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_cc_hue_rand_\"+edit_str+\"_y\")):0;
-    float LYNX_fabric_color_cc_hue_remap = fit01(chramp(\"../fabric_fiber_color_cc_hue_remap_\"+edit_str,LYNX_fabric_color_hsv.x),-1,1);
-    float LYNX_fabric_color_cc_saturation_rand = chi(\"../fabric_fiber_color_cc_saturation_rand_toggle_\"+edit_str)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_saturation_rand_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_cc_saturation_rand_\"+edit_str+\"_y\")):1;
-    float LYNX_fabric_color_cc_saturation_remap = chramp(\"../fabric_fiber_color_cc_saturation_remap_\"+edit_str,LYNX_fabric_color_hsv.x);
-    float LYNX_fabric_color_cc_value_rand = chi(\"../fabric_fiber_color_cc_value_rand_toggle_\"+edit_str)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_value_rand_\"+edit_str+\"_x\"),ch(\"../fabric_fiber_color_cc_value_rand_\"+edit_str+\"_y\")):1;
-    float LYNX_fabric_color_cc_value_remap = fit01(chramp(\"../fabric_fiber_color_cc_value_remap_\"+edit_str,fit(LYNX_fabric_color_hsv.z,LYNX_fabric_fiber_color_cc_value_remap_x,LYNX_fabric_fiber_color_cc_value_remap_y,0,1)),LYNX_fabric_fiber_color_cc_value_remap_x,LYNX_fabric_fiber_color_cc_value_remap_y);
-    LYNX_fabric_color_hsv.x += LYNX_fabric_color_cc_hue_remap + ch(\"../fabric_fiber_color_cc_hue_\"+edit_str) + LYNX_fabric_color_cc_hue_rand;
-    LYNX_fabric_color_hsv.y *= LYNX_fabric_color_cc_saturation_remap * ch(\"../fabric_fiber_color_cc_saturation_\"+edit_str) * LYNX_fabric_color_cc_saturation_rand;
-    LYNX_fabric_color_hsv.z = LYNX_fabric_color_cc_value_remap * ch(\"../fabric_fiber_color_cc_value_\"+edit_str) * LYNX_fabric_color_cc_value_rand;
+    float LYNX_fabric_color_cc_hue_rand = chi(\"../fabric_fiber_color_cc_hue_rand_toggle_\"+edit_str_cc)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_hue_rand_\"+edit_str_cc+\"_x\"),ch(\"../fabric_fiber_color_cc_hue_rand_\"+edit_str_cc+\"_y\")):0;
+    float LYNX_fabric_color_cc_hue_remap = fit01(chramp(\"../fabric_fiber_color_cc_hue_remap_\"+edit_str_cc,LYNX_fabric_color_hsv.x),-1,1);
+    float LYNX_fabric_color_cc_saturation_rand = chi(\"../fabric_fiber_color_cc_saturation_rand_toggle_\"+edit_str_cc)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_saturation_rand_\"+edit_str_cc+\"_x\"),ch(\"../fabric_fiber_color_cc_saturation_rand_\"+edit_str_cc+\"_y\")):1;
+    float LYNX_fabric_color_cc_saturation_remap = chramp(\"../fabric_fiber_color_cc_saturation_remap_\"+edit_str_cc,LYNX_fabric_color_hsv.x);
+    float LYNX_fabric_color_cc_value_rand = chi(\"../fabric_fiber_color_cc_value_rand_toggle_\"+edit_str_cc)?fit01(rand(LYNX_fabric_color_cc_attribute_rand_seed),ch(\"../fabric_fiber_color_cc_value_rand_\"+edit_str_cc+\"_x\"),ch(\"../fabric_fiber_color_cc_value_rand_\"+edit_str_cc+\"_y\")):1;
+    float LYNX_fabric_color_cc_value_remap = fit01(chramp(\"../fabric_fiber_color_cc_value_remap_\"+edit_str_cc,fit(LYNX_fabric_color_hsv.z,LYNX_fabric_fiber_color_cc_value_remap_x,LYNX_fabric_fiber_color_cc_value_remap_y,0,1)),LYNX_fabric_fiber_color_cc_value_remap_x,LYNX_fabric_fiber_color_cc_value_remap_y);
+    LYNX_fabric_color_hsv.x += LYNX_fabric_color_cc_hue_remap + ch(\"../fabric_fiber_color_cc_hue_\"+edit_str_cc) + LYNX_fabric_color_cc_hue_rand;
+    LYNX_fabric_color_hsv.y *= LYNX_fabric_color_cc_saturation_remap * ch(\"../fabric_fiber_color_cc_saturation_\"+edit_str_cc) * LYNX_fabric_color_cc_saturation_rand;
+    LYNX_fabric_color_hsv.z = LYNX_fabric_color_cc_value_remap * ch(\"../fabric_fiber_color_cc_value_\"+edit_str_cc) * LYNX_fabric_color_cc_value_rand;
+    LYNX_fabric_color_hsv.z = efit(LYNX_fabric_color_hsv.z,ch(\"../fabric_fiber_color_cc_value_fit_\"+edit_str_cc+\"_x\"),ch(\"../fabric_fiber_color_cc_value_fit_\"+edit_str_cc+\"_y\"),ch(\"../fabric_fiber_color_cc_value_fit_\"+edit_str_cc+\"_z\"),ch(\"../fabric_fiber_color_cc_value_fit_\"+edit_str_cc+\"_w\"));
     LYNX_fabric_color = hsvtorgb(LYNX_fabric_color_hsv);
 }
 
 // Mix 
-if (LYNX_fabric_fiber_color_mode!=2){
-    int LYNX_fabric_fiber_color_mix = chi(\"../fabric_fiber_color_mix_\"+edit_str);
+if (LYNX_fabric_fiber_color_mode!=3){
     // Add
     if(LYNX_fabric_fiber_color_mix==1){LYNX_fabric_color = @LYNX_fabric_color + LYNX_fabric_color;}
     // Subtract
@@ -243,7 +275,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.11465 -2.05309
+position 1.16329 -2.38834
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -261,7 +293,7 @@ inputs
 stat
 {
   create 1559557906
-  modify 1559765107
+  modify 1564755107
   author LYNX@LucaScheller
   access 0777
 }
@@ -326,7 +358,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.00300001 -3.2377
+position 0.0456354 -3.57295
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -346,7 +378,7 @@ inputs
 stat
 {
   create 1559761092
-  modify 1559765138
+  modify 1564763629
   author LYNX@LucaScheller
   access 0777
 }
@@ -525,7 +557,7 @@ inputs
 stat
 {
   create 1559558730
-  modify 1559761060
+  modify 1564763629
   author LYNX@LucaScheller
   access 0777
 }
@@ -568,7 +600,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.3522e-08 -4.33805
+position 0.0486354 -4.6733
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -586,7 +618,7 @@ inputs
 stat
 {
   create 1559558906
-  modify 1559765138
+  modify 1564763629
   author LYNX@LucaScheller
   access 0777
 }
@@ -628,7 +660,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.11925 -1.09154
+position 1.16789 -1.42679
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -646,7 +678,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1559765105
+  modify 1564755107
   author LYNX@LucaScheller
   access 0777
 }
@@ -677,7 +709,7 @@ Content-Type: text/plain
 version 0.8
 itermethod	[ 0	locks=0 ]	(	"count"	)
 method	[ 0	locks=0 ]	(	"feedback"	)
-iterations	[ 0	locks=0 ]	(	[ iterations	1 ] 	)
+iterations	[ 0	locks=0 ]	(	[ iterations	4 ] 	)
 startvalue	[ 0	locks=0 ]	(	1	)
 increment	[ 0	locks=0 ]	(	1	)
 class	[ 0	locks=0 ]	(	"point"	)
@@ -736,7 +768,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1562692995
+  modify 1564763878
   author LYNX@LucaScheller
   access 0777
 }
@@ -798,7 +830,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1562692995
+  modify 1564763878
   author LYNX@LucaScheller
   access 0777
 }
@@ -844,7 +876,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.11765 -0.231791
+position 1.16629 -0.367655
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -864,7 +896,7 @@ inputs
 stat
 {
   create 1540817218
-  modify 1559762790
+  modify 1564755690
   author LYNX@LucaScheller
   access 0777
 }
@@ -893,7 +925,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -920,7 +952,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 2.47027 1.01228
+position 2.51891 0.677036
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -940,7 +972,7 @@ inputs
 stat
 {
   create 1540817218
-  modify 1559762790
+  modify 1564755504
   author LYNX@LucaScheller
   access 0777
 }
@@ -969,7 +1001,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -989,8 +1021,8 @@ Content-Type: text/plain
 
 {
 	"version":1,
-	"posx":1.61764704530155612,
-	"posy":1.57639565438499685,
+	"posx":1.66628998647803428,
+	"posy":1.24115117714765133,
 	"pinned":false,
 	"color":"FROMOUTPUT",
 	"input":"foreach_begin_edits 0 1"
