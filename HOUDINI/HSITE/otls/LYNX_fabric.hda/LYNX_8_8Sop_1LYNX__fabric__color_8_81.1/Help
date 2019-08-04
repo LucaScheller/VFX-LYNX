@@ -25,6 +25,11 @@ Output:
 
 @parameters
 
+== General ==
+
+Mask:
+    Here you can mask the node effect with any point attribute, point selection or point group.
+
 == Fiber ==
 
 === Color ===

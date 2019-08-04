@@ -15,10 +15,49 @@
     inputlabel	4	"Sub-Network Input #4"
     outputlabel	1	Fiber
 
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    string
+        invisible
+        default { "points" }
+        menu {
+            "points"    "Points"
+        }
+    }
     groupsimple {
         name    "fabric_settings_folder"
         label   "Fabric"
         grouptag { "group_type" "simple" }
+
+        groupsimple {
+            name    "fabric_general_settings"
+            label   "General"
+
+            parm {
+                name    "fabric_mask"
+                label   "Mask"
+                type    string
+                default { "" }
+                menureplace {
+                    [ "menuitem = []" ]
+                    [ "n_path = hou.pwd().path()" ]
+                    [ "n_IN_DATA = hou.node(n_path+\"/IN_Data\")" ]
+                    [ "n_IN_DATA_geometry = n_IN_DATA.geometry()" ]
+                    [ "n_IN_DATA_geometry_pointGroups = n_IN_DATA_geometry.pointGroups()" ]
+                    [ "if n_IN_DATA_geometry_pointGroups!=():" ]
+                    [ "    for attrib in n_IN_DATA_geometry_pointGroups:" ]
+                    [ "        menuitem.append(attrib.name())" ]
+                    [ "        menuitem.append(attrib.name())" ]
+                    [ "            " ]
+                    [ "return menuitem" ]
+                    language python
+                }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_help" "Select point group from an available viewport." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+        }
 
         groupsimple {
             name    "fabric_fiber_folder"

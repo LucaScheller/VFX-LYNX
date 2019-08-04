@@ -32,26 +32,29 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.31064 0.663772
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position 6.31154 -35.0827
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	LYNX_fabric_weave2 0 1 "input1"
 }
 inputs
 {
+0 	LYNX_fabric_weave2 0 1
 }
 stat
 {
-  create 1564824324
-  modify 1564825055
-  author USER@lynx.localdomain
+  create 1564763216
+  modify 1564872526
+  author LYNX@LucaScheller
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.475 0.812 0.204 
 delscript ""
 exprlanguage hscript
 end
@@ -107,7 +110,7 @@ inputs
 stat
 {
   create 1559557906
-  modify 1564757515
+  modify 1564872158
   author LYNX@LucaScheller
   access 0777
 }
@@ -293,7 +296,7 @@ inputs
 stat
 {
   create 1559557906
-  modify 1564755107
+  modify 1564872143
   author LYNX@LucaScheller
   access 0777
 }
@@ -378,7 +381,7 @@ inputs
 stat
 {
   create 1559761092
-  modify 1564763629
+  modify 1564869892
   author LYNX@LucaScheller
   access 0777
 }
@@ -394,7 +397,7 @@ Content-Type: text/plain
 {
 version 0.8
 folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
+group	[ 0	locks=0 ]	(	`chs(\"../fabric_mask\")`	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
@@ -466,7 +469,7 @@ inputs
 stat
 {
   create 1559761092
-  modify 1559765101
+  modify 1564872131
   author LYNX@LucaScheller
   access 0777
 }
@@ -557,7 +560,7 @@ inputs
 stat
 {
   create 1559558730
-  modify 1564763629
+  modify 1564869831
   author LYNX@LucaScheller
   access 0777
 }
@@ -618,7 +621,7 @@ inputs
 stat
 {
   create 1559558906
-  modify 1564763629
+  modify 1564872148
   author LYNX@LucaScheller
   access 0777
 }
@@ -709,7 +712,7 @@ Content-Type: text/plain
 version 0.8
 itermethod	[ 0	locks=0 ]	(	"count"	)
 method	[ 0	locks=0 ]	(	"feedback"	)
-iterations	[ 0	locks=0 ]	(	[ iterations	4 ] 	)
+iterations	[ 0	locks=0 ]	(	[ iterations	2 ] 	)
 startvalue	[ 0	locks=0 ]	(	1	)
 increment	[ 0	locks=0 ]	(	1	)
 class	[ 0	locks=0 ]	(	"point"	)
@@ -768,7 +771,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1564763878
+  modify 1564872358
   author LYNX@LucaScheller
   access 0777
 }
@@ -830,7 +833,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1564763878
+  modify 1564872358
   author LYNX@LucaScheller
   access 0777
 }
@@ -1001,7 +1004,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+input	[ 0	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
