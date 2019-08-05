@@ -48,8 +48,11 @@ Transfer Attributes:
 Fiber settings refer to settings per actual output curve. The term `fiber` is synonymous with the term `output curve`.
 
 === General ===
-Automatically Resample Fiber: 
+Automatically Resample Fiber:
+    #id: LYNX_fabric_thread_fiber_general_resample
     This auto resamples the input curves to account for the [Twist Cycles|#LYNX_fabric_thread_thread_twist_twist]. The `Segments Per 360` parameter controls how many segments are created for every 360 twists.
+    :warning:
+        When enabling this the resampling only takes the thread twist settings into account and not the fiber twist settings when calculating the resample density.
 Detangle Fiber:
     #id: LYNX_fabric_thread_fiber_general_detangle
     Detangle the curves after they have been extruded around the input curves. Higher iterations yield better results. The detangling is only done on the [Rest Frame|#LYNX_fabric_rest_frame]. 
@@ -60,12 +63,12 @@ Smooth:
 These settings control how each output curve is twisted around the orginal curve.
 
 ==== > Randomize ====
-Randomize the rotation offset per fiber. This is useful to break up the look and to introduce irregularities.
+Randomize the twist cycles and twist offset per fiber. This is useful to break up the look and to introduce irregularities. Using small values is recommended.
 
 Seed:
     Sets the seed per fiber used for generating a random value between 0 and 1.
 Min/Max:
-    Remaps the random value to this range and adds it to the twist offset.
+    Remaps the random value to this range and multiplies it with the twist cycle count / adds it to the twist offset.
 
 === Offset ===
 These settings control how each output curve is offset to the orginal curve.
@@ -104,13 +107,13 @@ Offset:
     This offsets the twist of the whole thread around the input curves.    
 
 ==== > Randomize ====
-Randomize the rotation offset per thread. This is useful to break up the look and to introduce irregularities.
+Randomize the twist cycles and twist offset per thread. This is useful to break up the look and to introduce irregularities.
 
 Seed:
-    Sets the seed per thread used for generating a random value between 0 and 1.
+    Sets the seed per fiber used for generating a random value between 0 and 1.
 Min/Max:
-    Remaps the random value to this range and adds it to the cycle offset.
-
+    Remaps the random value to this range and multiplies it with the twist cycle count / adds it to the twist offset.
+    
 ==== > Scale ====
 Apply Scale After Twist:
     If a scale attribute is present on the input curves, this will influence if the scale attribute is applied before or after the twist. This can be useful for "flat" threads.

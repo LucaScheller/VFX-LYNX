@@ -140,6 +140,13 @@
                     grouptag { "group_type" "simple" }
 
                     parm {
+                        name    "Randomize_Twist_Fiber_Cycles"
+                        label   "Randomize Twist Cycles"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
                         name    "fabric_fiber_twist_random_seed"
                         label   "Seed"
                         type    float
@@ -152,15 +159,45 @@
                         label   "Min"
                         type    float
                         joinnext
-                        default { "0" }
-                        range   { -1 1 }
+                        default { "1" }
+                        range   { 0 2 }
                     }
                     parm {
                         name    "fabric_fiber_twist_random_max"
                         label   "Max"
                         type    float
+                        default { "1" }
+                        range   { 0 2 }
+                    }
+                    parm {
+                        name    "Randomize_Twist_Fiber_Offset"
+                        label   "Randomize Twist Offset"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "fabric_fiber_twist_offset_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
                         default { "0" }
-                        range   { -1 1 }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_fiber_twist_offset_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { -360 360 }
+                    }
+                    parm {
+                        name    "fabric_fiber_twist_offset_random_max"
+                        label   "Max"
+                        type    float
+                        default { "0" }
+                        range   { -360 360 }
                     }
                 }
 
@@ -316,6 +353,13 @@
                     grouptag { "group_type" "simple" }
 
                     parm {
+                        name    "Randomize_Twist_Thread_Cycles"
+                        label   "Randomize Twist Cycles"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
                         name    "fabric_thread_twist_random_seed"
                         label   "Seed"
                         type    float
@@ -328,15 +372,45 @@
                         label   "Min"
                         type    float
                         joinnext
-                        default { "0" }
-                        range   { -10 10 }
+                        default { "1" }
+                        range   { 0 2 }
                     }
                     parm {
                         name    "fabric_thread_twist_random_max"
                         label   "Max"
                         type    float
+                        default { "1" }
+                        range   { 0 2 }
+                    }
+                    parm {
+                        name    "Randomize_Twist_Thread_Offset"
+                        label   "Randomize Twist Offset"
+                        type    label
+                        joinnext
+                        default { "" }
+                    }
+                    parm {
+                        name    "fabric_thread_twist_offset_random_seed"
+                        label   "Seed"
+                        type    float
+                        joinnext
                         default { "0" }
-                        range   { -10 10 }
+                        range   { 0 10 }
+                    }
+                    parm {
+                        name    "fabric_thread_twist_offset_random_min"
+                        label   "Min"
+                        type    float
+                        joinnext
+                        default { "0" }
+                        range   { -360 360 }
+                    }
+                    parm {
+                        name    "fabric_thread_twist_offset_random_max"
+                        label   "Max"
+                        type    float
+                        default { "0" }
+                        range   { -360 360 }
                     }
                 }
 

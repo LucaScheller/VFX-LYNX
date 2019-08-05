@@ -34,7 +34,7 @@ sopflags sopflags =
 comment ""
 position -1.09831 -12.2477
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
@@ -52,7 +52,7 @@ inputs
 stat
 {
   create 1560896659
-  modify 1564829557
+  modify 1565029965
   author USER@lynx.localdomain
   access 0777
 }
@@ -213,7 +213,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1560018211
+  modify 1565024422
   author LYNX@LucaScheller
   access 0777
 }
@@ -237,6 +237,9 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"float LYNX_fabric_fiber_twist_random_seed =        ch(\"../fabric_fiber_twist_random_seed\");
 float LYNX_fabric_fiber_twist_random_min =         ch(\"../fabric_fiber_twist_random_min\");
 float LYNX_fabric_fiber_twist_random_max =         ch(\"../fabric_fiber_twist_random_max\");
+float LYNX_fabric_fiber_twist_offset_random_seed =        ch(\"../fabric_fiber_twist_offset_random_seed\");
+float LYNX_fabric_fiber_twist_offset_random_min =         ch(\"../fabric_fiber_twist_offset_random_min\");
+float LYNX_fabric_fiber_twist_offset_random_max =         ch(\"../fabric_fiber_twist_offset_random_max\");
 float LYNX_fabric_fiber_offset =                   ch(\"../fabric_fiber_offset\");
 float LYNX_fabric_fiber_offset_random_seed =       ch(\"../fabric_fiber_offset_random_seed\");
 float LYNX_fabric_fiber_offset_random_min =        ch(\"../fabric_fiber_offset_random_min\");
@@ -247,12 +250,15 @@ float LYNX_fabric_fiber_offset_noise_min =         ch(\"../fabric_fiber_offset_n
 float LYNX_fabric_fiber_offset_noise_max =         ch(\"../fabric_fiber_offset_noise_max\");
 int   LYNX_fabric_fiber_offset_remap_reverse  =    chi(\"../fabric_fiber_offset_remap_reverse\");
 int   LYNX_fabric_thread_twist_scale_post_toggle = chi(\"../fabric_thread_twist_scale_post_toggle\");
-float LYNX_fabric_thread_twist_offset =            ch(\"../fabric_thread_twist_offset\");
 float LYNX_fabric_thread_twist =                   ch(\"../fabric_thread_twist\");
 float LYNX_fabric_thread_twist_random_seed =       ch(\"../fabric_thread_twist_random_seed\");
 float LYNX_fabric_thread_twist_random_min =        ch(\"../fabric_thread_twist_random_min\");
 float LYNX_fabric_thread_twist_random_max =        ch(\"../fabric_thread_twist_random_max\");
 int   LYNX_fabric_thread_twist_remap_reverse =     chi(\"../fabric_thread_twist_remap_reverse\");
+float LYNX_fabric_thread_twist_offset =            ch(\"../fabric_thread_twist_offset\");
+float LYNX_fabric_thread_twist_offset_random_seed =       ch(\"../fabric_thread_twist_offset_random_seed\");
+float LYNX_fabric_thread_twist_offset_random_min =        ch(\"../fabric_thread_twist_offset_random_min\");
+float LYNX_fabric_thread_twist_offset_random_max =        ch(\"../fabric_thread_twist_offset_random_max\");
 
 vector @P;
 float  @width = 0;
@@ -270,10 +276,9 @@ float  LYNX_fabric_thread_width = point(1,\"width\",@LYNX_fabric_target);
 vector LYNX_fabric_thread_scale = haspointattrib(1,\"scale\")?point(1,\"scale\",@LYNX_fabric_target):set(1,1,1);
 
 // Calc Attr
-float LYNX_fabric_fiber_twists = 360 * .1 * fit01(rand(rand(@LYNX_fabric_id_fiber)+LYNX_fabric_fiber_twist_random_seed),LYNX_fabric_fiber_twist_random_min,LYNX_fabric_fiber_twist_random_max);
 float LYNX_fabric_thread_twists_uv = clamp(LYNX_fabric_thread_twist_remap_reverse?LYNX_fabric_thread_uv[0]:(1-LYNX_fabric_thread_uv[0]),0,1);
-float LYNX_fabric_thread_twists = LYNX_fabric_thread_twist + fit01(rand(rand(@LYNX_fabric_id_thread)+LYNX_fabric_thread_twist_random_seed),LYNX_fabric_thread_twist_random_min,LYNX_fabric_thread_twist_random_max);
-float LYNX_fabric_twists = LYNX_fabric_thread_twist_offset + LYNX_fabric_fiber_twists + LYNX_fabric_thread_twists * 360 * chramp(\"../fabric_thread_twist_remap\",LYNX_fabric_thread_twists_uv);
+float LYNX_fabric_twists = LYNX_fabric_thread_twist_offset + fit01(rand(rand(@LYNX_fabric_id_thread)+LYNX_fabric_thread_twist_offset_random_seed),LYNX_fabric_thread_twist_offset_random_min,LYNX_fabric_thread_twist_offset_random_max) + fit01(rand(rand(@LYNX_fabric_id_fiber+10)+LYNX_fabric_fiber_twist_offset_random_seed),LYNX_fabric_fiber_twist_offset_random_min,LYNX_fabric_fiber_twist_offset_random_max); 
+LYNX_fabric_twists += (LYNX_fabric_thread_twist * fit01(rand(rand(@LYNX_fabric_id_thread+20)+LYNX_fabric_thread_twist_random_seed),LYNX_fabric_thread_twist_random_min,LYNX_fabric_thread_twist_random_max) * fit01(rand(rand(@LYNX_fabric_id_fiber+30)+LYNX_fabric_fiber_twist_random_seed),LYNX_fabric_fiber_twist_random_min,LYNX_fabric_fiber_twist_random_max)) * 360 * chramp(\"../fabric_thread_twist_remap\",LYNX_fabric_thread_twists_uv);
 
 float LYNX_fabric_fiber_offset_uv = clamp(LYNX_fabric_fiber_offset_remap_reverse?LYNX_fabric_thread_uv[0]:(1-LYNX_fabric_thread_uv[0]),0,1);
 float LYNX_fabric_fiber_offset_random = fit01(rand(rand(@LYNX_fabric_id_fiber) + LYNX_fabric_fiber_offset_random_seed), LYNX_fabric_fiber_offset_random_min, LYNX_fabric_fiber_offset_random_max);
@@ -1062,7 +1067,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1560018211
+  modify 1565024864
   author LYNX@LucaScheller
   access 0777
 }
@@ -1096,7 +1101,7 @@ vector LYNX_fabric_thread_uv = @uv;
 
 // Calc Attr
 float LYNX_fabric_thread_twists_uv = clamp(LYNX_fabric_thread_twist_remap_reverse?LYNX_fabric_thread_uv[0]:(1-LYNX_fabric_thread_uv[0]),0,1);
-float LYNX_fabric_thread_twists = LYNX_fabric_thread_twist + fit01(rand(rand(@LYNX_fabric_id_thread)+LYNX_fabric_thread_twist_random_seed),LYNX_fabric_thread_twist_random_min,LYNX_fabric_thread_twist_random_max);
+float LYNX_fabric_thread_twists = LYNX_fabric_thread_twist * fit01(rand(rand(@LYNX_fabric_id_thread+20)+LYNX_fabric_thread_twist_random_seed),LYNX_fabric_thread_twist_random_min,LYNX_fabric_thread_twist_random_max);
 @LYNX_fabric_thread_twists = LYNX_fabric_thread_twists * 360 * chramp(\"../fabric_thread_twist_remap\",LYNX_fabric_thread_twists_uv);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
@@ -1382,7 +1387,7 @@ inputs
 stat
 {
   create 1559061581
-  modify 1564829555
+  modify 1565029738
   author LYNX@LucaScheller
   access 0777
 }
@@ -1466,7 +1471,7 @@ inputs
 stat
 {
   create 1559996359
-  modify 1564829555
+  modify 1565029738
   author USER@lynx.localdomain
   access 0777
 }
@@ -2004,7 +2009,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2083,7 +2088,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2162,7 +2167,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2369,7 +2374,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
