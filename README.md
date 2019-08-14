@@ -10,7 +10,7 @@ Development Roadmap | [https://trello.com/b/f8Pgip7s/lynxpipeline](https://trell
 
 Have feedback? Want to help development? [Report a bug](https://github.com/LucaScheller/VFX-LYNX/issues) or [contact me](https://www.lucascheller.de/contact/) directly :)
 
-Big thank you to Patrick Zeller, Philipp Engelhardt, Ryan Leasher, Hernan Santander, Bill Martin and Geoff Bailey for giving valuable feedback for improving the tools! 
+Big thank you to Patrick Zeller, Philipp Engelhardt, Chris Kelch, Ryan Leasher, Hernan Santander, Bill Martin and Geoff Bailey for giving valuable feedback for improving the tools! 
 
 ## Getting Started
 

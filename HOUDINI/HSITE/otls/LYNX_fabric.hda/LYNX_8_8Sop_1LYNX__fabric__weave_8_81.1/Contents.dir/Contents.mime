@@ -32,27 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.09831 -9.59198
-connectornextid 3
+position -3.75449 0.559625
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
-1 	LYNX_fabric_pattern3 0 1 "input1"
-2 	repath1 1 1 "input2"
 }
 inputs
 {
-0 	LYNX_fabric_pattern3 0 1
-1 	repath1 0 1
 }
 stat
 {
-  create 1560896650
-  modify 1564829170
+  create 1565805497
+  modify 1565805506
   author USER@lynx.localdomain
   access 0777
 }
@@ -6024,7 +6019,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11855,7 +11850,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11973,7 +11968,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1560019951
+  modify 1565805508
   author LYNX@LucaScheller
   access 0777
 }
@@ -11994,7 +11989,7 @@ planegroup	[ 0	locks=0 ]	(	""	)
 nplanes	[ 0	locks=0 ]	(	"planes6"	)
 layout	[ 0	locks=0 ]	(	"square"	)
 scale	[ 0	locks=0 ]	(	"uniform"	)
-spacing	[ 0	locks=0 ]	(	0	)
+spacing	[ 0	locks=0 ]	(	2	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
 r	[ 0	locks=0 ]	(	0	0	0	)
 }
