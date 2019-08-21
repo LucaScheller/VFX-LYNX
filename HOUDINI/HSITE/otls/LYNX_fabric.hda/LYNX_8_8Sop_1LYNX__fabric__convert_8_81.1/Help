@@ -5,7 +5,7 @@
 
 = LYNX Fabric Convert =
 
-"""This with node you can convert you curves to polygons."""
+"""With this node you can convert your curves to polygons."""
 :vimeo: Tutorial
     #id: 321386151
 
@@ -42,19 +42,19 @@ Output:
 
 Rest Frame:
     #id: LYNX_fabric_rest_frame
-    Here you set the rest frame where the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
+    Here you set the rest frame on which the geometry is created. On all subsequent frames only the geometry data will be manipulated allowing for fast update times.
     :warning:
         If the input curve point count changes write `$FF` as the parameters value. This way the geometry creation is done at every frame at the cost of performance. 
 Transfer Attributes:
     #id: LYNX_fabric_attribute_transfer_toggle
-    With this you can toggle the transfer of the attributes from incoming curve onto the polygon geometry.
+    This let's you toggle the transfer of the attributes from incoming curve onto the polygon geometry.
 
 
 == Geometry ==
 #id: LYNX_fabric_convert_geometry
 
 Reverse Geometry:
-    With this toggle you can invert the face winding order of the polygons.
+    This toggle inverts the face winding order of the polygons.
 
 @related
 

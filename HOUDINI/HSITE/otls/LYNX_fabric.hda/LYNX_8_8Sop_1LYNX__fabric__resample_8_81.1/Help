@@ -12,7 +12,7 @@
 #id: LYNX_fabric_resample_overview
 
 Features:
-* Intelligently resample you curves either via bounding geometry or group selections. 
+* Intelligently resample your curves with bounding geometry or group selections. 
 * Supports the `segment_length` attribute to allow for gradient like density resampling. See [Resample Length|#LYNX_fabric_resample_fiber_resample_length] for more info.
 
 @inputs
@@ -45,7 +45,7 @@ Rest Frame:
 === General ===
 Mode:
     #id: LYNX_fabric_resample_fiber_resample_mode
-    Select which primitives should be resampled.
+    Select the primitives to be resampled.
     There are two modes:
     * `Geometry`: Everything inside the bounding geometry from the second input is resampled. You can use the `Combine Geometry` toggle to boolean combine the geometry before calculating the bouding geometry point group.
     * `Group`: This allows you to feed in point groups or point selections.  

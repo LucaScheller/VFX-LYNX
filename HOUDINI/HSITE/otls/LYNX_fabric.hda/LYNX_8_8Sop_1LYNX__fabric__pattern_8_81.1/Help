@@ -5,7 +5,7 @@
 
 = LYNX Fabric Pattern =
 
-"""This with node you can create patterns with which you can feed the LYNX_fabric_weave node. Optionally you can feed in custom curves and tweak important attributes per curve. There are also presets included to demonstrate common patterns."""
+"""With this node you can create patterns which you can feed into the LYNX_fabric_weave node. Optionally you can feed in custom curves and tweak important attributes per curve. Presets are available to demonstrate common patterns."""
 :vimeo: Tutorial
     #id: 321386151
 
@@ -18,7 +18,7 @@ Features:
 * Create fabric patterns easily that can then be pinned to your geometry via the [LYNX_fabric_weave|Node:sop/LYNX--LYNX_fabric_weave-1.1] node.
 
 :tip:
-    If the adding [Scale|#LYNX_fabric_pattern_fiber_advanced_settings] or [Twist|#LYNX_fabric_pattern_fiber_advanced_settings], the `scale` or `N` attributes will be created. You can use this in your [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1] and [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1] nodes to achieve custom scaling along the curves. 
+    If you toggle [Scale|#LYNX_fabric_pattern_fiber_advanced_settings] or [Twist|#LYNX_fabric_pattern_fiber_advanced_settings] in the advanced settings, the corresponding `scale` or `N` attributes will be created. You can use these in your [LYNX_fabric_thread|Node:sop/LYNX--LYNX_fabric_thread-1.1] and [LYNX_fabric_convert|Node:sop/LYNX--LYNX_fabric_convert-1.1] nodes to achieve custom scaling and twisting along the curves. 
 
 @inputs
 
