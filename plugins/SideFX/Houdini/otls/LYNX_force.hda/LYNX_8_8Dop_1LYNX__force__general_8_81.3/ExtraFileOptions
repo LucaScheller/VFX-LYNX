@@ -19,6 +19,26 @@
 		"type":"string",
 		"value":"S:/LYNX_logo.svg"
 	},
+	"OnCreated/Cursor":{
+		"type":"intarray",
+		"value":[7,9]
+	},
+	"OnCreated/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"OnCreated/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"OnCreated/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"OnCreated/Source":{
+		"type":"string",
+		"value":""
+	},
 	"PostLastDelete/Cursor":{
 		"type":"intarray",
 		"value":[9,77]

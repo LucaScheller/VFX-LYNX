@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.6459 0.422442
+position -3.2814 -6.91835
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -46,9 +46,9 @@ inputs
 }
 stat
 {
-  create 1566329302
-  modify 1566329345
-  author LYNX@LucaScheller
+  create 1566856149
+  modify 1566856345
+  author USER@lynx.localdomain
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 

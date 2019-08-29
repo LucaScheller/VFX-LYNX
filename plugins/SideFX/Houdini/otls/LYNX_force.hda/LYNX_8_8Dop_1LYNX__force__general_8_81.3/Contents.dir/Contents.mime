@@ -31,7 +31,7 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -2.33529 -0.159774
+position 2.32353 -0.000949994
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -45,8 +45,8 @@ inputs
 }
 stat
 {
-  create 1564513451
-  modify 1564513893
+  create 1566856325
+  modify 1566856852
   author USER@lynx.localdomain
   access 0777
 }
@@ -18730,7 +18730,7 @@ Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
 f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDE3LjUuMjI5JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJaCSsEC3ZlcnRleGNvdW50JgQSZAkrBQ5wcmltaXRpdmVjb3VudCYFEQwrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
-KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDctMzAgMjE6MDc6MTImDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
+KwgEVVNFUiYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMTcuNS4yMjkmCisLBGRhdGUmCysMEzIwMTktMDgtMjYgMjM6NTI6MzQmDCsNCGhvc3RuYW1lJg0rDhBseW54LmxvY2FsZG9tYWluJg4rDwZib3VuZHMmD0AZBq2m774=
 rKbvPhzair07X4c9AAAAAAAAAAArEBFwcmltY291bnRfc3VtbWFyeSYQJxUgICAgICAgICAxMiBQb2x5Z29ucworERFhdHRyaWJ1dGVfc3VtbWFyeSYRJxsgICAgIDEgcG9pbnQgYXR0cmlidXRlczoJUAp9KxIIdG9wb2xvZ3k=
 JhJbKxMIcG9pbnRyZWYmE1srFAdpbmRpY2VzJhRAEvJkCQAAAQACAAMABAAFAAYABwAIAAkACgALAAwADQAOAA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AHwAgACEAIgAjACQAJQAmACcAKAApACoAKwAsAC0ALgA=
 LwAwADEAMgAzADQANQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAFsAXABdAF4AXwBgAGEAYgBjAGQAZQBmAGcAaABpAGoAawBsAG0AbgA=

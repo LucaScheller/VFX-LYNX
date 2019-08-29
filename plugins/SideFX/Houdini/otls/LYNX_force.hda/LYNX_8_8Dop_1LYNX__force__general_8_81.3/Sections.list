@@ -11,5 +11,6 @@ IconSVG	IconSVG
 PythonModule	PythonModule
 PreFirstCreate	PreFirstCreate
 PostLastDelete	PostLastDelete
+OnCreated	OnCreated
 ExtraFileOptions	ExtraFileOptions
 LYNX__logo.svg	LYNX_logo.svg

@@ -19,9 +19,29 @@
 		"type":"string",
 		"value":"S:/LYNX_logo.svg"
 	},
+	"OnCreated/Cursor":{
+		"type":"intarray",
+		"value":[10,1]
+	},
+	"OnCreated/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"OnCreated/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"OnCreated/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"OnCreated/Source":{
+		"type":"string",
+		"value":""
+	},
 	"OnInputChanged/Cursor":{
 		"type":"intarray",
-		"value":[1,1]
+		"value":[5,48]
 	},
 	"OnInputChanged/IsExpr":{
 		"type":"bool",

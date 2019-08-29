@@ -8,6 +8,7 @@ InternalFileOptions	InternalFileOptions
 Contents.gz	Contents.gz
 IconSVG	IconSVG
 PythonModule	PythonModule
+OnCreated	OnCreated
 OnInputChanged	OnInputChanged
 ExtraFileOptions	ExtraFileOptions
 LYNX__logo.svg	LYNX_logo.svg
