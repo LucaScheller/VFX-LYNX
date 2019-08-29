@@ -1,3 +1,11 @@
-{
-    "path" : "C:/Path/To/LYNX/HOUDINI/HSITE"
+{ 
+	"env" : 
+	[
+	    {
+	        "LYNX" : "/Path/To/LYNX/"
+	    },
+	    {
+	        "HOUDINI_PATH" : "$LYNX/plugins/SideFX/Houdini"
+	    }
+	]
 }
