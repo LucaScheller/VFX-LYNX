@@ -4,7 +4,7 @@
 
 = LYNX Fabric Thread Profile =
 
-"""Use this to setup the profile of you thread. This is then extruded along the curve via the LYNX_fabric_thread node."""
+"""Setup the profile of your thread curves. This is extruded along the curves via the LYNX_fabric_thread node."""
 :vimeo: Tutorial
     #id: 321386151
 
@@ -12,8 +12,8 @@
 #id: LYNX_fabric_thread_profile_overview
 
 Features:
-* Setup the profile of you thread.
-* Feed in custom points via the first input or create a custom boundry where the points scattered in via the second input. 
+* Setup the profile of your thread curves.
+* Feed in custom points via the first input or connect a custom boundary object, which is on the XY plane, into the second input on which to scatter the points. 
 
 @inputs
 
@@ -21,7 +21,7 @@ Input 0:
     Feed in custom points here.
     
 Input 1:
-    Feed in a custom boundry where the points are scattered on. If there is no input, a circle is used.
+    Feed in a custom boundary object, which is on the XY plane, on which to scatter the points on. If there is no input, a circle is used.
 
 @outputs
 
@@ -38,14 +38,14 @@ Width Post Scale:
     Scale the `width` of the points after packing them into the bounding geometry.
 
 == Scatter Points ==
-The points are scattered and packed into the bouding geometry.
+The points are scattered and packed into the bounding geometry.
 
 Scatter Seed:
-    The seed of the scatter.
+    The seed value of the scattering.
 Scatter Count:
     The amount of points to scatter.
 Width:
-    The point widths are generated via a random value between 0-1 based on the point number and seed. They are then remapped via the ramp. The `Width Minimum` parameter clamps the resulting value. This prevents widths that are too small, which could cause the node to crash when calculating the scatter distribution.
+    The point widths are generated via a random value between 0-1 based on the point number and seed value. They are then remapped via the ramp. The `Width Minimum` parameter clamps the resulting values. This prevents widths that are very small, which could cause the node to crash when calculating the scatter distribution.
 
 @related
 

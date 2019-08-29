@@ -21,7 +21,7 @@
 	},
 	"OnCreated/Cursor":{
 		"type":"intarray",
-		"value":[7,9]
+		"value":[1,1]
 	},
 	"OnCreated/IsExpr":{
 		"type":"bool",
