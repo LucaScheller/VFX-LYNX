@@ -12,8 +12,24 @@ GA_TRACKING_ID = "UA-146460993-2"
 
 LYNX_config_file_path = os.environ["LYNX"]+"/etc/LYNX.config"
 
+# Check if analytics are enabled
+def enabled():
+    enabled = 0
+
+    # Check preference file
+    with open(LYNX_config_file_path, 'r') as f:
+        content = json.load(f)
+        enabled = content.get('ANALYTICS', {}).get('enabled', 0)
+
+    # Check LYNX_ANALYTICS environment variable
+    if("LYNX_ANALYTICS" in os.environ.keys()):
+        enabled = int(os.environ["LYNX_ANALYTICS"])
+
+    return enabled
+
+# Create/Save/Load tracking id
 def uuid_get():
-    # Create/Save/Load tracking id from LYNX.config
+    
     tracking_id = None
 
     if not os.path.exists(LYNX_config_file_path):

@@ -29,7 +29,7 @@ All Houdini Assets have complete Houdini native documentation available.
 | LYNX_force_general | 17.5 and newer | Tweak your sims with this all purpose & intuitive force field. |
 | LYNX_fabric        | 17.5 and newer | Create fabric/weave patterns with ease. |
 | LYNX_velocity      | 17.5 and newer | Get control of your velocities via an intuitive UI or groom them for absolute fine tuned control.|
-> **Note:**  While using it in older versions is possible, full feature support may be limited.
+> **Note:**  While using the tools in older versions is possible, full feature support may be limited.
 
 
 ## Installation Guide:
@@ -43,6 +43,8 @@ All Houdini Assets have complete Houdini native documentation available.
 	Download the desired release directly from the [releases page](https://github.com/LucaScheller/VFX-LYNX/releases) and extract it to your hard drive or network share.
 
 ### Step 2/2 | Configuring Your Environment
+
+Next up you have to edit your environment to include the package. Since no personal data is collected, analytics are enabled by default. See the [Analytics](#analytics) section below for more information.
 
 You have to edit files in the following location depending on your operating system:
 - Windows: C:\Users\YourUserNameHere\Documents\houdini17.5
@@ -73,17 +75,16 @@ For more information see the "Verwendung von Google Analytics" section in our [P
 When using LYNX, non personal data can be optionally collected via Google Analytics. This helps us get feedback and prioritize the development to give you the best possible version of our product in future releases.
 
 > **What data is collected?**
- The only information associated with an individual user is a randomized UUID that in no way contains any personal data like an IP address, name or location. The UUID is automatically generated on the first activation of analytics and saved into the /etc/LYNX.config file. It will remain unchanged indefinitely, unless the file or the corresponding entry inside the file are removed. This is similar to a cookie in a browser. All other types of data are user independent.
- Examples of data collected include:
- -- Randomized UUID
- -- Application Platform/Name/Version/License (i.e., Houdini FX, Houdini Batch, Houdini Apprentice, etc.)
- -- Usage information for different Houdini node types
+The only information associated with an individual user is a randomized UUID that in no way contains any personal data like an IP address, name or location. The UUID is automatically generated on the first activation of analytics and saved into the /etc/LYNX.config file. It will remain unchanged indefinitely, unless the file or the corresponding entry inside the file are removed. This is similar to a cookie in a browser. All other types of data are user independent.
+Examples of data collected include:
+-- Randomized UUID
+-- Application Platform/Name/Version/License (i.e., Houdini FX, Houdini Batch, Houdini Apprentice, etc.)
+-- Usage information for different Houdini node types
 
 > **How can data collection be enabled/disabled?**
-When using standalone LYNX tools, the analytics are enabled by default. You can override this behavior as described below.
-When using LYNX plugins, such as the Houdini tools, LYNX follows the same permissions as the host software does when collecting data (i.e., if you opt out of Houdini's data collection, we will not collect either).
-If you would like to override the default behavior, you can add the variable LYNX_ANALYTICS to your environment. If the variable exists when using LYNX plugins, the host software data collection settings will be ignored. A value of 1 will enable data collection and a value of 0 will disable data collection.
-For example when using the Houdini plugin, the easiest way of adding the variable to your Houdini environment is by adding the following to your houdini.env file:
+Since no personal data is being collected, analytics are enabled for all tools and plugins by default. You can override this behavior as described below.
+Whether data is being collected or not depends on the value of the "enabled" variable under "ANALYTICS" in your LYNX preferences file under /etc/LYNX.config. Additionally if the environment variable LYNX_ANALYTICS exists its value will override the value found in the preferences. If neither preferences and nor environment variable are found, no data will be collected.
+A value of 1 will enable data collection, a value of 0 will disable data collection. This means if you want to only locally enable analytics for let's say the Houdini plugin, you can add the variable to your Houdini environment by adding the following to your houdini.env file:
 
     LYNX_ANALYTICS=1
 
