@@ -5,5 +5,164 @@
  Note, that two definitions of the same element are not allowed in
  a single file. -->
 
-  <toolshelf name="LYNX" label="LYNX"/>
+  <toolshelf name="LYNX" label="LYNX">
+    <memberTool name="LYNX::LYNX_fabric_configure::1.0"/>
+  </toolshelf>
+
+  <tool name="LYNX::LYNX_fabric_configure::1.0" label="Configure" icon="opdef:/LYNX::Sop/LYNX_fabric_color::1.1?IconSVG">
+    <toolMenuContext name="viewer">
+      <contextNetType>OBJ</contextNetType>
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <script scriptType="python"><![CDATA[import sys
+import stateutils
+
+
+mode = "default"
+if (len(sys.argv)>=2):
+    mode = sys.argv[1]
+    
+pane = stateutils.activePane(kwargs)
+if isinstance(pane, hou.SceneViewer):
+    SceneViewer = pane
+    SceneViewer_network_type = SceneViewer.pwd().childTypeCategory()
+    # Prompt based on network type
+    n_object = None
+    geometry = ""
+    if SceneViewer_network_type == hou.objNodeTypeCategory():
+        n_object = SceneViewer.selectObjects(
+                prompt="Select an object to generate a fabric setup on, then press Enter",
+                use_existing_selection=True,
+                allow_multisel=False,
+                allowed_types=['geo']
+        )
+        n_object = None if n_object == () else n_object[0]
+    elif SceneViewer_network_type == hou.sopNodeTypeCategory():
+        n_object = SceneViewer.pwd()
+        geometry = SceneViewer.selectGeometry(
+            prompt="Select primitives on which to generate a fabric setup on, then press Enter. If no selection is made all primitives are considered.",
+            sel_index=0, use_existing_selection=True, initial_selection_type = None,
+            geometry_types=[hou.geometryType.Primitives],
+            primitive_types=[hou.primType.Polygon]
+        )
+        geometry = str(geometry)
+
+    if (n_object != None):
+        n_input = n_object.displayNode()
+        if(geometry != ""):
+            n_input = n_input.createOutputNode("split")
+            n_input.parm("group").set(geometry)
+        
+        # Build Network
+        n_LYNX_fabric_weave = n_object.createNode("LYNX_fabric_weave")
+        n_LYNX_fabric_weave.setInput(1,n_input,0)
+        n_LYNX_fabric_weave.setPosition(n_input.position()-hou.Vector2(3,2))
+        n_LYNX_fabric_pattern = n_object.createNode("LYNX_fabric_pattern")
+        n_LYNX_fabric_weave.setInput(0,n_LYNX_fabric_pattern,0)
+        n_LYNX_fabric_pattern.setPosition(n_LYNX_fabric_weave.position()+hou.Vector2(0,1))
+        n_LYNX_fabric_width = n_object.createNode("LYNX_fabric_width")
+        n_LYNX_fabric_width.setInput(0,n_LYNX_fabric_weave,0)
+        n_LYNX_fabric_width.setPosition(n_LYNX_fabric_weave.position()-hou.Vector2(0,1))
+        n_LYNX_fabric_thread = n_object.createNode("LYNX_fabric_thread")
+        n_LYNX_fabric_thread.setInput(0,n_LYNX_fabric_width,0)
+        n_LYNX_fabric_thread.setPosition(n_LYNX_fabric_width.position()-hou.Vector2(0,1.5))
+        n_LYNX_fabric_thread_profile = n_object.createNode("LYNX_fabric_thread_profile")
+        n_LYNX_fabric_thread.setInput(1,n_LYNX_fabric_thread_profile,0)
+        n_LYNX_fabric_thread_profile.setPosition(n_LYNX_fabric_thread.position()+hou.Vector2(1,0.8))
+        n_LYNX_fabric_color = n_object.createNode("LYNX_fabric_color")
+        n_LYNX_fabric_color.setInput(0,n_LYNX_fabric_thread,0)
+        n_LYNX_fabric_color.setPosition(n_LYNX_fabric_thread.position()-hou.Vector2(0,1))
+        n_LYNX_fabric_convert = n_object.createNode("LYNX_fabric_convert")
+        n_LYNX_fabric_convert.setInput(0,n_LYNX_fabric_color,0)
+        n_LYNX_fabric_convert.setPosition(n_LYNX_fabric_color.position()-hou.Vector2(0,1))
+        n_LYNX_fabric_convert.setGenericFlag(hou.nodeFlag.Bypass,1)
+        n_OUT_fabric_geo = n_object.createNode("null",node_name="OUT_fabric_geo")
+        n_OUT_fabric_geo.setInput(0,n_LYNX_fabric_convert,0)
+        n_OUT_fabric_geo.setPosition(n_LYNX_fabric_convert.position()-hou.Vector2(0,1))
+        
+        # Set Network Parms
+        if(mode == "default"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(2)
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
+        elif(mode == "jeans"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(6)
+        elif(mode == "knitting"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(10)
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.4)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").set(8)
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.5)
+        elif(mode == "chainmail"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
+            n_LYNX_fabric_weave.parm("fabric_tile_align_toggle").set(0)
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_x").set(0.61)
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.529)
+            
+        n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+        n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
+        
+        n_LYNX_fabric_weave.parm("fabric_attribute_transfer_toggle").set(1)
+        
+        n_LYNX_fabric_width.parm("fabric_fiber_width_remap").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (1,1)))  
+        n_LYNX_fabric_width.parm("fabric_fiber_width_random_min").set(0.75)
+        n_LYNX_fabric_width.parm("fabric_fiber_width_random_max").set(1.25)
+        n_LYNX_fabric_width.parm("fabric_fiber_width_noise_scale").set(20)
+        n_LYNX_fabric_width.parm("fabric_fiber_width_noise_min").set(0.25)
+        n_LYNX_fabric_width.parm("fabric_fiber_width_noise_max").set(1.25)
+        
+        n_LYNX_fabric_thread.parm("fabric_attribute_transfer_toggle").set(1)
+        n_LYNX_fabric_thread.parm("fabric_fiber_resample_segments").set(12)
+        n_LYNX_fabric_thread.parm("fabric_fiber_twist_offset_random_min").set(-5)
+        n_LYNX_fabric_thread.parm("fabric_fiber_twist_offset_random_min").set(5)
+        n_LYNX_fabric_thread.parm("fabric_fiber_twist_offset_random_min").set(0.85)
+        n_LYNX_fabric_thread.parm("fabric_fiber_twist_offset_random_max").set(1.15)
+        n_LYNX_fabric_thread.parm("fabric_fiber_offset_noise_scale").set(15)
+        n_LYNX_fabric_thread.parm("fabric_fiber_offset_noise_min").set(0.75)
+        n_LYNX_fabric_thread.parm("fabric_fiber_offset_noise_max").set(1.25)
+        n_LYNX_fabric_thread.parm("fabric_thread_twist_random_min").set(0.75)
+        n_LYNX_fabric_thread.parm("fabric_thread_twist_random_max").set(1.25)
+        n_LYNX_fabric_thread.parm("fabric_thread_twist_offset_random_min").set(-25)
+        n_LYNX_fabric_thread.parm("fabric_thread_twist_offset_random_max").set(25)
+        
+        n_LYNX_fabric_color.parm("fabric_fiber_color_edits").set(2)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_mask_1").set("@LYNX_fabric_fiber_direction==0")
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_1cr").set(0)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_1cg").set(0.646)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_1cb").set(1)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_2cr").set(0)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_2cg").set(0)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_solid_remap_1_2cb").set(1)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_mode_2").set(3)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_cc_hue_rand_toggle_2").set(1)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_cc_hue_rand_1_x").set(-0.04)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_cc_hue_rand_1_y").set(0.04)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_cc_value_rand_toggle_2").set(1)
+        n_LYNX_fabric_color.parm("fabric_fiber_color_cc_value_rand_1_x").set(0.6)
+        
+        
+        n_LYNX_fabric_convert.parm("fabric_attribute_transfer_toggle").set(1)
+        
+        # Dive into Network and set display node
+        n_output = n_OUT_fabric_geo
+        if(geometry != ""):
+            n_output = n_output.createOutputNode("attribdelete")
+            n_output.parm("ptdel").set("N")
+            n_output = n_output.createOutputNode("merge")
+            n_output.setPosition(n_output.position()+hou.Vector2(3,0))
+            n_output.setInput(1,n_input,1)
+        SceneViewer.setPwd(n_object)
+        n_output.setGenericFlag(hou.nodeFlag.OutputForDisplay,1)
+        n_output.setGenericFlag(hou.nodeFlag.Render,1)
+    
+    
+else:
+    # Handle Interactions other than scene viewer
+    #soptoolutils.genericTool(kwargs, "$HDA_NAME")
+    pass
+
+
+# Reset sys.argv
+sys.argv = ['']]]></script>
+  </tool>
 </shelfDocument>

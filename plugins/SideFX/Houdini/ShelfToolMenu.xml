@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menuDocument>
+  <menu>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>LYNX_fabric Configure Default</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>default</scriptArgs>        
+    </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>LYNX_fabric Configure Jeans</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>jeans</scriptArgs>   
+    </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>LYNX_fabric Configure Knitting</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>knitting</scriptArgs>   
+    </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>LYNX_fabric Configure Chainmail</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>chainmail</scriptArgs>   
+    </scriptItem>
+  </menu>
+</menuDocument>
+
