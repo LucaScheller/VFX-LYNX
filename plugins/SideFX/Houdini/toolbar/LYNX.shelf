@@ -41,13 +41,14 @@ if isinstance(pane, hou.SceneViewer):
         n_object = SceneViewer.pwd()
         geometry = SceneViewer.selectGeometry(
             prompt="Select primitives on which to generate a fabric setup on, then press Enter. If no selection is made all primitives are considered.",
-            sel_index=0, use_existing_selection=True, initial_selection_type = None,
+            sel_index=0, use_existing_selection=True,
             geometry_types=[hou.geometryType.Primitives],
             primitive_types=[hou.primType.Polygon]
         )
         geometry = str(geometry)
 
-    if (n_object != None):
+    if (n_object != None and n_object.displayNode() != None):
+        n_object.parm("vport_shadeopen").set(1)
         n_input = n_object.displayNode()
         if(geometry != ""):
             n_input = n_input.createOutputNode("split")
@@ -83,25 +84,27 @@ if isinstance(pane, hou.SceneViewer):
         # Set Network Parms
         if(mode == "default"):
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(2)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
             n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
         elif(mode == "jeans"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(6)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(5)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.35)
         elif(mode == "knitting"):
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(10)
-            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.4)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.6)
             n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
             n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
             n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").set(8)
             n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.5)
         elif(mode == "chainmail"):
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
             n_LYNX_fabric_weave.parm("fabric_tile_align_toggle").set(0)
             n_LYNX_fabric_weave.parm("fabric_tile_offset_x").set(0.61)
             n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.529)
             
-        n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-        n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
-        
         n_LYNX_fabric_weave.parm("fabric_attribute_transfer_toggle").set(1)
         
         n_LYNX_fabric_width.parm("fabric_fiber_width_remap").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (1,1)))  
