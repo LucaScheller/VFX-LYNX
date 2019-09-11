@@ -10,11 +10,19 @@
     }
 
     inputlabel	1	Fiber
-    inputlabel	2	Profile
+    inputlabel	2	"Custom Profile"
     inputlabel	3	"Sub-Network Input #3"
     inputlabel	4	"Sub-Network Input #4"
     outputlabel	1	"Converted Geometry"
 
+    parm {
+        name    "fabric_convert_profile_custom_toggle"
+        label   "fabric_convert_profile_custom_toggle"
+        type    integer
+        invisible
+        default { "0" }
+        range   { 0 10 }
+    }
     groupsimple {
         name    "fabric_settings_folder"
         label   "Fabric"
@@ -38,6 +46,20 @@
                 type    toggle
                 default { "0" }
                 range   { 0 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fabric_convert_profile_settings"
+            label   "Profile"
+            hidewhen "{ fabric_convert_profile_custom_toggle == 1 }"
+
+            parm {
+                name    "fabric_convert_profile_resample_segments"
+                label   "Segments"
+                type    integer
+                default { "8" }
+                range   { 3! 32 }
             }
         }
 

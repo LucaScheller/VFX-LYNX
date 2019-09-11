@@ -38,5 +38,25 @@
 	"OnCreated/Source":{
 		"type":"string",
 		"value":""
+	},
+	"OnInputChanged/Cursor":{
+		"type":"intarray",
+		"value":[2,22]
+	},
+	"OnInputChanged/IsExpr":{
+		"type":"bool",
+		"value":false
+	},
+	"OnInputChanged/IsPython":{
+		"type":"bool",
+		"value":true
+	},
+	"OnInputChanged/IsScript":{
+		"type":"bool",
+		"value":true
+	},
+	"OnInputChanged/Source":{
+		"type":"string",
+		"value":""
 	}
 }

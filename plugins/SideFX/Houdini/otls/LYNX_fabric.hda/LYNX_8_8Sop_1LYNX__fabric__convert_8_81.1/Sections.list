@@ -8,5 +8,6 @@ InternalFileOptions	InternalFileOptions
 Contents.gz	Contents.gz
 IconSVG	IconSVG
 OnCreated	OnCreated
+OnInputChanged	OnInputChanged
 ExtraFileOptions	ExtraFileOptions
 LYNX__logo.svg	LYNX_logo.svg

@@ -27,7 +27,7 @@ Input 0:
     Feed in your curves here. All attributes that are needed for creating the geometry will be created automatically if they don't exist.
 
 Input 1:
-    Feed in your curve profile here.
+    Feed in your curve profile, which is located on the XY plane, here. If no profile is defined, a circle will be taken.
 
 @outputs
 
@@ -50,6 +50,12 @@ Transfer Attributes:
     This lets you toggle the transfer of the attributes from the incoming curves onto the polygon geometry.
 
 
+== Profile ==
+#id: LYNX_fabric_convert_profile
+
+Segments:
+    Set the segment count of the default circle profile geo.
+    
 == Geometry ==
 #id: LYNX_fabric_convert_geometry
 

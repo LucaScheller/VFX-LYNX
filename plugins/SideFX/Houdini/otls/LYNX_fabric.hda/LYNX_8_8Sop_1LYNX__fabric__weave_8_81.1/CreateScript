@@ -12,3 +12,5 @@ endif
 # Node $arg1 (LYNX::Sop/LYNX_fabric_weave::1.1)
 opexprlanguage -s hscript $arg1
 opuserdata -n '___Version___' -v '' $arg1
+opuserdata -n '___toolcount___' -v '5' $arg1
+opuserdata -n '___toolid___' -v 'LYNX::LYNX_fabric_configure::1.0' $arg1

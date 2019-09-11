@@ -6,6 +6,12 @@ try:
 except:
     pass
 
+# Enable curve width display in the viewport
+n = kwargs["node"]
+n_obj = n
+while n_obj.type().category() != hou.nodeTypeCategories()["Object"]:
+    n_obj = n.parent()
 
-    
-    
+if(n_obj.parm("vport_shadeopen").eval()==0):
+    if hou.ui.displayConfirmation("Enable curve width display in the viewport?",title="LYNX_fabric_pattern"):
+        n_obj.parm("vport_shadeopen").set(1)

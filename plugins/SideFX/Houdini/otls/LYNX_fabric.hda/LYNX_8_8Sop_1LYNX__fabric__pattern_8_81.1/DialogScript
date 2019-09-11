@@ -57,7 +57,8 @@
                     "weave_herringbone"         "Herringbone Weave"
                     "weave_leno"                "Leno Weave"
                     "weave_gauze"               "Gauze Weave"
-                    "knitting_stitch"           "Knitting Stich"
+                    "knitting_stitch"           "Knitting Stitch"
+                    "knitting_chainmail"        "Knitting Chainmail"
                 }
                 range   { 0 10 }
                 parmtag { "script_callback" "hou.phm().fabric_pattern_preset_apply()" }

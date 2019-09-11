@@ -32,23 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.815389 -1.91726
-connectornextid 0
+position -0.3796 -0.32
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
+1 	merge1 0 1 "input1"
 }
 inputs
 {
+0 	merge1 0 1
 }
 stat
 {
-  create 1567116135
-  modify 1567116268
-  author USER@lynx.localdomain
+  create 1568148886
+  modify 1568149378
+  author LYNX_user@lynx.localdomain
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -869,7 +872,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -975,7 +978,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1559065375
+  modify 1568148630
   author LYNX@LucaScheller
   access 0777
 }
@@ -1021,7 +1024,7 @@ last	[ 0	locks=0 ]	(	"off"	)
 randomshift	[ 0	locks=0 ]	(	"off"	)
 onlypoints	[ 0	locks=0 ]	(	"off"	)
 treatpolysas	[ 0	locks=0 ]	(	"subd"	)
-outputsubdpoly	[ 0	locks=0 ]	(	"on"	)
+outputsubdpoly	[ 0	locks=0 ]	(	"off"	)
 doptdistattr	[ 0	locks=0 ]	(	"off"	)
 ptdistattr	[ 0	locks=0 ]	(	ptdist	)
 dotangentattr	[ 0	locks=0 ]	(	"off"	)
@@ -1150,7 +1153,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1562154150
+  modify 1568149241
   author LYNX@LucaScheller
   access 0777
 }
@@ -1212,7 +1215,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1562154150
+  modify 1568149241
   author LYNX@LucaScheller
   access 0777
 }

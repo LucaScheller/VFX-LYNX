@@ -172,8 +172,16 @@
                     name    "fabric_tile_shift_y"
                     label   "Shift Y"
                     type    float
+                    joinnext
                     default { "0" }
                     range   { -1! 1! }
+                }
+                parm {
+                    name    "fabric_tile_align_toggle"
+                    label   "Align Curve Ends Before Tiling"
+                    type    toggle
+                    default { "1" }
+                    help    "Align the ends of the curve to be tileable. This is a safety check to insure that the pattern is tileable. Turn this off when using patterns that do not cross the 0-1 unit boundry area."
                 }
             }
 
