@@ -17,7 +17,7 @@ Big thank you to Patrick Zeller, Philipp Engelhardt, Chris Kelch, Ryan Leasher, 
 
 After downloading the tools (see the Installation Guide below), visit my [Blog](https://www.lucascheller.de/blog/)  and my [Vimeo Page](https://vimeo.com/lucascheller) for  tutorials and feature explanations.
 
-To access the example files used in the tutorial videos, see the "examples" folder.
+To access the example files used in the tutorial videos, see the "examples" folder in the corresponding plugin directory.
 
 All Houdini Assets have complete Houdini native documentation available.
 
@@ -77,9 +77,9 @@ When using LYNX, non personal data can be optionally collected via Google Analyt
 > **What data is collected?**
 The only information associated with an individual user is a randomized UUID that in no way contains any personal data like an IP address, name or location. The UUID is automatically generated on the first activation of analytics and saved into the /etc/LYNX.config file. It will remain unchanged indefinitely, unless the file or the corresponding entry inside the file are removed. This is similar to a cookie in a browser. All other types of data are user independent.
 Examples of data collected include:
--- Randomized UUID
--- Application Platform/Name/Version/License (i.e., Houdini FX, Houdini Batch, Houdini Apprentice, etc.)
--- Usage information for different Houdini node types
+>- Randomized UUID
+>- Application Platform/Name/Version/License (i.e., Houdini FX, Houdini Batch, Houdini Apprentice, etc.)
+>- Usage information for different Houdini node types
 
 > **How can data collection be enabled/disabled?**
 Since no personal data is being collected, analytics are enabled for all tools and plugins by default. You can override this behavior as described below.
