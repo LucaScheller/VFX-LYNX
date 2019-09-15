@@ -9,7 +9,7 @@
     <memberTool name="LYNX::LYNX_fabric_configure::1.0"/>
   </toolshelf>
 
-  <tool name="LYNX::LYNX_fabric_configure::1.0" label="Configure" icon="opdef:/LYNX::Sop/LYNX_fabric_color::1.1?IconSVG">
+  <tool name="LYNX::LYNX_fabric_configure::1.0" label="LYNX fabric Configure" icon="opdef:/LYNX::Sop/LYNX_fabric_color::1.1?IconSVG">
     <toolMenuContext name="viewer">
       <contextNetType>OBJ</contextNetType>
       <contextNetType>SOP</contextNetType>
