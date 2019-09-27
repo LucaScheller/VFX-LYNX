@@ -181,7 +181,7 @@
                     label   "Align Curve Ends Before Tiling"
                     type    toggle
                     default { "1" }
-                    help    "Align the ends of the curve to be tileable. This is a safety check to insure that the pattern is tileable. Turn this off when using patterns that do not cross the 0-1 unit boundry area."
+                    help    "Align the ends of the curve to be tileable. This is a safety check to insure that the pattern is tileable. Turn this off when using patterns that do not cross the 0-1 unit boundry area. The alignment is only performed per curve to its own start and end points."
                 }
             }
 

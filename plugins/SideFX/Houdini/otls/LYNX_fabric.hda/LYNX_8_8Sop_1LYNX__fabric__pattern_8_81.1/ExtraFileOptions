@@ -41,7 +41,7 @@
 	},
 	"OnInputChanged/Cursor":{
 		"type":"intarray",
-		"value":[5,48]
+		"value":[4,95]
 	},
 	"OnInputChanged/IsExpr":{
 		"type":"bool",
@@ -61,7 +61,7 @@
 	},
 	"PythonModule/Cursor":{
 		"type":"intarray",
-		"value":[195,37]
+		"value":[1,1]
 	},
 	"PythonModule/IsExpr":{
 		"type":"bool",

@@ -33,6 +33,20 @@ exec(LYNX_fabric_tool_script)
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
+      <label>LYNX_fabric Configure Kagome</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>kagome</scriptArgs>   
+    </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
       <label>LYNX_fabric Configure Knitting</label>
       <scriptCode>
 <![CDATA[

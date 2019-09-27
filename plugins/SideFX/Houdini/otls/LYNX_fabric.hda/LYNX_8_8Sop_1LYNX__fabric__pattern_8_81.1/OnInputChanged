@@ -1,5 +1,6 @@
 n = kwargs['node']
 if (len(n.inputs())>0):
     n.parm("fabric_fiber_custom_toggle").set(1)
+    n.parm("fabric_fiber_count_custom").set(len(n.node("IN_fiber_custom").geometry().prims()))
 else:
     n.parm("fabric_fiber_custom_toggle").set(0)

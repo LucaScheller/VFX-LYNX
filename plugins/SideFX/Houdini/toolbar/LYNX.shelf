@@ -77,9 +77,11 @@ if isinstance(pane, hou.SceneViewer):
         n_LYNX_fabric_convert.setInput(0,n_LYNX_fabric_color,0)
         n_LYNX_fabric_convert.setPosition(n_LYNX_fabric_color.position()-hou.Vector2(0,1))
         n_LYNX_fabric_convert.setGenericFlag(hou.nodeFlag.Bypass,1)
+        n_attribdelete = n_LYNX_fabric_convert.createOutputNode("attribdelete")
+        n_attribdelete.parm("ptdel").set("N")
         n_OUT_fabric_geo = n_object.createNode("null",node_name="OUT_fabric_geo")
-        n_OUT_fabric_geo.setInput(0,n_LYNX_fabric_convert,0)
-        n_OUT_fabric_geo.setPosition(n_LYNX_fabric_convert.position()-hou.Vector2(0,1))
+        n_OUT_fabric_geo.setInput(0,n_attribdelete,0)
+        n_OUT_fabric_geo.setPosition(n_attribdelete.position()-hou.Vector2(0,1))
         
         # Set Network Parms
         if(mode == "default"):
@@ -90,16 +92,24 @@ if isinstance(pane, hou.SceneViewer):
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(5)
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
             n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.35)
-        elif(mode == "knitting"):
+        elif(mode == "kagome"):
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(10)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_weave.parm("fabric_fiber_resample_toggle").set(1)
+            n_LYNX_fabric_weave.parm("fabric_fiber_resample_length").set(0.005)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(25)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.65")
+        elif(mode == "knitting"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
             n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.6)
             n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
             n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").set(8)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.8")
             n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.5)
         elif(mode == "chainmail"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(12)
             n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
             n_LYNX_fabric_weave.parm("fabric_tile_align_toggle").set(0)
             n_LYNX_fabric_weave.parm("fabric_tile_offset_x").set(0.61)
@@ -149,8 +159,6 @@ if isinstance(pane, hou.SceneViewer):
         # Dive into Network and set display node
         n_output = n_OUT_fabric_geo
         if(geometry != ""):
-            n_output = n_output.createOutputNode("attribdelete")
-            n_output.parm("ptdel").set("N")
             n_output = n_output.createOutputNode("merge")
             n_output.setPosition(n_output.position()+hou.Vector2(3,0))
             n_output.setInput(1,n_input,1)

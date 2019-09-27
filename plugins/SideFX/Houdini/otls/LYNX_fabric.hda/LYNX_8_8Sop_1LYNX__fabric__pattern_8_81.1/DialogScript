@@ -23,14 +23,6 @@
         default { "0" }
         range   { 0 10 }
     }
-    parm {
-        name    "fabric_fiber_count_custom_update"
-        label   "fabric_fiber_count_custom_update"
-        type    integer
-        invisible
-        default { [ "hou.pwd().parm(\"fabric_fiber_count_custom\").set(len(hou.pwd().node(\"IN_fiber_custom\").geometry().prims()))\nhou.pwd().node(\"fiber_custom_foreach_end\").parm(\"resetcookpass\").pressButton()" python ] }
-        range   { 0 10 }
-    }
     groupsimple {
         name    "fabric_settings_folder"
         label   "Fabric"
@@ -57,6 +49,7 @@
                     "weave_herringbone"         "Herringbone Weave"
                     "weave_leno"                "Leno Weave"
                     "weave_gauze"               "Gauze Weave"
+                    "weave_kagome"              "Kagome Weave"
                     "knitting_stitch"           "Knitting Stitch"
                     "knitting_chainmail"        "Knitting Chainmail"
                 }
@@ -69,7 +62,7 @@
                 label   "Fiber Segments"
                 type    integer
                 default { "32" }
-                range   { 2! 64 }
+                range   { -1! 64 }
             }
             parm {
                 name    "fabric_fiber_width"

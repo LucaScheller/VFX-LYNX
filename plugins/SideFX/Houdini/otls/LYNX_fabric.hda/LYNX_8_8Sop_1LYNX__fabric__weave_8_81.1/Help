@@ -76,7 +76,7 @@ Repeat X/Y:
 Shift X/Y: 
     Shift the pattern along one tiling unit in X and Y based on the underlying uv space. Use this for example if you need to specifically align the pattern to a geometry border.
 Align Curve Ends Before Tiling:
-    Align the ends of the curve to be tileable. This is a safety check to insure that the pattern is tileable. Turn this off when using patterns that do not cross the 0-1 unit boundry area.
+    Align the ends of the curve to be tileable. This is a safety check to insure that the pattern is tileable. Turn this off when using patterns that do not cross the 0-1 unit boundry area. The alignment is only performed per curve to its own start and end points.
     
 === Rotate ===
 Rotate:     

@@ -169,19 +169,52 @@ def fabric_pattern_preset_apply():
             n_p_dict["fabric_fiber_height_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_height_positions, iter_ramp_heights_values)
             n_p_dict["fabric_fiber_offset_v_"+str(x)] = iter_offset_values
             n_p_dict["fabric_fiber_offset_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_offset_positions, iter_ramp_offset_values)   
-    # Preset knitting_stitch
+    # Preset weave_kagome
     elif(n_p_fabric_pattern_preset == 10):
-        n_knitting_stitch_crv = n.createInputNode(0,"curve","knitting_stitch_crv")
+        # Create Nodes
+        n_merge = n.parent().createNode("merge")
+        n_merge.setPosition(n.position()+hou.Vector2(0,.75))
+        n_copyxform_0 = n_merge.createInputNode(0,"copyxform")
+        n_copyxform_1 = n_copyxform_0.createInputNode(0,"copyxform")
+        n_copyxform_2 = n_merge.createInputNode(1,"copyxform")
+        n_curve_diagonal = n_copyxform_1.createInputNode(0,"curve","diagonal_crv")
+        n_curve_horizontal = n_copyxform_2.createInputNode(0,"curve","horizontal_crv")
+        n_copyxform_2.setPosition(n_copyxform_2.position()+hou.Vector2(0,1))
+        n_curve_horizontal.setPosition(n_copyxform_2.position()+hou.Vector2(0,1))
+        # Curve Parms
+        n_curve_diagonal.parm("coords").set("0,0.5,-.2 0.25,0.75,0.175 0.5,1,-0.2")
+        n_curve_horizontal.parm("coords").set("0,0.75,0 0.25,0.75,-0.2 0.5,0.75,-0.0 0.75,0.75,0.2 1,0.75,0 ")
+        # Transform Parms
+        n_copyxform_0.parmTuple("r").set([0,0,90])
+        n_copyxform_0.parmTuple("s").set([1,1,-1])
+        n_copyxform_0.parmTuple("p").set([.5,.5,0])
+        n_copyxform_1.parmTuple("r").set([0,0,180])
+        n_copyxform_1.parmTuple("p").set([.5,.5,0])
+        n_copyxform_2.parmTuple("r").set([0,0,180])
+        n_copyxform_2.parmTuple("p").set([.5,.5,0])
+        # Reset Fiber Custom Count
+        n.parm("fabric_fiber_resample_segments").set(-1)
+        n.parm("fabric_fiber_width").set(0.65)
+        n.parm("fabric_fiber_height").set(1.3)
+        # Connect Node
+        n_merge.cook(force=True)
+        n.setInput(0,n_merge)
+    # Preset knitting_stitch
+    elif(n_p_fabric_pattern_preset == 11):
+        n_knitting_stitch_crv = n.parent().createNode("curve","knitting_stitch_crv")
+        n_knitting_stitch_crv.setPosition(n.position()+hou.Vector2(0,.75))
         n_knitting_stitch_crv.parm("coords").set("-0.00258826,0.0440983,0 0.258018,0.0428809,0 0.528045,0.298049,0.231704 0.00176764,0.711585,0.172973 0.483218,0.980333,-0.0684501 0.99218,0.713846,0.170713 0.462905,0.298057,0.231753 0.758833,0.0426094,0 0.995506,0.0442454,0")
         n_knitting_stitch_crv.setPosition([n.position()[0],n.position()[1]+1])
         n.parm("fabric_fiber_resample_segments").set(16)
         n.parm("fabric_fiber_width").set(0.5)
-        n_p_dict["fabric_fiber_width_remap_custom_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (1,1))  
-        n_p_dict["fabric_fiber_height_remap_custom_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (1,1))  
+        # Connect Node
+        n_knitting_stitch_crv.cook(force=True)
+        n.setInput(0,n_knitting_stitch_crv)
     # Preset knitting_chainmail
-    elif(n_p_fabric_pattern_preset == 11):
+    elif(n_p_fabric_pattern_preset == 12):
         # Create Nodes
-        n_merge = n.createInputNode(0,"merge")
+        n_merge = n.parent().createNode("merge")
+        n_merge.setPosition(n.position()+hou.Vector2(0,.75))
         n_transform_A = n_merge.createInputNode(0,"xform")
         n_circle = n_transform_A.createInputNode(0,"circle")
         n_transform_B = n_transform_A.parent().copyItems((n_transform_A,),channel_reference_originals=True,connect_outputs_to_multi_inputs=True)[0]
@@ -205,6 +238,9 @@ def fabric_pattern_preset_apply():
         n.parm("fabric_fiber_width").set(0.26)
         n.parm("fabric_fiber_count_custom").set(0)
         n.parm("fabric_fiber_count_custom").set(2) 
-            
+        # Connect Node
+        n_merge.cook(force=True)
+        n.setInput(0,n_merge)
+        
     for parm in n_p_dict.keys():
         n.parm(parm).set(n_p_dict[parm])
