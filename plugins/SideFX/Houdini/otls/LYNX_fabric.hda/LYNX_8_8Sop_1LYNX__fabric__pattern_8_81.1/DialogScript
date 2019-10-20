@@ -39,19 +39,21 @@
                 type    integer
                 default { "0" }
                 menu {
-                    "default"                   "Default"
-                    "weave_basket_single"       "Single Basket Weave"
-                    "weave_basket_double"       "Double Basket Weave"
-                    "weave_basket_triple"       "Triple Basket Weave"
-                    "weave_basket_quadruple"    "Quadruple Basket weave"
-                    "weave_twill"               "Twill Weave"
-                    "weave_satin"               "Satin Weave"
-                    "weave_herringbone"         "Herringbone Weave"
-                    "weave_leno"                "Leno Weave"
-                    "weave_gauze"               "Gauze Weave"
-                    "weave_kagome"              "Kagome Weave"
-                    "knitting_stitch"           "Knitting Stitch"
-                    "knitting_chainmail"        "Knitting Chainmail"
+                    "default"               "Default"
+                    "basket_single"         "Single Basket"
+                    "basket_double"         "Double Basket"
+                    "basket_triple"         "Triple Basket"
+                    "basket_quadruple"      "Quadruple Basket"
+                    "twill"                 "Twill"
+                    "satin"                 "Satin"
+                    "herringbone"           "Herringbone"
+                    "leno"                  "Leno"
+                    "gauze"                 "Gauze"
+                    "kagome"                "Kagome"
+                    "stockinette"           "Stockinette"
+                    "stockinette_skewed"    "Stockinette Skewed"
+                    "chainmail"             "Chain Mail"
+                    "chainlink_knuckle"     "Chain Link Knuckle"
                 }
                 range   { 0 10 }
                 parmtag { "script_callback" "hou.phm().fabric_pattern_preset_apply()" }

@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -9.97586 -9.40805
+position -1.46356 0.257115
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -46,8 +46,8 @@ inputs
 }
 stat
 {
-  create 1569432397
-  modify 1569432456
+  create 1570804554
+  modify 1570805119
   author LYNX@LucaScheller
   access 0777
 }
@@ -64,6 +64,14 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"generic_delete"
 	}
 }
 
@@ -72,7 +80,7 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 1
-0 -4.163336342344337e-17 7.1360768759474507 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -2.3461291139004192e-09 7.3672618899945341 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/fabric_fiber_h_generate.init"
@@ -278,7 +286,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.16334e-17 6.35368
+position -1.3522e-08 6.17604
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -296,7 +304,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569421964
+  modify 1570804578
   author LYNX@LucaScheller
   access 0777
 }
@@ -675,7 +683,7 @@ sopflags sopflags =
 comment ""
 position -3.28598 -8.44425
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -690,7 +698,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569421973
+  modify 1570801634
   author LYNX@LucaScheller
   access 0777
 }
@@ -839,7 +847,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1560014524
+  modify 1570804090
   author LYNX@LucaScheller
   access 0777
 }
@@ -857,9 +865,8 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { options = {	 untie  iv ov is os ia oa }
-
-	 length = 0 expr = ch(\"../fabric_fiber_custom_toggle\") }
+      start = -0.040000000000000001
+      segment { length = 0 expr = ch(\"../fabric_fiber_custom_toggle\") }
     }
   }
 
@@ -896,7 +903,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 2.77556e-17 3.06277
+position -1.3522e-08 2.84072
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -914,7 +921,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569421952
+  modify 1570801578
   author LYNX@LucaScheller
   access 0777
 }
@@ -957,7 +964,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.15054 5.12517
+position 1.15054 4.94753
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -975,7 +982,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569428419
+  modify 1570801573
   author LYNX@LucaScheller
   access 0777
 }
@@ -1014,7 +1021,7 @@ measure	[ 0	locks=0 ]	(	"arc"	)
 dolength	[ 0	locks=0 ]	(	"off"	)
 length	[ 0	locks=0 ]	(	0.10000000000000001	)
 dosegs	[ 0	locks=0 ]	(	"on"	)
-segs	[ 8	locks=0 ]	(	[ segs	16 ] 	)
+segs	[ 8	locks=0 ]	(	[ segs	32 ] 	)
 useattribs	[ 0	locks=0 ]	(	"on"	)
 allequal	[ 0	locks=0 ]	(	"on"	)
 last	[ 0	locks=0 ]	(	"off"	)
@@ -1150,7 +1157,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569432320
+  modify 1570804567
   author LYNX@LucaScheller
   access 0777
 }
@@ -1212,7 +1219,7 @@ inputs
 stat
 {
   create 1552418958
-  modify 1569432320
+  modify 1570804567
   author LYNX@LucaScheller
   access 0777
 }
@@ -1558,9 +1565,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -9.31323e-09 4.10695
+position -2.28352e-08 3.92931
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
@@ -1578,7 +1585,7 @@ inputs
 stat
 {
   create 1569421951
-  modify 1569422013
+  modify 1570801630
   author LYNX@LucaScheller
   access 0777
 }
@@ -1606,7 +1613,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+input	[ 8	locks=0 ]	(	[ input	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

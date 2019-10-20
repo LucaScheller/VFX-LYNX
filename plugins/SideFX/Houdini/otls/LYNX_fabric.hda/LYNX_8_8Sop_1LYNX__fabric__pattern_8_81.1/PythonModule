@@ -18,20 +18,18 @@ def fabric_pattern_preset_apply():
     n.setInput(0,None,0)
     
     n_p_fabric_pattern_preset = n.parm("fabric_pattern_preset").eval()
-    
-    n_p_dict = {} 
-        
+
     # Preset Default
     if (n_p_fabric_pattern_preset == 0):
         pass
-    # Preset weave_basket_single
+    # Preset basket_single
     elif(n_p_fabric_pattern_preset == 1):
         n.parm("fabric_fiber_count_h").set(2)
         n.parm("fabric_fiber_count_v").set(2)
         n.parm("fabric_fiber_resample_segments").set(8)
         n.parm("fabric_fiber_height_remap_reverse_toggle_h_2").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_1").set(1)
-    # Preset weave_basket_double    
+    # Preset basket_double    
     elif(n_p_fabric_pattern_preset == 2):
         n.parm("fabric_fiber_count_h").set(4)
         n.parm("fabric_fiber_count_v").set(4)
@@ -40,7 +38,7 @@ def fabric_pattern_preset_apply():
         n.parm("fabric_fiber_height_remap_reverse_toggle_h_4").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_1").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_2").set(1)
-    # Preset weave_basket_triple
+    # Preset basket_triple
     elif(n_p_fabric_pattern_preset == 3):
         n.parm("fabric_fiber_count_h").set(6)
         n.parm("fabric_fiber_count_v").set(6)
@@ -51,7 +49,7 @@ def fabric_pattern_preset_apply():
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_1").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_2").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_3").set(1)
-    # Preset weave_basket_quadruple
+    # Preset basket_quadruple
     elif(n_p_fabric_pattern_preset == 4):
         n.parm("fabric_fiber_count_h").set(8)
         n.parm("fabric_fiber_count_v").set(8)
@@ -64,39 +62,39 @@ def fabric_pattern_preset_apply():
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_2").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_3").set(1)
         n.parm("fabric_fiber_height_remap_reverse_toggle_v_4").set(1)
-    # Preset weave_twill
+    # Preset twill
     elif(n_p_fabric_pattern_preset == 5):
         n.parm("fabric_fiber_count_h").set(4)
         n.parm("fabric_fiber_count_v").set(4)
         n.parm("fabric_fiber_resample_segments").set(12)
         n.parm("fabric_fiber_width").set(0.185)
         n.parm("fabric_fiber_height").set(0.75)
-        n_p_dict["fabric_fiber_height_remap_h_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.5, 0.625, 1), (1, 1, 0.5, 0, 0.5, 1, 1))   
-        n_p_dict["fabric_fiber_height_remap_h_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.375, 0.5, 0.625, 0.75, 0.875, 1), (1, 1, 0.5, 0, 0.5, 1, 1))
-        n_p_dict["fabric_fiber_height_remap_h_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.625, 0.75, 0.875, 1), (0.5, 1, 1, 0.5, 0, 0.5))  
-        n_p_dict["fabric_fiber_height_remap_h_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.875, 1), (0.5, 0, 0.5, 1, 1, 0.5))    
-        n_p_dict["fabric_fiber_height_remap_v_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.625, 0.75, 0.875, 1), (0.5, 0, 0, 0.5, 1, 0.5))  
-        n_p_dict["fabric_fiber_height_remap_v_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.875, 1), (0.5, 1, 0.5, 0, 0, 0.5))    
-        n_p_dict["fabric_fiber_height_remap_v_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, .5, 0.625, 1), (0, 0, .5, 1, 0.5, 0, 0))   
-        n_p_dict["fabric_fiber_height_remap_v_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.375, .5, 0.625, 0.75, 0.875, 1), (0, 0, .5, 1, 0.5, 0, 0)) 
-    # Preset weave_satin
+        n.parm("fabric_fiber_height_remap_h_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.5, 0.625, 1), (1, 1, 0.5, 0, 0.5, 1, 1)))  
+        n.parm("fabric_fiber_height_remap_h_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.375, 0.5, 0.625, 0.75, 0.875, 1), (1, 1, 0.5, 0, 0.5, 1, 1)))
+        n.parm("fabric_fiber_height_remap_h_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.625, 0.75, 0.875, 1), (0.5, 1, 1, 0.5, 0, 0.5)))  
+        n.parm("fabric_fiber_height_remap_h_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.875, 1), (0.5, 0, 0.5, 1, 1, 0.5)))    
+        n.parm("fabric_fiber_height_remap_v_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.625, 0.75, 0.875, 1), (0.5, 0, 0, 0.5, 1, 0.5)))  
+        n.parm("fabric_fiber_height_remap_v_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, 0.875, 1), (0.5, 1, 0.5, 0, 0, 0.5)))    
+        n.parm("fabric_fiber_height_remap_v_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.125, 0.25, 0.375, .5, 0.625, 1), (0, 0, .5, 1, 0.5, 0, 0)))   
+        n.parm("fabric_fiber_height_remap_v_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.375, .5, 0.625, 0.75, 0.875, 1), (0, 0, .5, 1, 0.5, 0, 0))) 
+    # Preset satin
     elif(n_p_fabric_pattern_preset == 6):
         n.parm("fabric_fiber_count_h").set(5)
         n.parm("fabric_fiber_count_v").set(5)
         n.parm("fabric_fiber_resample_segments").set(12)
         n.parm("fabric_fiber_width").set(0.185)
         n.parm("fabric_fiber_height").set(0.75)
-        n_p_dict["fabric_fiber_height_remap_h_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.9, 1), (0.5, 1, 0.5, 0, 0, 0.5))   
-        n_p_dict["fabric_fiber_height_remap_h_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.3, 0.4, 0.5, 0.6, 0.7, 1), (0, 0, 0.5, 1, 0.5, 0, 0)) 
-        n_p_dict["fabric_fiber_height_remap_h_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.7, 0.8, 0.9, 1), (0.5, 0, 0, 0.5, 1, 0.5)) 
-        n_p_dict["fabric_fiber_height_remap_h_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.4, 0.5, 1), (0, 0, 0.5, 1, 0.5, 0, 0))   
-        n_p_dict["fabric_fiber_height_remap_h_5"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.5, 0.6, 0.7, 0.8, 0.9, 1), (0, 0, 0.5, 1, 0.5, 0, 0))   
-        n_p_dict["fabric_fiber_height_remap_v_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.9, 1), (0.5, 0, 0.5, 1, 1, 0.5))  
-        n_p_dict["fabric_fiber_height_remap_v_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.5, 0.6, 0.7, 0.8, 0.9, 1), (1, 1, 0.5, 0, 0.5, 1, 1))  
-        n_p_dict["fabric_fiber_height_remap_v_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.4, 0.5, 1), (1, 1, 0.5, 0, 0.5, 1, 1))  
-        n_p_dict["fabric_fiber_height_remap_v_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.7, 0.8, 0.9, 1), (0.5, 1, 1, 0.5, 0, .5))  
-        n_p_dict["fabric_fiber_height_remap_v_5"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.3, 0.4, 0.5, 0.6, 0.7, 1), (1, 1, 0.5, 0, 0.5, 1, 1)) 
-    # Preset weave_herringbone
+        n.parm("fabric_fiber_height_remap_h_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.9, 1), (0.5, 1, 0.5, 0, 0, 0.5)))
+        n.parm("fabric_fiber_height_remap_h_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.3, 0.4, 0.5, 0.6, 0.7, 1), (0, 0, 0.5, 1, 0.5, 0, 0)))
+        n.parm("fabric_fiber_height_remap_h_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.7, 0.8, 0.9, 1), (0.5, 0, 0, 0.5, 1, 0.5)))
+        n.parm("fabric_fiber_height_remap_h_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.4, 0.5, 1), (0, 0, 0.5, 1, 0.5, 0, 0)))
+        n.parm("fabric_fiber_height_remap_h_5").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.5, 0.6, 0.7, 0.8, 0.9, 1), (0, 0, 0.5, 1, 0.5, 0, 0)))
+        n.parm("fabric_fiber_height_remap_v_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.9, 1), (0.5, 0, 0.5, 1, 1, 0.5)))
+        n.parm("fabric_fiber_height_remap_v_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.5, 0.6, 0.7, 0.8, 0.9, 1), (1, 1, 0.5, 0, 0.5, 1, 1)))
+        n.parm("fabric_fiber_height_remap_v_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.2, 0.3, 0.4, 0.5, 1), (1, 1, 0.5, 0, 0.5, 1, 1)))
+        n.parm("fabric_fiber_height_remap_v_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.1, 0.7, 0.8, 0.9, 1), (0.5, 1, 1, 0.5, 0, .5)))
+        n.parm("fabric_fiber_height_remap_v_5").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0, 0.3, 0.4, 0.5, 0.6, 0.7, 1), (1, 1, 0.5, 0, 0.5, 1, 1)))
+    # Preset herringbone
     elif(n_p_fabric_pattern_preset == 7):
         n.parm("fabric_fiber_count_h").set(8)
         n.parm("fabric_fiber_count_v").set(8)
@@ -104,23 +102,23 @@ def fabric_pattern_preset_apply():
         n.parm("fabric_fiber_width").set(0.1)
         n.parm("fabric_fiber_height").set(0.4)
         ramp_positions = [0, 0.0625, 0.0625*2, 0.0625*3, 0.0625*4, 0.0625*5, 0.0625*6, 0.0625*7, 0.0625*8, 0.0625*9, 0.0625*10, 0.0625*11, 0.0625*12, 0.0625*13, 0.0625*14, 0.0625*15, 1]
-        n_p_dict["fabric_fiber_height_remap_h_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, 0.5, 1, 1, 1, .5))   
-        n_p_dict["fabric_fiber_height_remap_h_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, -0.25, 0.5, 1, 1, 1, .5, -.25, .5, 1.25, .5, 0, 0, 0, .5, 1, .5)) 
-        n_p_dict["fabric_fiber_height_remap_h_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5))
-        n_p_dict["fabric_fiber_height_remap_h_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1.25, 0.5, 0, 0, 0, .5, 1.25, .5, -.25, .5, 1, 1, 1, .5, -.25, .5))  
-        n_p_dict["fabric_fiber_height_remap_h_5"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, 0.5, 1, 1, 1, .5))   
-        n_p_dict["fabric_fiber_height_remap_h_6"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, -0.25, 0.5, 1, 1, 1, .5, -.25, .5, 1.25, .5, 0, 0, 0, .5, 1, .5))
-        n_p_dict["fabric_fiber_height_remap_h_7"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5)) 
-        n_p_dict["fabric_fiber_height_remap_h_8"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1.25, 0.5, 0, 0, 0, .5, 1.25, .5, -.25, .5, 1, 1, 1, .5, -.25, .5))
-        n_p_dict["fabric_fiber_height_remap_v_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, 0.5, 0, 0, 0, .5))   
-        n_p_dict["fabric_fiber_height_remap_v_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1)) 
-        n_p_dict["fabric_fiber_height_remap_v_3"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5))
-        n_p_dict["fabric_fiber_height_remap_v_4"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0))  
-        n_p_dict["fabric_fiber_height_remap_v_5"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1))    
-        n_p_dict["fabric_fiber_height_remap_v_6"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, 0.5, 0, 0, 0, .5))  
-        n_p_dict["fabric_fiber_height_remap_v_7"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0))  
-        n_p_dict["fabric_fiber_height_remap_v_8"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5))
-    # Preset weave_leno
+        n.parm("fabric_fiber_height_remap_h_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, 0.5, 1, 1, 1, .5)))   
+        n.parm("fabric_fiber_height_remap_h_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, -0.25, 0.5, 1, 1, 1, .5, -.25, .5, 1.25, .5, 0, 0, 0, .5, 1, .5))) 
+        n.parm("fabric_fiber_height_remap_h_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5)))
+        n.parm("fabric_fiber_height_remap_h_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1.25, 0.5, 0, 0, 0, .5, 1.25, .5, -.25, .5, 1, 1, 1, .5, -.25, .5))) 
+        n.parm("fabric_fiber_height_remap_h_5").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, 0.5, 1, 1, 1, .5)))   
+        n.parm("fabric_fiber_height_remap_h_6").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, -0.25, 0.5, 1, 1, 1, .5, -.25, .5, 1.25, .5, 0, 0, 0, .5, 1, .5)))
+        n.parm("fabric_fiber_height_remap_h_7").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5))) 
+        n.parm("fabric_fiber_height_remap_h_8").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1.25, 0.5, 0, 0, 0, .5, 1.25, .5, -.25, .5, 1, 1, 1, .5, -.25, .5)))
+        n.parm("fabric_fiber_height_remap_v_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, 0.5, 0, 0, 0, .5)))   
+        n.parm("fabric_fiber_height_remap_v_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1))) 
+        n.parm("fabric_fiber_height_remap_v_3").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5)))
+        n.parm("fabric_fiber_height_remap_v_4").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0)))  
+        n.parm("fabric_fiber_height_remap_v_5").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1)))    
+        n.parm("fabric_fiber_height_remap_v_6").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 1, 1, 1, 0.5, 0, 0, 0, .5, 1, 1, 1, 0.5, 0, 0, 0, .5)))  
+        n.parm("fabric_fiber_height_remap_v_7").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5, 0, 0)))  
+        n.parm("fabric_fiber_height_remap_v_8").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, (0.5, 0, 0, 0, 0.5, 1, 1, 1, .5, 0, 0, 0, .5, 1, 1, 1, .5)))
+    # Preset leno
     elif(n_p_fabric_pattern_preset == 8):
         n.parm("fabric_fiber_count_h").set(2)
         n.parm("fabric_fiber_count_v").set(8)
@@ -133,20 +131,20 @@ def fabric_pattern_preset_apply():
         ramp_height_positions = [0, 0.075, 0.25, 0.375, 0.5, 0.625, 0.75, 0.925, 1]
         ramp_heights_values = [0.625, 0.6, 0.05, 0.495, 0.7, 0.495, 0.05, 0.6, 0.625]
         ramp_heights_values_invert = list(map(lambda x: 1-x, ramp_heights_values))
-        n_p_dict["fabric_fiber_width_h_1"] = 1.1
-        n_p_dict["fabric_fiber_width_h_2"] = 1.1
-        n_p_dict["fabric_fiber_height_remap_h_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.5, 0.5))   
-        n_p_dict["fabric_fiber_height_remap_h_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.5, 0.5)) 
-        n_p_dict["fabric_fiber_offset_h_1"] = 0.0085
-        n_p_dict["fabric_fiber_offset_h_2"] = 0.0085
+        n.parm("fabric_fiber_width_h_1").set(1.1)
+        n.parm("fabric_fiber_width_h_2").set(1.1)
+        n.parm("fabric_fiber_height_remap_h_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.5, 0.5)))   
+        n.parm("fabric_fiber_height_remap_h_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.5, 0.5))) 
+        n.parm("fabric_fiber_offset_h_1").set(0.0085)
+        n.parm("fabric_fiber_offset_h_2").set(0.0085)
         for x in range(1,9):
             iter_ramp_heights_values = ramp_heights_values if x%2==0 else ramp_heights_values_invert
             iter_offset_values = -0.0625 if x%2==0 else 0.0625
             iter_ramp_offset_values = ramp_offset_values if x%2==0 else ramp_offset_values_invert
-            n_p_dict["fabric_fiber_height_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_height_positions, iter_ramp_heights_values)
-            n_p_dict["fabric_fiber_offset_v_"+str(x)] = iter_offset_values
-            n_p_dict["fabric_fiber_offset_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_offset_positions, iter_ramp_offset_values)   
-    # Preset weave_gauze
+            n.parm("fabric_fiber_height_remap_v_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_height_positions, iter_ramp_heights_values))
+            n.parm("fabric_fiber_offset_v_"+str(x)).set(iter_offset_values)
+            n.parm("fabric_fiber_offset_remap_v_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_offset_positions, iter_ramp_offset_values))
+    # Preset gauze
     elif(n_p_fabric_pattern_preset == 9):
         n.parm("fabric_fiber_count_h").set(2)
         n.parm("fabric_fiber_count_v").set(8)
@@ -158,18 +156,18 @@ def fabric_pattern_preset_apply():
         ramp_offset_values_invert = list(map(lambda x: 1-x, ramp_offset_values))
         ramp_height_positions = [0, 0.075, 0.25, 0.375, 0.5, 0.625, 0.75, 0.925, 1]
         ramp_heights_values = [0.125, 0.15, 1.075, 0.63, -0.125, 0.63, 1.075, 0.15, 0.125]
-        n_p_dict["fabric_fiber_height_remap_h_1"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.6, 0.6))   
-        n_p_dict["fabric_fiber_height_remap_h_2"] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.6, 0.6)) 
-        n_p_dict["fabric_fiber_offset_h_1"] = 0.0275
-        n_p_dict["fabric_fiber_offset_h_2"] = -0.01
+        n.parm("fabric_fiber_height_remap_h_1").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.6, 0.6))) 
+        n.parm("fabric_fiber_height_remap_h_2").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (0.6, 0.6)))
+        n.parm("fabric_fiber_offset_h_1").set(0.0275)
+        n.parm("fabric_fiber_offset_h_2").set(-0.01)
         for x in range(1,9):
             iter_ramp_heights_values = ramp_heights_values if x%2!=0 else [0.4]*9
             iter_offset_values = -0.0625 if x%2==0 else 0.0625
             iter_ramp_offset_values = ramp_offset_values if x%2!=0 else  [0.5]*5
-            n_p_dict["fabric_fiber_height_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_height_positions, iter_ramp_heights_values)
-            n_p_dict["fabric_fiber_offset_v_"+str(x)] = iter_offset_values
-            n_p_dict["fabric_fiber_offset_remap_v_"+str(x)] = hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_offset_positions, iter_ramp_offset_values)   
-    # Preset weave_kagome
+            n.parm("fabric_fiber_height_remap_v_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_height_positions, iter_ramp_heights_values))
+            n.parm("fabric_fiber_offset_v_"+str(x)).set(iter_offset_values)
+            n.parm("fabric_fiber_offset_remap_v_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_offset_positions, iter_ramp_offset_values))   
+    # Preset kagome
     elif(n_p_fabric_pattern_preset == 10):
         # Create Nodes
         n_merge = n.parent().createNode("merge")
@@ -199,19 +197,31 @@ def fabric_pattern_preset_apply():
         # Connect Node
         n_merge.cook(force=True)
         n.setInput(0,n_merge)
-    # Preset knitting_stitch
+    # Preset stockinette    
     elif(n_p_fabric_pattern_preset == 11):
-        n_knitting_stitch_crv = n.parent().createNode("curve","knitting_stitch_crv")
-        n_knitting_stitch_crv.setPosition(n.position()+hou.Vector2(0,.75))
-        n_knitting_stitch_crv.parm("coords").set("-0.00258826,0.0440983,0 0.258018,0.0428809,0 0.528045,0.298049,0.231704 0.00176764,0.711585,0.172973 0.483218,0.980333,-0.0684501 0.99218,0.713846,0.170713 0.462905,0.298057,0.231753 0.758833,0.0426094,0 0.995506,0.0442454,0")
-        n_knitting_stitch_crv.setPosition([n.position()[0],n.position()[1]+1])
+        n_knitting_stockinette_crv = n.parent().createNode("curve","knitting_stockinette_crv")
+        n_knitting_stockinette_crv.setPosition(n.position()+hou.Vector2(0,.75))
+        n_knitting_stockinette_crv.parm("coords").set("-0.00258826,0.0440983,0 0.258018,0.0428809,0 0.528045,0.298049,0.231704 0.00176764,0.711585,0.172973 0.483218,0.980333,-0.0684501 0.99218,0.713846,0.170713 0.462905,0.298057,0.231753 0.758833,0.0426094,0 0.995506,0.0442454,0")
+        n_knitting_stockinette_crv.setPosition([n.position()[0],n.position()[1]+1])
+        n.parm("fabric_fiber_resample_segments").set(16)
+        n.parm("fabric_fiber_width").set(0.5)
+        n.parm("fabric_fiber_height").set(2)
+        # Connect Node
+        n_knitting_stockinette_crv.cook(force=True)
+        n.setInput(0,n_knitting_stockinette_crv)
+    # Preset stockinette_skewed
+    elif(n_p_fabric_pattern_preset == 12):
+        n_knitting_stockinette_skewed_crv = n.parent().createNode("curve","knitting_stockinette_skewed_crv")
+        n_knitting_stockinette_skewed_crv.setPosition(n.position()+hou.Vector2(0,.75))
+        n_knitting_stockinette_skewed_crv.parm("coords").set("-0.00258826,0.0361606,-0.2 0.258018,0.0351623,-0.2 0.518404,0.133105,0 0.207075,0.365308,0.200001 0.0215353,0.672761,0 0.239612,0.883119,-0.2 0.723257,0.959236,-0.200001 0.97736,0.8359,0 0.788886,0.520361,0.220501 0.462905,0.244407,0 0.758833,0.0349397,-0.2 0.995506,0.0362812,-0.2")
+        n_knitting_stockinette_skewed_crv.setPosition([n.position()[0],n.position()[1]+1])
         n.parm("fabric_fiber_resample_segments").set(16)
         n.parm("fabric_fiber_width").set(0.5)
         # Connect Node
-        n_knitting_stitch_crv.cook(force=True)
-        n.setInput(0,n_knitting_stitch_crv)
-    # Preset knitting_chainmail
-    elif(n_p_fabric_pattern_preset == 12):
+        n_knitting_stockinette_skewed_crv.cook(force=True)
+        n.setInput(0,n_knitting_stockinette_skewed_crv)
+    # Preset chainmail
+    elif(n_p_fabric_pattern_preset == 13):
         # Create Nodes
         n_merge = n.parent().createNode("merge")
         n_merge.setPosition(n.position()+hou.Vector2(0,.75))
@@ -241,6 +251,22 @@ def fabric_pattern_preset_apply():
         # Connect Node
         n_merge.cook(force=True)
         n.setInput(0,n_merge)
+    # Preset chainlink_knuckle
+    elif(n_p_fabric_pattern_preset == 14):
+        n.parm("fabric_fiber_count_h").set(2)
+        n.parm("fabric_fiber_count_v").set(0)
+        n.parm("fabric_fiber_resample_segments").set(16)
+        n.parm("fabric_fiber_width").set(0.1)
+        n.parm("fabric_fiber_height").set(.85)
+        ramp_positions = [0, 0.05, 0.45, 0.5, 0.55, 0.95, 1]
+        ramp_hights_values = [0.5, 0.25, 0.25, 0.5, 0.75, 0.75, 0.5]
+        ramp_offsets_values = [0.535, 0.535, 0.1, 0.1, 0.1, 0.535, 0.535]
+        n.parm("fabric_fiber_offset_h_1").set(0.25)
+        n.parm("fabric_fiber_offset_h_2").set(-.25)
+        for x in range(1,3):
+            iter_ramp_heights_values = ramp_hights_values if x-1%2==0 else list(map(lambda x: 1-x,ramp_hights_values))
+            iter_ramp_offsets_values = ramp_offsets_values if x-1%2==0 else list(map(lambda x: 1-x,ramp_offsets_values))
+            n.parm("fabric_fiber_height_remap_h_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, iter_ramp_heights_values))
+            n.parm("fabric_fiber_offset_remap_h_"+str(x)).set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), ramp_positions, iter_ramp_offsets_values)) 
+    
         
-    for parm in n_p_dict.keys():
-        n.parm(parm).set(n_p_dict[parm])

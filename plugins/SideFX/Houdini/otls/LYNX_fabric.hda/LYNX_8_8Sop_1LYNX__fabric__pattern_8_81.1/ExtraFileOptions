@@ -41,7 +41,7 @@
 	},
 	"OnInputChanged/Cursor":{
 		"type":"intarray",
-		"value":[4,95]
+		"value":[6,48]
 	},
 	"OnInputChanged/IsExpr":{
 		"type":"bool",

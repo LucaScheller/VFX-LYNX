@@ -192,7 +192,7 @@
                             [ "n = kwargs[\"node\"]" ]
                             [ "n_p_fabric_fiber_color_mode = n.parm(\"fabric_fiber_color_mode_\"+str(kwargs[\"script_multiparm_index\"])).eval()" ]
                             [ "" ]
-                            [ "mix_default = [\"set\",\"add\",\"subtract\",\"multiply\",\"divide\"]" ]
+                            [ "mix_default = [\"set\",\"add\",\"subtract\",\"multiply\",\"divide\",\"min\",\"max\"]" ]
                             [ "mix_cc = [\"apply_global\",\"apply_previous\"]" ]
                             [ "" ]
                             [ "mix = mix_cc if (n_p_fabric_fiber_color_mode==3) else mix_default" ]

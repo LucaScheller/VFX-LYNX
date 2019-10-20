@@ -32,26 +32,29 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.948613 2.37855
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -0.432459 -44.5548
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	LYNX_fabric_noiseMask1 1 1 "input1"
 }
 inputs
 {
+0 	LYNX_fabric_noiseMask1 0 1
 }
 stat
 {
-  create 1567116387
-  modify 1567117652
-  author USER@lynx.localdomain
+  create 1569573193
+  modify 1570569707
+  author LYNX@LucaScheller
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.475 0.812 0.204 
 delscript ""
 exprlanguage hscript
 end
@@ -107,7 +110,7 @@ inputs
 stat
 {
   create 1559557906
-  modify 1564872158
+  modify 1570568895
   author LYNX@LucaScheller
   access 0777
 }
@@ -232,6 +235,10 @@ if (LYNX_fabric_fiber_color_mode!=3){
     if(LYNX_fabric_fiber_color_mix==3){LYNX_fabric_color = @LYNX_fabric_color * LYNX_fabric_color;}
     // Divide
     if(LYNX_fabric_fiber_color_mix==4){LYNX_fabric_color = @LYNX_fabric_color / LYNX_fabric_color;}
+    // Min
+    if(LYNX_fabric_fiber_color_mix==5){LYNX_fabric_color = min(@LYNX_fabric_color,LYNX_fabric_color);}
+    // Max
+    if(LYNX_fabric_fiber_color_mix==6){LYNX_fabric_color = max(@LYNX_fabric_color,LYNX_fabric_color);}
 }
 
 @LYNX_fabric_color = LYNX_fabric_color * LYNX_fabric_color_alpha + @LYNX_fabric_color * (1-LYNX_fabric_color_alpha);
@@ -583,7 +590,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -643,7 +650,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -709,7 +716,7 @@ Content-Type: text/plain
 version 0.8
 itermethod	[ 0	locks=0 ]	(	"count"	)
 method	[ 0	locks=0 ]	(	"feedback"	)
-iterations	[ 0	locks=0 ]	(	[ iterations	2 ] 	)
+iterations	[ 0	locks=0 ]	(	[ iterations	5 ] 	)
 startvalue	[ 0	locks=0 ]	(	1	)
 increment	[ 0	locks=0 ]	(	1	)
 class	[ 0	locks=0 ]	(	"point"	)
@@ -733,7 +740,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -768,7 +775,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1564872358
+  modify 1570568999
   author LYNX@LucaScheller
   access 0777
 }
@@ -797,7 +804,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -830,7 +837,7 @@ inputs
 stat
 {
   create 1559559899
-  modify 1564872358
+  modify 1570568999
   author LYNX@LucaScheller
   access 0777
 }
@@ -859,7 +866,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -935,7 +942,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 
@@ -1001,7 +1008,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 0	locks=0 ]	(	[ input	1 ] 	)
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1011,7 +1018,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.229"
+		"value":"17.5.327"
 	}
 }
 

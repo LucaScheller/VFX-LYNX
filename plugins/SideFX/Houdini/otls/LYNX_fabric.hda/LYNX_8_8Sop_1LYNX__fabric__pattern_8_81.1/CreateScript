@@ -12,3 +12,5 @@ endif
 # Node $arg1 (LYNX::Sop/LYNX_fabric_pattern::1.1)
 opexprlanguage -s hscript $arg1
 opuserdata -n '___Version___' -v '' $arg1
+opuserdata -n '___toolcount___' -v '2' $arg1
+opuserdata -n '___toolid___' -v 'generic_delete' $arg1
