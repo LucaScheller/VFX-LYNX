@@ -5,7 +5,7 @@
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
-      <label>LYNX_fabric Configure Default</label>
+      <label>Configure Default</label>
       <scriptCode>
 <![CDATA[
 LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
@@ -19,7 +19,7 @@ exec(LYNX_fabric_tool_script)
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
-      <label>LYNX_fabric Configure Jeans</label>
+      <label>Configure Jeans</label>
       <scriptCode>
 <![CDATA[
 LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
@@ -27,13 +27,13 @@ LYNX_fabric_tool_script = LYNX_fabric_tool.script()
 exec(LYNX_fabric_tool_script)
 ]]>
       </scriptCode>
-      <scriptArgs>jeans</scriptArgs>   
+      <scriptArgs>twill</scriptArgs>   
     </scriptItem>
     <scriptItem>
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
-      <label>LYNX_fabric Configure Kagome</label>
+      <label>Configure Kagome</label>
       <scriptCode>
 <![CDATA[
 LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
@@ -47,7 +47,7 @@ exec(LYNX_fabric_tool_script)
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
-      <label>LYNX_fabric Configure Knitting</label>
+      <label>Configure Stockinette</label>
       <scriptCode>
 <![CDATA[
 LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
@@ -55,13 +55,27 @@ LYNX_fabric_tool_script = LYNX_fabric_tool.script()
 exec(LYNX_fabric_tool_script)
 ]]>
       </scriptCode>
-      <scriptArgs>knitting</scriptArgs>   
+      <scriptArgs>stockinette</scriptArgs>   
     </scriptItem>
     <scriptItem>
       <context>
         <ownerMask>*LYNX_fabric*</ownerMask>
       </context>
-      <label>LYNX_fabric Configure Chainmail</label>
+      <label>Configure Stockinette Skewed</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>stockinette_skewed</scriptArgs>   
+    </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>Configure Chain Mail</label>
       <scriptCode>
 <![CDATA[
 LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
@@ -71,6 +85,19 @@ exec(LYNX_fabric_tool_script)
       </scriptCode>
       <scriptArgs>chainmail</scriptArgs>   
     </scriptItem>
+    <scriptItem>
+      <context>
+        <ownerMask>*LYNX_fabric*</ownerMask>
+      </context>
+      <label>Configure Chain Link Knuckle</label>
+      <scriptCode>
+<![CDATA[
+LYNX_fabric_tool = hou.shelves.tool("LYNX::LYNX_fabric_configure::1.0")
+LYNX_fabric_tool_script = LYNX_fabric_tool.script()
+exec(LYNX_fabric_tool_script)
+]]>
+      </scriptCode>
+      <scriptArgs>chainlink_knuckle</scriptArgs>   
+    </scriptItem>
   </menu>
 </menuDocument>
-

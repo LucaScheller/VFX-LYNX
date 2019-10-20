@@ -83,38 +83,6 @@ if isinstance(pane, hou.SceneViewer):
         n_OUT_fabric_geo.setInput(0,n_attribdelete,0)
         n_OUT_fabric_geo.setPosition(n_attribdelete.position()-hou.Vector2(0,1))
         
-        # Set Network Parms
-        if(mode == "default"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(2)
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
-        elif(mode == "jeans"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(5)
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.35)
-        elif(mode == "kagome"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(10)
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-            n_LYNX_fabric_weave.parm("fabric_fiber_resample_toggle").set(1)
-            n_LYNX_fabric_weave.parm("fabric_fiber_resample_length").set(0.005)
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(25)
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.65")
-        elif(mode == "knitting"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.6)
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
-            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.8")
-            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.5)
-        elif(mode == "chainmail"):
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(12)
-            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
-            n_LYNX_fabric_weave.parm("fabric_tile_align_toggle").set(0)
-            n_LYNX_fabric_weave.parm("fabric_tile_offset_x").set(0.61)
-            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.529)
-            
         n_LYNX_fabric_weave.parm("fabric_attribute_transfer_toggle").set(1)
         
         n_LYNX_fabric_width.parm("fabric_fiber_width_remap").set(hou.Ramp((hou.rampBasis.BSpline,hou.rampBasis.BSpline), (0,1), (1,1)))  
@@ -153,8 +121,54 @@ if isinstance(pane, hou.SceneViewer):
         n_LYNX_fabric_color.parm("fabric_fiber_color_cc_value_rand_toggle_2").set(1)
         n_LYNX_fabric_color.parm("fabric_fiber_color_cc_value_rand_1_x").set(0.6)
         
-        
         n_LYNX_fabric_convert.parm("fabric_attribute_transfer_toggle").set(1)
+        
+        # Set Network Parms
+        if(mode == "default"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(2)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.25)
+        elif(mode == "twill"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(5)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.35)
+        elif(mode == "kagome"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(10)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_weave.parm("fabric_fiber_resample_toggle").set(1)
+            n_LYNX_fabric_weave.parm("fabric_fiber_resample_length").set(0.005)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(25)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.65")
+        elif(mode == "stockinette"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(11)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_width").set(0.5)
+            n_LYNX_fabric_width.parm("fabric_fiber_width_noise_min").set(.75)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.8")
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.5)
+        elif(mode == "stockinette_skewed"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(12)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_pattern.parm("fabric_fiber_resample_segments").set(32)
+            n_LYNX_fabric_width.parm("fabric_fiber_width_noise_min").set(.95)
+            n_LYNX_fabric_width.parm("fabric_fiber_width_noise_max").set(1.05)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_x").set(10)
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").deleteAllKeyframes()
+            n_LYNX_fabric_weave.parm("fabric_tile_repeat_y").setExpression("ch('fabric_tile_repeat_x')*.8")
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.22)
+        elif(mode == "chainmail"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(13)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_weave.parm("fabric_tile_align_toggle").set(0)
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_x").set(0.61)
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.529)
+        elif(mode == "chainlink_knuckle"):
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").set(14)
+            n_LYNX_fabric_pattern.parm("fabric_pattern_preset").pressButton()
+            n_LYNX_fabric_weave.parm("fabric_tile_offset_y").set(0.73)
         
         # Dive into Network and set display node
         n_output = n_OUT_fabric_geo
