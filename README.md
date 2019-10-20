@@ -44,7 +44,7 @@ All Houdini Assets have complete Houdini native documentation available.
 
 ### Step 2/2 | Configuring Your Environment
 
-Next up you have to edit your environment to include the package. Since no personal data is collected, analytics are enabled by default. See the [Analytics](#analytics) section below for more information.
+Next up you have to edit your environment to include the package.
 
 You have to edit files in the following location depending on your operating system:
 - Windows: C:\Users\YourUserNameHere\Documents\houdini17.5
@@ -82,8 +82,8 @@ Examples of data collected include:
 >- Usage information for different Houdini node types
 
 > **How can data collection be enabled/disabled?**
-Since no personal data is being collected, analytics are enabled for all tools and plugins by default. You can override this behavior as described below.
-Whether data is being collected or not depends on the value of the "enabled" variable under "ANALYTICS" in your LYNX preferences file under /etc/LYNX.config. Additionally if the environment variable LYNX_ANALYTICS exists its value will override the value found in the preferences. If neither preferences and nor environment variable are found, no data will be collected.
+If your user preference for data collection is not found, you will be asked to allow or reject data collection via a popup. This setting will be used accross all LYNX tools and plugins by default. You can override or change your preference as described below.
+Whether data is being collected or not depends on the value of the "enabled" variable under "ANALYTICS" in your LYNX preferences file under /etc/LYNX.config. Additionally if the environment variable LYNX_ANALYTICS exists, its value will override the value found in the preferences. If neither preferences and nor environment variable are found, no data will be collected.
 A value of 1 will enable data collection, a value of 0 will disable data collection. This means if you want to only locally enable analytics for let's say the Houdini plugin, you can add the variable to your Houdini environment by adding the following to your houdini.env file:
 
     LYNX_ANALYTICS=1
