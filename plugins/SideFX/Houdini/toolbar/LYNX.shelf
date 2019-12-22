@@ -7,6 +7,7 @@
 
   <toolshelf name="LYNX" label="LYNX">
     <memberTool name="LYNX::LYNX_fabric_configure::1.0"/>
+    <memberTool name="LYNX_update_manager"/>
   </toolshelf>
 
   <tool name="LYNX::LYNX_fabric_configure::1.0" label="LYNX fabric Configure" icon="opdef:/LYNX::Sop/LYNX_fabric_color::1.1?IconSVG">
@@ -189,5 +190,17 @@ else:
 
 # Reset sys.argv
 sys.argv = ['']]]></script>
+  </tool>
+
+  <tool name="LYNX_update_manager" label="LYNX Update Manager" icon="opdef:/LYNX::Sop/LYNX_fabric_color::1.1?IconSVG">
+    <script scriptType="python"><![CDATA[# Dependencies
+import os,sys
+
+# Load LYNX_update module >> This raises an error if the variable doens't exist
+sys.path.append(os.environ["LYNX"]+"/lib/")
+import LYNX_update
+
+LYNX_update_manager_object = LYNX_update.LYNX_update_manager()
+LYNX_update_manager_object.ui_LYNX_update_manager()]]></script>
   </tool>
 </shelfDocument>
