@@ -11,7 +11,7 @@ def force_guide_playback_hide_callback(event_type,event_frame):
 def force_guide_playback_hide_callback_add():
     # Check for existing callbacks as safety
     callbacks = hou.playbar.eventCallbacks()
-    callbacks = filter(lambda x: x.__name__ == LYNX_force_general_guide_playback_hide_variable,callbacks)
+    callbacks = [f for f in callbacks if f.__name__ == LYNX_force_general_guide_playback_hide_variable]
     if(len(callbacks)>0): return
 
     hou.hscript("setenv "+LYNX_force_general_guide_playback_hide_variable+" = 1")
