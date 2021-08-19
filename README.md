@@ -43,9 +43,9 @@ The LYNX_update program is the most convenient way to install LYNX. All you have
 
 To execute the installer in Houdini, open the "Python Source Editor" (Windows>Python Source Editor) and paste and apply the following python snippet preferably in a clean Houdini session:
 
-    import urllib2,ssl
+    import urllib,ssl
     LYNX_update_url = 'https://raw.githubusercontent.com/LucaScheller/VFX-LYNX/master/lib/LYNX_update.py'
-    exec urllib2.urlopen(LYNX_update_url,context=ssl._create_unverified_context()).read() in globals()
+    exec(urllib.request.urlopen(LYNX_update_url,context=ssl._create_unverified_context()).read(), globals(), locals())
     LYNX_update_manager_object = LYNX_update_manager()
     LYNX_update_manager_object.ui_LYNX_update_manager()
 
