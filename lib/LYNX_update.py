@@ -178,7 +178,7 @@ class LYNX_update_manager(object):
         except:
             pass
         # Relase Data Parse
-        data = json.loads(data.decode('utf-8'))
+        data = json.loads(data)
         for release in data:
             self.release_data["release_prerelease" if release["prerelease"] == True else "release_production"][
                 release["tag_name"]] = {"url": release["zipball_url"]}
@@ -204,7 +204,7 @@ class LYNX_update_manager(object):
             shutil.copy(os.environ["LYNX"] + "/" + "plugins/SideFX/Houdini/packages/LYNX.json", file_path)
             with open(file_path, 'r') as file:
                 data = file.read()
-            data = json.loads(data.decode('utf-8'))
+            data = json.loads(data)
             data["env"][0]["LYNX"] = os.environ["LYNX"]
             with open(file_path, 'w') as file:
                 json.dump(data, file, ensure_ascii=False, indent=4)
