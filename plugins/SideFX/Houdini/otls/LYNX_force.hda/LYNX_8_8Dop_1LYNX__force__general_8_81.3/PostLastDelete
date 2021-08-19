@@ -2,7 +2,7 @@ LYNX_force_general_guide_playback_hide_variable = "LYNX_force_general_guide_play
 
 def force_guide_playback_hide_callback_remove():
     callbacks = hou.playbar.eventCallbacks()
-    callbacks = filter(lambda x: x.__name__ == LYNX_force_general_guide_playback_hide_variable,callbacks)
+    callbacks = [f for f in callbacks if f.__name__ == LYNX_force_general_guide_playback_hide_variable]
     callback_function = callbacks[0]
     hou.playbar.removeEventCallback(callback_function)
     
