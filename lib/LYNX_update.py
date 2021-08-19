@@ -61,11 +61,11 @@ class QT_LYNX_update_manager(QWidget):
         label_releases = QLabel("Release:")
         self.comboBox_releases = QComboBox(self)
         self.comboBox_releases.currentTextChanged.connect(self.comboBox_releases_currentTextChanged)
-        for release in sorted(self.LYNX_update_manager.release_data["release_production"].keys(),reverse=True)[:5]:
+        for release in sorted(list(self.LYNX_update_manager.release_data["release_production"].keys()),reverse=True)[:5]:
             self.comboBox_releases.addItem(release + " | Production Build")
-        if(len(self.LYNX_update_manager.release_data["release_prerelease"].keys())>0):
+        if(len(list(self.LYNX_update_manager.release_data["release_prerelease"].keys()))>0):
             self.comboBox_releases.insertSeparator(5)
-            for release in sorted(self.LYNX_update_manager.release_data["release_prerelease"].keys(),reverse=True)[:5]:
+            for release in sorted(list(self.LYNX_update_manager.release_data["release_prerelease"].keys()),reverse=True)[:5]:
                 self.comboBox_releases.addItem(release + " | Prerelease Build")
 
         layout_releases.addWidget(label_releases)
@@ -149,7 +149,7 @@ class LYNX_update_manager(object):
         self.release_data_get() 
         # Query Current Release
         self.release_type = "production"
-        self.release_version = sorted(self.release_data["release_"+self.release_type].keys())[-1]
+        self.release_version = sorted(list(self.release_data["release_"+self.release_type].keys()))[-1]
 
     def release_data_get(self):
         """
